@@ -2,13 +2,13 @@
 % Please edit documentation in R/conduit.R
 \name{show,conduit-method}
 \alias{show,conduit-method}
-\title{Show method for ProbiomeConduit object}
+\title{Show method for Conduit object}
 \usage{
 \S4method{show}{conduit}(object)
 }
 \arguments{
-\item{object}{A ProbiomeConduit object.}
+\item{object}{A Conduit object.}
 }
 \description{
-Show method for ProbiomeConduit object
+Show method for Conduit object
 }

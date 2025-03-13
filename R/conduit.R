@@ -44,9 +44,9 @@ setMethod("initialize", "conduit",
             return(.Object)
           })
 
-#' Show method for ProbiomeConduit object
+#' Show method for Conduit object
 #'
-#' @param object A ProbiomeConduit object.
+#' @param object A Conduit object.
 #' @export
 setMethod("show", "conduit",
           function(object) {

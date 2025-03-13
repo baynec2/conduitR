@@ -1,5 +1,5 @@
-#' create_probiomeconduit_obj
-#' create a pbiomeconduit obj
+#' create_conduit_obj
+#' create a conduit object.
 #'
 #' @param qfeature.rda
 #' @param database_taxonomy.tsv
@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-create_probiomeconduit_obj = function(qfeature.rds,
+create_conduit_obj = function(qfeature.rds,
                                    database_taxonomy.tsv,
                                    database_metrics.tsv,
                                    detected_protein_taxonomy.tsv,
@@ -24,7 +24,7 @@ create_probiomeconduit_obj = function(qfeature.rds,
   detected_protein_metrics = readr::read_tsv(detected_protein_metrics.tsv)
 
 # Create the probiotics conduit object
-probiome_conduit_obj <- new("probiomeconduit",
+probiome_conduit_obj <- new("conduit",
                             QFeatures = QFeatures,
                             database_taxonomy = database_taxonomy,
                             database_metrics = database_metrics,

@@ -1,0 +1,546 @@
+organism_type	organism_id	superkingdom	kingdom	phylum	class	order	family	genus	species
+microbiome	195	Bacteria	Pseudomonadati	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter coli
+microbiome	197	Bacteria	Pseudomonadati	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Campylobacteraceae	Campylobacter	Campylobacter jejuni
+microbiome	632	Bacteria	Pseudomonadati	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Yersiniaceae	Yersinia	Yersinia pestis
+microbiome	817	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis
+microbiome	818	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides thetaiotaomicron
+microbiome	820	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides uniformis
+microbiome	821	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus
+microbiome	823	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides distasonis
+microbiome	831	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Butyrivibrio	Butyrivibrio fibrisolvens
+microbiome	853	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Faecalibacterium	Faecalibacterium prausnitzii
+microbiome	1307	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus suis
+microbiome	1323	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Faecalicoccus	Faecalicoccus pleomorphus
+microbiome	1352	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus faecium
+microbiome	1522	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	[Clostridium] innocuum
+microbiome	1526	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnoclostridium	[Clostridium] aminophilum
+microbiome	1531	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	Enterocloster clostridioformis
+microbiome	1587	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus helveticus
+microbiome	1596	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus gasseri
+microbiome	1598	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Limosilactobacillus	Limosilactobacillus reuteri
+microbiome	1601	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus agilis
+microbiome	1606	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus aviarius
+microbiome	1622	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus murinus
+microbiome	1623	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus ruminis
+microbiome	1624	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus salivarius
+microbiome	1661	Bacteria	Bacillati	Actinomycetota	Actinomycetes	Actinomycetales	Actinomycetaceae	Trueperella	Trueperella pyogenes
+microbiome	3702	Eukaryota	Viridiplantae	Streptophyta	Magnoliopsida	Brassicales	Brassicaceae	Arabidopsis	Arabidopsis thaliana
+microbiome	7955	Eukaryota	Metazoa	Chordata	Actinopteri	Cypriniformes	Danionidae	Danio	Danio rerio
+microbiome	8355	Eukaryota	Metazoa	Chordata	Amphibia	Anura	Pipidae	Xenopus	Xenopus laevis
+Microbiome	9606	Eukaryota	Metazoa	Chordata	Mammalia	Primates	Hominidae	Homo	Homo sapiens
+host	10090	Eukaryota	Metazoa	Chordata	Mammalia	Rodentia	Muridae	Mus	Mus musculus
+microbiome	10665	Viruses	Heunggongvirae	Uroviricota	Caudoviricetes	NA	Straboviridae	Tequatrovirus	Tequatrovirus T4
+microbiome	28111	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides eggerthii
+microbiome	28116	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides ovatus
+microbiome	28118	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Odoribacteraceae	Odoribacter	Odoribacter splanchnicus
+microbiome	28125	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella bivia
+microbiome	28128	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella corporis
+microbiome	28131	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella intermedia
+microbiome	28139	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Rikenella	Rikenella microfusus
+microbiome	33039	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Mediterraneibacter	[Ruminococcus] torques
+microbiome	33959	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus johnsonii
+microbiome	39482	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Faecalicatena	Faecalicatena contorta
+microbiome	39485	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnospira	Lachnospira eligens
+microbiome	39488	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Anaerobutyricum	Anaerobutyricum hallii
+microbiome	39490	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium ramulus
+microbiome	39491	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter	Agathobacter rectalis
+microbiome	39492	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	[Eubacterium] siraeum
+microbiome	40520	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia obeum
+microbiome	43305	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Butyrivibrio	Butyrivibrio proteoclasticus
+microbiome	46503	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides merdae
+microbiome	46506	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides stercoris
+microbiome	47678	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides caccae
+microbiome	60133	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella pallens
+microbiome	74426	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Coriobacteriales	Coriobacteriaceae	Collinsella	Collinsella aerofaciens
+microbiome	76114	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Rhodocyclales	Rhodocyclaceae	Aromatoleum	Aromatoleum aromaticum EbN1
+microbiome	77133	Bacteria	NA	NA	NA	NA	NA	NA	uncultured bacterium
+microbiome	84112	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Eggerthella	Eggerthella lenta
+microbiome	85831	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides acidifaciens
+microbiome	88431	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	Dorea longicatena
+microbiome	93974	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AR20
+microbiome	93975	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AR29
+microbiome	97137	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus sp. ASF360
+microbiome	97138	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. MD294
+microbiome	100226	Bacteria	Bacillati	Actinomycetota	Actinomycetes	Kitasatosporales	Streptomycetaceae	Streptomyces	Streptomyces coelicolor A3(2)
+microbiome	100884	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Coprobacillaceae	Coprobacillus	Coprobacillus cateniformis
+microbiome	116085	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus	Coprococcus catus
+microbiome	140314	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Carnobacteriaceae	Trichococcus	Trichococcus palustris
+microbiome	154046	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Hungatella	Hungatella hathewayi
+microbiome	154288	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Turicibacteraceae	Turicibacter	Turicibacter sanguinis
+microbiome	160404	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Anaerotignaceae	Anaerotignum	Anaerotignum lactatifermentans
+microbiome	165179	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Segatella	Segatella copri
+microbiome	166486	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia intestinalis
+microbiome	169435	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Anaerotruncus	Anaerotruncus colihominis
+microbiome	176292	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Secundilactobacillus	Secundilactobacillus malefermentans
+microbiome	188937	Archaea	Methanobacteriati	Methanobacteriota	Methanomicrobia	Methanosarcinales	Methanosarcinaceae	Methanosarcina	Methanosarcina acetivorans C2A
+microbiome	203275	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Tannerella	Tannerella forsythia 92A2
+microbiome	213810	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruminococcus	Ruminococcus champanellensis 18P13 = JCM 17042
+microbiome	214856	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes finegoldii
+microbiome	226185	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus faecalis V583
+microbiome	226186	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides thetaiotaomicron VPI-5482
+microbiome	235279	Bacteria	Pseudomonadati	Campylobacterota	Epsilonproteobacteria	Campylobacterales	Helicobacteraceae	Helicobacter	Helicobacter hepaticus ATCC 51449
+microbiome	239935	Bacteria	Pseudomonadati	Verrucomicrobiota	Verrucomicrobiia	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia muciniphila
+microbiome	245012	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	NA	NA	butyrate-producing bacterium SM4/1
+microbiome	246199	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruminococcus	Ruminococcus albus 8
+microbiome	246787	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides cellulosilyticus
+microbiome	257314	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus johnsonii NCC 533
+microbiome	267608	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Burkholderiaceae	Ralstonia	Ralstonia pseudosolanacearum GMI1000
+microbiome	272558	Bacteria	Bacillati	Bacillota	Bacilli	Bacillales	Bacillaceae	Halalkalibacterium (ex Joshi et al. 2022)	Halalkalibacterium halodurans C-125
+microbiome	272559	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis NCTC 9343
+microbiome	272621	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus acidophilus NCFM
+microbiome	273057	Archaea	Thermoproteati	Thermoproteota	Thermoprotei	Sulfolobales	Sulfolobaceae	Saccharolobus	Saccharolobus solfataricus P2
+microbiome	278197	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Pediococcus	Pediococcus pentosaceus ATCC 25745
+microbiome	279010	Bacteria	Bacillati	Bacillota	Bacilli	Bacillales	Bacillaceae	Bacillus	Bacillus licheniformis DSM 13 = ATCC 14580
+microbiome	284813	Eukaryota	Fungi	Microsporidia	NA	NA	Unikaryonidae	Encephalitozoon	Encephalitozoon cuniculi GB-M1
+microbiome	290052	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Acetivibrio	Acetivibrio ethanolgignens
+microbiome	291645	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides nordii
+microbiome	292800	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Flavonifractor	Flavonifractor plautii
+microbiome	295405	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis YCH46
+microbiome	301301	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia hominis
+microbiome	301302	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia faecis
+microbiome	310297	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola plebeius
+microbiome	324831	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus gasseri ATCC 33323 = JCM 1131
+microbiome	328812	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides goldsteinii
+microbiome	328813	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes onderdonkii
+microbiome	329854	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides intestinalis
+microbiome	338188	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides finegoldii
+microbiome	349741	Bacteria	Pseudomonadati	Verrucomicrobiota	Verrucomicrobiia	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia muciniphila ATCC BAA-835
+microbiome	357276	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola dorei
+microbiome	357809	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnoclostridium	Lachnoclostridium phytofermentans ISDg
+microbiome	360807	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia inulinivorans
+microbiome	362948	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus salivarius UCC118
+microbiome	371601	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides xylanisolvens
+microbiome	389167	Viruses	Orthornavirae	Pisuviricota	Pisoniviricetes	Nidovirales	Coronaviridae	Betacoronavirus	Bat CoV 279/2005
+microbiome	393921	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas crevioricanis
+microbiome	394340	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Adlercreutzia	Adlercreutzia equolifaciens subsp. celatus
+microbiome	397287	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 28-4
+microbiome	397288	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 3-1
+microbiome	397290	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium A2
+microbiome	397291	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium A4
+microbiome	410072	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus	Coprococcus comes
+microbiome	411459	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia obeum ATCC 29174
+microbiome	411461	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	Dorea formicigenerans ATCC 27755
+microbiome	411462	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	Dorea longicatena DSM 13814
+microbiome	411463	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium ventriosum ATCC 27560
+microbiome	411467	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Pseudoflavonifractor	Pseudoflavonifractor capillosus ATCC 29799
+microbiome	411468	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnoclostridium	[Clostridium] scindens ATCC 35704
+microbiome	411469	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Anaerobutyricum	Anaerobutyricum hallii DSM 3353
+microbiome	411470	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Mediterraneibacter	Mediterraneibacter gnavus ATCC 29149
+microbiome	411471	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Subdoligranulum	Subdoligranulum variabile DSM 15176
+microbiome	411475	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Flavonifractor	Flavonifractor plautii ATCC 29863
+microbiome	411479	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides uniformis ATCC 8492
+microbiome	411483	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Faecalibacterium	Faecalibacterium duncaniae
+microbiome	411485	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Faecalibacterium	Faecalibacterium prausnitzii M21/2
+microbiome	411486	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. M62/1
+microbiome	411489	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. L2-50
+microbiome	411490	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Anaerostipes	Anaerostipes caccae L1-92
+microbiome	411902	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	Enterocloster bolteae ATCC BAA-613
+microbiome	418240	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia wexlerae
+microbiome	428128	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	[Eubacterium] siraeum DSM 15702
+microbiome	431947	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas gingivalis ATCC 33277
+microbiome	435590	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus ATCC 8482
+microbiome	435591	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides distasonis ATCC 8503
+microbiome	443143	Bacteria	Pseudomonadati	Thermodesulfobacteriota	Desulfuromonadia	Geobacterales	Geobacteraceae	Geobacter	Geobacter sp. M18
+microbiome	445970	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes putredinis DSM 17216
+microbiome	445971	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Anaerofustis	Anaerofustis stercorihominis DSM 17244
+microbiome	445972	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Anaerotruncus	Anaerotruncus colihominis DSM 17241
+microbiome	446660	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Adlercreutzia	Adlercreutzia equolifaciens
+microbiome	449673	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides stercoris ATCC 43183
+microbiome	457387	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 1_1_30
+microbiome	457389	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 3_1_13
+microbiome	460384	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	Enterocloster lavalensis
+microbiome	469378	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Cryptobacterium	Cryptobacterium curtum DSM 15641
+microbiome	469585	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 1_1_14
+microbiome	469588	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 2_1_22
+microbiome	469590	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 2_2_4
+microbiome	469614	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	NA	Erysipelotrichaceae bacterium 6_1_45
+microbiome	470145	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola coprocola DSM 17136
+microbiome	470146	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus	Coprococcus comes ATCC 27758
+microbiome	471870	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides intestinalis DSM 17393
+microbiome	471875	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Mediterraneibacter	[Ruminococcus] lactaris ATCC 29176
+microbiome	476272	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia hydrogenotrophica DSM 10507
+microbiome	478749	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Marvinbryantia	Marvinbryantia formatexigens DSM 14469
+microbiome	479437	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Eggerthella	Eggerthella lenta DSM 2243
+microbiome	483215	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides finegoldii DSM 17565
+microbiome	483217	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola dorei DSM 17855
+microbiome	483218	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	NA	NA	[Bacteroides] pectinophilus ATCC 43243
+microbiome	484018	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola plebeius DSM 17135
+microbiome	502558	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Eggerthella	Eggerthella sp. YY7918
+microbiome	511680	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Eshraghiella	Eshraghiella crossota DSM 2876
+microbiome	515619	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter	Agathobacter rectalis ATCC 33656
+microbiome	515620	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnospira	Lachnospira eligens ATCC 27750
+microbiome	515622	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Butyrivibrio	Butyrivibrio proteoclasticus B316
+microbiome	518636	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	[Clostridium] asparagiforme DSM 15981
+microbiome	525259	Bacteria	Bacillati	Bacillota	Clostridia	Peptostreptococcales	Peptostreptococcaceae	Clostridioides	Clostridioides difficile NAP08
+microbiome	525328	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus iners DSM 13335
+microbiome	525330	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus johnsonii ATCC 33200
+microbiome	525362	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus ruminis ATCC 25644
+microbiome	537006	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides johnsonii DSM 18315
+microbiome	537007	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia hansenii DSM 20583
+microbiome	537013	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	[Clostridium] methylpentosum DSM 5476
+microbiome	544645	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Odoribacteraceae	Butyricimonas	Butyricimonas virosa
+microbiome	547042	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola coprophilus DSM 18228 = JCM 13818
+microbiome	552396	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	NA	Erysipelotrichaceae bacterium 5_2_54FAA
+microbiome	552398	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	Ruminococcaceae bacterium D16
+microbiome	556259	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. D2
+microbiome	556260	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola dorei 5_1_36/D4
+microbiome	556261	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. D5
+microbiome	556268	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Oxalobacter	Oxalobacter paraformigenes
+microbiome	556269	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Oxalobacteraceae	Oxalobacter	Oxalobacter formigenes OXCC13
+microbiome	557436	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Limosilactobacillus	Limosilactobacillus reuteri subsp. reuteri
+microbiome	563008	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Segatella	Segatella oris C735
+microbiome	563031	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. C561
+microbiome	563193	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. D13
+microbiome	566550	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Hungatella	Hungatella hathewayi DSM 13479
+microbiome	585394	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia hominis A2-183
+microbiome	585502	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Hallella	Hallella bergensis DSM 17361
+microbiome	585544	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. D22
+microbiome	622312	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia inulinivorans DSM 16841
+microbiome	626522	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Alloprevotella	Alloprevotella tannerae ATCC 51259
+microbiome	626929	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides clarus
+microbiome	626931	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides oleiciplenus
+microbiome	626937	Bacteria	Bacillati	Bacillota	Clostridia	Christensenellales	Christensenellaceae	Christensenella	Christensenella minuta
+microbiome	633699	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus johnsonii FI9785
+microbiome	645462	Bacteria	Bacillati	Bacillota	Clostridia	Peptostreptococcales	Peptostreptococcaceae	Clostridioides	Clostridioides difficile CD196
+microbiome	649755	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Faecalitalea	Faecalitalea cylindroides ATCC 27803
+microbiome	649756	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Anaerostipes	Anaerostipes hadrus
+microbiome	657308	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Gordonibacter	Gordonibacter pamelaeae 7-10-1-b
+microbiome	657309	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides xylanisolvens XB1A
+microbiome	657313	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Mediterraneibacter	[Ruminococcus] torques L2-14
+microbiome	657314	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia obeum A2-162
+microbiome	657319	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	[Eubacterium] siraeum 70/3
+microbiome	657322	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Faecalibacterium	Faecalibacterium prausnitzii SL3/3
+microbiome	658082	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 2_1_58FAA
+microbiome	658086	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 3_1_57FAA_CT1
+microbiome	658088	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 9_1_43BFAA
+microbiome	658655	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 1_4_56FAA
+microbiome	658659	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	NA	Erysipelotrichaceae bacterium 3_1_53
+microbiome	658661	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. D25
+microbiome	658665	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	Dorea sp. D27
+microbiome	665950	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 3_1_46FAA
+microbiome	665953	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides eggerthii 1_2_48FAA
+microbiome	667015	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola salanitronis DSM 18170
+microbiome	671266	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Adlercreutzia	Adlercreutzia caecimuris
+microbiome	671267	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola sartorii
+microbiome	674529	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides faecis
+microbiome	679189	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Hoylesella	Hoylesella timonensis CRIS 5C-B1
+microbiome	679190	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Hoylesella	Hoylesella buccalis ATCC 35310
+microbiome	679196	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus gasseri 224-1
+microbiome	679200	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Johnsonella	Johnsonella ignava ATCC 51276
+microbiome	679935	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes finegoldii DSM 17242
+microbiome	679937	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides coprosuis DSM 18011
+microbiome	693979	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides helcogenes P 36-108
+microbiome	702446	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus PC510
+microbiome	702447	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides xylanisolvens SD CC 1b
+microbiome	709991	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Odoribacteraceae	Odoribacter	Odoribacter splanchnicus DSM 20712
+microbiome	714313	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Fructilactobacillus	Fructilactobacillus sanfranciscensis TMW 1.1304
+microbiome	717959	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes shahii WAL 8301
+microbiome	717960	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Faecalitalea	Faecalitalea cylindroides T2-87
+microbiome	717961	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	[Eubacterium] siraeum V10Sc8a
+microbiome	717962	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Coprococcus	Coprococcus catus GD/7
+microbiome	718252	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Faecalibacterium	Faecalibacterium prausnitzii L2-6
+microbiome	718255	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia intestinalis XB6B4
+microbiome	742722	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Coriobacteriales	Coriobacteriaceae	Collinsella	Collinsella sp. 4_8_47FAA
+microbiome	742723	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 2_1_46FAA
+microbiome	742726	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Barnesiellaceae	Barnesiella	Barnesiella intestinihominis YIT 11860
+microbiome	742727	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides oleiciplenus YIT 12058
+microbiome	742737	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Hungatella	Hungatella hathewayi WAL-18680
+microbiome	742740	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnoclostridium	[Clostridium] symbiosum WAL-14163
+microbiome	742767	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Dysgonomonadaceae	Dysgonomonas	Dysgonomonas mossii DSM 22836
+microbiome	742817	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Odoribacteraceae	Odoribacter	Odoribacter laneus YIT 12061
+microbiome	742818	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Slackia	Slackia piriformis YIT 12062
+microbiome	742823	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	Sutterella	Sutterella wadsworthensis 2_1_59BFAA
+microbiome	748224	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Faecalibacterium	Faecalibacterium cf. prausnitzii KLE1255
+microbiome	748671	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus crispatus ST1
+microbiome	762966	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	Parasutterella	Parasutterella excrementihominis YIT 11859
+microbiome	762968	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Paraprevotella	Paraprevotella clara YIT 11840
+microbiome	762982	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Paraprevotella	Paraprevotella xylaniphila YIT 11841
+microbiome	762984	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides clarus YIT 12056
+microbiome	763034	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fluxus YIT 12057
+microbiome	861454	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium oral taxon 082 str. F0431
+microbiome	862515	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Hoylesella	Hoylesella marshii DSM 16973 = JCM 13450
+microbiome	862719	Bacteria	Pseudomonadati	Pseudomonadota	Alphaproteobacteria	Rhodospirillales	Azospirillaceae	Azospirillum	Azospirillum lipoferum 4B
+microbiome	862962	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis 638R
+microbiome	868129	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella bivia DSM 20514
+microbiome	871324	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides stercorirosoris
+microbiome	871325	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides faecichinchillae
+microbiome	879305	Bacteria	Bacillati	Bacillota	Tissierellia	Tissierellales	Peptoniphilaceae	Anaerococcus	Anaerococcus prevotii ACS-065-V-Col13
+microbiome	879566	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Acetatifactor	Acetatifactor muris
+microbiome	880074	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Barnesiellaceae	Barnesiella	Barnesiella viscericola DSM 18177
+microbiome	886882	Bacteria	Bacillati	Bacillota	Bacilli	Bacillales	Paenibacillaceae	Paenibacillus	Paenibacillus polymyxa SC2
+microbiome	887901	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas catoniae ATCC 51270
+microbiome	888743	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella multiformis DSM 16608
+microbiome	908612	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. HGB5
+microbiome	910311	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Eggerthella	Eggerthella sp. HGA1
+microbiome	927665	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides goldsteinii DSM 19448 = WAL 12034
+microbiome	936574	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Shuttleworthella	Shuttleworthella sp. MSX8B
+microbiome	936595	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnoanaerobaculum	Lachnoanaerobaculum sp. OBRC5-5
+microbiome	940190	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Melissococcus	Melissococcus plutonius ATCC 35311
+microbiome	944557	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella denticola CRIS 18C-A
+microbiome	947835	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus rodentium
+microbiome	997873	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides caccae CL03T12C61
+microbiome	997874	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides cellulosilyticus CL02T12C19
+microbiome	997876	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola dorei CL02T12C06
+microbiome	997877	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola dorei CL03T12C01
+microbiome	997881	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis CL05T12C13
+microbiome	997883	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis CL07T12C05
+microbiome	997884	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides nordii CL02T12C05
+microbiome	997887	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides salyersiae CL02T12C01
+microbiome	997888	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides finegoldii CL09T03C10
+microbiome	997891	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus CL09T03C04
+microbiome	997892	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides xylanisolvens CL03T12C04
+microbiome	997894	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	Enterocloster bolteae 90A9
+microbiome	999406	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	[Clostridium] clostridioforme 90A6
+microbiome	999408	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	[Clostridium] clostridioforme 90A8
+microbiome	999413	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	[Clostridium] innocuum 2959
+microbiome	999418	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides goldsteinii CL02T12C30
+microbiome	999419	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides johnsonii CL02T12C29
+microbiome	999420	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides merdae CL03T12C32
+microbiome	1002367	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Leyella	Leyella stercorea DSM 18206
+microbiome	1033731	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes timonensis JC136
+microbiome	1040964	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus ruminis SPM0211
+microbiome	1042156	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. SY8519
+microbiome	1069534	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus ruminis ATCC 27782
+microbiome	1073351	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides stercoris CC31F
+microbiome	1078087	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. HGS0025
+microbiome	1078089	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. HPS0048
+microbiome	1120996	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Anaerosporobacter	Anaerosporobacter mobilis DSM 15930
+microbiome	1121021	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Adlercreutzia	Adlercreutzia equolifaciens subsp. celatus DSM 18785
+microbiome	1121097	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides graminisolvens DSM 19988 = JCM 15093
+microbiome	1121098	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola massiliensis B84634 = Timone 84634 = DSM 17679 = JCM 13223
+microbiome	1121100	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides pyogenes DSM 20611 = JCM 6294
+microbiome	1121323	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Anaerotignaceae	Anaerotignum	Anaerotignum lactatifermentans DSM 14214
+microbiome	1121865	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus columbae DSM 7374 = ATCC 51263
+microbiome	1121950	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Hespellia	Hespellia stercorisuis DSM 15480
+microbiome	1122146	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus ceti DSM 22408
+microbiome	1122155	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Lactonifactor	Lactonifactor longoviformis DSM 17459
+microbiome	1127692	Bacteria	Pseudomonadati	Bacteroidota	Flavobacteriia	Flavobacteriales	Flavobacteriaceae	Capnocytophaga	Capnocytophaga sp. oral taxon 332 str. F0381
+microbiome	1133569	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Liquorilactobacillus	Liquorilactobacillus vini DSM 20605
+microbiome	1150298	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Fusicatenibacter	Fusicatenibacter saccharivorans
+microbiome	1197717	Bacteria	Thermotogati	Synergistota	Synergistia	Synergistales	Synergistaceae	Cloacibacillus	Cloacibacillus porcorum
+microbiome	1203554	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	Sutterella	Sutterella wadsworthensis HGA0223
+microbiome	1203606	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Butyricicoccaceae	Butyricicoccus	Butyricicoccus pullicaecorum 1.2
+microbiome	1203610	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides gordonii MS-1 = DSM 23371
+microbiome	1211777	Bacteria	Pseudomonadati	Pseudomonadota	Alphaproteobacteria	Hyphomicrobiales	Rhizobiaceae	Rhizobium	Rhizobium mesoamericanum STM3625
+microbiome	1226333	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus helveticus CIRM-BIA 104
+microbiome	1235785	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides thetaiotaomicron dnLKV9
+microbiome	1235786	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus dnLKV7
+microbiome	1235787	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides uniformis dnLKV2
+microbiome	1235789	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides goldsteinii dnLKV18
+microbiome	1235790	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium sp. 14-2
+microbiome	1235792	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium M18-1
+microbiome	1235793	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium MD335
+microbiome	1235794	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Adlercreutzia	Adlercreutzia caecimuris B7
+microbiome	1235796	Bacteria	Bacillati	Bacillota	NA	NA	NA	NA	Firmicutes bacterium M10-2
+microbiome	1235797	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Oscillibacter	Oscillibacter sp. 1-3
+microbiome	1235799	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium MD308
+microbiome	1235800	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium 10-1
+microbiome	1235802	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium plexicaudatum ASF492
+microbiome	1235809	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides pyogenes JCM 6292
+microbiome	1235835	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Anaerotruncus	Anaerotruncus sp. G3(2012)
+microbiome	1256908	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium ramulus ATCC 29099
+microbiome	1262693	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. CAG:268
+microbiome	1262740	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. CAG:462
+microbiome	1262741	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. CAG:530
+microbiome	1262744	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. CAG:633
+microbiome	1262750	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. CAG:754
+microbiome	1262752	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. CAG:875
+microbiome	1262753	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. CAG:927
+microbiome	1262781	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. CAG:226
+microbiome	1262816	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. CAG:510
+microbiome	1262873	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	Dorea sp. CAG:317
+microbiome	1262882	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium sp. CAG:180
+microbiome	1262884	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium sp. CAG:202
+microbiome	1262894	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium sp. CAG:841
+microbiome	1262909	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Odoribacteraceae	Odoribacter	Odoribacter sp. CAG:788
+microbiome	1262913	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. CAG:409
+microbiome	1262917	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. CAG:1031
+microbiome	1262919	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. CAG:1092
+microbiome	1262923	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. CAG:255
+microbiome	1262925	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. CAG:386
+microbiome	1262930	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. CAG:5226
+microbiome	1262936	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. CAG:873
+microbiome	1262976	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	Sutterella	Sutterella sp. CAG:397
+microbiome	1262977	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	Sutterella	Sutterella sp. CAG:521
+microbiome	1262986	Bacteria	Pseudomonadati	Pseudomonadota	NA	NA	NA	NA	Proteobacteria bacterium CAG:139
+microbiome	1262988	Bacteria	Bacillati	Bacillota	NA	NA	NA	NA	Firmicutes bacterium CAG:95
+microbiome	1263004	Bacteria	Bacillati	Bacillota	NA	NA	NA	NA	Firmicutes bacterium CAG:137
+microbiome	1263027	Bacteria	Bacillati	Bacillota	NA	NA	NA	NA	Firmicutes bacterium CAG:534
+microbiome	1263052	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola plebeius CAG:211
+microbiome	1263065	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Enterocloster	[Clostridium] clostridioforme CAG:132
+microbiome	1284775	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. S7-1-8
+microbiome	1287488	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. S7 MS 2
+microbiome	1297617	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	NA	Intestinimonas	Intestinimonas butyriciproducens
+microbiome	1297750	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides luti
+microbiome	1321819	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides pyogenes F0041
+microbiome	1339280	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis str. 2-F-2 #4
+microbiome	1339315	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis str. 3988T(B)14
+microbiome	1339316	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis str. 3998T(B)3
+microbiome	1339327	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides fragilis str. S36L11
+microbiome	1339341	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides distasonis str. 3776 Po2 i
+microbiome	1339349	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides uniformis str. 3978 T3 ii
+microbiome	1339350	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus str. 3775 SL(B) 10 (iv)
+microbiome	1339352	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Phocaeicola	Phocaeicola vulgatus str. 3975 RP4
+microbiome	1340495	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Limosilactobacillus	Limosilactobacillus reuteri I5007
+microbiome	1349822	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Barnesiellaceae	Coprobacter	Coprobacter fastidiosus NSB1 = JCM 33896
+microbiome	1378168	Bacteria	Bacillati	Bacillota	NA	NA	NA	NA	Firmicutes bacterium ASF500
+microbiome	1379858	Bacteria	Pseudomonadati	Deferribacterota	Deferribacteres	Deferribacterales	Mucispirillaceae	Mucispirillum	Mucispirillum schaedleri ASF457
+microbiome	1400053	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	NA	NA	Bacteroidales bacterium CF
+microbiome	1401068	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella bivia DNF00320
+microbiome	1401073	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella melaninogenica DNF00666
+microbiome	1423718	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus agilis DSM 20509
+microbiome	1423724	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus apodemi DSM 16634 = JCM 16172
+microbiome	1423740	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus equi DSM 15833 = JCM 10991
+microbiome	1423754	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus hamsteri DSM 5661 = JCM 6256
+microbiome	1423755	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus hayakitensis DSM 18933 = JCM 14209
+microbiome	1423758	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus hominis DSM 23910 = CRBIP 24.179
+microbiome	1423772	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Ligilactobacillus	Ligilactobacillus murinus DSM 20452 = NBRC 14221
+microbiome	1423777	Bacteria	Bacillati	Bacillota	Bacilli	Lactobacillales	Lactobacillaceae	Liquorilactobacillus	Liquorilactobacillus oeni DSM 19972
+microbiome	1432052	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Eisenbergiella	Eisenbergiella tayi
+microbiome	1433126	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Mucinivorans	Mucinivorans hirudinis
+microbiome	1445607	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides reticulotermitis JCM 10512
+microbiome	1469948	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Kineothrix	Kineothrix alysoides
+microbiome	1497954	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	NA	NA	Bacteroidales bacterium KA00344
+microbiome	1520826	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium XBB2008
+microbiome	1520828	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium YSD2013
+microbiome	1547597	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Sanguibacteroides	Sanguibacteroides justesenii
+microbiome	1550024	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruthenibacterium	Ruthenibacterium lactatiformans
+microbiome	1562970	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Dysgonomonadaceae	Fermentimonas	Fermentimonas caenicola
+microbiome	1574265	Bacteria	Pseudomonadati	Verrucomicrobiota	Verrucomicrobiia	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia sp. KLE1798
+microbiome	1633200	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	NA	NA	Bacteroidales bacterium Barb4
+microbiome	1642646	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Dysgonomonadaceae	Petrimonas	Petrimonas mucosa
+microbiome	1650663	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Allofournierella	Allofournierella massiliensis
+microbiome	1679444	Bacteria	Pseudomonadati	Verrucomicrobiota	Verrucomicrobiia	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia glycaniphila
+microbiome	1712675	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Turicibacteraceae	Turicibacter	Turicibacter sp. H121
+microbiome	1720294	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Eisenbergiella	Eisenbergiella massiliensis
+microbiome	1739298	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. HMSC067B03
+microbiome	1739487	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. HMSC077E09
+microbiome	1739517	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. HMSC073E02
+microbiome	1780376	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. CHKCI003
+microbiome	1780377	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Coriobacteriales	Coriobacteriaceae	NA	Coriobacteriaceae bacterium CHKCI002
+microbiome	1780380	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	NA	Eubacteriaceae bacterium CHKCI004
+microbiome	1780381	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	NA	Eubacteriaceae bacterium CHKCI005
+microbiome	1796613	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides caecimuris
+microbiome	1796616	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia pseudococcoides
+microbiome	1796622	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Extibacter	Extibacter muris
+microbiome	1796628	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Coprobacillaceae	Longibaculum	Longibaculum muris
+microbiome	1796646	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	Muribaculum	Muribaculum intestinale
+microbiome	1812858	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Anaerosacchariphilus	Anaerosacchariphilus polymeriproducens
+microbiome	1834198	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	Hungateiclostridiaceae bacterium KB18
+microbiome	1852802	Bacteria	Pseudomonadati	Bacteroidota	NA	NA	NA	NA	Bacteroidetes bacterium ADurb.Bin057
+microbiome	1852808	Bacteria	Pseudomonadati	Bacteroidota	NA	NA	NA	NA	Bacteroidetes bacterium ADurb.Bin174
+microbiome	1896203	Bacteria	Pseudomonadati	Fibrobacterota	Fibrobacteria	Fibrobacterales	Fibrobacteraceae	Fibrobacter	Fibrobacter sp. UWB12
+microbiome	1896969	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. 56_sp_Nov_56_25
+microbiome	1896970	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. 58_9_plus
+microbiome	1896973	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 41_26
+microbiome	1896974	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 43_108
+microbiome	1896999	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	Dorea sp. 42_8
+microbiome	1897010	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Odoribacteraceae	Odoribacter	Odoribacter sp. 43_10
+microbiome	1897040	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	NA	NA	Bacteroidales bacterium 52_46
+microbiome	1898203	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium
+microbiome	1898207	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	NA	NA	Clostridiales bacterium
+microbiome	1913460	Bacteria	Bacillati	Candidatus Melainabacteria	NA	NA	NA	NA	Candidatus Melainabacteria bacterium LEY3_CP_29_8
+microbiome	1965537	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Flavonifractor	Flavonifractor sp. An10
+microbiome	1965545	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Tyzzerella	Tyzzerella sp. An114
+microbiome	1965546	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. An116
+microbiome	1965562	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnoclostridium	Lachnoclostridium sp. An14
+microbiome	1965570	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Acutalibacteraceae	Anaeromassilibacillus	Anaeromassilibacillus sp. An172
+microbiome	1965576	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Pseudoflavonifractor	Pseudoflavonifractor sp. An184
+microbiome	1965583	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Lachnoclostridium	Lachnoclostridium sp. An196
+microbiome	1965590	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Barnesiellaceae	Barnesiella	Barnesiella sp. An22
+microbiome	1965603	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia sp. An249
+microbiome	1965604	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Acutalibacteraceae	Anaeromassilibacillus	Anaeromassilibacillus sp. An250
+microbiome	1965619	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. An277
+microbiome	1965628	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Eubacteriaceae	Eubacterium	Eubacterium sp. An3
+microbiome	1965631	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. An31A
+microbiome	1965632	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. An322
+microbiome	1965634	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Flavonifractor	Flavonifractor sp. An4
+microbiome	1965636	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia sp. An46
+microbiome	1965645	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. An54
+microbiome	1965647	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Drancourtella	Drancourtella sp. An57
+microbiome	1965650	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. An66
+microbiome	1965665	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Flavonifractor	Flavonifractor sp. An91
+microbiome	1981025	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	Sutterella	Sutterella sp.
+microbiome	1985873	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Nitrosomonadales	Sulfuricellaceae	Sulfuriferula	Sulfuriferula sp. AH1
+microbiome	2022527	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. 885
+microbiome	2024223	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. P3-122
+microbiome	2026794	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	NA	Sutterellaceae bacterium
+microbiome	2030927	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	NA	NA	Bacteroidales bacterium
+microbiome	2033406	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella sp. MGM2
+microbiome	2044587	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Schaedlerella	Schaedlerella arabinosiphila
+microbiome	2049046	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	NA	Porphyromonadaceae bacterium
+microbiome	2078569	Bacteria	Bacillati	Actinomycetota	Coriobacteriia	Eggerthellales	Eggerthellaceae	Gordonibacter	Gordonibacter sp. 28C
+microbiome	2086273	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Subdoligranulum	Subdoligranulum sp. APC924/74
+microbiome	2093856	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Odoribacteraceae	Butyricimonas	Butyricimonas faecalis
+microbiome	2094150	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	Duncaniella	Duncaniella muris
+microbiome	2109911	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	Candidatus Amulumruptor	Candidatus Amulumruptor caecigallinarius
+microbiome	2126740	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium fessum
+microbiome	2162637	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. PHL 2737
+microbiome	2211183	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	NA	Evtepia	Evtepia gabavorous
+microbiome	2290935	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides acidifaciens
+microbiome	2292001	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AM10-21B
+microbiome	2292002	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AM16-24
+microbiome	2292052	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. AF48-14
+microbiome	2292053	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. AM08-6
+microbiome	2292191	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Anaerotruncus	Anaerotruncus sp. AF02-27
+microbiome	2292193	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AF26-7BH
+microbiome	2292194	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AF27-33
+microbiome	2292206	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. AF27-2AA
+microbiome	2292240	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. AF14-59
+microbiome	2292241	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. AF17-28
+microbiome	2292242	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. AF18-52
+microbiome	2292244	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Pseudoflavonifractor	Pseudoflavonifractor sp. AF19-9AC
+microbiome	2292272	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	NA	Lachnospiraceae bacterium OM04-12BH
+microbiome	2292281	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. OF04-15BH
+microbiome	2292293	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Butyricicoccaceae	Butyricicoccus	Butyricicoccus sp. AM27-36
+microbiome	2292362	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. AM58-2XD
+microbiome	2292363	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. TM07-1AC
+microbiome	2292367	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia sp. OF03-24
+microbiome	2292910	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes sp. AF14-19
+microbiome	2292953	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AM44-19
+microbiome	2292956	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. CF01-10NS
+microbiome	2292957	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. OF03-11BH
+microbiome	2292958	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia sp. AF14-40
+microbiome	2292972	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	Blautia sp. AM28-10
+microbiome	2293030	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Clostridiaceae	Clostridium	Clostridium sp. AM34-9AC
+microbiome	2293113	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. AF17-3
+microbiome	2293126	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia sp. AF02-12
+microbiome	2293143	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia sp. OM04-15AA
+microbiome	2293174	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Ruminococcus	Ruminococcus sp. AF31-8BH
+microbiome	2302926	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. AM56-10ce
+microbiome	2302978	Bacteria	Bacillati	Bacillota	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	NA	Erysipelotrichaceae bacterium AM07-35-1
+microbiome	2316025	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Mediterraneibacter	Mediterraneibacter butyricigenes
+microbiome	2320081	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Acutalibacteraceae	Acutalibacter	Acutalibacter sp. 1XD8-33
+microbiome	2320086	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. CH2-D42-20
+microbiome	2320088	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Roseburia	Roseburia sp. 1XD42-69
+microbiome	2320098	Bacteria	NA	NA	NA	NA	NA	NA	bacterium D16-59
+microbiome	2320099	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 0.1xD8-71
+microbiome	2320100	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Parablautia	Parablautia intestinalis
+microbiome	2320102	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 1XD42-8
+microbiome	2320103	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 1XD21-70
+microbiome	2320104	Bacteria	NA	NA	NA	NA	NA	NA	bacterium D16-54
+microbiome	2320107	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 1xD42-67
+microbiome	2320109	Bacteria	NA	NA	NA	NA	NA	NA	bacterium C-53
+microbiome	2320110	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 1XD42-54
+microbiome	2320113	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 1xD42-87
+microbiome	2320115	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 1XD8-76
+microbiome	2320116	Bacteria	NA	NA	NA	NA	NA	NA	bacterium 1xD8-6
+microbiome	2320122	Bacteria	NA	NA	NA	NA	NA	NA	bacterium J10(2018)
+microbiome	2321404	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	Anaerotruncus	Anaerotruncus massiliensis (ex Liu et al. 2021)
+microbiome	2364880	Bacteria	Bacillati	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Butyrivibrio	Butyrivibrio sp. XB500-5
+microbiome	2447885	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides faecalis
+microbiome	2485925	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	Oscillospiraceae	NA	Oscillospiraceae bacterium
+microbiome	2486460	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	NA	Muribaculaceae bacterium Isolate-036 (Harlan)
+microbiome	2486468	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	NA	Muribaculaceae bacterium Isolate-080 (Janvier)
+microbiome	2486470	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	NA	Muribaculaceae bacterium Isolate-102 (HZI)
+microbiome	2486471	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	NA	Muribaculaceae bacterium Isolate-104 (HZI)
+microbiome	2486473	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	NA	Muribaculaceae bacterium Isolate-110 (HZI)
+microbiome	2486475	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	NA	Muribaculaceae bacterium Isolate-114 (HZI)
+microbiome	2489214	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	NA	Muribaculaceae bacterium Isolate-001 (NCI)
+microbiome	2491044	Bacteria	Bacillati	Bacillota	Clostridia	Eubacteriales	NA	NA	Clostridiales bacterium COT073_COT-073
+microbiome	2494234	Bacteria	Pseudomonadati	Pseudomonadota	Betaproteobacteria	Burkholderiales	Sutterellaceae	Sutterella	Sutterella megalosphaeroides
+microbiome	2516960	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides muris (ex Afrizal et al. 2022)
+microbiome	2518971	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	Duncaniella	Duncaniella dubosii
+microbiome	2530390	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Muribaculaceae	Muribaculum	Muribaculum gordoncarteri
+microbiome	2585118	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes communis
+microbiome	3083063	Bacteria	Pseudomonadati	Bacteroidota	Bacteroidia	Bacteroidales	NA	Candidatus Colimorpha	Candidatus Colimorpha enterica

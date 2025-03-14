@@ -29,7 +29,6 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Remotes:
-    Bioconductor/BiocManager,
     Bioconductor/QFeatures,
     Bioconductor/Biostrings,
     Bioconductor/SummarizedExperiment,

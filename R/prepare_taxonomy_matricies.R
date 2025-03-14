@@ -15,7 +15,7 @@ prepare_taxonomy_matricies <- function(full_taxonomy_fp,
   # Reading in the files
   full_taxonomy <- readr::read_delim(full_taxonomy_fp)
   peptide_groups <- readr::read_tsv(pr_group_matrix_fp)
-  fasta_info <- GLabR::extract_fasta_info(fasta_fp)
+  fasta_info <- extract_fasta_info(fasta_fp)
 
   # Joining data
   peptide_and_org <- dplyr::inner_join(peptide_groups, fasta_info,

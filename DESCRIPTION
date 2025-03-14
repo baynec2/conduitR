@@ -1,12 +1,40 @@
 Package: conduitR
-Title: What the Package Does (One Line, Title Case)
+Title: R tools for metaproteomics analysis using conduit and conduit-GUI
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+    person("Charlie", "Bayne", , "first.last@example.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
+Imports:
+    BiocManager,
+    future,
+    parallel,
+    furrr,
+    purrr,
+    tibble,
+    QFeatures,
+    dplyr,
+    Biostrings,
+    httr2,
+    KEGGREST,
+    rentrez,
+    XML,
+    tidyr,
+    SummarizedExperiment,
+    limma,
+    readr,
+    plotly,
+    metacoder,
+    stringr
 Suggests: 
     testthat (>= 3.0.0)
+Remotes:
+    Bioconductor/BiocManager,
+    Bioconductor/QFeatures,
+    Bioconductor/Biostrings,
+    Bioconductor/SummarizedExperiment,
+    Bioconductor/limma,
+    Bioconductor/KEGGREST
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

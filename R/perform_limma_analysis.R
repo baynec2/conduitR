@@ -1,86 +1,68 @@
 #' perform_limma_analysis
 #'
-#' Allows user to perfom limma analysis on any "assay" in the QFeatures object
+#' Performs limma differential expression analysis on a specified assay within a QFeatures object.
 #'
-#' @param qf_object qfeatures object
-#' @param assay_name assay name
-#' @param design_df design_data frame
-#' @param formula formula
-#' @param contrast contrasts to look for
-#' @param normalize whether to log2 normalise
+#' @param qf_object A QFeatures object
+#' @param assay_name Name of the assay to analyze
+#' @param formula A formula used to build the design matrix from colData
+#' @param contrast A character string specifying the contrast (e.g., "groupB - groupA")
 #'
-#' @returns
+#' @return A list containing:
+#'   \item{top_table}{The result of limma::topTable()}
+#'   \item{design}{The design matrix}
+#'   \item{coefficients}{Estimated model coefficients}
+#'   \item{model_terms}{Names of the model terms (design matrix columns)}
+#'
 #' @export
 #'
 #' @examples
-perform_limma_analysis <- function(qf_object,
+perform_limma_analysis <- function(qf,
                                    assay_name,
-                                   design_df,
                                    formula,
-                                   contrast,
-                                   normalize = TRUE) {
-  # Extract the selected assay from QFeatures
-  if (!(assay_name %in% names(qf_object))) {
-    stop("Assay name not found in QFeatures object.")
-  }
+                                   contrast) {
+  # Extract assay and metadata
+  se <- qf[[assay_name]]
+  exprs <- SummarizedExperiment::assay(se)
 
-  # Extract a specific assay (e.g., "species")
-  assay <- SummarizedExperiment::assay(qf_object[[assay_name]])
+  # Ensure all character/logical columns are factors
+  SummarizedExperiment::colData(se)[] <- lapply(
+    SummarizedExperiment::colData(se),
+    function(x) if (is.character(x) || is.logical(x)) as.factor(x) else x
+  )
 
-  rd <- SummarizedExperiment::rowData(qf_object[[assay_name]]) %>%
-    as.data.frame() %>%
-    dplyr::mutate(across(1, ~ ifelse(is.na(.), "NA", .)))
+  colData <- SummarizedExperiment::colData(se)
 
-  # Combine row data and assay values
-  exprs_matrix <- assay
+  # Build design matrix from the provided formula
+  design <- model.matrix(formula, data = colData)
 
-  rownames(exprs_matrix) <- rd[, assay_name]
+  # Fit the linear model
+  fit <- limma::lmFit(exprs, design)
 
-  if (assay_name == "go_description") {
-    rownames(exprs_matrix) <- paste0(rd[, "organism_type"], "_", rd[, assay_name])
-  } else {
-    rownames(exprs_matrix) <- rd[, assay_name]
-  }
-
-  # Check row names (should be protein or taxon identifiers)
-  if (is.null(rownames(exprs_matrix))) {
-    stop("Row names (identifiers) are missing in the selected assay.")
-  }
-
-  # Log transformation if needed
-  if (normalize) {
-    exprs_matrix <- log2(exprs_matrix + 1) # Avoid log(0) issues
-  }
-
-  # Ensure design_df has row names matching column names of exprs_matrix
-  if (!all(colnames(exprs_matrix) %in% rownames(design_df))) {
-    stop("Column names of expression matrix must match row names of design matrix.")
-  }
-
-  # Convert formula to a model matrix
-  design_matrix <- model.matrix(formula, data = design_df)
-
-  # Fit the limma model
-  fit <- limma::lmFit(exprs_matrix, design_matrix)
-
-  # Apply empirical Bayes smoothing
-  fit <- limma::eBayes(fit)
-
-  # Extract contrast results
+  # Automatically infer levels from the design matrix
   contrast_matrix <- limma::makeContrasts(
     contrasts = contrast,
-    levels = design_matrix
+    levels = colnames(design)  # This is key
   )
-  fit_contrasted <- limma::contrasts.fit(fit, contrast_matrix)
-  fit_contrasted <- limma::eBayes(fit_contrasted)
 
-  # Get results
-  results <- limma::topTable(fit_contrasted,
-    coef = 1, number = Inf,
-    adjust.method = "BH"
-  ) %>%
-    tibble::rownames_to_column(var = "ID") %>%
-    tibble::as_tibble()
+  # Apply contrasts and empirical Bayes
+  fit2 <- limma::contrasts.fit(fit, contrast_matrix)
+  fit2 <- limma::eBayes(fit2)
 
-  return(results)
+  # Output full table of results
+  top_table <- limma::topTable(fit2, adjust.method = "BH", number = Inf) |>
+    # Converting for shiny app.
+    dplyr::mutate(neg_log10.adj.P.Val = -log10(adj.P.Val),.after = adj.P.Val)
+
+
+  # Need to have some ways that plot_volcano can figure out what the logFC is
+  # Relative to.
+  return(list(
+    top_table = top_table,
+    design = design,
+    coefficients = fit2$coefficients,
+    model_terms = colnames(design),
+    contrast_matrix = contrast_matrix
+  ))
 }
+
+

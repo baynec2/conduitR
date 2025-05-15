@@ -2,7 +2,7 @@ Package: conduitR
 Title: R tools for metaproteomics analysis using conduit and conduit-GUI
 Version: 0.0.0.9000
 Authors@R: 
-    person("Charlie", "Bayne", , "first.last@example.com", role = c("aut", "cre"))
+    person("Charlie", "Bayne", , "baynec2@gmail.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Imports:
@@ -24,7 +24,10 @@ Imports:
     readr,
     plotly,
     metacoder,
-    stringr
+    stringr,
+    imputeLCMD,
+    PCAtools,
+    sechm
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

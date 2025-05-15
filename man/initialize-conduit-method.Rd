@@ -7,24 +7,19 @@
 \S4method{initialize}{conduit}(
   .Object,
   QFeatures,
-  database_taxonomy = NULL,
-  database_metrics = NULL,
-  detected_protein_taxonomy = NULL,
-  detected_protein_metrics = NULL
+  combined_metrics = NULL,
+  database_protein_taxonomy = NULL,
+  detected_protein_taxonomy = NULL
 )
 }
 \arguments{
-\item{database_taxonomy}{A tibble containing the database taxonomy.}
+\item{QFeatures}{A QFeatures object.}
 
-\item{database_metrics}{A tibble containing the database metrics.}
+\item{combined_metrics}{A tibble containing proteins and their assigned taxonomy, as used in database}
+
+\item{database_protein_taxonomy}{A tibble containing the database metrics.}
 
 \item{detected_protein_taxonomy}{A tibble containing the detected protein taxonomy.}
-
-\item{detected_protein_metrics}{A tibble containing the detected protein metrics.}
-
-\item{qf}{A QFeatures object.}
-
-\item{experiment_metadata}{A tibble containing the experiment metadata.}
 }
 \value{
 A Conduit object.

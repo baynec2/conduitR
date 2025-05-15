@@ -4,28 +4,24 @@
 \alias{perform_limma_analysis}
 \title{perform_limma_analysis}
 \usage{
-perform_limma_analysis(
-  qf_object,
-  assay_name,
-  design_df,
-  formula,
-  contrast,
-  normalize = TRUE
-)
+perform_limma_analysis(qf, assay_name, formula, contrast)
 }
 \arguments{
-\item{qf_object}{qfeatures object}
+\item{assay_name}{Name of the assay to analyze}
 
-\item{assay_name}{assay name}
+\item{formula}{A formula used to build the design matrix from colData}
 
-\item{design_df}{design_data frame}
+\item{contrast}{A character string specifying the contrast (e.g., "groupB - groupA")}
 
-\item{formula}{formula}
-
-\item{contrast}{contrasts to look for}
-
-\item{normalize}{whether to log2 normalise}
+\item{qf_object}{A QFeatures object}
+}
+\value{
+A list containing:
+\item{top_table}{The result of limma::topTable()}
+\item{design}{The design matrix}
+\item{coefficients}{Estimated model coefficients}
+\item{model_terms}{Names of the model terms (design matrix columns)}
 }
 \description{
-Allows user to perfom limma analysis on any "assay" in the QFeatures object
+Performs limma differential expression analysis on a specified assay within a QFeatures object.
 }

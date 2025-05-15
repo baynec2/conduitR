@@ -50,7 +50,7 @@ get_ncbi_taxonomy <- function(ncbi_ids) {
         # Combine all results into one dataframe
         # Define expected taxonomy ranks
         expected_ranks <- c(
-          "superkingdom", "kingdom", "phylum", "class", "order",
+          "domain", "kingdom", "phylum", "class", "order",
           "family", "genus"
         )
 
@@ -82,7 +82,7 @@ get_ncbi_taxonomy <- function(ncbi_ids) {
   final_df <- dplyr::bind_rows(taxonomy_list) |>
     tidyr::pivot_wider(names_from = rank, values_from = name) |>
     dplyr::select(c(
-      "organism_id", "superkingdom", "kingdom", "phylum", "class",
+      "organism_id", "domain", "kingdom", "phylum", "class",
       "order", "family", "genus", "species"
     ))
 

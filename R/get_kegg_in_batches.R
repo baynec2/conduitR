@@ -40,9 +40,12 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
         gene_num <- entry$ENTRY # Gene ID
         org_id <- names(entry$ORGANISM) # Organism ID
         gene_id <- paste0(org_id, ":", gene_num) # Full gene ID
+        gene_description = entry$NAME
 
         # Extract KO ID safely
         ko <- if (!is.null(entry$ORTHOLOGY)) names(entry$ORTHOLOGY) else NA_character_
+
+        ko_description <- if (!is.null(entry$ORTHOLOGY)) entry$ORTHOLOGY else NA_character_
 
         # Extract KEGG Pathway
         kegg_pathway <- if (!is.null(entry$PATHWAY)) {
@@ -51,11 +54,21 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
           NA_character_
         }
 
+        kegg_pathway_id <- if (!is.null(entry$PATHWAY)) {
+         names(entry$PATHWAY)
+        } else {
+          NA_character_
+        }
+
         # Return extracted info as a tibble
         tibble::tibble(
           kegg_id = gene_id,
+          gene_description = gene_description,
+          kegg_pathway_id = kegg_pathway_id,
+          kegg_pathway = kegg_pathway,
           ko = ko,
-          kegg_pathway = kegg_pathway # ,
+          ko_description = ko_description,
+          org_id = org_id
           # brite_info = brite_info
         )
       })
@@ -73,14 +86,12 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
     dplyr::mutate(kegg_pathway_list = stringr::str_split(kegg_pathway, "; ")) |>
     tidyr::unnest(kegg_pathway_list) |>
     dplyr::mutate(
-      kegg_pathway = stringr::str_extract(kegg_pathway_list, "^[^\\[]+"), # Extract pathway name (before bracket)
-      code = stringr::str_extract(kegg_pathway_list, "\\[([^\\]]+)\\]") # Extract code (inside brackets)
-    ) |>
+      kegg_pathway = stringr::str_extract(kegg_pathway_list, "^[^\\[]+")
+      ) |>
     dplyr::mutate(
-      pathway = stringr::str_trim(kegg_pathway), # Clean up any leading/trailing spaces
-      code = stringr::str_remove_all(code, "[\\[\\]]") # Remove brackets from code
+      pathway = stringr::str_trim(kegg_pathway) # Clean up any leading/trailing spaces
     ) |>
-    dplyr::select(kegg_pathway, kegg_id, ko, code)
+    dplyr::select(kegg_id,gene_description,kegg_pathway_id,kegg_pathway, ko, ko_description,org_id)
 
   return(out)
 }

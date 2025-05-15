@@ -6,15 +6,34 @@
 create a conduit object.}
 \usage{
 create_conduit_obj(
-  qfeature.rds,
-  database_taxonomy.tsv,
-  database_metrics.tsv,
-  detected_protein_taxonomy.tsv,
-  detected_protein_metrics.tsv
+  QFeatures.rds,
+  combined_metrics.tsv,
+  database_protein_taxonomy.tsv,
+  detected_protein_taxonomy.tsv
 )
 }
 \arguments{
-\item{detected_protein_metrics.tsv}{}
+\item{qfeatures.rds}{this is a qfeatures object (intended to be the output of
+the conduit snakemake workflow)}
+
+\item{metrics.tsv}{this is the metrics.tsv file created by the conduit snakemake workflow.
+contains information of the number of proteins/ taxa (at all levels) that
+were detected and}
+
+\item{database_taxonomy.tsv}{this is the database taxonomy that was included in the
+study.}
+
+\item{detected_protein_metrics.tsv}{this is the proteins that were detected}
+
+\item{precomputed_plots}{this is a list of precomputed plots (precomputed so
+they don't take forever to render with conduit-GUI). Names of plots below.
+\itemize{
+\item database_taxa_tree
+\item detected_taxa_tree
+\item difference_taxa_tree. Percentage relative to database.
+\item database_sunburst
+\item detected_sunburst
+}}
 }
 \description{
 create_conduit_obj

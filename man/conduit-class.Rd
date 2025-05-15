@@ -11,13 +11,11 @@ detection, as well as the detected proteins.
 \section{Slots}{
 
 \describe{
-\item{\code{qfeatures}}{A QFeatures object containing proteomics data.}
+\item{\code{QFeatures}}{A QFeatures object containing proteomics data.}
 
-\item{\code{experiment_metadata}}{A tibble containing the experimental metadata.}
+\item{\code{combined_metrics}}{A tibble containing metrics about how many proteins were detected at various levels.}
 
-\item{\code{database_taxonomy}}{A tibble containing taxonomy information for the database.}
-
-\item{\code{database_metrics}}{A tibble containing metrics related to the database.}
+\item{\code{database_protein_taxonomy}}{A tibble containing taxonomy information for the database.}
 
 \item{\code{detected_protein_taxonomy}}{A tibble containing taxonomy information for detected proteins.}
 

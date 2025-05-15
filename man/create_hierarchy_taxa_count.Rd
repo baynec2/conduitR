@@ -6,7 +6,7 @@
 \usage{
 create_hierarchy_taxa_count(
   data,
-  levels = c("superkingdom", "kingdom", "phylum", "class", "order", "family", "genus",
+  levels = c("domain", "kingdom", "phylum", "class", "order", "family", "genus",
     "species")
 )
 }

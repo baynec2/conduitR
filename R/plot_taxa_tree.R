@@ -14,7 +14,8 @@
 #' @examples
 plot_taxa_tree <- function(taxonomy_data,
                            filter_taxa_rank = "species",
-                           node_size = "n_obs") {
+                           node_size = "n_obs",
+                           ...) {
   # Adding a string with all levels of taxonomy concatenated
   taxonomy <- taxonomy_data |>
     dplyr::mutate(taxonomy = paste0(
@@ -47,20 +48,16 @@ plot_taxa_tree <- function(taxonomy_data,
   if (is.null(node_size)) {
     p1 <- heat_tree(ft,
       node_label = taxon_names,
-      layout = "davidson-harel", # The primary layout algorithm
-      initial_layout = "reingold-tilford",
       make_node_legend = FALSE,
-      node_label_size_range = c(0.005, 0.05)
+      node_label_size_range = c(0.005, 0.05),
+      ...
     )
   } else {
     if (node_size == "n_obs") {
       p1 <- metacoder::heat_tree(ft,
         node_label = taxon_names,
         node_size = n_obs,
-        layout = "davidson-harel", # The primary layout algorithm
-        initial_layout = "reingold-tilford",
-        make_node_legend = FALSE,
-        node_label_size_range = c(0.005, 0.05)
+        ...
       )
     } else {
       cat("Node size must be n_obj or NULL")

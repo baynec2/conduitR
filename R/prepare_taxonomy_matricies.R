@@ -28,7 +28,7 @@ prepare_taxonomy_matricies <- function(full_taxonomy_fp,
 
 
   taxa_units <- c(
-    "superkingdom", "kingdom", "phylum", "class", "order", "family",
+    "domain", "kingdom", "phylum", "class", "order", "family",
     "genus", "species"
   )
 

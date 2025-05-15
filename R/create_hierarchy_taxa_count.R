@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-create_hierarchy_taxa_count <- function(data, levels = c("superkingdom",
+create_hierarchy_taxa_count <- function(data, levels = c("domain",
                                                          "kingdom",
                                                          "phylum",
                                                          "class",

@@ -4,7 +4,7 @@
 #' @param batch_size
 #' @param parallel
 #'
-#' @returns
+#' @returns the proteome ids or the
 #' @export
 #'
 #' @examples
@@ -25,9 +25,9 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
 
   # Getting list of all reference proteome, pull reference if it exists, if not
   # take largest
-  cat("Getting Reference Proteomes")
+  cat("Getting Reference Proteomes \n")
   reference <- get_all_reference_proteomes() |> dplyr::pull(Proteome_ID)
-  cat("Reference Proteomes Sucessfully Retrieved")
+  cat("Reference Proteomes Sucessfully Retrieved. \n")
 
   # Annotate with whether it is a reference proteome or not.
   results <- results |>
@@ -39,5 +39,12 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
     dplyr::filter(if (any(reference)) reference else `Protein count` == max(`Protein count`)) |>
     dplyr::ungroup()
 
+  missing_ids = organism_ids[organism_ids %!in% results$`Organism Id`]
+  # Print out number that were missing
+  cat(length(missing_ids)," organism ids do not have a Uniprot proteome. \n")
+  # These include
+  cat("These include the following NCBI ids: ",missing_ids)
+  missing_ids <- tibble::tibble(`Organism Id` = missing_ids)
+  results = dplyr::bind_rows(results,missing_ids)
   return(results)
 }

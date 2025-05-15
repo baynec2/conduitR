@@ -24,11 +24,16 @@ get_proteome_id_from_organism_id <- function(id) {
 
   # Parse response
   if (httr2::resp_status(req) == 200) {
-    httr2::resp_body_string(req) |>
-      readr::read_tsv(show_col_types = FALSE,col_types = "ccnn")
+    out <- httr2::resp_body_string(req) |>
+      readr::read_tsv(show_col_types = FALSE,col_types = "ccnn") |>
+      # If there are two proteome ids with the same length, it will return both.
+      # Only grabbing first result
+      dplyr::slice(1)
+    return(out)
   } else {
     message("Request failed for: ", id, "status code: ", httr2::resp_status(req),
             "has body: ", httr2::resp_has_body(req))
     return(NULL)
   }
+
 }

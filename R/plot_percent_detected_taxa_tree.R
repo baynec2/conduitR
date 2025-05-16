@@ -1,12 +1,42 @@
-#' plot_percent_detected_taxa_tree
+#' Plot Taxonomic Tree with Detection Rates
 #'
-#' @param conduit_obj a conduit object
-#' @param ... any argument taken by metacoder::heat_tree
+#' Creates an interactive heat tree visualization showing the taxonomic distribution
+#' of detected proteins, with node sizes and colors representing the percentage of
+#' proteins detected at each taxonomic level. This helps visualize the coverage
+#' of protein detection across different taxonomic groups.
 #'
-#' @returns
+#' @param conduit_obj A conduit object containing protein taxonomy information
+#' @param type Character string specifying how to calculate detection rates:
+#'   \itemize{
+#'     \item "multiple_proteins_in_group": Count proteins that appear in multiple
+#'       samples within a group (default)
+#'     \item "any_protein_in_group": Count any protein detected in a group
+#'   }
+#' @param ... Additional arguments passed to metacoder::heat_tree()
+#'
+#' @return An interactive heat tree plot where:
+#'   \itemize{
+#'     \item Nodes represent taxonomic groups
+#'     \item Node size indicates the percentage of proteins detected
+#'     \item Node color indicates the percentage of proteins detected
+#'     \item Node labels show taxonomic names
+#'     \item The tree structure shows taxonomic relationships
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic taxonomic tree with default settings:
+#' # plot_percent_detected_taxa_tree(conduit_obj)
+#' 
+#' # Using alternative detection rate calculation:
+#' # plot_percent_detected_taxa_tree(conduit_obj, type = "any_protein_in_group")
+#' 
+#' # Customizing the heat tree appearance:
+#' # plot_percent_detected_taxa_tree(conduit_obj,
+#' #                                node_label = "taxon_names",
+#' #                                node_size_range = c(0.01, 0.1),
+#' #                                node_color_range = c("white", "red"))
 plot_percent_detected_taxa_tree = function(conduit_obj,
                                            type ="multiple_proteins_in_group",
                                            ...){

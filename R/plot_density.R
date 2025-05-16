@@ -1,14 +1,35 @@
-#' plot_density
+#' Plot Density Distributions of Transformed Data
 #'
-#' @param qf_norm
-#' @param log_base
-#' @param assay_name
-#' @param color
+#' Creates density plots showing the distribution of log-transformed and imputed data
+#' across samples or groups. This is useful for assessing the effect of data
+#' transformation and imputation on the distribution of values.
 #'
-#' @returns
+#' @param qf_norm A QFeatures object containing normalized and transformed data
+#' @param assay_name Character string specifying the base assay name (without transformation suffixes)
+#' @param log_base Numeric value specifying the base for log transformation (default: 2)
+#' @param color Character string specifying which column to use for coloring the density curves
+#'   (typically a sample or group identifier)
+#'
+#' @return A ggplot object containing:
+#'   \itemize{
+#'     \item Density curves for each sample/group
+#'     \item Separate facets for log-transformed and imputed data
+#'     \item X-axis showing log-transformed intensity values
+#'     \item Y-axis showing density
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic density plot colored by sample:
+#' # plot_density(qfeatures_obj, "protein", color = "sample")
+#' 
+#' # Using log10 transformation:
+#' # plot_density(qfeatures_obj, "protein", log_base = 10, color = "group")
+#' 
+#' # The function will automatically look for assays named:
+#' # - {assay_name}_log{log_base}
+#' # - {assay_name}_log{log_base}_imputed
 plot_density <- function(qf_norm,
                          assay_name,
                          log_base = 2,

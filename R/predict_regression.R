@@ -1,19 +1,63 @@
-#' predict regession
+#' Predict Numeric Outcomes Using Machine Learning Models
 #'
-#' Predict numeric outcomes
+#' Performs regression analysis on QFeatures data using various machine learning models.
+#' Supports lasso regression, random forest, and XGBoost models with optional hyperparameter tuning.
+#' This function handles data preprocessing, model training, and prediction in a single workflow.
 #'
-#' @param qf
-#' @param assay_name
-#' @param outcome
-#' @param train_percent
-#' @param model_type
-#' @param v
-#' @param grid_size
+#' @param qf A QFeatures object containing the data to analyze
+#' @param assay_name Character string specifying which assay to use for prediction
+#' @param outcome Character string specifying the column name of the numeric outcome variable
+#' @param train_percent Numeric value between 0 and 100 specifying the percentage of data to use for training
+#'   (default: 70)
+#' @param model_type Character string specifying the type of model to use. Must be one of:
+#'   \itemize{
+#'     \item "lasso_regression": L1-regularized linear regression
+#'     \item "random_forest": Random forest regression
+#'     \item "xgboost": Gradient boosting regression
+#'   }
+#' @param v Integer specifying the number of folds for cross-validation when tuning (default: 5)
+#' @param grid_size Integer specifying the number of parameter combinations to try during tuning (default: 20)
 #'
-#' @returns
+#' @return A list containing:
+#'   \itemize{
+#'     \item fit: The trained model object
+#'     \item training_predictions: Predictions on the training data
+#'     \item test_predictions: Predictions on the test data
+#'     \item outcome: Name of the outcome variable
+#'     \item test: The test dataset
+#'     \item importance: Feature importance scores (varies by model type)
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic usage with lasso regression:
+#' # results <- predict_regression(qfeatures_obj, "protein", "concentration")
+#' 
+#' # Using random forest with tuning:
+#' # results <- predict_regression(qfeatures_obj, "protein", "concentration",
+#' #                             model_type = "random_forest", v = 5)
+#' 
+#' # Using XGBoost with custom training split:
+#' # results <- predict_regression(qfeatures_obj, "protein", "concentration",
+#' #                             model_type = "xgboost", train_percent = 80)
+#'
+#' @note
+#' This function requires the following packages:
+#' \itemize{
+#'   \item glmnet for lasso regression
+#'   \item ranger for random forest
+#'   \item xgboost for gradient boosting
+#'   \item caret for model training and tuning
+#' }
+#' Computation time varies by model type:
+#' \itemize{
+#'   \item Lasso regression: Fastest, suitable for large datasets
+#'   \item Random forest: Moderate, scales with number of trees and features
+#'   \item XGBoost: Can be slow for large datasets, but often provides best performance
+#' }
+#' For large datasets, consider using a subset of features or increasing the removeVar
+#' parameter in preprocessing steps to improve performance.
 predict_regression <- function(qf,
                                assay_name,
                                outcome,

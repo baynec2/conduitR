@@ -1,13 +1,36 @@
-#' set_plot_theme
+#' Set Global Plot Theme
 #'
-#' globally set the plot theme
+#' Sets a global theme for all subsequent ggplot2 plots in the session.
+#' This function provides a convenient way to maintain consistent plot styling
+#' across multiple visualizations.
 #'
-#' @param theme_name
+#' @param theme_name Character string specifying the theme to use. Must be one of:
+#'   \itemize{
+#'     \item "ggprism": Clean, publication-ready theme from ggprism package
+#'     \item "theme_classic": Classic theme with no background grid
+#'     \item "theme_bw": Black and white theme
+#'     \item "theme_dark": Dark theme
+#'     \item "theme_void": Minimal theme with no axes or grid
+#'     \item "theme_light": Light theme with gray background
+#'     \item "theme_minimal": Minimal theme (default)
+#'   }
 #'
-#' @returns
+#' @return Invisibly returns NULL. The function sets the global theme for all
+#'   subsequent ggplot2 plots in the session.
+#'
 #' @export
 #'
 #' @examples
+#' # Set minimal theme (default):
+#' # set_plot_theme()
+#' 
+#' # Set publication-ready theme:
+#' # set_plot_theme("ggprism")
+#' 
+#' # Set classic theme:
+#' # set_plot_theme("theme_classic")
+#' 
+#' # Note: The theme will affect all subsequent ggplot2 plots until changed again
 set_plot_theme <- function(theme_name = "theme_minimal") {
   `%!in%` <- Negate(`%in%`)
 

@@ -1,13 +1,42 @@
-#' extract fasta info
+#' Extract Information from FASTA Files
 #'
-#' extracts organism name, organism id and sequence from fasta file
+#' Parses a FASTA file and extracts key information including protein IDs,
+#' organism names, organism IDs, and protein sequences. This function is
+#' particularly useful for processing UniProt FASTA files and extracting
+#' metadata from the headers.
 #'
-#' @param fasta_file
+#' @param fasta_file Character string specifying the path to a FASTA file.
+#'   The file should contain protein sequences with headers in UniProt format,
+#'   which typically include:
+#'   \itemize{
+#'     \item Protein ID (e.g., "sp|P12345|PROT_NAME")
+#'     \item Organism name (OS=...)
+#'     \item Organism ID (OX=...)
+#'   }
 #'
-#' @returns a data frame with organism name, organism id and sequence
+#' @return A data frame containing:
+#'   \itemize{
+#'     \item protein_id: UniProt protein accession ID
+#'     \item organism_name: Scientific name of the organism
+#'     \item organism_id: NCBI taxonomy ID of the organism
+#'     \item sequence: Amino acid sequence of the protein
+#'   }
+#'   Missing values (NA) are used for any information that cannot be extracted
+#'   from the headers.
+#'
 #' @export
 #'
 #' @examples
+#' # Extract information from a UniProt FASTA file:
+#' # protein_info <- extract_fasta_info("uniprot_proteins.fasta")
+#' 
+#' # The extracted information can be used for:
+#' # - Creating taxonomy databases
+#' # - Mapping proteins to organisms
+#' # - Analyzing sequence properties
+#' 
+#' # Note: The function expects UniProt-style headers. For other formats,
+#' # the extraction of organism information may not work as expected.
 extract_fasta_info <- function(fasta_file) {
   # Read the FASTA file
   fasta_data <- Biostrings::readAAStringSet(fasta_file)

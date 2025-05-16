@@ -1,18 +1,45 @@
-#' plot_heatmap
+#' Create Static Heatmap with Annotations
 #'
-#' Easy heatmap plots.
+#' Generates a static heatmap visualization using the sechm package,
+#' with options for row and column annotations and hierarchical clustering.
+#' This function provides a simpler alternative to plot_heatmaply for
+#' non-interactive visualizations.
 #'
-#' @param qf
-#' @param assay_name
-#' @param col_color_variables
-#' @param row_color_variables
-#' @param scale
-#' @param ...
+#' @param qf A QFeatures object containing the data to visualize
+#' @param assay_name Character string specifying which assay to use for the heatmap
+#' @param col_color_variables Optional character vector specifying which columns from
+#'   colData to use for column annotations (e.g., c("group", "batch"))
+#' @param row_color_variables Optional character vector specifying which columns from
+#'   rowData to use for row annotations (e.g., c("protein_class", "pathway"))
+#' @param scale Logical indicating whether to scale the data (default: TRUE)
+#' @param ... Additional arguments passed to sechm::sechm()
 #'
-#' @returns
+#' @return A ComplexHeatmap object containing:
+#'   \itemize{
+#'     \item Main heatmap showing the data matrix
+#'     \item Column annotations using viridis color palette
+#'     \item Row annotations using magma color palette
+#'     \item Hierarchical clustering of both rows and columns
+#'     \item Color scale from viridis palette
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic heatmap:
+#' # plot_heatmap(qfeatures_obj, "protein")
+#' 
+#' # With sample annotations:
+#' # plot_heatmap(qfeatures_obj, "protein",
+#' #             col_color_variables = c("group", "batch"))
+#' 
+#' # With both sample and feature annotations:
+#' # plot_heatmap(qfeatures_obj, "protein",
+#' #             col_color_variables = c("treatment", "replicate"),
+#' #             row_color_variables = c("protein_class"))
+#' 
+#' # Without scaling:
+#' # plot_heatmap(qfeatures_obj, "protein", scale = FALSE)
 plot_heatmap = function(qf,
                         assay_name,
                         col_color_variables = NULL,

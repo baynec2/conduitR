@@ -1,19 +1,46 @@
-#' plot_selected_features
+#' Plot Selected Features Across Samples
 #'
-#' plot the selected features
+#' Creates a scatter plot showing the expression/abundance values of selected features
+#' (e.g., proteins) across samples, with options for customizing the visualization
+#' through faceting, coloring, and point shapes.
 #'
-#' @param qf
-#' @param assay_name
-#' @param features
-#' @param x_axis
-#' @param facet_formula
-#' @param color_by
-#' @param shape
+#' @param qf A QFeatures object containing the data to plot
+#' @param assay_name Character string specifying which assay to use for plotting
+#' @param features Character vector of feature IDs to plot (e.g., protein IDs)
+#' @param x_axis Character string specifying the column name to use for the x-axis
+#'   (typically a sample or group identifier)
+#' @param facet_formula Optional formula for faceting the plot (e.g., ~group)
+#' @param color_by Optional character string specifying a column to use for point colors
+#' @param shape Optional character string specifying a column to use for point shapes
 #'
-#' @returns
+#' @return A ggplot object containing a scatter plot with:
+#'   \itemize{
+#'     \item X-axis showing the specified variable
+#'     \item Y-axis showing feature values
+#'     \item Points colored and/or shaped by specified variables
+#'     \item Optional faceting based on the provided formula
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic plot of selected proteins:
+#' # plot_selected_features(qfeatures_obj, "protein", 
+#' #                       features = c("P12345", "P67890"),
+#' #                       x_axis = "sample")
+#' 
+#' # With grouping and faceting:
+#' # plot_selected_features(qfeatures_obj, "protein",
+#' #                       features = c("P12345", "P67890"),
+#' #                       x_axis = "timepoint",
+#' #                       color_by = "group",
+#' #                       facet_formula = ~treatment)
+#' 
+#' # With custom point shapes:
+#' # plot_selected_features(qfeatures_obj, "protein",
+#' #                       features = c("P12345", "P67890"),
+#' #                       x_axis = "sample",
+#' #                       shape = "replicate")
 plot_selected_features = function(qf,
                                   assay_name,
                                   features,

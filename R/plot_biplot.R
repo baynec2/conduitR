@@ -1,17 +1,43 @@
-#' plot_biplot
+#' Create PCA Biplot from QFeatures Data
 #'
-#' Plot a PCA biplot of an assay in QFeatures object.
+#' Generates a PCA biplot visualization for a specified assay in a QFeatures object,
+#' allowing for customization of point aesthetics and faceting. This function uses
+#' the PCAtools package for PCA computation and visualization.
 #'
-#' @param qf
-#' @param assay_name
-#' @param color
-#' @param shape
-#' @param removeVar
-#' @param legendPosition
+#' @param qf A QFeatures object containing the assay data to plot
+#' @param assay_name Character string specifying which assay to use for the PCA
+#' @param color Optional character string specifying a column in the metadata to use for point colors
+#' @param shape Optional character string specifying a column in the metadata to use for point shapes
+#' @param removeVar Numeric value between 0 and 1 specifying the proportion of variance to remove
+#'   before PCA (default: 0.1)
+#' @param legendPosition Character string specifying legend position (default: "right")
+#' @param facet_formula Optional formula for faceting the plot (e.g., ~group)
 #'
-#' @returns
+#' @return A ggplot object containing the PCA biplot with:
+#'   \itemize{
+#'     \item Points colored and/or shaped by specified metadata variables
+#'     \item Axis labels showing percentage of variance explained
+#'     \item Optional faceting based on the provided formula
+#'   }
+#'
 #' @export
 #'
+#' @examples
+#' # Basic usage:
+#' # plot_biplot(qfeatures_obj, "protein")
+#' 
+#' # With aesthetics:
+#' # plot_biplot(qfeatures_obj, "protein", color = "group", shape = "treatment")
+#' 
+#' # With faceting:
+#' # plot_biplot(qfeatures_obj, "protein", facet_formula = ~group)
+#'
+#' @note
+#' This function requires the PCAtools package. For large datasets (e.g., >10,000 features),
+#' consider using removeVar to reduce dimensionality before PCA computation to improve
+#' performance and memory usage.
+#'
+#' @seealso \code{\link[PCAtools]{pca}} for the underlying PCA computation
 plot_biplot <- function(qf,
                         assay_name,
                         color = NULL,

@@ -1,15 +1,41 @@
-#' plot_missing_val_heatmap
+#' Plot Missing Value Pattern Heatmap
 #'
-#' @param qf
-#' @param assay_name
-#' @param col_color_variables
-#' @param row_color_variables
-#' @param scale
+#' Creates a heatmap visualization showing the pattern of missing values in a dataset,
+#' with options for annotating both rows and columns using metadata variables.
+#' This is useful for identifying systematic patterns in missing data and potential
+#' batch effects or experimental issues.
 #'
-#' @returns
+#' @param qf A QFeatures object containing the data to analyze
+#' @param assay_name Character string specifying which assay to use for the analysis
+#' @param col_color_variables Optional character vector specifying which columns from
+#'   colData to use for column annotations (e.g., c("group", "batch"))
+#' @param row_color_variables Optional character vector specifying which columns from
+#'   rowData to use for row annotations (e.g., c("protein_class", "pathway"))
+#' @param scale Logical indicating whether to scale the data before plotting
+#'   (default: FALSE)
+#'
+#' @return A ComplexHeatmap object containing:
+#'   \itemize{
+#'     \item Main heatmap showing missing value pattern (black = present, white = missing)
+#'     \item Column annotations using viridis color palette
+#'     \item Row annotations using magma color palette
+#'     \item Legend indicating missing and valid values
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic missing value heatmap:
+#' # plot_missing_val_heatmap(qfeatures_obj, "protein")
+#' 
+#' # With sample annotations:
+#' # plot_missing_val_heatmap(qfeatures_obj, "protein",
+#' #                         col_color_variables = c("group", "batch"))
+#' 
+#' # With both sample and feature annotations:
+#' # plot_missing_val_heatmap(qfeatures_obj, "protein",
+#' #                         col_color_variables = c("treatment", "replicate"),
+#' #                         row_color_variables = c("protein_class"))
 plot_missing_val_heatmap = function(qf,
                                     assay_name,
                                     col_color_variables = NULL,

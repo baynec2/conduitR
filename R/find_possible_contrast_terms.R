@@ -1,15 +1,28 @@
-#' find_possible_contrast_terms
-#' Helper function to assist the user in finding contrast terms that are
-#' possible given the specified formula.
+#' Find Possible Contrast Terms for Limma Analysis
 #'
-#' @param qf
-#' @param assay_name
-#' @param formula
+#' Helper function that identifies valid contrast terms that can be used in limma analysis
+#' based on the provided experimental design formula. This is useful for determining
+#' which comparisons are possible in differential expression analysis.
 #'
-#' @returns
+#' @param qf A QFeatures object containing the proteomics data
+#' @param assay_name Character string specifying which assay to use for the analysis
+#' @param formula A formula object specifying the experimental design (e.g., ~group + batch)
+#'
+#' @return A character vector containing the names of all possible contrast terms that
+#'   can be used in limma analysis. These terms correspond to the columns of the
+#'   design matrix that would be created from the formula.
+#'
 #' @export
 #'
 #' @examples
+#' # Find possible contrasts for a simple group comparison:
+#' # terms <- find_possible_contrast_terms(qfeatures_obj, "protein", ~group)
+#' 
+#' # Find possible contrasts for a more complex design:
+#' # terms <- find_possible_contrast_terms(qfeatures_obj, "protein", ~group + batch)
+#' 
+#' # The returned terms can be used to construct contrasts for limma analysis:
+#' # contrast <- paste(terms[2], "-", terms[1])  # e.g., "groupB - groupA"
 find_possible_contrast_terms <- function(qf,
                                          assay_name,
                                          formula) {

@@ -1,15 +1,36 @@
-#' plot_sample_cor_heatmap
+#' Plot Sample Correlation Heatmap
 #'
-#' plot the pearson correlation.
+#' Creates a heatmap visualization of Pearson correlations between samples,
+#' with optional sample annotations displayed as colored bars. This is useful
+#' for assessing sample relationships and identifying potential batch effects
+#' or experimental groups.
 #'
-#' @param qf
-#' @param assay_name
-#' @param sample_annotation_variables
+#' @param qf A QFeatures object containing the data to analyze
+#' @param assay_name Character string specifying which assay to use for correlation analysis
+#' @param sample_annotation_variables Character vector specifying which columns from
+#'   colData to use for sample annotations (e.g., c("group", "batch", "treatment"))
 #'
-#' @returns
+#' @return A ComplexHeatmap object containing:
+#'   \itemize{
+#'     \item Main heatmap showing Pearson correlations between samples
+#'     \item Color scale from viridis palette
+#'     \item Top and right annotations showing sample metadata
+#'     \item Consistent color schemes for annotation variables
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic correlation heatmap:
+#' # plot_sample_cor_heatmap(qfeatures_obj, "protein", NULL)
+#' 
+#' # With sample annotations:
+#' # plot_sample_cor_heatmap(qfeatures_obj, "protein", 
+#' #                        c("group", "batch"))
+#' 
+#' # With multiple annotation variables:
+#' # plot_sample_cor_heatmap(qfeatures_obj, "protein",
+#' #                        c("treatment", "timepoint", "replicate"))
 plot_sample_cor_heatmap = function(qf,
                                    assay_name,
                                    sample_annotation_variables){

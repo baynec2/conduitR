@@ -1,14 +1,40 @@
-#' calc_percent_proteins_detected
+#' Calculate Protein Detection Rates by Taxonomy
 #'
-#' calculate the percent of proteins detected.
+#' Computes the percentage of proteins detected at each taxonomic level by comparing
+#' the number of detected proteins against the total number of proteins in the database
+#' for each taxonomic group.
 #'
-#' @param conduit_obj tibble with columns named...
-#' @param type multiple_proteins_in_group", "one_protein_in_group
+#' @param conduit_obj A conduit object containing:
+#'   \itemize{
+#'     \item database_protein_taxonomy: Taxonomy information for all proteins in the database
+#'     \item detected_protein_taxonomy: Taxonomy information for detected proteins
+#'     \item QFeatures: Protein group information (for "one_protein_in_group" type)
+#'   }
+#' @param type Character string specifying how to count detected proteins:
+#'   \itemize{
+#'     \item "multiple_proteins_in_group": Count all proteins in detected protein groups (default)
+#'     \item "one_protein_in_group": Count only uniquely identified proteins (no shared peptides)
+#'   }
 #'
-#' @returns
+#' @return A data frame containing:
+#'   \itemize{
+#'     \item Taxonomic columns (organism_type, domain, kingdom, phylum, class, order, family, genus, species)
+#'     \item n_in_db: Number of proteins in the database for each taxon
+#'     \item n_detected: Number of proteins detected for each taxon
+#'     \item percent_detected: Percentage of proteins detected (n_detected/n_in_db * 100)
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Calculate detection rates using all proteins in groups:
+#' # rates <- calc_percent_proteins_detected(conduit_obj)
+#' 
+#' # Calculate detection rates using only uniquely identified proteins:
+#' # rates <- calc_percent_proteins_detected(conduit_obj, type = "one_protein_in_group")
+#' 
+#' # The results can be used with plot_percent_detected_taxa_tree():
+#' # plot_percent_detected_taxa_tree(conduit_obj)
 calc_percent_proteins_detected = function(conduit_obj,
                                           type = "multiple_proteins_in_group"){
 

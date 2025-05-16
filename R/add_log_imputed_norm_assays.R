@@ -1,14 +1,43 @@
-#' add_log_imputed_norm_assays
+#' Add Log-Transformed, Imputed, and Normalized Assays
 #'
+#' Performs a series of data transformations on all assays in a QFeatures object:
+#' 1. Replaces zeros with NA values
+#' 2. Applies log transformation with a pseudocount
+#' 3. Imputes missing values
+#' 4. Optionally normalizes the data
+#' Each step creates a new assay in the QFeatures object.
 #'
-#' @param qf
-#' @param impute_method
-#' @param norm_method
+#' @param qf A QFeatures object containing the data to transform
+#' @param base Numeric value specifying the base for log transformation (default: 2)
+#' @param impute_method Character string specifying the imputation method to use.
+#'   Must be one of the methods supported by QFeatures::impute() (default: "min")
+#' @param norm_method Character string specifying the normalization method to use.
+#'   Must be one of the methods supported by QFeatures::normalize(), or "none"
+#'   to skip normalization (default: "none")
 #'
-#' @returns
+#' @return A QFeatures object with additional assays:
+#'   \itemize{
+#'     \item {assay_name}_log{base}: Log-transformed data
+#'     \item {assay_name}_log{base}_imputed: Log-transformed and imputed data
+#'     \item {assay_name}_log{base}_imputed_norm_{norm_method}: Normalized data
+#'       (only if norm_method is not "none")
+#'   }
+#'
 #' @export
 #'
 #' @examples
+#' # Basic usage with default settings:
+#' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj)
+#' 
+#' # Using log10 transformation and min imputation:
+#' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj, base = 10)
+#' 
+#' # With normalization:
+#' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj,
+#' #                                             norm_method = "center.scale")
+#' 
+#' # The transformed assays can be used with plotting functions:
+#' # plot_density(qf_transformed, "protein", color = "group")
 add_log_imputed_norm_assays <- function(qf,
                                         base = 2,
                                         impute_method = "min",

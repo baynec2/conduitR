@@ -1,17 +1,55 @@
-#' plot_taxa_tree
+#' Create Taxonomic Tree Visualization
 #'
-#' plot a taxa tree using taxonomy data.
+#' Generates a hierarchical tree visualization of taxonomic relationships using
+#' the metacoder package. The tree shows the relationships between different
+#' taxonomic levels, with node sizes and colors representing various metrics.
 #'
+#' @param taxonomy_data A tibble containing taxonomic information. Must have columns:
+#'   \itemize{
+#'     \item organism_type: Type of organism (e.g., "Bacteria", "Archaea")
+#'     \item superkingdom: Taxonomic superkingdom
+#'     \item kingdom: Taxonomic kingdom
+#'     \item phylum: Taxonomic phylum
+#'     \item class: Taxonomic class
+#'     \item order: Taxonomic order
+#'     \item family: Taxonomic family
+#'     \item genus: Taxonomic genus
+#'     \item species: Taxonomic species
+#'   }
+#' @param filter_taxa_rank Character string specifying which taxonomic rank to filter by
+#'   (default: "species"). The tree will show all taxa at or above this rank.
+#' @param node_size Character string specifying what variable to use for node sizing
+#'   (default: "n_obs"). Currently only supports "n_obs" (number of observations)
+#'   or NULL (uniform node sizes).
+#' @param ... Additional arguments passed to metacoder::heat_tree() for customizing
+#'   the appearance of the tree.
 #'
-#' @param taxonomy_data taxonomy data as a tibble. Each observation is a row,
-#' columns are.
-#' @param filter_taxa_rank what rank to filter taxa by.
-#' @param node_size what variable to color node size by.
+#' @return A metacoder heat tree plot object with:
+#'   \itemize{
+#'     \item Hierarchical tree structure showing taxonomic relationships
+#'     \item Node sizes representing the specified metric
+#'     \item Node labels showing taxonomic names
+#'     \item Color gradients indicating node values
+#'     \item Interactive hover information
+#'   }
 #'
-#' @returns
 #' @export
 #'
 #' @examples
+#' # Create a basic taxonomic tree:
+#' # plot_taxa_tree(taxonomy_data)
+#' 
+#' # Filter to show only phylum level and above:
+#' # plot_taxa_tree(taxonomy_data, filter_taxa_rank = "phylum")
+#' 
+#' # Create a tree with uniform node sizes:
+#' # plot_taxa_tree(taxonomy_data, node_size = NULL)
+#' 
+#' # Customize the tree appearance:
+#' # plot_taxa_tree(taxonomy_data,
+#' #   node_label_size_range = c(0.01, 0.05),
+#' #   make_node_legend = TRUE
+#' # )
 plot_taxa_tree <- function(taxonomy_data,
                            filter_taxa_rank = "species",
                            node_size = "n_obs",

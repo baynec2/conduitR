@@ -1,0 +1,35 @@
+# RStudio specific files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Ignore macOS DS_Store files
+.DS_Store
+
+# Ignore raw data and mzML conversion files
+user_input/raw_files/*
+output/01_file_conversion/*
+
+# Ignore database resources
+user_input/00_database_resources/* 
+
+# Ignore any of the output files
+output/01_file_conversion/*
+output/02_speclib_gen/*
+output/03_diann_output/*
+output/04_consolidation_and_ingestion/*
+output/05_output_files/*
+
+
+# Ignore any of the logs files
+log/*
+
+# Ignore any of the internal snakemake files
+.snakemake
+
+#Ignore any apptainer files
+apptainer/*.sif
+
+#Ignore any raw files 
+*.raw

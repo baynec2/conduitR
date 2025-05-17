@@ -1,0 +1,41 @@
+BootStrap: docker
+From: rocker/r-ver:4.4.3
+
+%labels
+    Maintainer: "Charlie Bayne <baynec2@gmail.com>"
+    Version: "0.0.0.9000"
+    Description: "R tools for metaproteomics analysis using conduit and conduit-GUI"
+
+%post
+    # Install system dependencies
+apt-get update -y && apt-get install -y \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    libssl-dev \
+    libfontconfig1-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    fonts-dejavu \
+    libbz2-dev \
+    liblzma-dev \
+    libzstd-dev \
+    git \
+    libgit2-dev \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    libglpk40  # This is the missing dependency
+
+    # Install Bioconductor manager and dependencies
+    R -e "install.packages('BiocManager')"
+    R -e "BiocManager::install('QFeatures')"
+    R -e "BiocManager::install(c('SummarizedExperiment', 'limma', 'Biostrings', 'KEGGREST'))"
+
+#    # Verify Bioconductor packages
+    R -e "BiocManager::valid()"
+
+    # Install remotes for GitHub package installation
+    R -e "install.packages('remotes')"
+    R -e "remotes::install_github('baynec2/conduitR')"
+
+%environment
+    export R_LIBS_USER=/usr/local/lib/R/site-library

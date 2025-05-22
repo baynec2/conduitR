@@ -15,7 +15,7 @@ organism_ids = organism_txt |>
 # Pull all taxonomy information
 taxonomy = conduitR::get_ncbi_taxonomy(organism_ids) |>
   dplyr::inner_join(organism_txt,by = "organism_id") |>
-  dplyr::select("organism_type","organism_id","superkingdom","kingdom","phylum",
+  dplyr::select("organism_type","organism_id","domain","kingdom","phylum",
                 "class","order","family","genus","species"
     )
 

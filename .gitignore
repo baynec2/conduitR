@@ -23,7 +23,7 @@ output/05_output_files/*
 
 
 # Ignore any of the logs files
-log/*
+logs/*
 
 # Ignore any of the internal snakemake files
 .snakemake

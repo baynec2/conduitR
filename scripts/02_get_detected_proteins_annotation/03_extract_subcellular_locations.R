@@ -1,22 +1,29 @@
 ################################################################################
-#Loading Inputs from Snakemake
+#Extracting Subcellular Location Annotations from Uniprot Data
 ################################################################################
+# Open the log file to write both stdout and stderr
+logfile <- snakemake@log[[1]]
+zz <- file(logfile, open = "a")
+sink(zz,append = TRUE)       # redirect stdout
+sink(zz, type = "message")  # redirect stderr/messages
+
+conduitR::log_with_timestamp("Running 03_extract_subcellular_locations.R script")
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
+conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
+
 uniprot_annotated_protein_info = snakemake@input[["uniprot_annotated_protein_info"]]
 subcellular_locations_out = snakemake@output[["subcellular_locations"]]
 
-# #test
-# uniprot_annotated_protein_info="user_input/00_database_resources/detected_protein_resources/02_uniprot_annotated_protein_info.txt"
-# subcellular_locations_out="user_input/00_database_resources/detected_protein_resources/04_subcellular_locations.txt"
-################################################################################
 # Getting Cellular Location Information
-################################################################################
 # Defining columns in output
-shared_columns = c("protein_id","organism_type","superkingdom","kingdom",
+shared_columns = c("protein_id","organism_type","domain","kingdom",
                    "phylum","class","order","family","genus","species")
+
+conduitR::log_with_timestamp(paste0("Reading in annotated protein info from ", uniprot_annotated_protein_info))
 
 uniprot_annotated_protein_info =readr::read_delim(uniprot_annotated_protein_info)
 
-
+conduitR::log_with_timestamp("Extracting subcellular location information from Uniprot annotations")
 subcellular_locations = uniprot_annotated_protein_info |>
   dplyr::select("cc_subcellular_location",dplyr::all_of(shared_columns)) |>
   dplyr::mutate(cc_subcellular_location = stringr::str_split(cc_subcellular_location, "; ")) |>  # Split into list
@@ -36,7 +43,13 @@ subcellular_locations = uniprot_annotated_protein_info |>
   dplyr::select(cc_subcellular_location, evidence,note, protein_id,
                 dplyr::all_of(shared_columns))  # Keep relevant columns
 
+conduitR::log_with_timestamp(paste0("Writing subcellular locations to ", subcellular_locations_out))
 # Writing to file.
 readr::write_delim(subcellular_locations,
                    subcellular_locations_out,
                    delim = "\t")
+conduitR::log_with_timestamp("03_extract_subcellular_locations.R script completed")
+# closing clogfile connection
+sink(type = "message")
+sink()
+close(zz)

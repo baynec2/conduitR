@@ -3,8 +3,8 @@
 This directory contains database resources generated using the **Conduit** platform for metaproteomic analysis.
 
 ## Database Generation Details
-This database was generated on **2025-04-01** by user **nanopore-catalyst** using a Linux system.
-The database includes proteome information for **69991** proteins derived from **5** species
+This database was generated on **2025-05-28** by user **charliebayne** using a Darwin system.
+The database includes proteome information for **4908** proteins derived from **1** species
 
 These resources can be reused for additional analyses within Conduit for experiments containing the same search space.
 To do so, add the entire directory (output/00_database_resources) to the `user_input` directory. This prevents the need for regeneration, reducing overall processing time.

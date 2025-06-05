@@ -1,0 +1,2 @@
+organism_type organism_id domain kingdom phylum class order family genus species
+microbiome 818 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides thetaiotaomicron"

@@ -1,13 +1,22 @@
 ################################################################################
 # Making a readme
 ################################################################################
+# Open the log file to write both stdout and stderr
+logfile <- snakemake@log[[1]]
+zz <- file(logfile, open = "a")
+sink(zz,append = TRUE)       # redirect stdout
+sink(zz, type = "message")  # redirect stderr/messages
+
+conduitR::log_with_timestamp("Running 04_make_database_resources_readme.R script")
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
+conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
+conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[2]]))
+
 protein_info_fp <- snakemake@input[[1]]
 output_fp <- snakemake@output[["md"]]
 html_fp <- snakemake@output[["html"]]
 
-# Testing
-#protein_info_fp = "user_input/00_database_resources/02_protein_info.txt"
-#output_fp = "user_input/00_database_resources/README.md"
+start_time <- Sys.time()
 
 # Get dynamic information
 current_date <- Sys.Date() # Current system date
@@ -54,7 +63,34 @@ readme_content <- c(
   "### **/detected_protein_resouces/**",
   "This directory will contain annotated resources corresponding to the proteins that were detected.")
 # Write the content to the specified file
+conduitR::log_with_timestamp(paste0("Writing README.md to ", output_fp))
 readr::write_lines(readme_content, output_fp)
-knitr::knit2html(output_fp,html_fp)
-message("README.md has been generated successfully at ", output_fp)
-message("README.html has been generated sucessfully at ", html_fp)
+conduitR::log_with_timestamp("Converting README.md to HTML") 
+# Create a temporary directory for knit2html
+temp_dir <- tempdir()
+temp_md <- file.path(temp_dir, "temp_readme.md")
+temp_html <- file.path(temp_dir, "temp_readme.html")
+
+# Copy the markdown file to temp directory
+file.copy(output_fp, temp_md, overwrite = TRUE)
+
+# Convert to HTML in temp directory
+knitr::knit2html(temp_md, temp_html)
+
+# Copy the HTML file back to the desired location
+file.copy(temp_html, html_fp, overwrite = TRUE)
+
+# Clean up temp files
+unlink(c(temp_md, temp_html))
+
+conduitR::log_with_timestamp(paste0("README.md has been generated successfully at ", output_fp))
+conduitR::log_with_timestamp(paste0("README.html has been generated sucessfully at ", html_fp))
+
+end_time <- Sys.time()
+conduitR::log_with_timestamp("Completed 04_make_database_resources_readme.R script. Time taken: %.2f minutes", 
+    as.numeric(difftime(end_time, start_time, units = "mins")))
+
+# closing clogfile connection
+sink(type = "message")
+sink()
+close(zz)

@@ -21,7 +21,6 @@ output/03_diann_output/*
 output/04_consolidation_and_ingestion/*
 output/05_output_files/*
 
-
 # Ignore any of the logs files
 logs/*
 
@@ -33,3 +32,8 @@ apptainer/*.sif
 
 #Ignore any raw files 
 *.raw
+
+# Ignore all experiments except example
+experiments/*
+!experiments/example/
+!experiments/example/**

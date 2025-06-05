@@ -1,12 +1,38 @@
 ################################################################################
 # Preparing QFeatures object from matrcies
 ################################################################################
+# Open the log file to write both stdout and stderr
+logfile <- snakemake@log[[1]]
+zz <- file(logfile, open = "a")
+sink(zz,append = TRUE)       # redirect stdout
+sink(zz, type = "message")  # redirect stderr/messages
+
+start_time <- Sys.time()
+
+conduitR::log_with_timestamp("Running 00_prepare_qf.R script")
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[2]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[3]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[4]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[5]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[6]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[7]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[8]])) 
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[9]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[10]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[11]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[12]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[14]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[15]]))
+
+conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
+
 # Inputs
 annotation = snakemake@input[["annotation"]]
 precursor_matrix = snakemake@input[["precursor_matrix"]]
 peptide_matrix = snakemake@input[["peptide_matrix"]]
 protein_group_matrix = snakemake@input[["protein_group_matrix"]]
-superkingdom_matrix = snakemake@input[["superkingdom_matrix"]]
+domain_matrix = snakemake@input[["domain_matrix"]]
 kingdom_matrix= snakemake@input[["kingdom_matrix"]]
 phylum_matrix= snakemake@input[["phylum_matrix"]]
 class_matrix= snakemake@input[["class_matrix"]]
@@ -21,36 +47,24 @@ subcellular_locations_matrix = snakemake@input[["subcellular_locations_matrix"]]
 # Output
 qf = snakemake@output[["qf"]]
 
-
-# Testing
-#annotation = "user_input/sample_annotation.txt"
-#precursor_matrix="output/05_output_files/precursor_matrix.tsv"
-#peptide_matrix = "output/05_output_files/peptide_matrix.tsv"
-#protein_group_matrix="output/05_output_files/protein_group_matrix.tsv"
-#superkingdom_matrix="output/05_output_files/superkingdom_matrix.tsv"
-#kingdom_matrix="output/05_output_files/kingdom_matrix.tsv"
-#phylum_matrix="output/05_output_files/phylum_matrix.tsv"
-#class_matrix="output/05_output_files/class_matrix.tsv"
-#order_matrix="output/05_output_files/order_matrix.tsv"
-#family_matrix="output/05_output_files/family_matrix.tsv"
-#genus_matrix="output/05_output_files/genus_matrix.tsv"
-#species_matrix="output/05_output_files/species_matrix.tsv"
-#go_matrix = "output/05_output_files/go_matrix.tsv"
-#go_taxa_matrix = "output/05_output_files/go_taxa_matrix.tsv"
-#subcellular_locations_matrix = "output/05_output_files/subcellular_locations_matrix.tsv"
-
-#qf = "output/05_output_files/qf.rds"
-#Defining vector of filepaths
 vector_of_matrix_fps = c(precursor_matrix,peptide_matrix,protein_group_matrix,
-                         superkingdom_matrix,kingdom_matrix,phylum_matrix,
+                         domain_matrix,kingdom_matrix,phylum_matrix,
                          class_matrix,order_matrix,family_matrix,genus_matrix,
                          species_matrix,go_matrix,go_taxa_matrix,subcellular_locations_matrix)
 
 
-
+conduitR::log_with_timestamp("Preparing QFeatures object")
 # Loading QFeatures object
 QF = conduitR::prepare_qfeature(sample_annotation_fp = annotation,
                                          vector_of_matrix_fps)
 
+conduitR::log_with_timestamp(paste0("Saving QFeatures object to ", qf))        
 
 saveRDS(QF,qf)
+end_time <- Sys.time()
+conduitR::log_with_timestamp("00_prepare_qf.R script completed. Time taken: %.2f minutes", 
+                              as.numeric(difftime(end_time, start_time, units = "mins")))
+# closing clogfile connection
+sink(type = "message")
+sink()
+close(zz)

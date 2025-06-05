@@ -1,0 +1,22 @@
+# Define what input raw files to run the workflow on
+experiment_directory: experiments/example
+# Define the raw files filepath relative to the experiment directory
+raw_files: "experiments/example/input/raw_files/*.raw"
+# Define the method used to define the search space. 
+# Options: 
+# - "ncbi_taxonomy_id": Use NCBI taxonomy IDs to define the search space.
+# - "uniprot_proteome_id": Use UniProt proteome IDs to define the search space.
+# - "MAG": Use MAGs to define the search space.,
+# - "metagenomic_profiling": Use metagenomic profiling to define the search space.
+# - "16S": Use 16S rRNA gene sequences to define the search space.
+method: ncbi_taxonomy_id
+# Define the sample annotation filepath relative to the experiment directory
+sample_annotation: input/sample_annotation.txt
+# Define the organism_id filepath relative to the experiment directory
+organism_id: input/organism_id.txt
+# Define the output directory relative to the experiment directory
+output_dir: output/
+# Config file to generate the spectral library for DIA-NN
+generate_diann_spectral_library_config: config/generate_diann_spectral_library.cfg
+# Config file to run DIA-NN search
+run_diann_config: config/run_diann.cfg

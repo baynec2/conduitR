@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_percent_proteins_detected.R
 \name{calc_percent_proteins_detected}
 \alias{calc_percent_proteins_detected}
-\title{calc_percent_proteins_detected}
+\title{Calculate Protein Detection Rates by Taxonomy}
 \usage{
 calc_percent_proteins_detected(
   conduit_obj,
@@ -10,10 +10,40 @@ calc_percent_proteins_detected(
 )
 }
 \arguments{
-\item{conduit_obj}{tibble with columns named...}
+\item{conduit_obj}{A conduit object containing:
+\itemize{
+\item database_protein_taxonomy: Taxonomy information for all proteins in the database
+\item detected_protein_taxonomy: Taxonomy information for detected proteins
+\item QFeatures: Protein group information (for "one_protein_in_group" type)
+}}
 
-\item{type}{multiple_proteins_in_group", "one_protein_in_group}
+\item{type}{Character string specifying how to count detected proteins:
+\itemize{
+\item "multiple_proteins_in_group": Count all proteins in detected protein groups (default)
+\item "one_protein_in_group": Count only uniquely identified proteins (no shared peptides)
+}}
+}
+\value{
+A data frame containing:
+\itemize{
+\item Taxonomic columns (organism_type, domain, kingdom, phylum, class, order, family, genus, species)
+\item n_in_db: Number of proteins in the database for each taxon
+\item n_detected: Number of proteins detected for each taxon
+\item percent_detected: Percentage of proteins detected (n_detected/n_in_db * 100)
+}
 }
 \description{
-calculate the percent of proteins detected.
+Computes the percentage of proteins detected at each taxonomic level by comparing
+the number of detected proteins against the total number of proteins in the database
+for each taxonomic group.
+}
+\examples{
+# Calculate detection rates using all proteins in groups:
+# rates <- calc_percent_proteins_detected(conduit_obj)
+
+# Calculate detection rates using only uniquely identified proteins:
+# rates <- calc_percent_proteins_detected(conduit_obj, type = "one_protein_in_group")
+
+# The results can be used with plot_percent_detected_taxa_tree():
+# plot_percent_detected_taxa_tree(conduit_obj)
 }

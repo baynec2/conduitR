@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_selected_features.R
 \name{plot_selected_features}
 \alias{plot_selected_features}
-\title{plot_selected_features}
+\title{Plot Selected Features Across Samples}
 \usage{
 plot_selected_features(
   qf,
@@ -15,8 +15,51 @@ plot_selected_features(
 )
 }
 \arguments{
-\item{shape}{}
+\item{qf}{A QFeatures object containing the data to plot}
+
+\item{assay_name}{Character string specifying which assay to use for plotting}
+
+\item{features}{Character vector of feature IDs to plot (e.g., protein IDs)}
+
+\item{x_axis}{Character string specifying the column name to use for the x-axis
+(typically a sample or group identifier)}
+
+\item{facet_formula}{Optional formula for faceting the plot (e.g., ~group)}
+
+\item{color_by}{Optional character string specifying a column to use for point colors}
+
+\item{shape}{Optional character string specifying a column to use for point shapes}
+}
+\value{
+A ggplot object containing a scatter plot with:
+\itemize{
+\item X-axis showing the specified variable
+\item Y-axis showing feature values
+\item Points colored and/or shaped by specified variables
+\item Optional faceting based on the provided formula
+}
 }
 \description{
-plot the selected features
+Creates a scatter plot showing the expression/abundance values of selected features
+(e.g., proteins) across samples, with options for customizing the visualization
+through faceting, coloring, and point shapes.
+}
+\examples{
+# Basic plot of selected proteins:
+# plot_selected_features(qfeatures_obj, "protein", 
+#                       features = c("P12345", "P67890"),
+#                       x_axis = "sample")
+
+# With grouping and faceting:
+# plot_selected_features(qfeatures_obj, "protein",
+#                       features = c("P12345", "P67890"),
+#                       x_axis = "timepoint",
+#                       color_by = "group",
+#                       facet_formula = ~treatment)
+
+# With custom point shapes:
+# plot_selected_features(qfeatures_obj, "protein",
+#                       features = c("P12345", "P67890"),
+#                       x_axis = "sample",
+#                       shape = "replicate")
 }

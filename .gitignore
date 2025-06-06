@@ -2,3 +2,5 @@
 tests/data/
 .DS_Store
 .Rhistory
+conduit.rds
+conduitR.Rproj

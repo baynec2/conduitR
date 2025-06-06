@@ -2,8 +2,7 @@
 % Please edit documentation in R/create_conduit_obj.R
 \name{create_conduit_obj}
 \alias{create_conduit_obj}
-\title{create_conduit_obj
-create a conduit object.}
+\title{Create a Conduit Object from Multiple Data Sources}
 \usage{
 create_conduit_obj(
   QFeatures.rds,
@@ -13,29 +12,57 @@ create_conduit_obj(
 )
 }
 \arguments{
-\item{qfeatures.rds}{this is a qfeatures object (intended to be the output of
-the conduit snakemake workflow)}
+\item{QFeatures.rds}{Character string specifying the file path to a saved QFeatures
+object (.rds file). The QFeatures object should contain proteomics data with
+protein abundances across samples.}
 
-\item{metrics.tsv}{this is the metrics.tsv file created by the conduit snakemake workflow.
-contains information of the number of proteins/ taxa (at all levels) that
-were detected and}
+\item{combined_metrics.tsv}{Character string specifying the file path to a
+tab-delimited text file containing protein metrics (e.g., identification scores,
+sequence coverage, etc.).}
 
-\item{database_taxonomy.tsv}{this is the database taxonomy that was included in the
-study.}
+\item{database_protein_taxonomy.tsv}{Character string specifying the file path to
+a tab-delimited text file containing taxonomy information for all proteins in
+the database.}
 
-\item{detected_protein_metrics.tsv}{this is the proteins that were detected}
-
-\item{precomputed_plots}{this is a list of precomputed plots (precomputed so
-they don't take forever to render with conduit-GUI). Names of plots below.
+\item{detected_protein_taxonomy.tsv}{Character string specifying the file path to
+a tab-delimited text file containing taxonomy information for detected proteins.}
+}
+\value{
+A conduit object containing:
 \itemize{
-\item database_taxa_tree
-\item detected_taxa_tree
-\item difference_taxa_tree. Percentage relative to database.
-\item database_sunburst
-\item detected_sunburst
-}}
+\item QFeatures: The proteomics data object
+\item database_protein_taxonomy: Taxonomy information for all database proteins
+\item combined_metrics: Protein metrics and quality scores
+\item detected_protein_taxonomy: Taxonomy information for detected proteins
+}
 }
 \description{
-create_conduit_obj
-create a conduit object.
+Assembles a conduit object by combining a QFeatures object with protein taxonomy
+and metrics data. This function integrates multiple data sources into a single,
+organized data structure that maintains relationships between proteins, their
+taxonomy, and associated metrics.
+}
+\note{
+This function requires:
+\itemize{
+\item A valid QFeatures object saved as .rds
+\item Tab-delimited text files for metrics and taxonomy
+\item Consistent protein identifiers across all input files
+}
+The function will read all files into memory, so ensure sufficient RAM is available
+for large datasets.
+}
+\examples{
+# Create a conduit object from saved files:
+# conduit_obj <- create_conduit_obj(
+#   QFeatures.rds = "proteomics_data.rds",
+#   combined_metrics.tsv = "protein_metrics.tsv",
+#   database_protein_taxonomy.tsv = "all_proteins_taxonomy.tsv",
+#   detected_protein_taxonomy.tsv = "detected_proteins_taxonomy.tsv"
+# )
+
+# The resulting object can be used with other conduitR functions:
+# plot_taxa_tree(conduit_obj)
+# plot_relative_abundance(conduit_obj, "protein")
+
 }

@@ -2,26 +2,49 @@
 % Please edit documentation in R/perform_limma_analysis.R
 \name{perform_limma_analysis}
 \alias{perform_limma_analysis}
-\title{perform_limma_analysis}
+\title{Perform Differential Expression Analysis Using Limma}
 \usage{
 perform_limma_analysis(qf, assay_name, formula, contrast)
 }
 \arguments{
-\item{assay_name}{Name of the assay to analyze}
+\item{qf}{A QFeatures object containing the proteomics data to analyze}
 
-\item{formula}{A formula used to build the design matrix from colData}
+\item{assay_name}{Character string specifying which assay to use for the analysis}
 
-\item{contrast}{A character string specifying the contrast (e.g., "groupB - groupA")}
+\item{formula}{A formula object specifying the experimental design (e.g., ~group + batch)}
 
-\item{qf_object}{A QFeatures object}
+\item{contrast}{Character string specifying the contrast to test (e.g., "groupB - groupA")}
 }
 \value{
 A list containing:
-\item{top_table}{The result of limma::topTable()}
-\item{design}{The design matrix}
-\item{coefficients}{Estimated model coefficients}
-\item{model_terms}{Names of the model terms (design matrix columns)}
+\itemize{
+\item top_table: A data frame with differential expression results including:
+\itemize{
+\item logFC: log fold change
+\item AveExpr: average expression
+\item t: moderated t-statistic
+\item P.Value: raw p-value
+\item adj.P.Val: Benjamini-Hochberg adjusted p-value
+\item neg_log10.adj.P.Val: -log10 of adjusted p-value
+}
+\item design: The design matrix used in the analysis
+\item coefficients: Estimated model coefficients
+\item model_terms: Names of the model terms (design matrix columns)
+\item contrast_matrix: The contrast matrix used for testing
+}
 }
 \description{
-Performs limma differential expression analysis on a specified assay within a QFeatures object.
+Conducts differential expression analysis on proteomics data using the limma package.
+This function handles the entire limma workflow including design matrix creation,
+model fitting, contrast testing, and empirical Bayes moderation.
+}
+\examples{
+# Basic usage with a simple group comparison:
+# results <- perform_limma_analysis(qfeatures_obj, "protein", ~group, "groupB - groupA")
+
+# More complex design with batch effect:
+# results <- perform_limma_analysis(qfeatures_obj, "protein", ~group + batch, "groupB - groupA")
+
+# Multiple group comparison:
+# results <- perform_limma_analysis(qfeatures_obj, "protein", ~treatment, "treatmentB - treatmentA")
 }

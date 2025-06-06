@@ -21,14 +21,14 @@
 #' @examples
 #' # Fetch taxonomy for a single organism:
 #' # taxonomy <- get_ncbi_taxonomy(9606)  # Human
-#' 
+#'
 #' # Fetch taxonomy for multiple organisms:
 #' # taxonomy <- get_ncbi_taxonomy(c(9606, 10090))  # Human and Mouse
-#' 
+#'
 #' # The results can be used with other functions:
 #' # plot_taxa_tree(taxonomy)
 #' # plot_sunburst(taxonomy)
-#' 
+#'
 #' # Note: This function requires an internet connection and may be
 #' # rate-limited by NCBI's API policies.
 get_ncbi_taxonomy <- function(ncbi_ids) {
@@ -97,8 +97,9 @@ get_ncbi_taxonomy <- function(ncbi_ids) {
         taxonomy_list[[id]] <- taxonomy_df
       },
       error = function(e) {
-        message(paste("Error fetching taxonomy for ID:", id))
-      }
+        log_with_timestamp(paste(
+          "Error fetching taxonomy for ID:", id, "|", conditionMessage(e)
+        ))      }
     )
   }
 

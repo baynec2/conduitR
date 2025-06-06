@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_missing_val_heatmap.R
 \name{plot_missing_val_heatmap}
 \alias{plot_missing_val_heatmap}
-\title{plot_missing_val_heatmap}
+\title{Plot Missing Value Pattern Heatmap}
 \usage{
 plot_missing_val_heatmap(
   qf,
@@ -13,8 +13,44 @@ plot_missing_val_heatmap(
 )
 }
 \arguments{
-\item{scale}{}
+\item{qf}{A QFeatures object containing the data to analyze}
+
+\item{assay_name}{Character string specifying which assay to use for the analysis}
+
+\item{col_color_variables}{Optional character vector specifying which columns from
+colData to use for column annotations (e.g., c("group", "batch"))}
+
+\item{row_color_variables}{Optional character vector specifying which columns from
+rowData to use for row annotations (e.g., c("protein_class", "pathway"))}
+
+\item{scale}{Logical indicating whether to scale the data before plotting
+(default: FALSE)}
+}
+\value{
+A ComplexHeatmap object containing:
+\itemize{
+\item Main heatmap showing missing value pattern (black = present, white = missing)
+\item Column annotations using viridis color palette
+\item Row annotations using magma color palette
+\item Legend indicating missing and valid values
+}
 }
 \description{
-plot_missing_val_heatmap
+Creates a heatmap visualization showing the pattern of missing values in a dataset,
+with options for annotating both rows and columns using metadata variables.
+This is useful for identifying systematic patterns in missing data and potential
+batch effects or experimental issues.
+}
+\examples{
+# Basic missing value heatmap:
+# plot_missing_val_heatmap(qfeatures_obj, "protein")
+
+# With sample annotations:
+# plot_missing_val_heatmap(qfeatures_obj, "protein",
+#                         col_color_variables = c("group", "batch"))
+
+# With both sample and feature annotations:
+# plot_missing_val_heatmap(qfeatures_obj, "protein",
+#                         col_color_variables = c("treatment", "replicate"),
+#                         row_color_variables = c("protein_class"))
 }

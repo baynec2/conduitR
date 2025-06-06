@@ -28,16 +28,16 @@
 #' @examples
 #' # Get proteome IDs for human and E. coli:
 #' # proteomes <- get_proteome_ids_from_organism_ids(c(9606, 562))
-#' 
+#'
 #' # Process a larger set of organisms in parallel:
 #' # all_proteomes <- get_proteome_ids_from_organism_ids(
 #' #   c(9606, 562, 10090, 10116),  # Human, E. coli, Mouse, Rat
 #' #   parallel = TRUE
 #' # )
-#' 
+#'
 #' # Use the results to download FASTA files:
 #' # download_fasta_from_organism_ids(proteomes$`Proteome Id`)
-#' 
+#'
 #' # Filter for reference proteomes only:
 #' # reference_proteomes <- proteomes[proteomes$reference, ]
 #'
@@ -50,7 +50,7 @@
 #'   \item Reports missing organism IDs
 #'   \item Supports parallel processing for faster execution
 #' }
-#' 
+#'
 #' Important considerations:
 #' \itemize{
 #'   \item The function requires an internet connection to access UniProt
@@ -96,9 +96,9 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
   }
   # Getting list of all reference proteome, pull reference if it exists, if not
   # take largest
-  message("Getting Reference Proteomes \n")
+  log_with_timestamp("Getting Reference Proteomes")
   reference <- get_all_reference_proteomes() |> dplyr::pull(Proteome_ID)
-  message("Reference Proteomes Sucessfully Retrieved. \n")
+  log_with_timestamp("Reference Proteomes Sucessfully Retrieved.")
 
   # Annotate with whether it is a reference proteome or not.
   results <- results |>
@@ -113,9 +113,10 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
   missing_ids = organism_ids[organism_ids %!in% results$`Organism Id`]
   # Print out number that were missing
   if(length(missing_ids > 0)){
-  message(length(missing_ids)," organism ids do not have a Uniprot proteome. \n")
+  log_with_timestamp(paste0(length(missing_ids)," organism ids do not have a Uniprot proteome."))
   # Print out the ids that they include.
-  message("These include the following NCBI ids: ",paste(missing_ids, collapse = ", "))
+  log_with_timestamp(paste0("These include the following NCBI ids: ",
+          paste(missing_ids, collapse = ", ")))
   missing_ids <- tibble::tibble(`Organism Id` = as.numeric(missing_ids))
   results = dplyr::bind_rows(results,missing_ids)
   }

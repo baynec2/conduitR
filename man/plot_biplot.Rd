@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_biplot.R
 \name{plot_biplot}
 \alias{plot_biplot}
-\title{plot_biplot}
+\title{Create PCA Biplot from QFeatures Data}
 \usage{
 plot_biplot(
   qf,
@@ -15,8 +15,50 @@ plot_biplot(
 )
 }
 \arguments{
-\item{legendPosition}{}
+\item{qf}{A QFeatures object containing the assay data to plot}
+
+\item{assay_name}{Character string specifying which assay to use for the PCA}
+
+\item{color}{Optional character string specifying a column in the metadata to use for point colors}
+
+\item{shape}{Optional character string specifying a column in the metadata to use for point shapes}
+
+\item{removeVar}{Numeric value between 0 and 1 specifying the proportion of variance to remove
+before PCA (default: 0.1)}
+
+\item{legendPosition}{Character string specifying legend position (default: "right")}
+
+\item{facet_formula}{Optional formula for faceting the plot (e.g., ~group)}
+}
+\value{
+A ggplot object containing the PCA biplot with:
+\itemize{
+\item Points colored and/or shaped by specified metadata variables
+\item Axis labels showing percentage of variance explained
+\item Optional faceting based on the provided formula
+}
 }
 \description{
-Plot a PCA biplot of an assay in QFeatures object.
+Generates a PCA biplot visualization for a specified assay in a QFeatures object,
+allowing for customization of point aesthetics and faceting. This function uses
+the PCAtools package for PCA computation and visualization.
+}
+\note{
+This function requires the PCAtools package. For large datasets (e.g., >10,000 features),
+consider using removeVar to reduce dimensionality before PCA computation to improve
+performance and memory usage.
+}
+\examples{
+# Basic usage:
+# plot_biplot(qfeatures_obj, "protein")
+
+# With aesthetics:
+# plot_biplot(qfeatures_obj, "protein", color = "group", shape = "treatment")
+
+# With faceting:
+# plot_biplot(qfeatures_obj, "protein", facet_formula = ~group)
+
+}
+\seealso{
+\code{\link[PCAtools]{pca}} for the underlying PCA computation
 }

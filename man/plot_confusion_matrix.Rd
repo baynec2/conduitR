@@ -2,13 +2,36 @@
 % Please edit documentation in R/plot_confusion_matrix.R
 \name{plot_confusion_matrix}
 \alias{plot_confusion_matrix}
-\title{plot a confusion matrix}
+\title{Plot Confusion Matrix for Classification Results}
 \usage{
 plot_confusion_matrix(predict_classification_list)
 }
 \arguments{
-\item{predict_classification_list}{}
+\item{predict_classification_list}{A list containing model results, including:
+\itemize{
+\item confusion_matrix: A confusion matrix object (typically from yardstick::conf_mat)
+containing the cross-tabulation of predicted and true class labels
+}}
+}
+\value{
+A ggplot object containing a heatmap with:
+\itemize{
+\item X-axis showing predicted class labels
+\item Y-axis showing true class labels
+\item Color intensity representing the count/frequency of each prediction
+\item Title and axis labels
+}
 }
 \description{
-plot a confusion matrix
+Creates a heatmap visualization of the confusion matrix from a classification model,
+showing the distribution of predicted versus true class labels.
+}
+\examples{
+# Plot confusion matrix from classification results:
+# plot_confusion_matrix(model_results)
+
+# The confusion matrix can be used to evaluate:
+# - True positives (diagonal elements)
+# - False positives (off-diagonal elements in columns)
+# - False negatives (off-diagonal elements in rows)
 }

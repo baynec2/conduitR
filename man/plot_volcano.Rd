@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_volcano.R
 \name{plot_volcano}
 \alias{plot_volcano}
-\title{plot_volcano()}
+\title{Create a Volcano Plot from Limma Results}
 \usage{
 plot_volcano(
   limma_stats,
@@ -12,8 +12,39 @@ plot_volcano(
 )
 }
 \arguments{
-\item{pval_threshold}{}
+\item{limma_stats}{A data frame containing limma analysis results, typically the output
+from perform_limma_analysis(). Must contain columns 'logFC' and 'neg_log10.adj.P.Value'.}
+
+\item{facet_formula}{Optional formula for faceting the plot (e.g., ~group)}
+
+\item{color_by}{Optional character string specifying a column to use for point colors}
+
+\item{pval_threshold}{Numeric value specifying the significance threshold for p-values
+(default: 0.05). A horizontal line will be drawn at -log10(pval_threshold).}
+}
+\value{
+A ggplot object containing the volcano plot with:
+\itemize{
+\item Points representing proteins/features
+\item X-axis showing log fold change
+\item Y-axis showing -log10 adjusted p-value
+\item Optional coloring by specified variable
+\item Optional faceting
+\item Horizontal line indicating significance threshold
+}
 }
 \description{
-plot_volcano()
+Generates a volcano plot to visualize differential expression results from limma analysis.
+The plot shows log fold changes on the x-axis and -log10 adjusted p-values on the y-axis,
+with options for coloring points and faceting.
+}
+\examples{
+# Basic volcano plot:
+# plot_volcano(limma_results$top_table)
+
+# With significance threshold and coloring:
+# plot_volcano(limma_results$top_table, color_by = "group", pval_threshold = 0.01)
+
+# With faceting:
+# plot_volcano(limma_results$top_table, facet_formula = ~group)
 }

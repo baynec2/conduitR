@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare_qfeature.R
 \name{prepare_qfeature}
 \alias{prepare_qfeature}
-\title{prepare_qfeature}
+\title{Prepare QFeatures Object from Multiple Data Matrices}
 \usage{
 prepare_qfeature(
   sample_annotation_fp,
@@ -11,14 +11,84 @@ prepare_qfeature(
 )
 }
 \arguments{
-\item{sample_annotation_fp}{filepath of sample annotation file path}
+\item{sample_annotation_fp}{Character string specifying the file path to the sample
+annotation file. This file should be a tab-delimited text file containing sample
+metadata, with a "file" column that matches the column names in the data matrices.}
 
-\item{vector_of_matrix_fps}{vector of filepath}
+\item{vector_of_matrix_fps}{Character vector containing file paths to the data matrices.
+Each file should be a tab-delimited text file with features as rows and samples
+as columns. The first column should contain feature identifiers.}
 
-\item{vector_of_matrices_names}{vector of names to call each matrices.
-Optional, by default the file name - the extension will be used.}
+\item{vector_of_matrices_names}{Optional character vector specifying names for each
+matrix in the QFeatures object. If NULL (default), names are derived from the
+matrix filenames by removing "_matrix.tsv" extension.}
+}
+\value{
+A QFeatures object containing:
+\itemize{
+\item Multiple assays, one for each input matrix
+\item Shared sample annotations (colData) across all assays
+\item Feature annotations (rowData) specific to each assay
+\item Consistent sample identifiers across all components
+}
+Each assay is stored as a SummarizedExperiment object with:
+\itemize{
+\item assay: The quantitative data matrix
+\item rowData: Feature metadata from the first column of each matrix
+\item colData: Sample metadata from the annotation file
+}
 }
 \description{
-assemble qfeature object from a list of any number of matrices corresponding
-to the outputs of the process.
+Assembles a QFeatures object from a list of data matrices and sample annotations.
+This function is particularly useful for integrating multiple types of quantitative
+data (e.g., protein abundances, peptide intensities) into a single, organized
+data structure that maintains relationships between features and samples.
+}
+\note{
+This function:
+\itemize{
+\item Requires consistent sample identifiers across all inputs
+\item Automatically handles feature identifiers as row names
+\item Preserves all sample metadata from the annotation file
+\item Creates a hierarchical data structure for multi-level analysis
+}
+
+Important considerations:
+\itemize{
+\item Sample annotation file must have a "file" column
+\item Matrix files must be tab-delimited
+\item Column names in matrices must match sample identifiers
+\item Feature IDs should be unique within each matrix
+}
+}
+\examples{
+# Basic usage with default matrix names:
+# qf <- prepare_qfeature(
+#   sample_annotation_fp = "samples.tsv",
+#   vector_of_matrix_fps = c("protein_matrix.tsv", "peptide_matrix.tsv")
+# )
+
+# Specify custom names for the matrices:
+# qf <- prepare_qfeature(
+#   sample_annotation_fp = "samples.tsv",
+#   vector_of_matrix_fps = c("protein_matrix.tsv", "peptide_matrix.tsv"),
+#   vector_of_matrices_names = c("protein", "peptide")
+# )
+
+# The resulting QFeatures object can be used with other functions:
+# plot_heatmap(qf, "protein")
+# calc_relative_abundance(qf, "protein")
+# perform_limma_analysis(qf, "protein", ~group, "groupB - groupA")
+
+}
+\seealso{
+\itemize{
+\item \code{\link[QFeatures]{QFeatures}} for the underlying data structure
+\item \code{\link[SummarizedExperiment]{SummarizedExperiment}} for assay structure
+\item \code{\link[plot_heatmap]{plot_heatmap}} for visualizing the data
+\item \code{\link[calc_relative_abundance]{calc_relative_abundance}} for
+calculating relative abundances
+\item \code{\link[perform_limma_analysis]{perform_limma_analysis}} for
+differential analysis
+}
 }

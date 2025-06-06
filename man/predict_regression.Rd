@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict_regression.R
 \name{predict_regression}
 \alias{predict_regression}
-\title{predict regession}
+\title{Predict Numeric Outcomes Using Machine Learning Models}
 \usage{
 predict_regression(
   qf,
@@ -15,8 +15,69 @@ predict_regression(
 )
 }
 \arguments{
-\item{grid_size}{}
+\item{qf}{A QFeatures object containing the data to analyze}
+
+\item{assay_name}{Character string specifying which assay to use for prediction}
+
+\item{outcome}{Character string specifying the column name of the numeric outcome variable}
+
+\item{train_percent}{Numeric value between 0 and 100 specifying the percentage of data to use for training
+(default: 70)}
+
+\item{model_type}{Character string specifying the type of model to use. Must be one of:
+\itemize{
+\item "lasso_regression": L1-regularized linear regression
+\item "random_forest": Random forest regression
+\item "xgboost": Gradient boosting regression
+}}
+
+\item{v}{Integer specifying the number of folds for cross-validation when tuning (default: 5)}
+
+\item{grid_size}{Integer specifying the number of parameter combinations to try during tuning (default: 20)}
+}
+\value{
+A list containing:
+\itemize{
+\item fit: The trained model object
+\item training_predictions: Predictions on the training data
+\item test_predictions: Predictions on the test data
+\item outcome: Name of the outcome variable
+\item test: The test dataset
+\item importance: Feature importance scores (varies by model type)
+}
 }
 \description{
-Predict numeric outcomes
+Performs regression analysis on QFeatures data using various machine learning models.
+Supports lasso regression, random forest, and XGBoost models with optional hyperparameter tuning.
+This function handles data preprocessing, model training, and prediction in a single workflow.
+}
+\note{
+This function requires the following packages:
+\itemize{
+\item glmnet for lasso regression
+\item ranger for random forest
+\item xgboost for gradient boosting
+\item caret for model training and tuning
+}
+Computation time varies by model type:
+\itemize{
+\item Lasso regression: Fastest, suitable for large datasets
+\item Random forest: Moderate, scales with number of trees and features
+\item XGBoost: Can be slow for large datasets, but often provides best performance
+}
+For large datasets, consider using a subset of features or increasing the removeVar
+parameter in preprocessing steps to improve performance.
+}
+\examples{
+# Basic usage with lasso regression:
+# results <- predict_regression(qfeatures_obj, "protein", "concentration")
+
+# Using random forest with tuning:
+# results <- predict_regression(qfeatures_obj, "protein", "concentration",
+#                             model_type = "random_forest", v = 5)
+
+# Using XGBoost with custom training split:
+# results <- predict_regression(qfeatures_obj, "protein", "concentration",
+#                             model_type = "xgboost", train_percent = 80)
+
 }

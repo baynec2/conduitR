@@ -2,7 +2,7 @@
 % Please edit documentation in R/conduit.R
 \name{initialize,conduit-method}
 \alias{initialize,conduit-method}
-\title{Initialize a Conduit object}
+\title{Initialize a Conduit Object}
 \usage{
 \S4method{initialize}{conduit}(
   .Object,
@@ -13,17 +13,30 @@
 )
 }
 \arguments{
-\item{QFeatures}{A QFeatures object.}
+\item{QFeatures}{A QFeatures object containing proteomics data and metadata}
 
-\item{combined_metrics}{A tibble containing proteins and their assigned taxonomy, as used in database}
+\item{combined_metrics}{A tibble containing metrics about protein detection and
+taxonomy (default: NULL)}
 
-\item{database_protein_taxonomy}{A tibble containing the database metrics.}
+\item{database_protein_taxonomy}{A tibble containing taxonomy information for
+all proteins in the database (default: NULL)}
 
-\item{detected_protein_taxonomy}{A tibble containing the detected protein taxonomy.}
+\item{detected_protein_taxonomy}{A tibble containing taxonomy information for
+detected proteins (default: NULL)}
 }
 \value{
-A Conduit object.
+A new conduit object containing the provided data
 }
 \description{
-Initialize a Conduit object
+Creates a new instance of the conduit class, combining proteomics data with
+taxonomic and detection metrics into a single integrated object.
+}
+\examples{
+# Create a new conduit object:
+# new_conduit <- new("conduit",
+#   QFeatures = qfeatures_obj,
+#   combined_metrics = metrics_tibble,
+#   database_protein_taxonomy = db_taxonomy,
+#   detected_protein_taxonomy = detected_taxonomy
+# )
 }

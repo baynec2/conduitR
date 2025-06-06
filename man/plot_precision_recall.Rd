@@ -2,13 +2,39 @@
 % Please edit documentation in R/plot_precision_recall.R
 \name{plot_precision_recall}
 \alias{plot_precision_recall}
-\title{plot precision recall curves from predicted classifications}
+\title{Plot Precision-Recall Curve for Classification Results}
 \usage{
 plot_precision_recall(predict_classification_list, data_set = "test")
 }
 \arguments{
-\item{data_set}{}
+\item{predict_classification_list}{A list containing prediction results, including:
+\itemize{
+\item test_predictions: A data frame with prediction probabilities and true outcomes for test data
+\item training_predictions: A data frame with prediction probabilities and true outcomes for training data
+\item outcome: The name of the outcome variable
+}}
+
+\item{data_set}{Character string specifying which dataset to plot. Must be either "test" or "training".
+Defaults to "test".}
+}
+\value{
+A ggplot object containing the precision-recall curve plot with:
+\itemize{
+\item X-axis showing recall
+\item Y-axis showing precision
+\item Title indicating the dataset used
+\item Subtitle showing the area under the precision-recall curve (AUC-PR)
+}
 }
 \description{
-plot precision recall curves from predicted classifications
+Creates a precision-recall curve plot for classification model predictions,
+showing the trade-off between precision and recall at different classification thresholds.
+This is particularly useful for imbalanced classification problems.
+}
+\examples{
+# Plot precision-recall curve for test data:
+# plot_precision_recall(model_predictions, data_set = "test")
+
+# Plot precision-recall curve for training data:
+# plot_precision_recall(model_predictions, data_set = "training")
 }

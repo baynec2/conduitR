@@ -2,13 +2,18 @@
 % Please edit documentation in R/conduit.R
 \name{show,conduit-method}
 \alias{show,conduit-method}
-\title{Show method for Conduit object}
+\title{Show Method for Conduit Object}
 \usage{
 \S4method{show}{conduit}(object)
 }
 \arguments{
-\item{object}{A Conduit object.}
+\item{object}{A conduit object to summarize}
 }
 \description{
-Show method for Conduit object
+Displays a summary of the conduit object's contents, including the number of
+assays and availability of various data components.
+}
+\examples{
+# Display summary of a conduit object:
+# show(conduit_obj)
 }

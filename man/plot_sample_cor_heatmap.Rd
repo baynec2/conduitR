@@ -2,13 +2,42 @@
 % Please edit documentation in R/plot_sample_cor_heatmap.R
 \name{plot_sample_cor_heatmap}
 \alias{plot_sample_cor_heatmap}
-\title{plot_sample_cor_heatmap}
+\title{Plot Sample Correlation Heatmap}
 \usage{
 plot_sample_cor_heatmap(qf, assay_name, sample_annotation_variables)
 }
 \arguments{
-\item{sample_annotation_variables}{}
+\item{qf}{A QFeatures object containing the data to analyze}
+
+\item{assay_name}{Character string specifying which assay to use for correlation analysis}
+
+\item{sample_annotation_variables}{Character vector specifying which columns from
+colData to use for sample annotations (e.g., c("group", "batch", "treatment"))}
+}
+\value{
+A ComplexHeatmap object containing:
+\itemize{
+\item Main heatmap showing Pearson correlations between samples
+\item Color scale from viridis palette
+\item Top and right annotations showing sample metadata
+\item Consistent color schemes for annotation variables
+}
 }
 \description{
-plot the pearson correlation.
+Creates a heatmap visualization of Pearson correlations between samples,
+with optional sample annotations displayed as colored bars. This is useful
+for assessing sample relationships and identifying potential batch effects
+or experimental groups.
+}
+\examples{
+# Basic correlation heatmap:
+# plot_sample_cor_heatmap(qfeatures_obj, "protein", NULL)
+
+# With sample annotations:
+# plot_sample_cor_heatmap(qfeatures_obj, "protein", 
+#                        c("group", "batch"))
+
+# With multiple annotation variables:
+# plot_sample_cor_heatmap(qfeatures_obj, "protein",
+#                        c("treatment", "timepoint", "replicate"))
 }

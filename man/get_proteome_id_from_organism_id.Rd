@@ -2,16 +2,67 @@
 % Please edit documentation in R/get_proteome_id_from_organism_id.R
 \name{get_proteome_id_from_organism_id}
 \alias{get_proteome_id_from_organism_id}
-\title{get_batch_of_proteome_ids}
+\title{Get Proteome ID for a Single Organism}
 \usage{
 get_proteome_id_from_organism_id(id)
 }
 \arguments{
-\item{base_url}{}
+\item{id}{A single NCBI taxonomy ID (e.g., 9606 for human, 562 for E. coli).
+This ID is used to query UniProt's proteome database.}
+}
+\value{
+A tibble containing:
+\itemize{
+\item Proteome Id: UniProt proteome identifier
+\item Organism: Scientific name of the organism
+\item Organism Id: NCBI taxonomy ID
+\item Protein count: Number of proteins in the proteome
+}
+If the request fails, returns NULL and prints an error message.
 }
 \description{
-get a batch of proteome ids from organism ids
+Retrieves the proteome ID for a single organism from UniProt using its NCBI
+taxonomy ID. This function is typically used internally by
+\code{\link[get_proteome_ids_from_organism_ids]{get_proteome_ids_from_organism_ids}}
+for batch processing of multiple organisms.
 }
-\details{
-Note this can only handle
+\note{
+This function:
+\itemize{
+\item Makes a single API request to UniProt
+\item Returns only the first proteome if multiple are found
+\item Handles API errors gracefully
+\item Is designed for use in batch processing
+}
+
+For processing multiple organisms, use
+\code{\link[get_proteome_ids_from_organism_ids]{get_proteome_ids_from_organism_ids}}
+which includes additional features like:
+\itemize{
+\item Parallel processing
+\item Reference proteome prioritization
+\item Duplicate ID handling
+\item Missing ID reporting
+}
+}
+\examples{
+# Get proteome ID for human:
+# human_proteome <- get_proteome_id_from_organism_id(9606)
+
+# Get proteome ID for E. coli:
+# ecoli_proteome <- get_proteome_id_from_organism_id(562)
+
+# The function is typically used with get_proteome_ids_from_organism_ids:
+# proteomes <- get_proteome_ids_from_organism_ids(c(9606, 562))
+
+}
+\seealso{
+\itemize{
+\item \code{\link[get_proteome_ids_from_organism_ids]{get_proteome_ids_from_organism_ids}}
+for processing multiple organisms
+\item \code{\link[get_all_reference_proteomes]{get_all_reference_proteomes}}
+for retrieving reference proteome information
+\item \code{\link[get_fasta_file]{get_fasta_file}} for downloading
+proteome FASTA files
+}
 }

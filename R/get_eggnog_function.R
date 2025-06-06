@@ -1,14 +1,54 @@
-#' get_eggnog_function
+#' Get Functional Annotations from EggNOG Database
 #'
-#' Get Eggnog functional go terms given a vector of EGGNOG ids
+#' Retrieves Gene Ontology (GO) terms and other functional annotations for proteins
+#' using their EggNOG ortholog group IDs. This function queries the EggNOG API to
+#' obtain detailed functional information including GO terms, evidence codes, and
+#' annotation statistics.
 #'
-#' @param eggnog_ids
+#' @param eggnog_ids Character vector containing one or more EggNOG ortholog group IDs
+#'   (e.g., "ENOG502S5P5"). These IDs can be obtained from EggNOG-mapper or other
+#'   orthology prediction tools.
 #'
-#' @returns
+#' @return A tibble containing functional annotations with the following columns:
+#'   \itemize{
+#'     \item eggnog_id: The input EggNOG ortholog group ID
+#'     \item go_type: Type of GO term (e.g., "biological_process", "molecular_function")
+#'     \item go_id: The GO term identifier
+#'     \item go_description: Description of the GO term
+#'     \item evidence_codes: GO evidence codes supporting the annotation
+#'     \item seq_count: Number of sequences in the ortholog group
+#'     \item frequency: Frequency of the GO term in the ortholog group
+#'     \item annotation_count: Number of times the GO term is annotated
+#'   }
+#'   If an EggNOG ID is not found or returns an error, that ID will be omitted from
+#'   the results with a warning message.
+#'
 #' @export
 #'
 #' @examples
-#' insulin <- get_eggnog_function("ENOG502S5P5")
+#' # Get functional annotations for a single protein:
+#' # insulin_annotations <- get_eggnog_function("ENOG502S5P5")
+#' 
+#' # Get annotations for multiple proteins:
+#' # protein_annotations <- get_eggnog_function(
+#' #   c("ENOG502S5P5", "ENOG410XNJK", "ENOG410XNJL")
+#' # )
+#' 
+#' # Use the results for downstream analysis:
+#' # - Filter by GO type
+#' # - Analyze most common functions
+#' # - Compare functional profiles
+#'
+#' @note
+#' This function:
+#' \itemize{
+#'   \item Requires an internet connection to access the EggNOG API
+#'   \item May take some time for multiple IDs due to API rate limiting
+#'   \item Returns NA for any fields that cannot be retrieved
+#'   \item Handles API errors gracefully with warning messages
+#' }
+#' The EggNOG API is free to use but has rate limits. For bulk queries, consider
+#' implementing appropriate delays between requests.
 get_eggnog_function <- function(eggnog_ids) {
   # Initialize an empty results tibble
   results <- tibble::tibble(
@@ -81,6 +121,3 @@ get_eggnog_function <- function(eggnog_ids) {
   }
   out <- tibble::as_tibble(results)
 }
-
-
-test = get_eggnog_function("ENOG502S5P5")

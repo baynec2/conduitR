@@ -2,13 +2,40 @@
 % Please edit documentation in R/get_ncbi_taxonomy.R
 \name{get_ncbi_taxonomy}
 \alias{get_ncbi_taxonomy}
-\title{get_ncbi_taxonomy}
+\title{Fetch Complete Taxonomic Information from NCBI}
 \usage{
 get_ncbi_taxonomy(ncbi_ids)
 }
 \arguments{
-\item{ncbi_ids}{a vector of ncbi taxonomy ids}
+\item{ncbi_ids}{A numeric vector of NCBI taxonomy IDs to query}
+}
+\value{
+A data frame containing:
+\itemize{
+\item organism_id: NCBI taxonomy ID
+\item species: Scientific name of the organism
+\item rank: Taxonomic rank (e.g., domain, kingdom, phylum)
+\item name: Scientific name at each taxonomic level
+}
+The data frame includes all taxonomic levels from domain to genus,
+with missing ranks filled as NA.
 }
 \description{
-given a list of ncbi taxonomy, fetch complete taxonomic information.
+Retrieves comprehensive taxonomic information for a list of NCBI taxonomy IDs
+using the NCBI Entrez API. This function is useful for obtaining complete
+taxonomic lineages and scientific names for organisms.
+}
+\examples{
+# Fetch taxonomy for a single organism:
+# taxonomy <- get_ncbi_taxonomy(9606)  # Human
+
+# Fetch taxonomy for multiple organisms:
+# taxonomy <- get_ncbi_taxonomy(c(9606, 10090))  # Human and Mouse
+
+# The results can be used with other functions:
+# plot_taxa_tree(taxonomy)
+# plot_sunburst(taxonomy)
+
+# Note: This function requires an internet connection and may be
+# rate-limited by NCBI's API policies.
 }

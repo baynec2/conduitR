@@ -2,17 +2,56 @@
 % Please edit documentation in R/get_fasta_file.R
 \name{get_fasta_file}
 \alias{get_fasta_file}
-\title{get_fasta_file
-download proteome file from uniprot.}
+\title{Download Proteome FASTA File from UniProt}
 \usage{
 get_fasta_file(proteome_id, fasta_dir = getwd())
 }
 \arguments{
-\item{proteome_id}{proteome id}
+\item{proteome_id}{Character string specifying the UniProt proteome identifier
+(e.g., "UP000005640" for human proteome). These IDs can be found in the
+UniProt proteomes database.}
 
-\item{fasta_fp}{file path to write to}
+\item{fasta_dir}{Character string specifying the directory where the FASTA file
+should be saved. Defaults to the current working directory.}
+}
+\value{
+A tibble containing download information with the following columns:
+\itemize{
+\item proteome_id: The input proteome identifier
+\item resp_status: HTTP response status code (200 for success)
+}
+The function also saves a FASTA file named "{proteome_id}.fasta" in the
+specified directory.
 }
 \description{
-get_fasta_file
-download proteome file from uniprot.
+Downloads a proteome FASTA file from UniProt using their REST API. This function
+retrieves protein sequences for a specified proteome ID and saves them to a local
+file. The downloaded file contains protein sequences with UniProt-style headers
+including protein IDs, organism information, and other metadata.
+}
+\note{
+This function:
+\itemize{
+\item Requires an internet connection to access UniProt
+\item Uses the UniProt REST API
+\item Creates a new file or overwrites existing files
+\item Handles API errors with informative messages
+}
+The UniProt API is free to use but has rate limits. For bulk downloads,
+consider implementing appropriate delays between requests.
+}
+\examples{
+# Download human proteome:
+# result <- get_fasta_file("UP000005640")
+
+# Download to a specific directory:
+# result <- get_fasta_file("UP000005640", fasta_dir = "data/proteomes")
+
+# Check download status:
+# if (result$resp_status == 200) {
+#   message("Download successful")
+# } else {
+#   message("Download failed")
+# }
+
 }

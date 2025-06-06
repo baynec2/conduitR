@@ -92,5 +92,18 @@ test_that("it works with duplicate ids",{
 })
 
 
+test_that("it produces NAs for organism IDs with no ID", {
+
+  t = readr::read_delim("tests/data/organisms.txt")
+
+  organism_ids <- t$organism_id
+
+
+  organism_ids <- organism_ids[!is.na(organism_ids)]
+
+ pi = get_proteome_ids_from_organism_ids(t$organism_id)
+
+  expect_true(is.na(pi$`Proteome Id`[[418]]))
+})
 
 

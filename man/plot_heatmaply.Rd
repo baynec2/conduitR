@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_heatmaply.R
 \name{plot_heatmaply}
 \alias{plot_heatmaply}
-\title{plot_heatmaply}
+\title{Create Interactive Heatmap with Annotations}
 \usage{
 plot_heatmaply(
   qf,
@@ -16,8 +16,58 @@ plot_heatmaply(
 )
 }
 \arguments{
-\item{...}{}
+\item{qf}{A QFeatures object containing the data to visualize}
+
+\item{assay_name}{Character string specifying which assay to use for the heatmap}
+
+\item{col_color_variables}{Optional character vector specifying which columns from
+colData to use for column annotations (e.g., c("group", "batch"))}
+
+\item{row_color_variables}{Optional character vector specifying which columns from
+rowData to use for row annotations (e.g., c("protein_class", "pathway"))}
+
+\item{scale}{Character string specifying how to scale the data. Must be one of:
+\itemize{
+\item "column": Scale each column (default)
+\item "row": Scale each row
+\item "none": No scaling
+}}
+
+\item{hover_col_variables}{Optional character vector specifying which columns from
+colData to show in hover text. Use "all" to show all columns.}
+
+\item{hover_row_variables}{Optional character vector specifying which columns from
+rowData to show in hover text. Use "all" to show all columns.}
+
+\item{...}{Additional arguments passed to heatmaply::heatmaply()}
+}
+\value{
+An interactive heatmaply object containing:
+\itemize{
+\item Main heatmap showing the data matrix
+\item Column annotations using specified variables
+\item Row annotations using specified variables
+\item Interactive hover information showing metadata
+\item Zoom and pan capabilities
+}
 }
 \description{
-plot_heatmaply
+Generates an interactive heatmap visualization using the heatmaply package,
+allowing for interactive exploration of data with hover information and
+optional row and column annotations.
+}
+\examples{
+# Basic interactive heatmap:
+# plot_heatmaply(qfeatures_obj, "protein")
+
+# With sample annotations and hover info:
+# plot_heatmaply(qfeatures_obj, "protein",
+#               col_color_variables = c("group", "batch"),
+#               hover_col_variables = "all")
+
+# With both sample and feature annotations:
+# plot_heatmaply(qfeatures_obj, "protein",
+#               col_color_variables = c("treatment", "replicate"),
+#               row_color_variables = c("protein_class"),
+#               hover_row_variables = c("description", "pathway"))
 }

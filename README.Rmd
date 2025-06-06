@@ -26,33 +26,50 @@ These functions are designed to be used in conjunction with the [conduit](https:
 
 ## Features
 
-- **Getting Data**
-  - Download FASTA files.
-  - Download taxonomy data from NCBI
+### Getting Data
+- Download FASTA files from UniProt and NCBI
+- Download and process taxonomy data from NCBI
+- Manage and combine multiple proteome databases
 
-- **Data Processing**
-  - Create custom protein sequence databases
-  - Associate sample proteomics data and metadata using QFeatures integration. 
-  - Transformation, Imputation, and Normalization, of proteomics data. 
+### Data Processing
+- Create custom protein sequence databases
+- Associate sample proteomics data and metadata using QFeatures integration
+- Transformation, imputation, and normalization of proteomics data
+- Quality control and filtering options
 
-- **Statistical Analysis**
-  - Perform LIMMA differential expression analysis
-  - Support for various machine learning models (LASSO, Random Forest, XGBoost)
-  - Feature importance analysis
-  
-- **Visualization**
-  - Interactive heatmaps with annotations
-  - PCA biplots with customizable aesthetics
-  - Taxonomic barplots
-  - Taxonomic heat trees
-  - Volcano plots for differential expression
-  - KEGG pathway visualization
-  - Feature-specific plots
-  - Custom plot aesthetics
+### Statistical Analysis
+- Perform LIMMA differential expression analysis
+- Support for various machine learning models:
+  - LASSO regression
+  - Random Forest
+  - XGBoost
+- Feature importance analysis and selection
+- Statistical testing and multiple testing correction
 
-  - **Miscellaneous**
-  - Logging functions.
+### Visualization
+- Interactive heatmaps with customizable annotations
+- PCA biplots with flexible aesthetics
+- Taxonomic visualizations:
+  - Barplots for abundance analysis
+  - Heat trees for hierarchical relationships
+- Volcano plots for differential expression
+- KEGG pathway visualization
+- Feature-specific plots
+- Custom plot aesthetics and themes
 
+### Miscellaneous
+- Comprehensive logging functions
+- Error handling and validation
+- Integration with existing bioinformatics workflows
+
+## Dependencies
+
+The package requires the following R packages:
+- QFeatures for proteomics data management
+- limma for statistical analysis
+- ggplot2 for visualization
+- tidyr and dplyr for data manipulation
+- Additional packages for specific functionalities (see DESCRIPTION file)
 
 ## Installation
 
@@ -65,4 +82,11 @@ devtools::install_github("baynec2/conduitR")
 
 ## Usage
 
-This is a work in progress, will update in the future.
+This is a work in progress. The package documentation and vignettes will be updated with detailed examples demonstrating:
+- Data import and preprocessing
+- Statistical analysis workflows
+- Visualization techniques
+- Integration with conduit and conduit-GUI
+- Best practices and recommendations
+
+Stay tuned for updates!

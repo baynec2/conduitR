@@ -1,3 +1,6 @@
+################################################################################
+# Setup
+################################################################################
 # Importing necessary packages
 import os
 import glob
@@ -93,7 +96,51 @@ if missing_in_annotation:
 if missing_in_raw:
     raise ValueError(f"Files in sample annotation but no matching raw files: {', '.join(missing_in_raw)}")
 
+################################################################################
+# Defining all of the modules to be used
+################################################################################
+
+if config["method"] == "ncbi_taxonomy_id":
+  module search_space:
+    snakefile: "modules/00_defining_search_space/ncbi_taxonomy/Snakefile"
+  module annotation: 
+    snakefile: "modules/02_annotation/Snakefile"
+# Uncomment methods as they become supported. 
+# elif config["method"] == "proteotyping":
+#   module search_space:
+#     snakefile: "modules/00_defining_search_space/proteotyping/Snakefile"
+#   module annotation: 
+#     snakefile: "modules/02_annotation/proteotyping/Snakefile"
+
+# elif config["method"] == "metagenomic_profiling":
+#   module search_space:
+#     snakefile: "modules/00_defining_search_space/metagenomic_profiling/Snakefile"
+#   module annotation: 
+#     snakefile: "modules/02_annotation/metagenomic_profiling/Snakefile"
+  
+# elif config["method"] == "MAG":
+#   module search_space:
+#     snakefile: "modules/00_defining_search_space/MAG/Snakefile"
+#   module annotation: 
+#     snakefile: "modules/02_annotation/MAG/Snakefile"
+
+# elif config["method"] == "16S":
+#   module search_space:
+#     snakefile: "modules/00_defining_search_space/16S/Snakefile"
+#   module annotation: 
+#     snakefile: "modules/02_annotation/16S/Snakefile"
+
+# Shared modules across all methods
+module diann:
+  snakefile: "modules/01_diann/Snakefile"
+module matrices:
+  snakefile: "modules/03_processing_matrices/Snakefile"
+module integration:
+  snakefile: "modules/04_r_integration/Snakefile"
+
+################################################################################
 # Defining all of the output files
+################################################################################
 rule all:
     input:
         # Config files must be created first
@@ -417,7 +464,7 @@ rule get_kegg_info:
     script:
      "scripts/02_get_detected_proteins_annotation/04_get_kegg_info.R" 
      
-# Getting all Kegg infromation 
+# Getting all taxonomy infromation 
 rule extract_detected_taxonomy:
     input:
       uniprot_annotated_protein_info=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/02_uniprot_annotated_protein_info.txt")
@@ -427,43 +474,7 @@ rule extract_detected_taxonomy:
     container: "apptainer/conduitR.sif"
     script:
      "scripts/02_get_detected_proteins_annotation/05_extract_detected_taxonomy.R"      
-     
-# rule get_cazyme_info:
-#     input:
-#      uniprot_annotated_protein_info="user_input/00_database_resources/04_detected_protein_info.txt"
-#     output:
-#      go_annotations="user_input/00_database_resources/05_go_annotations.txt",
-#      subcellular_locations="user_input/00_database_resources/06_subcellular_locations.txt"
-#     script:
-#      "scripts/00_get_database_resources/03_extract_go_and_cellular_location_info.R" 
-#      
-# rule get_pfam_info:
-#     input:
-#      uniprot_annotated_protein_info="user_input/00_database_resources/04_detected_protein_info.txt"
-#     output:
-#      go_annotations="user_input/00_database_resources/05_go_annotations.txt",
-#      subcellular_locations="user_input/00_database_resources/06_subcellular_locations.txt"
-#     script:
-#      "scripts/00_get_database_resources/03_extract_go_and_cellular_location_info.R" 
-#      
-# rule interpro_info:
-#     input:
-#      uniprot_annotated_protein_info="user_input/00_database_resources/04_detected_protein_info.txt"
-#     output:
-#      go_annotations="user_input/00_database_resources/05_go_annotations.txt",
-#      subcellular_locations="user_input/00_database_resources/06_subcellular_locations.txt"
-#     script:
-#      "scripts/00_get_database_resources/03_extract_go_and_cellular_location_info.R" 
-
-# # Making detected protein Resources ReadME
-# rule make_detected_protein_resources_readme:
-#     input:
-#       detected_protein_info="user_input/00_database_resources/detected_protein_resources/00_detected_protein_info.txt"
-#     output:
-#        kegg_annotations="user_input/00_database_resources/detected_protein_resources/05_kegg_annotations.txt"
-#     script:
-#      "scripts/00_get_database_resources/04_get_kegg_info.R" 
-#     
+  
 
 ################################################################################
 # 03 processing matrices

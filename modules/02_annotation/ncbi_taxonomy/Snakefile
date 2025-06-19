@@ -1,0 +1,55 @@
+# Get detected protein information from Uniprot
+rule get_annotations_from_uniprot:
+  input:
+    detected_protein_info = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/00_detected_protein_info.txt")
+  output:
+    uniprot_annotated_protein_info = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/02_uniprot_annotated_protein_info.txt")
+  log: get_log_path("get_annotations_from_uniprot")
+  container: "apptainer/conduitR.sif"
+  script:
+    "scripts/02_get_detected_proteins_annotation/01_get_annotations_from_uniprot.R"
+    
+# Extracting GO infromation from data frame
+rule extract_go_info:
+    input:
+     uniprot_annotated_protein_info=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/02_uniprot_annotated_protein_info.txt")
+    output:
+     go_annotations=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/03_go_annotations.txt")
+    log: get_log_path("extract_go_info")
+    container: "apptainer/conduitR.sif"
+    script:
+     "scripts/02_get_detected_proteins_annotation/02_extract_go_info.R" 
+
+# Extracting cellular location information
+rule extract_cellular_location_info:
+    input:
+      uniprot_annotated_protein_info=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/02_uniprot_annotated_protein_info.txt")
+    output:
+      subcellular_locations=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/04_subcellular_locations.txt")
+    log: get_log_path("extract_cellular_location_info")
+    container: "apptainer/conduitR.sif"
+    script:
+     "scripts/02_get_detected_proteins_annotation/03_extract_subcellular_locations.R" 
+     
+# Getting all Kegg infromation 
+rule get_kegg_info:
+    input:
+      uniprot_annotated_protein_info=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/02_uniprot_annotated_protein_info.txt")
+    output:
+       kegg_annotations=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/05_kegg_annotations.txt")
+    log: get_log_path("get_kegg_info")
+    container: "apptainer/conduitR.sif"
+    script:
+     "scripts/02_get_detected_proteins_annotation/04_get_kegg_info.R" 
+     
+# Getting all taxonomy infromation 
+rule extract_detected_taxonomy:
+    input:
+      uniprot_annotated_protein_info=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/02_uniprot_annotated_protein_info.txt")
+    output:
+       detected_taxonomy=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/06_detected_taxonomy.txt")
+    log: get_log_path("extract_detected_taxonomy")
+    container: "apptainer/conduitR.sif"
+    script:
+     "scripts/02_get_detected_proteins_annotation/05_extract_detected_taxonomy.R"      
+  

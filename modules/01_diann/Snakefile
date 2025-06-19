@@ -1,0 +1,62 @@
+#################################################################################
+# Generating Spectral Library
+#################################################################################
+rule generate_diann_spectral_library:
+    input:
+        fasta = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/00_database.fasta"),
+        config_file = os.path.join(EXPERIMENT_DIR, "config/generate_diann_spectral_library.cfg")
+    output:
+        os.path.join(EXPERIMENT_DIR, "input/00_database_resources/04_database.predicted.speclib")
+    log: get_log_path("generate_diann_spectral_library")
+    container:
+        "apptainer/diann2.1.0.sif"
+    params:
+        config_file = lambda wildcards, input: input.config_file
+    shell:
+        """
+        diann --cfg {{params.config_file}} \
+        --fasta {{input.fasta}} \
+        --out-lib {{output}}
+        """
+################################################################################
+# Running DIANN
+################################################################################
+rule run_diann:
+    input:
+        raw_files = RAW_FILEPATHS,
+        spectral_library = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/04_database.predicted.speclib"),
+        fasta = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/00_database.fasta"),
+        config_file = os.path.join(EXPERIMENT_DIR, "config/run_diann.cfg")
+    output:
+        out = os.path.join(EXPERIMENT_DIR, "output/01_diann_output/"),
+        report_pr_matrix = os.path.join(EXPERIMENT_DIR, "output/01_diann_output/report.pr_matrix.tsv"),
+        report_pg_matrix = os.path.join(EXPERIMENT_DIR, "output/01_diann_output/report.pg_matrix.tsv")
+    log: get_log_path("run_diann")
+    container:
+        "apptainer/diann2.1.0.sif"
+    params:
+        config_file = lambda wildcards, input: input.config_file
+    shell:
+        """
+        diann --cfg {{params.config_file}} \
+        --fasta {{input.fasta}} \
+        --out {{output.out}} \
+        --f {{input.raw_files}} \
+        --lib {{input.spectral_library}} \
+        --threads {{threads}} --verbose 1 
+        """
+################################################################################
+# Extracting Detected Proteins
+################################################################################
+rule extract_detected_proteins:
+  input:
+    protein_info_df=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/02_protein_info.txt"),
+    protein_info_fasta =os.path.join(EXPERIMENT_DIR, "input/00_database_resources/00_database.fasta"),
+    report_pg_matrix= os.path.join(EXPERIMENT_DIR, "output/01_diann_output/report.pg_matrix.tsv")
+  output:
+    detected_protein_info_df = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/00_detected_protein_info.txt"),
+    detected_protein_info_fasta = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/detected_protein_resources/01_detected_protein.fasta")
+  log: get_log_path("extract_detected_proteins")
+  container: "apptainer/conduitR.sif"
+  script:
+    "scripts/02_get_detected_proteins_annotation/00_extract_detected_proteins.R"

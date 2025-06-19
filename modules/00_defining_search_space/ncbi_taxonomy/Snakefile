@@ -1,0 +1,63 @@
+################################################################################
+# Getting Database Resources (Defining the Search Space)
+################################################################################        
+
+# Downloading Fasta for each Organism ID
+rule get_fasta:
+    input:
+      os.path.join(EXPERIMENT_DIR, "input/organisms.txt")
+    output:
+      # File containing proteome ids. Allows user to see what proteomes for each organism were downloaded.
+      # Also contains NA values for NCBI taxon ids that are not in the Uniprot database.
+      os.path.join(EXPERIMENT_DIR, "input/00_database_resources/00_proteome_ids.txt"),
+      os.path.join(EXPERIMENT_DIR, "input/00_database_resources/00_database.fasta")
+    log: get_log_path("get_fasta")
+    container:
+      "apptainer/conduitR.sif"
+    script:
+      "scripts/00_get_database_resources/00_get_fasta.R"
+      
+# Generating Full Taxonomy Information for each Organism ID
+rule get_taxonomy:
+    input:
+        os.path.join(EXPERIMENT_DIR, "input/organisms.txt"),
+        # File containing results of get fasta. Includes info about what taxa ids had cooresponding proteome ids.
+        os.path.join(EXPERIMENT_DIR, "input/00_database_resources/00_proteome_ids.txt")
+    output:
+        os.path.join(EXPERIMENT_DIR, "input/00_database_resources/01_taxonomy.txt")
+    log: get_log_path("get_taxonomy")
+    container: "apptainer/conduitR.sif"
+    script:
+      "scripts/00_get_database_resources/01_get_taxonomy.R"
+      
+# Taking the data from fasta and taxonomy file, putting it in fasta.
+rule get_protein_info_from_fasta:
+    input:
+      database_fasta=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/00_database.fasta"),
+      taxonomy_txt=os.path.join(EXPERIMENT_DIR, "input/00_database_resources/01_taxonomy.txt")
+    output:
+      os.path.join(EXPERIMENT_DIR, "input/00_database_resources/02_protein_info.txt")
+    log: get_log_path("get_protein_info_from_fasta")
+    container: "apptainer/conduitR.sif"
+    script:
+      "scripts/00_get_database_resources/02_get_protein_info_from_fasta.R"
+      
+# Plotting a taxonomic tree containing the taxonomy used in experiment
+rule plot_taxonomic_tree:
+    input:os.path.join(EXPERIMENT_DIR, "input/00_database_resources/01_taxonomy.txt")
+    output:os.path.join(EXPERIMENT_DIR, "input/00_database_resources/03_taxonomic_tree_of_database.pdf")
+    log: get_log_path("plot_taxonomic_tree")
+    container:"apptainer/conduitR.sif"
+    script:
+     "scripts/00_get_database_resources/03_plot_taxonomic_tree.R"
+
+# Creating a DataBase ReadMe          
+rule make_database_resources_readme:
+    input:os.path.join(EXPERIMENT_DIR, "input/00_database_resources/02_protein_info.txt")
+    output:
+      md =os.path.join(EXPERIMENT_DIR, "input/00_database_resources/README.md"),
+      html = os.path.join(EXPERIMENT_DIR, "input/00_database_resources/README.html")
+    log: get_log_path("make_database_resources_readme")
+    container: "apptainer/conduitR.sif"
+    script:
+     "scripts/00_get_database_resources/04_make_database_resources_readme.R"

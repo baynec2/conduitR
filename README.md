@@ -2,7 +2,11 @@
 
 Conduit is a scalable and modular workflow management system for metaproteomics data analysis, designed to seamlessly integrate with metagenomic data if avalible. Built using Snakemake, it provides a robust pipeline for processing Data Independent Acquisition (DIA) mass spectrometry data with particular emphasis on metaproteomics applications.
 
+
 ## Features
+
+Note this is currently a work in progress and all features are not yet avalible. 
+
 - **Search Space Definition**: Choose the best way to define the search space for *your* experiment.
     - **User Defined Taxa**: Know what taxa are in your sample? Great! Just give Conduit the ncbi taxa ids, we will do the rest.
     - **User Definied Proteomes**: Know the specific proteome ids in your sample? Also amazing, we can work with those too. 
@@ -23,6 +27,15 @@ Conduit is a scalable and modular workflow management system for metaproteomics 
 
 ### Required Software
 - Snakemake (≥7.0.0)
+- conduitR
+- Python libraries
+   * glob
+   * pandas 
+   * shutil
+   * pdb  
+   * logging
+   * datetime
+- DIA-NN (2.1.0)
 - Apptainer/Singularity (≥1.1.0)
 
 Note: All other dependencies (R, Python, DIA-NN, etc.) are automatically handled through Apptainer containers. You only need to ensure that Snakemake and Apptainer are installed on your *linux* system.
@@ -38,7 +51,7 @@ If not using linux or apptainer, you will need to install the dependencies manua
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/conduit.git
+git clone https://github.com/baynec2/conduit.git
 cd conduit
 ```
 
@@ -66,16 +79,31 @@ snakemake --configfile experiments/your_experiment/config/snakemake.yaml --use-a
 
 ```
 conduit/
-├── modules/              # Snakemake modules
-│   ├── database/        # Database handling
-│   ├── diann/           # DIA-NN analysis
-│   ├── annotation/      # Protein annotation
-│   └── matrices/        # Matrix processing
-├── scripts/             # Analysis scripts
-├── config/              # Default configurations
-├── experiments/         # Experiment directories
-│   └── example/         # Example experiment
-└── tests/               # Test suite
+├── modules/                          # Snakemake modules. Each module should have snakefile and associated scripts. 
+│   ├── search_space/                 # Defining the search space
+        ├── user_specified            # with ncbi_taxonomy and proteome_id 
+        ├── proteotyping              # with species specific peptides
+        ├── metagenomic_profiling     # with metagenomic profiling (reference based_)
+        ├── mags                      # with metagenome assembled genome
+        └── 16s                       # with 16S data
+│   ├── diann/                        # Identification and Quantification with DIA-NN
+│   ├── annotation/                   # Protein / taxonomic annotation
+│   |── matrices/                     # Matrix processing
+|   └── r_integration                 # Integration into R
+├── config/                           # Default configurations (copied to each experiment config if not altered)
+├── experiments/                      # Experiment directories
+│   └── example/                      # Example experiment
+|       |── config                    # Configuration files for specific experiment
+|       |── logs                      # Log files for each rule. 
+        └─── input                     # Inputs into the workflow
+            |── sample_annotation.txt # Sample annotation file matching names of .raw MS files. 
+            |── organisms.txt         # Text file NCBI organism IDs defining the search space (if using ncbi_taxonomy)
+            |── proteome_id.txt       # Text file containing proteome ids (if using proteome id workflow)
+            |── fastq                 # Fastq input for metagenomic profiling or 16S
+            |── mags                  # MAG inputs.
+            └── raw_files             # Thermo Mass Spectrometry .raw files. 
+
+└── tests/                            # Test suite
 ```
 ## Configuration
 
@@ -123,7 +151,6 @@ The workflow generates several key outputs:
 Conduit would not be possible without the great work of many people making great software that it relies on. These are as follows:
 
 - Snakemake developers
-- 
 - DIA-NN developers
 - R Bioconductor community
 - R tidyverse community

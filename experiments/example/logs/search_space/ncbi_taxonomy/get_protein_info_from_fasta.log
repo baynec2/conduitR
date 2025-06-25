@@ -1,0 +1,17 @@
+[2025-06-25 13:56:53] Running 02_get_protein_info_from_fasta.R script
+[2025-06-25 13:56:53] Input files: experiments/example/input/database_resources/database.fasta and experiments/example/input/database_resources/taxonomy.txt
+[2025-06-25 13:56:53] Output file: experiments/example/input/database_resources/protein_info.txt
+[2025-06-25 13:56:53] Loading organism annotation from the taxonomy file.
+Rows: 5 Columns: 14
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
+Delimiter: " "
+chr (11): organism_type, domain, kingdom, phylum, class, order, family, genu...
+dbl  (1): organism_id
+lgl  (2): reference, downloaded_by_conduit
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+[2025-06-25 13:56:54] Extracting protein information from fasta database.
+[2025-06-25 13:56:57] Adding organism annotation to protein info.
+[2025-06-25 13:56:57] Writing protein info to file.
+[2025-06-25 13:56:57] Completed 02_get_protein_info_from_fasta.R script. Time taken: 0.07 minutes

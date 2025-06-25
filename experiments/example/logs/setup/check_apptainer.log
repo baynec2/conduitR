@@ -1,0 +1,5 @@
+[2025-06-25 13:40:30] Starting Apptainer check...
+[2025-06-25 13:40:30] Apptainer is not installed or not found in PATH.
+[2025-06-25 13:40:30] Please install Apptainer before running this workflow if apptainer is desired.
+[2025-06-25 13:40:30] Installation instructions: https://apptainer.org/docs/admin/main/installation.html
+[2025-06-25 13:40:30] check_apptainer rule completed successfully.

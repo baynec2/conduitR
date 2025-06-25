@@ -1,0 +1,18 @@
+[2025-06-25 13:25:53] Running 01_get_taxonomy.R script
+[2025-06-25 13:25:53] Input file: experiments/example/input/ncbi_taxa_ids.txt
+[2025-06-25 13:25:53] Output file: experiments/example/input/database_resources/taxonomy.txt
+[2025-06-25 13:25:53] Reading organism IDs from the input file.
+[2025-06-25 13:25:53] Downloaing Taxonomy Information from NCBI API.
+[2025-06-25 13:25:56] Finished downloading Taxonomy Information from NCBI API.
+Rows: 5 Columns: 7
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
+Delimiter: " "
+chr (3): Proteome Id, Organism, download_info
+dbl (2): Organism Id, Protein count
+lgl (2): reference, downloaded_by_conduit
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+[2025-06-25 13:25:56] Writing Taxonomy Information to file.
+[2025-06-25 13:25:56] Completed 01_get_taxonomy.R script. Time taken: 0.06 minutes
+[2025-06-25 13:25:56] 01_get_taxonomy.R script complete.

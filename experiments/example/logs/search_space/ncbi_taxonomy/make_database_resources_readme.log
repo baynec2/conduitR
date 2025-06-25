@@ -1,0 +1,26 @@
+[2025-06-25 14:34:55] Running make_database_resources_readme.R script
+[2025-06-25 14:34:55] Input file: experiments/example/input/database_resources/protein_info.txt
+[2025-06-25 14:34:55] Output file: experiments/example/input/database_resources/README.md
+[2025-06-25 14:34:55] Output file: experiments/example/input/database_resources/README.html
+Rows: 6329 Columns: 17
+── Column specification ──────────────────────────────────────────────────────────────────────────────────
+Delimiter: "\t"
+chr (14): protein_id, organism_name, sequence, organism_type, domain, kingdo...
+dbl  (1): organism_id
+lgl  (2): reference, downloaded_by_conduit
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+[2025-06-25 14:34:55] Writing README.md to experiments/example/input/database_resources/README.md
+[2025-06-25 14:34:55] Converting README.md to HTML
+[1] TRUE
+
+
+processing file: /var/folders/9l/096ht_8x0g1f922jz0wqpcqr0000gn/T/RtmpNd3Qy9/temp_readme.md
+1/1
+output file: temp_readme.txt
+
+[1] TRUE
+[2025-06-25 14:34:56] README.md has been generated successfully at experiments/example/input/database_resources/README.md
+[2025-06-25 14:34:56] README.html has been generated sucessfully at experiments/example/input/database_resources/README.html
+[2025-06-25 14:34:56] Completed make_database_resources_readme.R script. Time taken: 0.01 minutes

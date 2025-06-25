@@ -2,13 +2,14 @@
 
 Conduit is a scalable and modular workflow management system for metaproteomics data analysis, designed to seamlessly integrate with metagenomic data if avalible. Built using Snakemake, it provides a robust pipeline for processing Data Independent Acquisition (DIA) mass spectrometry data with particular emphasis on metaproteomics applications.
 
-
 ## Features
 
-Note this is currently a work in progress and all features are not yet avalible. 
+*Note this is currently a work in progress and all features are not yet avalible.* 
 
 - **Search Space Definition**: Choose the best way to define the search space for *your* experiment.
     - **User Defined Taxa**: Know what taxa are in your sample? Great! Just give Conduit the ncbi taxa ids, we will do the rest.
+
+    **Works in Progress:** 
     - **User Definied Proteomes**: Know the specific proteome ids in your sample? Also amazing, we can work with those too. 
     - **Reference Based Metagenomic**: Don't know what taxa are in your sample, but were able to get metagenomic sequencing data? No problem! We can use it to define the search space.
     - **MAGS**: Have metagenomic sequencing data, but reference based metagenomic data not complicated enough for you? No problem, we will make MAGs and use those to defne the search space.
@@ -55,7 +56,24 @@ git clone https://github.com/baynec2/conduit.git
 cd conduit
 ```
 
-2. Set up an experiment directory following the example structure:
+2. Make sure you have Required Dependancies:
+
+**If you are using Apptainer (Recommended but only works on Linux):**
+* Apptainer
+* Python
+* Snakemake
+
+
+
+**If you are not using Apptainer (Not recommended but will work on Windows or Linux):**
+* Python
+* Snakemake
+* R
+* ConduitR
+* DIA-NN (2.1.0)
+
+
+3. Set up an experiment directory following the example structure:
 ```
 experiments/your_experiment/
 ├── input/
@@ -67,13 +85,13 @@ experiments/your_experiment/
 └── output/               # Results will be here
 ```
 
-3. Run the workflow:
+4. Run the workflow:
 ```bash
 snakemake --configfile experiments/your_experiment/config/snakemake.yaml --use-apptainer
 ```
-4. Run [Conduit-GUI](https://github.com/baynec2/conduit-GUI) to explore your data. Or use [conduitR](https://github.com/baynec2/conduitR) if you prefer a more bespoke experience. Up to you.
+5. Run [Conduit-GUI](https://github.com/baynec2/conduit-GUI) to explore your data. Or use [conduitR](https://github.com/baynec2/conduitR) if you prefer a more bespoke experience. Up to you.
 
-5. Repeat for each experiment you want to run (keeping a reproducible record of your experiments).
+6. Repeat steps 3-5 for each experiment you want to run (keeping a reproducible record of your experiments).
 
 ## Project Structure
 
@@ -88,6 +106,11 @@ conduit/
         └── 16s                       # with 16S data
 │   ├── diann/                        # Identification and Quantification with DIA-NN
 │   ├── annotation/                   # Protein / taxonomic annotation
+        ├── user_specified            # with ncbi_taxonomy and proteome_id 
+        ├── proteotyping              # with species specific peptides
+        ├── metagenomic_profiling     # with metagenomic profiling (reference based_)
+        ├── mags                      # with metagenome assembled genome
+        └── 16s                       # with 16S data
 │   |── matrices/                     # Matrix processing
 |   └── r_integration                 # Integration into R
 ├── config/                           # Default configurations (copied to each experiment config if not altered)
@@ -95,7 +118,8 @@ conduit/
 │   └── example/                      # Example experiment
 |       |── config                    # Configuration files for specific experiment
 |       |── logs                      # Log files for each rule. 
-        └─── input                     # Inputs into the workflow
+|       |── output                    # Outputs from the workflow
+        └─── input                    # Inputs into the workflow
             |── sample_annotation.txt # Sample annotation file matching names of .raw MS files. 
             |── organisms.txt         # Text file NCBI organism IDs defining the search space (if using ncbi_taxonomy)
             |── proteome_id.txt       # Text file containing proteome ids (if using proteome id workflow)
@@ -145,6 +169,87 @@ The workflow generates several key outputs:
    - QFeatures object
    - Analysis metrics
    - Conduit object (accepted by Conduit-GUI/conduitR)
+
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit an issue or pull request.
+
+ 
+
+### Contributing New Modules
+
+We welcome contributions of new modules to expand Conduit's capabilities! Here's how to contribute:
+
+#### New Conduit Module Development Guide
+
+##### 1. Module Structure and Conventions
+
+All Snakemake modules in Conduit should adhere to the following structure:
+
+- **Directory Naming:**  
+  Each module should reside in its own directory (e.g., `search_space/`, `diann/`, `annotation/`).
+
+- **Alternative Modules:**  
+  If multiple alternative modules exist for the same task, they should be placed in subdirectories under the main task directory.  
+  *Example:*  
+  ```
+  defining_search_space/
+      ├── ncbi_taxonomy/
+      ├── proteotyping/
+      └── mags/
+  ```
+- **Snakefile:**  
+  Each module must contain a `Snakefile` with its rules.
+
+- **Scripts:**  
+  A `scripts/` subdirectory should contain any scripts required by that module.
+
+- **Logging:**  
+  Logs should be written to the main experiment's `logs/` directory.
+
+- **No `rule all` in Modules:**  
+  `rule all` should only be defined in the main Conduit Snakefile, never within modules.
+---
+
+##### 2. Search Space and Annotation Modules
+
+Each search space module **must have a corresponding annotation module**, because different approaches to defining the search space will require different strategies for annotating proteins.
+
+---
+
+##### 3. Required Outputs: Search Space Modules
+
+Each search space module must produce the following files, located in a folder named `database_resources/`.  
+If a particular file cannot be generated (e.g., unclear what to use as a proteome_id), it must still be produced with `NA` values as appropriate.
+
+**Required Output Files:**
+
+| Filename                          | Contents                                                                 |
+|------------------------------------|--------------------------------------------------------------------------|
+| `database.fasta`                | Fasta file containing all protein sequences to be included in search space with UniProt-style headers. |
+| `proteome_ids.txt`              | .txt file containing the proteome IDs that were used in the experiment.  |
+| `taxonomy.txt`                  | .txt file with all taxonomy information in the sample.                   |
+| `protein_info.txt`              | .txt file containing protein information.                                |
+| `taxonomic_tree_of_database.pdf`| PDF file showing an image of what the search space looks like from a taxonomic lens. |
+| `database.predicted.speclib`    | Spectral library produced by DIA-NN (automatically produced via the shared diann module). |
+| `README.md`                        | Readme containing metrics about the database resources.                  |
+
+##### 4. Required Outputs: Annotation Modules
+Each annotation module must produce the following files. If a particular annotation type cannot be retrieved (e.g., no subcellular prediction for MAGs), the file must still be generated with appropriate placeholder content.
+
+| Filename                        | Contents                                                                                   |
+|----------------------------------|--------------------------------------------------------------------------------------------|
+| `detected_protein_info.txt`      | Contains `protein_info.txt` filtered to only contain the proteins that were actually detected by DIA-NN. (Automatically generated via the shared diann module.) |
+| `detected_protein.fasta`         | The content from `detected_protein_info.txt` in fasta format. (Automatically generated via the shared diann module.) |
+| `annotated_protein_info.txt`     | Adds annotations to the detected proteins.                                                  |
+| `go_annotations.txt`             | File containing GO annotations in long format. Each protein should have its GO terms listed.|
+| `subcellular_locations.txt`      | File containing subcellular location predictions.                                           |
+| `kegg_annotations.txt`           | File containing KEGG pathway annotations.                                                   |
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 

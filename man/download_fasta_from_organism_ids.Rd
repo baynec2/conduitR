@@ -7,7 +7,8 @@
 download_fasta_from_organism_ids(
   organism_ids,
   parallel = FALSE,
-  destination_fp = paste0(getwd(), "/", Sys.Date(), ".fasta")
+  proteome_id_destination_fp = paste0(getwd(), "/", Sys.Date(), ".txt"),
+  fasta_destination_fp = paste0(getwd(), "/", Sys.Date(), ".fasta")
 )
 }
 \arguments{
@@ -17,7 +18,7 @@ download_fasta_from_organism_ids(
 \item{parallel}{Logical indicating whether to use parallel processing (default: FALSE).
 When TRUE, uses all available CPU cores minus one for downloading FASTA files.}
 
-\item{destination_fp}{Character string specifying the path where the combined
+\item{fasta_destination_fp}{Character string specifying the path where the combined
 FASTA file should be saved (default: creates a file named with the current date
 in the working directory).}
 }
@@ -69,7 +70,7 @@ For large numbers of organisms or when downloading frequently, consider:
 # download_fasta_from_organism_ids(
 #   organism_ids = c(9606, 562, 10090),  # Human, E. coli, Mouse
 #   parallel = TRUE,
-#   destination_fp = "custom_database.fasta"
+#   fasta_destination_fp = "custom_database.fasta"
 # )
 
 # Use the resulting FASTA file with other functions:

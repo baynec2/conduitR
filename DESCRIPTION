@@ -3,7 +3,10 @@ Title: R tools for metaproteomics analysis using conduit and conduit-GUI
 Version: 0.0.0.9000
 Authors@R: 
     person("Charlie", "Bayne", "baynec2@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: 
+    conduitR provides tools for metaproteomic analysis. These tools 
+    power Conduit (snakemake workflow for metaproteomics) as well as Conduit-GUI 
+    (graphic interface to explore results from the Conduit workflow).
 License: MIT + file LICENSE
 Imports:
     future,

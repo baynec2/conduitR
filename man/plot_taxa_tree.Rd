@@ -8,6 +8,7 @@ plot_taxa_tree(
   taxonomy_data,
   filter_taxa_rank = "species",
   node_size = "n_obs",
+  node_color = "phylum",
   ...
 )
 }

@@ -13,9 +13,12 @@
 #' insulin <- get_kegg_in_batches("hsa:3630")
 #'
 get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
-  # splitting by ; since these are in uniprot list.
-  split_ids <- stringr::str_split(kegg_ids, ";", simplify = FALSE)[[1]]
+  # original vector (e.g. kegg_ids <- c("hsa:123", "hsa:456;hsa:789", ...))
+  split_ids <- stringr::str_split(kegg_ids, ";", simplify = FALSE) |> unlist()
+  # remove leading/trailing whitespace
+  split_ids <- stringr::str_trim(split_ids)
   split_ids <- split_ids[split_ids != ""]
+
   # Initiating list
   all_results <- list()
   # Split IDs into batches
@@ -77,7 +80,7 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
     }
 
     # Avoid hitting KEGG rate limits (3x per second)
-    Sys.sleep(0.5)
+    Sys.sleep(0.34)
   }
 
   # Combine all batch results into a single dataframe

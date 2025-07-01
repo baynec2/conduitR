@@ -9,7 +9,7 @@ sink(zz, type = "message")  # redirect stderr/messages
 
 start_time <- Sys.time()
 
-conduitR::log_with_timestamp("Running 01_process_go_matrix.R script")
+conduitR::log_with_timestamp("Running process_go_matrix.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[2]]))
 conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
@@ -33,7 +33,7 @@ last_col = length(report_pg_matrix)
 
 selected_columns = names(report_pg_matrix)[first_col:last_col]
 
-# Dividing each intensity by the number of proteins it maps to
+# Adjusting the matrix to be positive and median centered  (deals with sample loading fluctuations)
 report_pg_matrix_mod <- report_pg_matrix |>
   dplyr::mutate(
     # Median centering to adjust for sample loading.
@@ -77,7 +77,7 @@ conduitR::log_with_timestamp(paste0("Writing taxonomic go_annotations_matrix to 
 readr::write_tsv(go_annotations_matrix_taxa,go_annotations_matrix_taxa_fp)
 
 end_time <- Sys.time()
-conduitR::log_with_timestamp("Completed 01_process_go_matrix.R script. Time taken: %.2f minutes", 
+conduitR::log_with_timestamp("Completed process_go_matrix.R script. Time taken: %.2f minutes", 
     as.numeric(difftime(end_time, start_time, units = "mins")))
 
 # closing clogfile connection

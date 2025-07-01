@@ -124,14 +124,20 @@ output_dir: output/
 
 Make sure that the experiment in the config file matches the name of the experiment directory. A template is provided in the top level config folder.
 
-4. Run the workflow:
+4. If you plan to use Apptainer, you will need to build the diann and conduitR apptainer images. This only needs to be done once, future runs of Conduit will automatically use the images you have built. You can build the images by running the following commands:
+
+```bash
+snakemake build_conduitR_apptainer build_diann_apptainer --configfile experiments/your_experiment/config/snakemake.yaml
+```
+
+5. Run the workflow:
 ```bash
 snakemake --configfile experiments/your_experiment/config/snakemake.yaml --use-apptainer
 ```
 
-5. Use `experiments/your_experiment/output/conduit.rds` as the input to [Conduit-GUI](https://github.com/baynec2/conduit-GUI) to explore your data. Or use [conduitR](https://github.com/baynec2/conduitR) if you prefer a more bespoke data analysis experience.
+6. Use `experiments/your_experiment/output/conduit.rds` as the input to [Conduit-GUI](https://github.com/baynec2/conduit-GUI) to explore your data. Or use [conduitR](https://github.com/baynec2/conduitR) if you prefer a more bespoke data analysis experience.
 
-6. Repeat steps 3-5 for each experiment you want to run (keeping a reproducible record of your experiments in the experiments subdirectory).
+7. Repeat steps 3-5 for each experiment you want to run (keeping a reproducible record of your experiments in the experiments subdirectory).
 
 ## Project Structure
 
@@ -178,13 +184,24 @@ conduit/
 The main configuration is done through `snakemake.yaml`. Key parameters include:
 
 ```yaml
-experiment_directory: "experiments/example"
-method: "ncbi_taxonomy_id"
-raw_files: "experiments/example/input/raw_files/*.raw"
-sample_annotation: "input/sample_annotation.txt"
+# Define the name of the experiment (this will be used to find the correct experiment directory)
+experiment: 
+# Config file to generate the spectral library for DIA-NN (relative to main Snakefile)
+generate_diann_spectral_library_config: config/generate_diann_spectral_library.cfg
+# Config file to run DIA-NN search (relative to main Snakefile)
+run_diann_config: config/run_diann.cfg
+# Define the method used to define the search space. 
+# Options: 
+# - "ncbi_taxonomy_id": Use NCBI taxonomy IDs to define the search space.
+# - "uniprot_proteome_id": Use UniProt proteome IDs to define the search space.
+# - "MAG": Use MAGs to define the search space.,
+# - "metagenomic_profiling": Use metagenomic profiling to define the search space.
+# - "16S": Use 16S rRNA gene sequences to define the search space.
+search_space_method: ncbi_taxonomy_id
+# Define the sample annotation filepath relative to the experiment directory
+sample_annotation: input/sample_annotation.txt
 ```
-
-See the example configuration in `config/snakemake.yaml` for a complete template.
+You can use the configuration file in `config/snakemake.yaml` as a template file for your experiments.
 
 ## Output Structure
 

@@ -22,7 +22,7 @@ detected_protein_info = snakemake@input[["detected_protein_info"]]
 database_taxonomy=snakemake@output[["database_taxonomy"]]
 database_metrics=snakemake@output[["database_metrics"]]
 detected_protein_taxonomy = snakemake@output[["detected_protein_taxonomy"]]
-detected_protein_metrics = snakemake@output[["detected_protein_taxonomy"]]
+detected_protein_metrics = snakemake@output[["detected_protein_metrics"]]
 combined_metrics = snakemake@output[["combined_metrics"]]
 
 # Database information
@@ -60,7 +60,7 @@ detected_protein_info = readr::read_tsv(detected_protein_info)
 conduitR::log_with_timestamp("Generating detected protein taxonomy")
 # Generating database_taxonomy
 detected_protein_taxonomy_out = detected_protein_info |>
-  dplyr::select(protein_id,organism_type,superkingdom,kingdom,phylum,class,
+  dplyr::select(protein_id,organism_type,domain,kingdom,phylum,class,
                 order,family,genus,species)
 
 conduitR::log_with_timestamp(paste0("Writing detected protein taxonomy to ", detected_protein_taxonomy))
@@ -75,7 +75,6 @@ detected_protein_metrics_out= detected_protein_info |>
   dplyr::summarise(n_detected = dplyr::n_distinct(value)) |>
   dplyr::ungroup() |>
   dplyr::arrange(factor(metric, levels = c("organism_type","domain","kingdom","phylum","class","order","family","genus","species","protein_id")))
-
 
 # Writing to file
 readr::write_tsv(detected_protein_metrics_out,detected_protein_metrics)

@@ -53,13 +53,17 @@ rule process_subcellular_locations_matrix:
   container: "apptainer/conduitR.sif"
   script:"scripts/process_subcellular_locations_matrix.R"
   
-# rule process_kegg_matrices:
-#   input:
-#     report_pg_matrix="output/03_diann_output/report.pg_matrix.tsv"
-#   output: 
-#     kegg_matrix = "output/05_output_files/subcellular_locations_matrix.tsv"
-#   script:"scripts/06_processing_matrices/03_process_kegg_matrix.R"  
-# 
+rule process_kegg_matrices:
+  input:
+      pg_matrix=os.path.join(EXPERIMENT_DIR,"output/output_files/protein_group_matrix.tsv"),
+      kegg_annotations = os.path.join(EXPERIMENT_DIR,"input/database_resources/detected_protein_resources/kegg_annotations.txt")
+  output: 
+    kegg_pathway_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/kegg_pathway_matrix.tsv"),
+    kegg_ko_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/kegg_ko_matrix.tsv")
+  log: os.path.join(EXPERIMENT_DIR,"logs/matrices/process_kegg_matrices.log")
+  container: "apptainer/conduitR.sif"
+  script:"scripts/process_kegg_matrices.R"  
+ 
 
 # Moving Database Resources to Output Directory.
 rule move_database_resources:
@@ -108,7 +112,7 @@ rule move_database_resources:
     log: os.path.join(EXPERIMENT_DIR,"logs/matrices/move_database_resources.log")
     shell:
         """
-        mkdir -p output/database_resources/detected_protein_resources
-        cp -u -r input/database_resources/* output/database_resources/
-        cp -u -r input/database_resources/detected_protein_resources/* output/database_resources/detected_protein_resources/
+        mkdir -p {EXPERIMENT_DIR}/output/database_resources/detected_protein_resources
+        cp -u -r {EXPERIMENT_DIR}/input/database_resources/* {EXPERIMENT_DIR}/output/database_resources/
+        cp -u -r {EXPERIMENT_DIR}/input/database_resources/detected_protein_resources/* {EXPERIMENT_DIR}/output/database_resources/detected_protein_resources/
         """

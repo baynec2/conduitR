@@ -24,6 +24,8 @@ conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[11]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[12]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[14]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[15]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[16]]))
+conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[17]]))
 
 conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
 
@@ -43,14 +45,16 @@ species_matrix= snakemake@input[["species_matrix"]]
 go_matrix= snakemake@input[["go_matrix"]]
 go_taxa_matrix = snakemake@input[["go_taxa_matrix"]]
 subcellular_locations_matrix = snakemake@input[["subcellular_locations_matrix"]]
-
+kegg_pathway_matrix = snakemake@input[["kegg_pathway_matrix"]]
+kegg_ko_matrix = snakemake@input[["kegg_ko_matrix"]]
 # Output
 qf = snakemake@output[["qf"]]
 
 vector_of_matrix_fps = c(precursor_matrix,peptide_matrix,protein_group_matrix,
                          domain_matrix,kingdom_matrix,phylum_matrix,
                          class_matrix,order_matrix,family_matrix,genus_matrix,
-                         species_matrix,go_matrix,go_taxa_matrix,subcellular_locations_matrix)
+                         species_matrix,go_matrix,go_taxa_matrix,subcellular_locations_matrix,
+                         kegg_pathway_matrix,kegg_ko_matrix)
 
 
 conduitR::log_with_timestamp("Preparing QFeatures object")

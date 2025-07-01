@@ -12,6 +12,7 @@ conduitR::log_with_timestamp("Running get_kegg_info.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
 conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
 
+
 # Loading files
 uniprot_annotated_protein_info = snakemake@input[["uniprot_annotated_protein_info"]]
 kegg_annotations_out =snakemake@output[[1]]
@@ -28,10 +29,10 @@ shared_columns = c("protein_id","organism_type","domain","kingdom",
 
 # Pulling out the KEGG ids
 kegg_ids = uniprot_annotated_protein_info |>
-  dplyr::filter(!is.na(xref_kegg)) |>
-  dplyr::pull(xref_kegg)
+  dplyr::filter(!is.na("xref_kegg")) |>
+  dplyr::pull("xref_kegg")
 
-conduitR::log_with_timestamp("Retrieving KEGG information for ", length(kegg_ids)," KEGG ID")
+conduitR::log_with_timestamp(paste0("Retrieving KEGG information for ", length(kegg_ids)," KEGG IDs"))
 # Getting the terms for each annotation
 kegg_annotations = conduitR::get_kegg_in_batches(kegg_ids)
 
@@ -39,7 +40,7 @@ kegg_annotations = conduitR::get_kegg_in_batches(kegg_ids)
 kegg_annotations_final = uniprot_annotated_protein_info |>
   tidyr::separate_rows(sep =";",xref_kegg) |>
   dplyr::left_join(kegg_annotations,by = c("xref_kegg" = "kegg_id")) |>
-  dplyr::select(kegg_pathway,kegg_id = xref_kegg,ko,code,
+  dplyr::select(kegg_pathway,kegg_id = xref_kegg,ko,ko_description,
                 dplyr::all_of(shared_columns)) |>
   dplyr::filter(kegg_id != "")
 

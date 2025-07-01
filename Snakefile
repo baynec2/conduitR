@@ -164,12 +164,13 @@ rule all:
                level=[
                    "domain", "kingdom", "phylum", "class", "order", 
                    "family", "genus", "species", "go", "go_taxa", "subcellular_locations",
-                   "protein_group", "precursor", "peptide"
+                   "protein_group", "precursor", "peptide","kegg_pathway","kegg_ko"
                ]),
         expand(os.path.join(EXPERIMENT_DIR, "output/output_files/{metric}.tsv"),
                metric=[
                    "database_taxonomy", "database_metrics",
-                   "detected_protein_taxonomy", "detected_protein_metrics"
+                   "detected_protein_taxonomy", "detected_protein_metrics",
+                   "combined_metrics"
                ]),
         os.path.join(EXPERIMENT_DIR, "output/output_files/qf.rds"),
         os.path.join(EXPERIMENT_DIR, "output/output_files/conduit_output.rds")

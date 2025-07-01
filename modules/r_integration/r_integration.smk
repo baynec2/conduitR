@@ -19,7 +19,9 @@ rule prepare_qf:
     species_matrix=os.path.join(EXPERIMENT_DIR,"output/output_files/species_matrix.tsv"),
     go_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/go_matrix.tsv"),
     go_taxa_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/go_taxa_matrix.tsv"),
-    subcellular_locations_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/subcellular_locations_matrix.tsv")
+    subcellular_locations_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/subcellular_locations_matrix.tsv"),
+    kegg_pathway_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/kegg_pathway_matrix.tsv"),
+    kegg_ko_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/kegg_ko_matrix.tsv")
   output:
     qf= os.path.join(EXPERIMENT_DIR,"output/output_files/qf.rds")
   log: os.path.join(EXPERIMENT_DIR,"logs/r_integration/prepare_qf.log")
@@ -53,9 +55,8 @@ rule create_conduit:
   input:
     qf = os.path.join(EXPERIMENT_DIR,"output/output_files/qf.rds"),
     database_taxonomy = os.path.join(EXPERIMENT_DIR,"output/output_files/database_taxonomy.tsv"),
-    database_metrics = os.path.join(EXPERIMENT_DIR,"output/output_files/database_metrics.tsv"),
-    detected_protein_taxonomy = os.path.join(EXPERIMENT_DIR,"output/output_files/detected_protein_taxonomy.tsv"),
-    detected_protein_metrics = os.path.join(EXPERIMENT_DIR,"output/output_files/detected_protein_metrics.tsv")
+    combined_metrics = os.path.join(EXPERIMENT_DIR,"output/output_files/combined_metrics.tsv"),
+    detected_protein_taxonomy = os.path.join(EXPERIMENT_DIR,"output/output_files/detected_protein_taxonomy.tsv")
   output:
     conduit_obj = os.path.join(EXPERIMENT_DIR,"output/output_files/conduit_output.rds")
   log: os.path.join(EXPERIMENT_DIR,"logs/r_integration/create_conduit.log")

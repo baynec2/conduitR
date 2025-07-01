@@ -80,6 +80,7 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
     }
 
     # Avoid hitting KEGG rate limits (3x per second)
+    # 0.34 led to IP getting blocked.
     Sys.sleep(1)
   }
 

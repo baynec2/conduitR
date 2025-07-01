@@ -4,19 +4,20 @@
 .RData
 .Ruserdata
 
-# Ignore macOS DS_Store files
+# Ignore macOS DS_Store files (anywhere in the repository)
 .DS_Store
+**/.DS_Store
 
 # Ignore raw data 
-experiments/example/user_input/raw_files/*
+experiments/example/input/raw_files/*
 
 # Ignore example config files
 experiments/example/config/generate_diann_spectral_library.cfg
 experiments/example/config/run_diann.cfg
 
 # Ignore database resources
-experiments/example/user_input/database_resources/* 
-
+experiments/example/input/database_resources/* 
+experiments/example/output/*
 # Ignore any of the output files
 output/*
 

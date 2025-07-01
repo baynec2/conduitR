@@ -80,7 +80,7 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
     }
 
     # Avoid hitting KEGG rate limits (3x per second)
-    Sys.sleep(0.34)
+    Sys.sleep(1)
   }
 
   # Combine all batch results into a single dataframe

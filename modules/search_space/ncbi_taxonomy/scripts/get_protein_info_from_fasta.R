@@ -16,7 +16,7 @@ output_file <- snakemake@output[[1]]
 start_time <- Sys.time()
 
 # Now everything from print(), message(), warning() will go into the log file
-conduitR::log_with_timestamp("Running 02_get_protein_info_from_fasta.R script")
+conduitR::log_with_timestamp("Running get_protein_info_from_fasta.R script")
 conduitR::log_with_timestamp(paste0("Input files: ", snakemake@input[[1]], " and ", snakemake@input[[2]]))
 conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
 
@@ -40,7 +40,7 @@ conduitR::log_with_timestamp("Writing protein info to file.")
 readr::write_delim(protein_info, output_file, delim = "\t")
 
 end_time <- Sys.time()
-conduitR::log_with_timestamp("Completed 02_get_protein_info_from_fasta.R script. Time taken: %.2f minutes", 
+conduitR::log_with_timestamp("Completed get_protein_info_from_fasta.R script. Time taken: %.2f minutes", 
     as.numeric(difftime(end_time, start_time, units = "mins")))
 # closing clogfile connection
 sink(type = "message")

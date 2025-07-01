@@ -1,46 +1,0 @@
-[2025-06-25 13:13:24] Starting 00_get_fasta.R script
-[2025-06-25 13:13:24] Input file: experiments/example/input/ncbi_taxa_ids.txt
-[2025-06-25 13:13:24] Output file: experiments/example/input/database_resources/proteome_ids.txt
-[2025-06-25 13:13:24] Output file: experiments/example/input/database_resources/database.fasta
-[2025-06-25 13:13:24] Making the database_resources_directory if it doesn't exist.
-[2025-06-25 13:13:24] Reading organism IDs from the input file.
-Rows: 5 Columns: 2
-── Column specification ──────────────────────────────────────────────────────────────────────────────────
-Delimiter: "\t"
-chr (1): organism_type
-dbl (1): organism_id
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-[2025-06-25 13:13:25] Starting download of fasta files from the organism IDs.
-[2025-06-25 13:13:25] Getting Proteome IDs cooresponding to organism IDs
-[2025-06-25 13:13:27] Getting Reference Proteomes
-Rows: 24972 Columns: 8
-── Column specification ──────────────────────────────────────────────────────────────────────────────────
-Delimiter: "\t"
-chr (4): Proteome_ID, OSCODE, SUPERREGNUM, Species Name
-dbl (4): Tax_ID, #(1), #(2), #(3)
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-[2025-06-25 13:13:28] Reference Proteomes Sucessfully Retrieved.
-[2025-06-25 13:13:28] Proteome IDs Sucessfully Retrieved
-[2025-06-25 13:13:28] temp/ dir already existed, old version was deleted
-[2025-06-25 13:13:28] Processing proteome ID: UP000232133
-[2025-06-25 13:13:29] Fasta File for Proteome ID: UP000232133 sucessfully downloaded
- ■■■■■■■                           20% |  ETA:  5s[2025-06-25 13:13:29] Processing proteome ID: UP000018189
-[2025-06-25 13:13:29] Fasta File for Proteome ID: UP000018189 sucessfully downloaded
- ■■■■■■■■■■■■■                     40% |  ETA:  3s[2025-06-25 13:13:29] Processing proteome ID: UP000248557
-[2025-06-25 13:13:30] Fasta File for Proteome ID: UP000248557 sucessfully downloaded
- ■■■■■■■■■■■■■■■■■■■               60% |  ETA:  2s[2025-06-25 13:13:30] Processing proteome ID: UP000094981
-[2025-06-25 13:13:31] Fasta File for Proteome ID: UP000094981 sucessfully downloaded
- ■■■■■■■■■■■■■■■■■■■■■■■■■         80% |  ETA:  1s[2025-06-25 13:13:31] Processing proteome ID: UP000278701
-[2025-06-25 13:13:32] Failed to download FASTA for Proteome: UP000278701
-status code: 200
-has body: FALSE
-                                                  [2025-06-25 13:13:32] Concatinating fasta files...
-[2025-06-25 13:13:33] Writing downloaded proteome information to experiments/example/input/database_resources/proteome_ids.txt
-[2025-06-25 13:13:33] Temporary directory deleted.
-
-[2025-06-25 13:13:33] Completed downloading fasta files. Time taken: 0.13 minutes
-[2025-06-25 13:13:33] 00_get_fasta.R script complete.

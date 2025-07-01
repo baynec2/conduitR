@@ -9,7 +9,7 @@ sink(zz, type = "message")  # redirect stderr/messages
 
 start_time <- Sys.time()
 
-conduitR::log_with_timestamp("Running 01_get_annotations_from_uniprot.R script")
+conduitR::log_with_timestamp("Running get_annotations_from_uniprot.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
 conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
 
@@ -37,7 +37,7 @@ conduitR::log_with_timestamp(paste0("Writing to file ", uniprot_annotated_protei
 readr::write_delim(protein_info,uniprot_annotated_protein_info)
 
 end_time <- Sys.time()
-conduitR::log_with_timestamp("Completed 01_get_annotations_from_uniprot.R script. Time taken: %.2f minutes", 
+conduitR::log_with_timestamp("Completed get_annotations_from_uniprot.R script. Time taken: %.2f minutes", 
     as.numeric(difftime(end_time, start_time, units = "mins")))
 
 # closing clogfile connection

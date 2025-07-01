@@ -1,6 +1,0 @@
-[2025-06-25 14:00:07] Running 03_plot_taxonomic_tree.R script
-[2025-06-25 14:00:07] Input file: experiments/example/input/database_resources/taxonomy.txt
-[2025-06-25 14:00:07] Output file: experiments/example/input/database_resources/taxonomic_tree_of_database.pdf
-[2025-06-25 14:00:07] Loading taxonomy data from experiments/example/input/database_resources/taxonomy.txt
-[2025-06-25 14:00:09] Saving the plot to experiments/example/input/database_resources/taxonomic_tree_of_database.pdf
-[2025-06-25 14:00:09] Completed 03_plot_taxonomic_tree.R script. Time taken: 0.04 minutes

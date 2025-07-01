@@ -62,12 +62,12 @@ readr::write_tsv(go_annotations_matrix,go_annotations_matrix_fp)
 
 conduitR::log_with_timestamp("Processing taxonomic go_annotations_matrix")
 go_annotations_matrix_taxa = combined |>
-  dplyr::mutate(go_id = paste0(organism_type,"_", superkingdom,"_",kingdom,"_",
+  dplyr::mutate(go_id = paste0(organism_type,"_", domain,"_",kingdom,"_",
                                phylum,"_",class,"_",order,"_",family,"_",genus,
                                "_",species,"_",description),.before = 1
 
   ) |>
-  dplyr::group_by(go_id,organism_type,description,superkingdom,kingdom,phylum,
+  dplyr::group_by(go_id,organism_type,description,domain,kingdom,phylum,
                   class,order,family,genus,species) |>
   dplyr::summarise(dplyr::across(dplyr::all_of(selected_columns),
                                  ~ sum(.x, na.rm = TRUE)))

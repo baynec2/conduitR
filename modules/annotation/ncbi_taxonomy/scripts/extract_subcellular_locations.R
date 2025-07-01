@@ -7,7 +7,7 @@ zz <- file(logfile, open = "a")
 sink(zz,append = TRUE)       # redirect stdout
 sink(zz, type = "message")  # redirect stderr/messages
 
-conduitR::log_with_timestamp("Running 03_extract_subcellular_locations.R script")
+conduitR::log_with_timestamp("Running extract_subcellular_locations.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
 conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
 
@@ -48,7 +48,7 @@ conduitR::log_with_timestamp(paste0("Writing subcellular locations to ", subcell
 readr::write_delim(subcellular_locations,
                    subcellular_locations_out,
                    delim = "\t")
-conduitR::log_with_timestamp("03_extract_subcellular_locations.R script completed")
+conduitR::log_with_timestamp("extract_subcellular_locations.R script completed")
 # closing clogfile connection
 sink(type = "message")
 sink()

@@ -135,7 +135,7 @@ rule all:
         # Config files must be created first
         os.path.join(EXPERIMENT_DIR, "config/generate_diann_spectral_library.cfg"),
         os.path.join(EXPERIMENT_DIR, "config/run_diann.cfg"),
-        os.path.join(EXPERIMENT_DIR,"logs/apptainer_checked"),
+        os.path.join(EXPERIMENT_DIR,"logs/setup/apptainer_checked"),
         "apptainer/conduitR.sif",
         "apptainer/diann2.1.0.sif",
         # Rest of the workflow outputs
@@ -159,7 +159,7 @@ rule all:
                    "kegg_annotations.txt"
                ]),
         expand(os.path.join(EXPERIMENT_DIR, "input/raw_files/{sample}.raw"), sample=SAMPLES),
-        expand(os.path.join(EXPERIMENT_DIR, "output/diann_output/report.{suffix}.tsv"), suffix=["pr_matrix", "pg_matrix"]),
+        expand(os.path.join(EXPERIMENT_DIR, "output/diann_output/diann.{suffix}.tsv"), suffix=["pr_matrix", "pg_matrix"]),
         expand(os.path.join(EXPERIMENT_DIR, "output/output_files/{level}_matrix.tsv"), 
                level=[
                    "domain", "kingdom", "phylum", "class", "order", 

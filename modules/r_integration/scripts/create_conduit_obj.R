@@ -8,7 +8,7 @@ sink(zz,append = TRUE)       # redirect stdout
 sink(zz, type = "message")  # redirect stderr/messages
 start_time <- Sys.time()
 
-conduitR::log_with_timestamp("Running 02_create_conduit_obj.R script")
+conduitR::log_with_timestamp("Running create_conduit_obj.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[2]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[3]]))
@@ -37,7 +37,7 @@ conduitR::log_with_timestamp(paste0("Saving Conduit object to ", conduit_obj))
 saveRDS(conduit,conduit_obj)
 
 end_time <- Sys.time()
-conduitR::log_with_timestamp("02_create_conduit_obj.R script completed. Time taken: %.2f minutes", 
+conduitR::log_with_timestamp("create_conduit_obj.R script completed. Time taken: %.2f minutes", 
                               as.numeric(difftime(end_time, start_time, units = "mins")))
 # closing clogfile connection
 sink(type = "message")

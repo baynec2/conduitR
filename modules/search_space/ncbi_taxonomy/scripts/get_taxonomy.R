@@ -14,7 +14,7 @@ proteome_ids_file <- snakemake@input[[2]]
 output_file <- snakemake@output[[1]]
 
 start_time <- Sys.time()
-conduitR::log_with_timestamp("Running 01_get_taxonomy.R script")
+conduitR::log_with_timestamp("Running get_taxonomy.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
 conduitR::log_with_timestamp(paste0("Output file: ", snakemake@output[[1]]))
 
@@ -54,10 +54,9 @@ readr::write_delim(taxonomy,output_file)
 
 end_time <- Sys.time()
 
-conduitR::log_with_timestamp("Completed 01_get_taxonomy.R script. Time taken: %.2f minutes", 
+conduitR::log_with_timestamp("Completed get_taxonomy.R script. Time taken: %.2f minutes", 
     as.numeric(difftime(end_time, start_time, units = "mins")))
 
-conduitR::log_with_timestamp("01_get_taxonomy.R script complete.")
 # closing clogfile connection
 sink(type = "message")
 sink()

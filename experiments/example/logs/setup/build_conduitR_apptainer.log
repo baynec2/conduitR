@@ -1,5 +1,0 @@
-[2025-06-25 13:54:36] Starting build_conduitR_apptainer rule
-[2025-06-25 13:54:36] Attempting to build conduitR apptainer...
-[2025-06-25 13:54:36] Unable to build conduitR apptainer: Command 'set -euo pipefail;  apptainer build apptainer/conduitR.sif apptainer/conduitR.def' returned non-zero exit status 127.
-[2025-06-25 13:54:36] If apptainer is desired, please ensure it is properly installed.
-[2025-06-25 13:54:36] build_conduitR_apptainer rule completed

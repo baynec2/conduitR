@@ -1,6 +1,4 @@
 organism_id	organism_type
-2173	microbiome
-1263088	microbiome
-2317	microbiome
-1860157	microbiome
-563	microbiome
+818	microbiome
+239935	microbiome
+9606	host

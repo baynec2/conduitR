@@ -2,9 +2,22 @@ EXPERIMENT_DIR = os.path.join("experiments",config["experiment"])
 ################################################################################
 # Processing Matrices
 ################################################################################
+rule process_diann_matrices:
+  input:
+    report_pg_matrix=os.path.join(EXPERIMENT_DIR,"output/diann_output/diann.pg_matrix.tsv"),
+    report_pr_matrix =os.path.join(EXPERIMENT_DIR,"output/diann_output/diann.pr_matrix.tsv")
+  output: 
+    protein_group_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/protein_group_matrix.tsv"),
+    precursor_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/precursor_matrix.tsv"),
+    peptide_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/peptide_matrix.tsv")
+  log: os.path.join(EXPERIMENT_DIR,"logs/matrices/process_diann_matrices.log")
+  container: "apptainer/conduitR.sif"
+  script: "scripts/process_diann_matrices.R"
+    
 rule process_taxonomic_matrices:
   input:
-    report_pr_matrix=os.path.join(EXPERIMENT_DIR,"output/diann_output/report.pr_matrix.tsv"),
+    report_pr_matrix=os.path.join(EXPERIMENT_DIR,"output/output_files/precursor_matrix.tsv"),
+    report_pg_matrix=os.path.join(EXPERIMENT_DIR,"output/output_files/protein_group_matrix.tsv"),
     protein_info=os.path.join(EXPERIMENT_DIR,"input/database_resources/protein_info.txt")
   output:
     domain_matrix=os.path.join(EXPERIMENT_DIR,"output/output_files/domain_matrix.tsv"),
@@ -21,7 +34,7 @@ rule process_taxonomic_matrices:
     
 rule process_go_matrix:
   input:
-    report_pg_matrix=os.path.join(EXPERIMENT_DIR,"output/diann_output/report.pg_matrix.tsv"),
+    report_pg_matrix=os.path.join(EXPERIMENT_DIR,"output/output_files/protein_group_matrix.tsv"),
     go_annotations = os.path.join(EXPERIMENT_DIR,"input/database_resources/detected_protein_resources/go_annotations.txt")
   output: 
     go_annotations_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/go_matrix.tsv"),
@@ -32,7 +45,7 @@ rule process_go_matrix:
   
 rule process_subcellular_locations_matrix:
   input:
-    report_pg_matrix=os.path.join(EXPERIMENT_DIR,"output/diann_output/report.pg_matrix.tsv"),
+    report_pg_matrix=os.path.join(EXPERIMENT_DIR,"output/output_files/protein_group_matrix.tsv"),
     subcellular_locations = os.path.join(EXPERIMENT_DIR,"input/database_resources/detected_protein_resources/subcellular_locations.txt")
   output: 
     subcellular_locations_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/subcellular_locations_matrix.tsv")
@@ -48,18 +61,6 @@ rule process_subcellular_locations_matrix:
 #   script:"scripts/06_processing_matrices/03_process_kegg_matrix.R"  
 # 
 
-rule process_diann_matrices:
-  input:
-    report_pg_matrix=os.path.join(EXPERIMENT_DIR,"output/diann_output/report.pg_matrix.tsv"),
-    report_pr_matrix =os.path.join(EXPERIMENT_DIR,"output/diann_output/report.pr_matrix.tsv")
-  output: 
-    protein_group_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/protein_group_matrix.tsv"),
-    precursor_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/precursor_matrix.tsv"),
-    peptide_matrix = os.path.join(EXPERIMENT_DIR,"output/output_files/peptide_matrix.tsv")
-  log: os.path.join(EXPERIMENT_DIR,"logs/matrices/process_diann_matrices.log")
-  container: "apptainer/conduitR.sif"
-  script: "scripts/process_diann_matrices.R"
-    
 # Moving Database Resources to Output Directory.
 rule move_database_resources:
     input:

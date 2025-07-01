@@ -9,7 +9,7 @@ sink(zz, type = "message")  # redirect stderr/messages
 
 start_time <- Sys.time()
 
-conduitR::log_with_timestamp("Running 00_prepare_qf.R script")
+conduitR::log_with_timestamp("Running prepare_qf.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[1]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[2]]))
 conduitR::log_with_timestamp(paste0("Input file: ", snakemake@input[[3]]))
@@ -62,7 +62,7 @@ conduitR::log_with_timestamp(paste0("Saving QFeatures object to ", qf))
 
 saveRDS(QF,qf)
 end_time <- Sys.time()
-conduitR::log_with_timestamp("00_prepare_qf.R script completed. Time taken: %.2f minutes", 
+conduitR::log_with_timestamp("prepare_qf.R script completed. Time taken: %.2f minutes", 
                               as.numeric(difftime(end_time, start_time, units = "mins")))
 # closing clogfile connection
 sink(type = "message")

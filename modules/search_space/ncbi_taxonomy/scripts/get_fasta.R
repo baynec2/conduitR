@@ -9,7 +9,7 @@ sink(zz,append = TRUE)       # redirect stdout
 sink(zz, type = "message")  # redirect stderr/messages
 
 # Now everything from print(), message(), warning() will go into the log file
-conduitR::log_with_timestamp("Starting 00_get_fasta.R script")
+conduitR::log_with_timestamp("Starting get_fasta.R script")
 conduitR::log_with_timestamp("Input file: %s", snakemake@input[[1]])
 conduitR::log_with_timestamp("Output file: %s", snakemake@output[[1]])
 conduitR::log_with_timestamp("Output file: %s", snakemake@output[[2]])
@@ -48,7 +48,7 @@ conduitR::log_with_timestamp("Completed downloading fasta files. Time taken: %.2
     as.numeric(difftime(end_time, start_time, units = "mins")))
 
 # closing logfile connection
-conduitR::log_with_timestamp("00_get_fasta.R script complete.")
+conduitR::log_with_timestamp("get_fasta.R script complete.")
 # closing logfile connection
 sink(type = "message")
 sink()

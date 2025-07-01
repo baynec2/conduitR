@@ -16,7 +16,7 @@ detected_protein_info_fasta<- snakemake@output[["detected_protein_info_fasta"]]
 
 start_time <- Sys.time()
 
-conduitR::log_with_timestamp("Running 00_extract_detected_proteins.R script")
+conduitR::log_with_timestamp("Running extract_detected_proteins.R script")
 conduitR::log_with_timestamp(paste0("Input file: ", protein_info_df))
 conduitR::log_with_timestamp(paste0("Input file: ", protein_info_fasta))
 conduitR::log_with_timestamp(paste0("Input file: ", report_pg_matrix))
@@ -64,12 +64,14 @@ detected_headers = header_map[names(header_map) %in% detected_protein_info$prote
 filtered_fasta <- sequences[names(sequences) %in% detected_headers]
 
 conduitR::log_with_timestamp(paste0("Writing filtered fasta file to ", detected_protein_info_fasta))
+
 # Writing Filtered Fasta file
 Biostrings::writeXStringSet(filtered_fasta,detected_protein_info_fasta)
 
 end_time <- Sys.time()
-conduitR::log_with_timestamp(paste0("Completed 00_extract_detected_proteins.R script. Time taken: %.2f minutes", 
-    as.numeric(difftime(end_time, start_time, units = "mins"))))
+
+conduitR::log_with_timestamp("Completed extract_detected_proteins.R script. Time taken: %.2f minutes", 
+    as.numeric(difftime(end_time, start_time, units = "mins")))
 
 # closing clogfile connection
 sink(type = "message")

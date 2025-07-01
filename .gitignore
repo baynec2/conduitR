@@ -9,28 +9,29 @@
 **/.DS_Store
 
 # Ignore raw data 
-experiments/example/input/raw_files/*
+experiments/example/input/raw_files/
 
 # Ignore example config files
 experiments/example/config/generate_diann_spectral_library.cfg
 experiments/example/config/run_diann.cfg
 
 # Ignore database resources
-experiments/example/input/database_resources/* 
-experiments/example/output/*
-# Ignore any of the output files
-output/*
+experiments/example/input/database_resources/
 
-# Ignore any of the logs files
+# Ignore output files
+output/
+experiments/example/output/
+
+# Ignore logs files
 logs/*
 
 # Ignore any of the internal snakemake files
 .snakemake
 
-#Ignore any apptainer files
+# Ignore any apptainer files
 apptainer/*.sif
 
-#Ignore any raw files 
+# Ignore any raw files 
 *.raw
 
 # Ignore all experiments except example

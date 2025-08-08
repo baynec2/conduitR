@@ -39,4 +39,7 @@ experiments/*
 !experiments/example/
 !experiments/example/**
 
+# Ignore any database resources. Files are too large to be included in the repository.
+resources/database/
+
 

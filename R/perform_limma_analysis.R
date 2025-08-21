@@ -31,10 +31,10 @@
 #' @examples
 #' # Basic usage with a simple group comparison:
 #' # results <- perform_limma_analysis(qfeatures_obj, "protein", ~group, "groupB - groupA")
-#' 
+#'
 #' # More complex design with batch effect:
 #' # results <- perform_limma_analysis(qfeatures_obj, "protein", ~group + batch, "groupB - groupA")
-#' 
+#'
 #' # Multiple group comparison:
 #' # results <- perform_limma_analysis(qfeatures_obj, "protein", ~treatment, "treatmentB - treatmentA")
 perform_limma_analysis <- function(qf,
@@ -55,6 +55,9 @@ perform_limma_analysis <- function(qf,
 
   # Build design matrix from the provided formula
   design <- model.matrix(formula, data = colData)
+
+  # SANITIZE the design matrix column names
+  colnames(design) <- make.names(colnames(design))
 
   # Fit the linear model
   fit <- limma::lmFit(exprs, design)

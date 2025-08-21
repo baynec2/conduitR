@@ -41,20 +41,20 @@
 #' @examples
 #' # Basic usage with default fields:
 #' # protein_info <- annotate_uniprot_ids(c("P01308", "P01325"))
-#' 
+#'
 #' # Request specific fields:
 #' # detailed_info <- annotate_uniprot_ids(
 #' #   c("P01308", "P01325"),
 #' #   columns = "accession,protein_name,gene_primary,go,xref_kegg"
 #' # )
-#' 
+#'
 #' # Process a large list of IDs in parallel:
 #' # all_proteins <- annotate_uniprot_ids(
 #' #   protein_list,
 #' #   batch_size = 200,
 #' #   parallel = TRUE
 #' # )
-#' 
+#'
 #' # Use the results with other functions:
 #' # kegg_info <- get_kegg_in_batches(detailed_info$xref_kegg)
 #' # eggnog_info <- get_eggnog_function(detailed_info$xref_eggnog)
@@ -111,8 +111,13 @@ annotate_uniprot_ids <- function(uniprot_ids,
   }
 
   # Convert to tibble
-  output <- tibble::as_tibble(results)
-
+  output <- tibble::as_tibble(results) |>
+    dplyr::mutate(
+      dplyr::across(
+        .cols = where(~ !is.numeric(.x)),  # only non-numeric columns
+        as.character
+      )
+    )
   # Fix column names if provided
   if (!is.null(columns)) {
     col_names <- unlist(strsplit(columns, ","))

@@ -18,7 +18,7 @@ get_annotations_from_uniprot <- function(uniprot_ids,
 
   annotated_data <- annotate_uniprot_ids(uniprot_ids,
     columns = columns,
-    batch_size = 150
+    batch_size = 100
   ) |>
     # Cleaning up go and Kegg and eggnog data.
     dplyr::mutate(

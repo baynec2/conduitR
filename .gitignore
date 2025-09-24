@@ -43,3 +43,13 @@ experiments/*
 resources/databases/
 
 
+*.fasta
+*.speclib
+*.raw
+*.lz4
+*.index
+*.fasta
+*.speclib
+*.raw
+*.lz4
+*.index

@@ -23,10 +23,11 @@ conduitR::log_with_timestamp("Starting build_proteotyping_fasta_db.R script")
 # =============================================================================
 
 # Input files
-sequences_file <- snakemake@input[["sequences.tsv.lz4"]]
-taxons_file <- snakemake@input[["taxons.tsv.lz4"]]
+sequences_file <- snakemake@input[["sequences"]]
+taxons_file <- snakemake@input[["taxons"]]
 
 # Output file
+lca_filtered_taxa <- snakemake@output[["lca_filtered_taxa"]]
 output_fasta_file <- snakemake@output[["first_pass_fasta"]]
 
 conduitR::log_with_timestamp("Input files: %s, %s", sequences_file, taxons_file)
@@ -75,11 +76,16 @@ species_peptides <- dplyr::left_join(
   taxons, 
   by = c("lca_il" = "id")
 ) |>
-  dplyr::filter(rank == "species") |>
-  dplyr::mutate(fasta_header = paste(id, lca_il, sep = "|"))
+  dplyr::filter(rank == "species" | rank == "strain") |>
+  dplyr::mutate(fasta_header = 
+                paste0("umgap|",id,"|",lca_il," ",rank,"_",gsub(" ","-",name)," ","OS=",
+                name, " OX=" ,lca_il, " RK=", rank," PT=",parent_id)
+                ) 
+
+readr::write_tsv(species_peptides, lca_filtered_taxa)
 
 conduitR::log_with_timestamp(
-  "Filtered to %d peptides with species-level LCA (from %d total)", 
+  "Filtered to %d peptides with species or strain-level LCA (from %d total)", 
   nrow(species_peptides), 
   nrow(sequences)
 )
@@ -94,7 +100,7 @@ conduitR::log_with_timestamp("Creating FASTA file")
 fasta_sequences <- Biostrings::AAStringSet(species_peptides$sequence)
 names(fasta_sequences) <- species_peptides$fasta_header
 
-Biostrings::writeXStringSet(fasta_sequences, filepath = output_fasta_file)
+Biostrings::writeXStringSet(fasta_sequences,filepath = output_fasta_file)
 
 conduitR::log_with_timestamp("FASTA file saved to: %s", output_fasta_file)
 
@@ -113,4 +119,4 @@ conduitR::log_with_timestamp(
 # Close log file connections
 sink(type = "message")
 sink()
-close(log_connection)
+close(zz)

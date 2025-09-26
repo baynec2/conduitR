@@ -18,22 +18,17 @@ diann_to_qfeatures = function(diann_parquet_fp){
                   Global.PG.Q.Value <= 0.01,
                   PG.Q.Value <= 0.05)
 
-  # Define columns to remove- these are irrelevant for precursor level
-  cols_to_remove <- c(
-    "PG.TopN", "PG.MaxLFQ", "Genes.TopN",
-    "Genes.MaxLFQ", "Genes.MaxLFQ.Unique", "PG.MaxLFQ.Quality",
-    "Genes.MaxLFQ.Quality", "Genes.MaxLFQ.Unique.Quality",
-    "Peptidoform.Q.Value", "Global.Peptidoform.Q.Value",
-    "Lib.Peptidoform.Q.Value","PTM.Site.Confidence",
-    "Site.Occupancy.Probabilities", "Protein.Sites",
-    "Lib.PTM.Site.Confidence", "Translated.Q.Value", "Channel.Q.Value",
-    "PG.Q.Value", "PG.PEP", "GG.Q.Value",
-    "Protein.Q.Value", "Global.PG.Q.Value", "Lib.PG.Q.Value"
-  )
+  # Define columns to keep- only shared values across runs
+  cols_to_keep <- c("Run","Precursor.Id","Modified.Sequence",
+                    "Stripped.Sequence","Precursor.Charge",
+                    "Precursor.Lib.Index","Decoy","Proteotypic","Precursor.Mz",
+                    "Protein.Ids","Protein.Group","Protein.Names","Genes",
+                    "Global.Q.Value","Lib.Q.Value","Precursor.Normalised"
+                    )
 
   # Keep only precursor-relevant columns and pivot to wide format
   precursors_df <- diann_parquet |>
-    dplyr::select(-dplyr::any_of(cols_to_remove)) |>
+    dplyr::select(dplyr::any_of(cols_to_keep)) |>
     tidyr::pivot_wider(
       names_from = "Run",
       values_from = "Precursor.Normalised"
@@ -71,7 +66,7 @@ diann_to_qfeatures = function(diann_parquet_fp){
   # already calculated by DIA-NN
   protein_groups = diann_parquet |>
     dplyr::select(Run,Protein.Group,Protein.Names,Genes,
-                  PG.MaxLFQ.Quality,PG.MaxLFQ,Global.PG.Q.Value) |>
+                  PG.MaxLFQ,Global.PG.Q.Value) |>
     dplyr::distinct() |>
     tidyr::pivot_wider(names_from = Run,
                        values_from = PG.MaxLFQ)
@@ -79,7 +74,7 @@ diann_to_qfeatures = function(diann_parquet_fp){
   # Defining protein group row data
   protein_rowdata <- protein_groups |>
     dplyr::select(Protein.Group,Protein.Names,
-                  Genes,PG.MaxLFQ.Quality, Global.PG.Q.Value) |>
+                  Genes, Global.PG.Q.Value) |>
     dplyr::mutate(Protein.Group2 = Protein.Group) |>
     tibble::column_to_rownames("Protein.Group2")
 
@@ -87,8 +82,8 @@ diann_to_qfeatures = function(diann_parquet_fp){
   protein_se <- SummarizedExperiment::SummarizedExperiment(
     assays = list(intensity = as.matrix(protein_groups |>
                                         dplyr::select(-Protein.Names,
-                                                     -Genes, -PG.MaxLFQ.Quality,
                                                      -Global.PG.Q.Value,
+                                                     -Genes,
                                                      -Protein.Group))),
     rowData = protein_rowdata
   )

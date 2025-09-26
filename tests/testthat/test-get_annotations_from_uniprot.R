@@ -24,8 +24,6 @@ test_that("this works with ids that were problematic previously",{
     problems = readr::read_delim("tests/data/detected_protein_info.txt") |>
       pull(protein_id)
 
-   problems = problems[101:202]
-
 
     out = conduitR::get_annotations_from_uniprot(problems)
 

@@ -18,7 +18,7 @@ diann_to_qfeatures = function(diann_parquet_fp){
                   Global.PG.Q.Value <= 0.01,
                   PG.Q.Value <= 0.05)
 
-  # Define columns to keep- only shared values across runs
+  # Define columns to keep: only shared values across runs
   cols_to_keep <- c("Run","Precursor.Id","Modified.Sequence",
                     "Stripped.Sequence","Precursor.Charge",
                     "Precursor.Lib.Index","Decoy","Proteotypic","Precursor.Mz",
@@ -33,11 +33,11 @@ diann_to_qfeatures = function(diann_parquet_fp){
       names_from = "Run",
       values_from = "Precursor.Normalised"
     )
-
+  # Define the end of the rowData
+  rowdata_end_index = which(colnames(precursors_df) == "Lib.Q.Value")
   # Create SummarizedExperiment from Precursor data
-  rowdat_cols <- setdiff(colnames(precursors_df),
-                         colnames(diann_parquet)[grepl("Run",
-                                                       colnames(diann_parquet))])
+  rowdat_cols <- colnames(precursors_df)[1:rowdata_end_index]
+
   rowdat <- precursors_df |> dplyr::select(dplyr::any_of(rowdat_cols))
   assay_mat <- precursors_df |>
     dplyr::select(-dplyr::any_of(rowdat_cols)) |>

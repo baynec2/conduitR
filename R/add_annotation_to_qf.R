@@ -138,14 +138,14 @@ add_annotation_to_qf = function(qf,
   # Keep only non-adjacency columns
   rowData(qf[["protein_groups"]]) <- rowData(qf[["protein_groups"]])[ , !is_adj, drop = FALSE]
 
-  adjacencyMatrix(qf[["protein_groups"]]) <- adjacency_matrix
+  QFeatures::adjacencyMatrix(qf[["protein_groups"]]) <- adjacency_matrix
   # Define the name of the adjacency matrix column
   adjacency_matrix_name = paste0(column_name_string,"_adjacency_matrix")
   # Rename the adjacency matrix column
   colnames(rowData(qf[["protein_groups"]]))[colnames(rowData(qf[["protein_groups"]])) == "adjacencyMatrix"] <- adjacency_matrix_name
 
   # 4. Aggregate the QFeatures object using the adjacency matrix
-  qf <- aggregateFeatures(
+  qf <- QFeatures::aggregateFeatures(
     qf,
     i = "protein_groups",
     name = rlang::as_string(rlang::ensym(column_name)),

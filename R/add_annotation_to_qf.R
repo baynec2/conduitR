@@ -65,7 +65,7 @@ add_annotation_to_qf = function(qf,
   # Dealing with proteins belonging to protein groups that have different GO terms
   # For the ones that have different matches
   combined = annotation_list_df |>
-    dplyr::left_join(protein_count,annotation_list_df, by = "protein_id") |>
+    dplyr::right_join(protein_count,annotation_list_df, by = "protein_id") |>
     dplyr::group_by(Protein.Group,count, {{ column_name }}) |>
     # Counting how many different annotation terms there are for a protein group
     dplyr::summarise(group_count = dplyr::n(),.groups = "drop") |>

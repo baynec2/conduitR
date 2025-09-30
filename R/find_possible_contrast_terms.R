@@ -17,10 +17,10 @@
 #' @examples
 #' # Find possible contrasts for a simple group comparison:
 #' # terms <- find_possible_contrast_terms(qfeatures_obj, "protein", ~group)
-#' 
+#'
 #' # Find possible contrasts for a more complex design:
 #' # terms <- find_possible_contrast_terms(qfeatures_obj, "protein", ~group + batch)
-#' 
+#'
 #' # The returned terms can be used to construct contrasts for limma analysis:
 #' # contrast <- paste(terms[2], "-", terms[1])  # e.g., "groupB - groupA"
 find_possible_contrast_terms <- function(qf,
@@ -40,6 +40,9 @@ find_possible_contrast_terms <- function(qf,
 
   # Build design matrix from the provided formula
   design <- model.matrix(formula, data = colData)
+
+  # SANITIZE the design matrix column names
+  colnames(design) <- make.names(colnames(design))
 
   contrast_terms = colnames(design)
 

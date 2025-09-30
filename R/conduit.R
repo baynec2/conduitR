@@ -1,38 +1,60 @@
-#' Conduit Class for Proteomics Data Analysis
+#' Conduit Class for Integrated Proteomics Analysis
 #'
-#' A comprehensive class for storing and analyzing proteomics data, combining QFeatures
-#' objects with taxonomic and detection metrics. This class serves as the central data
-#' structure for the conduit package, enabling integrated analysis of protein abundance,
-#' taxonomy, and detection statistics.
+#' The `conduit` class provides a unified container for proteomics data,
+#' integrating quantitative measurements, taxonomic information, and detection metrics.
+#' It serves as the core data structure of the **conduit** package, enabling
+#' downstream analysis and visualization of protein abundance, taxonomy, and
+#' quality statistics.
 #'
-#' @slot QFeatures A QFeatures object containing proteomics data, including:
-#'   \itemize{
-#'     \item Protein abundance measurements across samples
-#'     \item Sample metadata (colData)
-#'     \item Feature metadata (rowData)
-#'     \item Multiple assays (e.g., raw, normalized, log-transformed data)
-#'   }
-#' @slot combined_metrics A tibble containing comprehensive metrics about protein detection,
+#' @slot QFeatures A [QFeatures::QFeatures-class] object containing proteomics data,
 #'   including:
 #'   \itemize{
-#'     \item Number of proteins detected at each taxonomic level
-#'     \item Detection rates and coverage statistics
-#'     \item Quality metrics for protein identification
+#'     \item Protein abundance measurements across samples
+#'     \item Sample metadata (`colData`)
+#'     \item Feature metadata (`rowData`)
+#'     \item Multiple assays (e.g., raw, normalized, or transformed data)
 #'   }
-#' @slot database_protein_taxonomy A tibble containing taxonomy information for all proteins
-#'   in the database, including:
+#' @slot metrics A named list of tibbles, each containing a distinct set of metrics
+#'   from the experiment. Examples include file-level statistics reported by DIA-NN,
+#'   summaries of detected taxonomy, or taxonomic coverage. This structure allows for
+#'   flexible storage of multiple, heterogeneous metric types and is designed to be
+#'   extensible as new metrics are added.
 #'   \itemize{
-#'     \item Complete taxonomic classification (domain to species)
+#'     \item diann_stats: File-level statistics from DIA-NN
+#'     \item detected_taxonomy_summary: Summaries of detected taxa
+#'     \item protein_coverage_by_taxa: Number of proteins detected per taxon
+#'     relative to the total number of proteins in the database for that taxon.
+#'     The percentage represents coverage of the taxon's proteome.
+#'   }
+#' @slot database A tibble containing taxonomic information for all proteins in
+#'   the reference database, including:
+#'   \itemize{
+#'     \item Complete taxonomic classification (domain through species)
 #'     \item Organism type and source information
 #'     \item Protein identifiers and annotations
 #'   }
-#' @slot detected_protein_taxonomy A tibble containing taxonomy information specifically for
-#'   detected proteins, including:
+#' @slot annotations A tibble (long format) containing taxonomy and detection
+#'   information for identified protein groups, enriched with functional annotations
+#'   retrieved from external sources (e.g., GO, KEGG, Pfam). This slot complements
+#'   the `database` slot by providing additional metadata specific to detected
+#'   proteins, beyond what is present in the original FASTA database.
+#'   Includes:
 #'   \itemize{
 #'     \item Taxonomic classification of detected proteins
-#'     \item Detection statistics for each taxon
-#'     \item Quality metrics for identified proteins
+#'     \item Detection statistics for each taxon or protein group
+#'     \item Functional annotations retrieved via API calls (e.g., GO, KEGG, Pfam)
+#'     \item Quality metrics for protein identification
 #'   }
+#'   \itemize{
+#'     \item Taxonomic classification of detected proteins
+#'     \item Detection statistics by taxon
+#'     \item Quality metrics for protein identification
+#'   }
+#'
+#' @details
+#' The `conduit` class is designed to combine raw quantitative proteomics data
+#' with functional and taxonomic context, streamlining analyses that link protein
+#' abundance with microbial community structure.
 #'
 #' @export
 #'
@@ -44,57 +66,29 @@
 #' #   database_protein_taxonomy.tsv = "results/database_taxonomy.tsv",
 #' #   detected_protein_taxonomy.tsv = "results/detected_taxonomy.tsv"
 #' # )
-#' 
-#' # Access and analyze the data:
-#' # - View summary of the object
+#'
+#' # Summarize the object
 #' # show(conduit_obj)
-#' 
-#' # - Access QFeatures data
-#' # assays <- assays(conduit_obj@QFeatures)
-#' # metadata <- colData(conduit_obj@QFeatures)
-#' 
-#' # - Analyze protein detection rates
-#' # rates <- calc_percent_proteins_detected(conduit_obj)
-#' 
-#' # - Create taxonomic visualizations
-#' # plot_taxa_tree(conduit_obj@database_protein_taxonomy)
-#' # plot_sunburst(conduit_obj@detected_protein_taxonomy)
 #'
-#' @note
-#' The conduit class is designed to work seamlessly with other functions in the package:
-#' \itemize{
-#'   \item Use \code{\link[create_conduit_obj]{create_conduit_obj}} to create new instances
-#'   \item Use \code{\link[calc_percent_proteins_detected]{calc_percent_proteins_detected}}
-#'     for detection rate analysis
-#'   \item Use \code{\link[plot_taxa_tree]{plot_taxa_tree}} and
-#'     \code{\link[plot_sunburst]{plot_sunburst}} for taxonomic visualization
-#'   \item Use \code{\link[perform_limma_analysis]{perform_limma_analysis}} for
-#'     differential expression analysis
-#' }
-#' For large datasets, consider:
-#' \itemize{
-#'   \item Using appropriate filtering before creating the object
-#'   \item Managing memory usage when working with multiple assays
-#'   \item Utilizing the package's visualization functions for efficient data exploration
-#' }
+#' # Access QFeatures data
+#' # assays(conduit_obj@QFeatures)
+#' # colData(conduit_obj@QFeatures)
 #'
-#' @seealso
-#' \itemize{
-#'   \item \code{\link[create_conduit_obj]{create_conduit_obj}} for creating new instances
-#'   \item \code{\link[QFeatures]{QFeatures}} for details about the QFeatures class
-#'   \item \code{\link[plot_taxa_tree]{plot_taxa_tree}} and
-#'     \code{\link[plot_sunburst]{plot_sunburst}} for visualization
-#'   \item \code{\link[calc_percent_proteins_detected]{calc_percent_proteins_detected}}
-#'     for detection rate analysis
-#' }
-setClass(Class = "conduit",
-         slots = list(
-           QFeatures = "QFeatures",
-           combined_metrics = "tbl_df",
-           database_protein_taxonomy = "tbl_df",
-           detected_protein_taxonomy = "tbl_df"
-           )
-         )
+#' # Analyze detection metrics
+#' # calc_percent_proteins_detected(conduit_obj)
+#'
+#' # Visualize taxonomy
+#' # plot_taxa_tree(conduit_obj@database)
+#' # plot_sunburst(conduit_obj@annotations)
+setClass(
+  Class = "conduit",
+  slots = list(
+    QFeatures   = "QFeatures",
+    metrics     = "list",
+    database    = "tbl_df",
+    annotations = "tbl_df"
+  )
+)
 
 #' Initialize a Conduit Object
 #'
@@ -124,15 +118,16 @@ setClass(Class = "conduit",
 setMethod("initialize", "conduit",
           function(.Object,
                    QFeatures,
-                   combined_metrics = NULL,
-                   database_protein_taxonomy = NULL,
-                   detected_protein_taxonomy = NULL) {
-            .Object@QFeatures <- QFeatures
-            .Object@combined_metrics <- combined_metrics
-            .Object@database_protein_taxonomy <- database_protein_taxonomy
-            .Object@detected_protein_taxonomy <- detected_protein_taxonomy
+                   metrics = NULL,
+                   database = NULL,
+                   annotations = NULL) {
+            .Object@QFeatures   <- QFeatures
+            .Object@metrics     <- metrics
+            .Object@database    <- database
+            .Object@annotations <- annotations
             return(.Object)
           })
+
 
 #' Show Method for Conduit Object
 #'
@@ -149,8 +144,15 @@ setMethod("initialize", "conduit",
 setMethod("show", "conduit",
           function(object) {
             cat("conduit Summary:\n")
-            cat("Number of Assays in QFeatures:", length(SummarizedExperiment::assays(object@QFeatures)), "\n")
-            cat("Combined (in Database + Detected) Metrics:", if (!is.null(object@combined_metrics)) "Available" else "Not Available", "\n")
-            cat("Database Proteins Taxonomy:", if (!is.null(object@database_protein_taxonomy)) "Available" else "Not Available", "\n")
-            cat("Detected Proteins Taxonomy:", if (!is.null(object@detected_protein_taxonomy)) "Available" else "Not Available", "\n")
+            cat("Number of Assays in QFeatures:",
+                length(SummarizedExperiment::assays(object@QFeatures)), "\n")
+
+            cat("Metrics:",
+                if (!is.null(object@metrics)) "Available" else "Not Available", "\n")
+
+            cat("Database Taxonomy:",
+                if (!is.null(object@database)) "Available" else "Not Available", "\n")
+
+            cat("Annotations:",
+                if (!is.null(object@annotations)) "Available" else "Not Available", "\n")
           })

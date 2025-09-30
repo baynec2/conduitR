@@ -47,24 +47,47 @@
 #'   \item Tab-delimited text files for metrics and taxonomy
 #'   \item Consistent protein identifiers across all input files
 #' }
-#' The function will read all files into memory, so ensure sufficient RAM is available
-#' for large datasets.
-create_conduit_obj <- function(QFeatures.rds,
-                               combined_metrics.tsv,
-                               database_protein_taxonomy.tsv,
-                               detected_protein_taxonomy.tsv) {
-  # Reading in the files
-  QFeatures <- readRDS(QFeatures.rds)
-  database_protein_taxonomy <- readr::read_tsv(database_protein_taxonomy.tsv)
-  combined_metrics <- readr::read_tsv(combined_metrics.tsv)
-  detected_protein_taxonomy <- readr::read_tsv(detected_protein_taxonomy.tsv)
+#' The function will read all files into memory, so ensure sufficient RAM is
+#' available for large datasets.
+create_conduit_obj <- function(QFeatures_fp,
+                               diann_stats_fp,
+                               database_fp,
+                               annotations_fp) {
+
+  # Check that files exist
+  stopifnot(file.exists(QFeatures_fp),
+            file.exists(diann_stats_fp),
+            file.exists(database_fp),
+            file.exists(annotations_fp))
+
+  # Reading in QFeatures Object
+  QFeatures <- readRDS(QFeatures_fp)
+
+  # Reading in Metrics
+  diann_stats <- readr::read_tsv(diann_stats_fp) |>
+    dplyr::mutate(File.Name = tools::file_path_sans_ext(basename(File.Name)))
+
+  metrics <- list(diann_stats = diann_stats)
+
+  # Reading in Database (in tabular format)
+  database <- readr::read_tsv(database_fp) |>
+    # Removing sequences to cut down on memory
+    dplyr::select(-sequence) |>
+    # Converting characters to factors to save memory
+    dplyr::mutate(dplyr::across(organism_name:download_info, as.factor))
+
+  # Reading in Annotation
+  annotations <- readr::read_tsv(annotations_fp) |>
+    # Saving as factors to reduce memory footprint
+    dplyr::mutate(dplyr::across(where(is.character), as.factor))
 
   # Create the  conduit object
   conduit_obj <- new("conduit",
     QFeatures = QFeatures,
-    database_protein_taxonomy = database_protein_taxonomy,
-    combined_metrics = combined_metrics,
-    detected_protein_taxonomy = detected_protein_taxonomy
+    metrics = metrics,
+    database = database,
+    annotations = annotations
   )
-  return(conduit_obj)
+
+  invisible(conduit_obj)
 }

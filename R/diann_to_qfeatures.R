@@ -8,7 +8,6 @@
 #'
 #' @examples
 diann_to_qfeatures = function(diann_parquet_fp){
-
   # Read DIANN parquet file
   diann_parquet <- arrow::read_parquet(diann_parquet_fp) |>
     # Filtering per DIA-NN User Manual
@@ -71,12 +70,27 @@ diann_to_qfeatures = function(diann_parquet_fp){
     tidyr::pivot_wider(names_from = Run,
                        values_from = PG.MaxLFQ)
 
+  # Counting peptide sequences per protein_group
+  n_peptides_detected <- diann_parquet |>
+    dplyr::select(Protein.Group,Stripped.Sequence) |>
+    dplyr::distinct() |>
+    dplyr::group_by(Protein.Group) |>
+    dplyr::summarise(.n = dplyr::n()) |>
+    dplyr::ungroup()
+
+  protein_groups <- dplyr::left_join(protein_groups,
+                                     n_peptides_detected,
+                                     by = "Protein.Group")
+
+
   # Defining protein group row data
   protein_rowdata <- protein_groups |>
     dplyr::select(Protein.Group,Protein.Names,
-                  Genes, Global.PG.Q.Value) |>
+                  Genes, Global.PG.Q.Value,.n) |>
     dplyr::mutate(Protein.Group2 = Protein.Group) |>
     tibble::column_to_rownames("Protein.Group2")
+
+
 
   # Creating SummarizedExperiment for protein groups
   protein_se <- SummarizedExperiment::SummarizedExperiment(
@@ -84,7 +98,8 @@ diann_to_qfeatures = function(diann_parquet_fp){
                                         dplyr::select(-Protein.Names,
                                                      -Global.PG.Q.Value,
                                                      -Genes,
-                                                     -Protein.Group))),
+                                                     -Protein.Group,
+                                                     -.n))),
     rowData = protein_rowdata
   )
 

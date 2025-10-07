@@ -83,9 +83,6 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
   }
   # Combine all batch results into a single dataframe
   out <- dplyr::bind_rows(all_results) |>
-    dplyr::mutate(
-      pathway = stringr::str_trim(kegg_pathway) # Clean up any leading/trailing spaces
-    ) |>
     dplyr::select(kegg_id,gene_description,kegg_pathway_id,kegg_pathway, ko, ko_description,org_id)
 
   return(out)

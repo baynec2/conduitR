@@ -22,7 +22,7 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
   # Initiating list
   all_results <- list()
   # Split IDs into batches
-  batches <- split(split_ids, ceiling(seq_along(kegg_ids) / batch_size))
+  batches <- split(split_ids, ceiling(seq_along(split_ids) / batch_size))
   for (i in seq_along(batches)) {
     message(sprintf("Processing batch %d of %d of KEGG Ids", i, length(batches)))
     batch <- batches[[i]]
@@ -45,18 +45,16 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
         gene_id <- paste0(org_id, ":", gene_num) # Full gene ID
         gene_description = entry$NAME
 
-        # Extract KO ID safely
-        ko <- if (!is.null(entry$ORTHOLOGY)) names(entry$ORTHOLOGY) else NA_character_
+        # Extract KO ID safely, if more than one ko they will be comma separated
+        ko <- if (!is.null(entry$ORTHOLOGY)) paste(names(entry$ORTHOLOGY),collapse = ";") else NA_character_
 
-        ko_description <- if (!is.null(entry$ORTHOLOGY)) entry$ORTHOLOGY else NA_character_
+        ko_description <- if (!is.null(entry$ORTHOLOGY)) paste(entry$ORTHOLOGY,collapse = ";") else NA_character_
 
-        # Extract KEGG Pathway
         kegg_pathway <- if (!is.null(entry$PATHWAY)) {
-          paste0(paste0(entry$PATHWAY, " [", names(entry$PATHWAY), "]"), collapse = "; ")
+          entry$PATHWAY
         } else {
           NA_character_
         }
-
         kegg_pathway_id <- if (!is.null(entry$PATHWAY)) {
          names(entry$PATHWAY)
         } else {
@@ -83,15 +81,8 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
     # 0.34 led to IP getting blocked.
     Sys.sleep(1)
   }
-
   # Combine all batch results into a single dataframe
   out <- dplyr::bind_rows(all_results) |>
-    # Formatting into a useful format
-    dplyr::mutate(kegg_pathway_list = stringr::str_split(kegg_pathway, "; ")) |>
-    tidyr::unnest(kegg_pathway_list) |>
-    dplyr::mutate(
-      kegg_pathway = stringr::str_extract(kegg_pathway_list, "^[^\\[]+")
-      ) |>
     dplyr::mutate(
       pathway = stringr::str_trim(kegg_pathway) # Clean up any leading/trailing spaces
     ) |>

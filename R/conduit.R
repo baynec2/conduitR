@@ -29,9 +29,8 @@
 #' @slot database A tibble containing taxonomic information for all proteins in
 #'   the reference database, including:
 #'   \itemize{
-#'     \item Complete taxonomic classification (domain through species)
-#'     \item Organism type and source information
-#'     \item Protein identifiers and annotations
+#'     \item Protein identifiers
+#'     \item Organism identifier (NCBI)
 #'   }
 #' @slot annotations A tibble (long format) containing taxonomy and detection
 #'   information for identified protein groups, enriched with functional annotations
@@ -49,6 +48,13 @@
 #'     \item Taxonomic classification of detected proteins
 #'     \item Detection statistics by taxon
 #'     \item Quality metrics for protein identification
+#'   }
+#' @slot taxonomy A tibble containing the taxonomy detected in the experiment
+#'   Includes:
+#'   \itemize{
+#'     \item NCBI taxonomic ids
+#'     \item Full taxonomic designation (Domain - species)
+#'     \item Organism type (user-specified ie host vs microbiome)
 #'   }
 #'
 #' @details
@@ -86,7 +92,8 @@ setClass(
     QFeatures   = "QFeatures",
     metrics     = "list",
     database    = "tbl_df",
-    annotations = "tbl_df"
+    annotations = "tbl_df",
+    taxonomy = "tbl_df"
   )
 )
 
@@ -120,11 +127,13 @@ setMethod("initialize", "conduit",
                    QFeatures,
                    metrics = NULL,
                    database = NULL,
-                   annotations = NULL) {
+                   annotations = NULL,
+                   taxonomy = NULL) {
             .Object@QFeatures   <- QFeatures
             .Object@metrics     <- metrics
             .Object@database    <- database
             .Object@annotations <- annotations
+            .Object@taxonomy <- taxonomy
             return(.Object)
           })
 
@@ -150,9 +159,12 @@ setMethod("show", "conduit",
             cat("Metrics:",
                 if (!is.null(object@metrics)) "Available" else "Not Available", "\n")
 
-            cat("Database Taxonomy:",
+            cat("Database:",
                 if (!is.null(object@database)) "Available" else "Not Available", "\n")
 
             cat("Annotations:",
                 if (!is.null(object@annotations)) "Available" else "Not Available", "\n")
+
+            cat("Taxonomy:",
+                if (!is.null(object@taxonomy)) "Available" else "Not Available", "\n")
           })

@@ -57,7 +57,8 @@ diann_to_qfeatures = function(diann_parquet_fp){
     i = "precursors",
     fcol = "Stripped.Sequence",   # grouping column in rowData
     name = "peptides",
-    fun = colSums
+    fun = colSums,
+    na.rm = TRUE
   )
 
   # Add protein groups to the QFeatures assay

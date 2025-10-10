@@ -1,4 +1,4 @@
-#'Add Protein Coverage Metrics at All Taxonomic Levels
+#' Add Protein Coverage Metrics at All Taxonomic Levels
 #'
 #' Calculates the proportion of proteins detected for each taxonomic level
 #' (domain, kingdom, phylum, class, order, family, genus, species) and adds
@@ -35,12 +35,15 @@ add_protein_coverage_taxa_metrics <- function(conduit) {
     tibble::as_tibble()
 
   database <- conduit@database
+  taxonomy <- conduit@taxonomy
+
+  database_with_taxa_levels = database |>
+    dplyr::left_join(taxonomy, by = "organism_id",)
 
   for (level in taxonomic_levels) {
     if (level %in% colnames(detected)) {
-
       # Total proteins per taxon in database
-      db_count <- database |>
+      db_count <- database_with_taxa_levels |>
         dplyr::group_by(taxon = .data[[level]]) |>
         dplyr::summarise(n_proteins_db = dplyr::n_distinct(protein_id),
                          .groups = "drop")

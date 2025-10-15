@@ -74,13 +74,16 @@
 #' }
 download_fasta_from_organism_ids <- function(organism_ids,
                                              parallel = FALSE,
-                                             proteome_id_destination_fp = paste0(getwd(),"/",
-                                                                                 Sys.Date(),
-                                                                                 ".txt"),
-                                             fasta_destination_fp = paste0(getwd(),"/",
-                                                                Sys.Date(),
-                                                                ".fasta")) {
-
+                                             proteome_id_destination_fp = paste0(
+                                               getwd(), "/",
+                                               Sys.Date(),
+                                               ".txt"
+                                             ),
+                                             fasta_destination_fp = paste0(
+                                               getwd(), "/",
+                                               Sys.Date(),
+                                               ".fasta"
+                                             )) {
   # Check if proteome id file exists - if so delete it.
   if (file.exists(proteome_id_destination_fp)) {
     unlink(proteome_id_destination_fp)
@@ -91,41 +94,161 @@ download_fasta_from_organism_ids <- function(organism_ids,
     unlink(fasta_destination_fp)
     log_with_timestamp(paste0("File deleted at", fasta_destination_fp))
   }
-
-  # Making sure organism_ids are unique
-  organism_ids <- unique(organism_ids)
   ##############################################################################
   # Generating List of Proteome IDs
   ##############################################################################
   log_with_timestamp("Getting Proteome IDs cooresponding to organism IDs")
-  proteome_ids = get_proteome_ids_from_organism_ids(organism_ids,
-                                                    parallel = parallel)
 
-  proteome_ids_v = proteome_ids$`Proteome Id`
-  #omit na if they are there
-  proteome_ids_v <- proteome_ids_v[!is.na(proteome_ids_v)]
+  # Only looking at unique organism ids
+  organism_ids <- unique(organism_ids)
+
+  # Getting proteome_ids
+  proteome_id_df <- get_proteome_ids_from_organism_ids(organism_ids,
+    parallel = parallel
+  ) |>
+    dplyr::mutate(selected_proteome_id = dplyr::case_when(is.na(redundant_to) ~
+      proteome_id, TRUE ~ redundant_to))
+
+  # Figuring out what level of taxonomy the proteome ids are at
+  taxon_df <- organism_ids |>
+    purrr::map_dfr(.f = get_parent_taxonomy_id, .progress = TRUE)
+
+  proteome_taxa_level <- dplyr::left_join(proteome_id_df,
+    taxon_df,
+    by = c("organism_id" = "child_id")
+  )
+  ################################################################################
+  # Dealing with Stain level taxonomy
+  ################################################################################
+  strain <- proteome_taxa_level |>
+    dplyr::filter(child_rank == "strain")
+
+  if(nrow(strain > 0)){
+  # Defining reference proteome classifications
+  good_pt_filter <- c(
+    "Representative proteome",
+    "Reference and representative proteome"
+  )
+
+  # User supplied strains that are representative are good proteome ids
+  log_with_timestamp("Determining what strains have good proteomes")
+
+  good_strain_proteome_df <- strain |>
+    dplyr::filter(proteome_type %in% good_pt_filter)
+
+  # Strain proteome ids that are not reference or representative or NA
+  bad_strain_proteome_ids_df <- strain |>
+    dplyr::filter(proteome_type %!in% good_pt_filter)
+
+  # Checking parent taxonomy
+  parents_of_bad_ids <- bad_strain_proteome_ids_df |>
+    dplyr::pull(parent_id) |>
+    unique()
+
+  log_with_timestamp("Getting species level proteomes of strains with bad proteomes")
+  # Getting proteomes at the parent id
+  if(length(parents_of_bad_ids > 1)){
+  parent_proteome_df <- get_proteome_ids_from_organism_ids(parents_of_bad_ids,
+    parallel = parallel
+  ) |>
+    dplyr::mutate(
+      selected_proteome_id = dplyr::case_when(is.na(redundant_to) ~
+        proteome_id, TRUE ~ redundant_to),
+      child_rank = "species"
+    )
+  } else {
+    parent_proteome_df <- dplyr::tibble(
+      organism_id = integer(),
+      proteome_id = character(),
+      proteome_type = character(),
+      redundant_to = character(),
+      parent_id = integer(),
+      child_rank = character(),
+      selected_proteome_id = character()
+    )
+}
+  # Figuring out which have representative proteomes at the species level
+  good_parent_df <- parent_proteome_df |>
+    dplyr::filter(proteome_type %in% good_pt_filter)
+
+  log_with_timestamp("Determining what species level proteomes are better than those at the strain level")
+
+  # Figuring out what proteomes to just use the strain level info from.
+  strain_level_ids_okay_df <- bad_strain_proteome_ids_df |>
+    dplyr::filter(parent_id %!in% good_parent_df$organism_id) |>
+    dplyr::mutate(selected_proteome_id = dplyr::case_when(is.na(redundant_to) ~
+      proteome_id, TRUE ~ redundant_to))
+
+  # Defining the ids
+  strain_level_ids_okay <- strain_level_ids_okay_df |>
+    dplyr::filter(!is.na(proteome_id)) |>
+    dplyr::pull(selected_proteome_id)
+
+  # Selecting the ids to search
+  strain_resolved_ids <- c(
+    good_strain_proteome_df$proteome_id,
+    good_parent_df$proteome_id,
+    strain_level_ids_okay
+  )
+  } else {
+    strain_resolved_ids <- c()
+    good_strain_proteome_df <- dplyr::tibble()
+    good_parent_df <- dplyr::tibble()
+    strain_level_ids_okay_df <- dplyr::tibble()
+  }
+
+  ################################################################################
+  # Dealing with Other taxonomic levels (Species or subspecies)
+  ################################################################################
+  log_with_timestamp("Dealing with non-strain level proteomes")
+
+  species_df <- proteome_taxa_level |>
+    dplyr::filter(child_rank != "strain")
+
+  if(nrow(species_df) >0){
+
+  species_id <- species_df |>
+    dplyr::filter(!is.na(selected_proteome_id)) |>
+    dplyr::pull(selected_proteome_id)
+
+  }else{
+    species_id <- c()
+  }
+
+  # Proteome ids to search
+  proteome_ids_to_search <- c(strain_resolved_ids, species_id)
+
+  n_ids_provided <- length(organism_ids)
+
   log_with_timestamp("Proteome IDs Sucessfully Retrieved")
+  log_with_timestamp(glue::glue(
+    "{n_ids_provided} unique taxonomy IDs were provided. ",
+    "UniProtKB proteomes were successfully retrieved for {length(proteome_ids_to_search)} taxa, ",
+    "while {n_ids_provided - length(proteome_ids_to_search)} had no corresponding proteome available."
+  ))
+
   ##############################################################################
   # Downloading all FASTA files into the temp directory
   ##############################################################################
-  fasta_dir = paste0(dirname(fasta_destination_fp),"/temp")
-  if(!dir.exists(fasta_dir)){
-  dir.create(fasta_dir)
-  }else{
+  fasta_dir <- paste0(dirname(fasta_destination_fp), "/temp")
+  if (!dir.exists(fasta_dir)) {
+    dir.create(fasta_dir)
+  } else {
     log_with_timestamp("temp/ dir already existed, old version was deleted")
     unlink(fasta_dir)
     dir.create(fasta_dir)
   }
-   if (parallel) {
+  if (parallel) {
     future::plan(future::multisession, workers = future::availableCores() - 1)
-    furrr::future_map_dfr(proteome_ids_v,
-                          get_fasta_file,
-                          fasta_dir = fasta_dir ,
-                          .progress = TRUE)
+    furrr::future_map_dfr(proteome_ids_to_search,
+      get_fasta_file,
+      fasta_dir = fasta_dir,
+      .progress = TRUE
+    )
     future::plan(future::sequential) # Reset to sequential processing
   } else {
     purrr::map_dfr(
-      proteome_ids_v,
+      proteome_ids_to_search,
       function(id, ...) {
         get_fasta_file(id, ...)
       },
@@ -134,32 +257,55 @@ download_fasta_from_organism_ids <- function(organism_ids,
     )
   }
   ##############################################################################
+  # Retry for any files that were not downloaded the first time
+  ##############################################################################
+
+  fasta_files <- list.files(fasta_dir)
+  n_downloaded_proteomes <- length(fasta_files)
+
+  if (n_downloaded_proteomes != length(proteome_ids_to_search)) {
+    warning(glue::glue(
+      "{length(proteome_ids_to_search) - n_downloaded_proteomes} proteomes were not successfully downloaded."
+    ))
+  }
+
+
+  ##############################################################################
   # Concatenating all files in temp dir
   ##############################################################################
-  log_with_timestamp("Concatinating fasta files...")
+
+  log_with_timestamp(glue::glue(
+    "Concatenating FASTA files for {n_downloaded_proteomes} downloaded proteomes..."
+  ))
+
   concatenate_fasta_files(fasta_dir, fasta_destination_fp)
 
-  # getting all the names of files in directory (these are sucessfully downloaded
-  # proteomes.
-  p <- list.files(fasta_dir)
-  # Removing extension
-  p <- gsub("\\.fasta","",p)
+  # Assembling proteome id dataframe
+  final_proteome_df <- dplyr::bind_rows(
+    good_strain_proteome_df,
+    good_parent_df,
+    strain_level_ids_okay_df,
+    species_df
+  )
 
-  proteome_ids = proteome_ids |>
-    dplyr::mutate(downloaded_by_conduit = dplyr::case_when(`Proteome Id` %!in% p ~ FALSE,
-                                                   TRUE ~ TRUE)) |>
-    dplyr::mutate(download_info = dplyr::case_when(is.na(`Proteome Id`) ~ "taxa_id_not_in_uniprot_db",
-                                                   !downloaded_by_conduit & !is.na(`Proteome Id`) ~ "excluded_in_uniprot_db",
-                                                   downloaded_by_conduit ~ "downloaded_by_conduit",
-                                                   TRUE ~ "NA"
-                                                   ))
+  success <- gsub(".fasta", "", fasta_files)
+
+  # annotating with whether or not the proteome was downloaded
+  annotated_downloads <- final_proteome_df |>
+    dplyr::mutate(download_info = dplyr::case_when(
+      selected_proteome_id %!in% success ~ "not_downloaded",
+      TRUE ~ proteome_type
+    ))
+
   # Writing proteome ids that coorespond with taxa ids to file path.
-  log_with_timestamp(paste0("Writing downloaded proteome information to ",
-                            proteome_id_destination_fp))
+  log_with_timestamp(paste0(
+    "Writing downloaded proteome information to ",
+    proteome_id_destination_fp
+  ))
 
-  readr::write_delim(proteome_ids,file = proteome_id_destination_fp)
+  readr::write_delim(annotated_downloads, file = proteome_id_destination_fp)
 
   # Delete the temp directory and its contents
-    unlink(fasta_dir, recursive = TRUE)
-    log_with_timestamp("Temporary directory deleted.\n")
-  }
+  unlink(fasta_dir, recursive = TRUE)
+  log_with_timestamp("Temporary directory deleted.\n")
+}

@@ -94,31 +94,5 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
       .progress = TRUE
     )
   }
-  # Getting list of all reference proteome, pull reference if it exists, if not
-  # take largest
-  log_with_timestamp("Getting Reference Proteomes")
-  reference <- get_all_reference_proteomes() |> dplyr::pull(Proteome_ID)
-  log_with_timestamp("Reference Proteomes Sucessfully Retrieved.")
-
-  # Annotate with whether it is a reference proteome or not.
-  results <- results |>
-    dplyr::mutate(reference = dplyr::case_when(
-      `Proteome Id` %in% reference ~ TRUE,
-      TRUE ~ FALSE
-    )) |>
-    dplyr::group_by(`Organism Id`) |>
-    dplyr::filter(if (any(reference)) reference else `Protein count` == max(`Protein count`)) |>
-    dplyr::ungroup()
-  # Dealing with missing IDs
-  missing_ids = organism_ids[organism_ids %!in% results$`Organism Id`]
-  # Print out number that were missing
-  if(length(missing_ids > 0)){
-  log_with_timestamp(paste0(length(missing_ids)," organism ids do not have a Uniprot proteome."))
-  # Print out the ids that they include.
-  log_with_timestamp(paste0("These include the following NCBI ids: ",
-          paste(missing_ids, collapse = ", ")))
-  missing_ids <- tibble::tibble(`Organism Id` = as.numeric(missing_ids))
-  results = dplyr::bind_rows(results,missing_ids)
-  }
   return(results)
 }

@@ -25,10 +25,10 @@
 #' @examples
 #' # Basic usage:
 #' # plot_biplot(qfeatures_obj, "protein")
-#' 
+#'
 #' # With aesthetics:
 #' # plot_biplot(qfeatures_obj, "protein", color = "group", shape = "treatment")
-#' 
+#'
 #' # With faceting:
 #' # plot_biplot(qfeatures_obj, "protein", facet_formula = ~group)
 #'
@@ -64,12 +64,11 @@ plot_biplot <- function(qf,
   # Combine PCA results and metadata
   df <- cbind(p$rotated, p$metadata)
 
-  # Build dynamic aesthetics
-  aes_args <- list(x = quote(PC1), y = quote(PC2))
-  if (!is.null(color)) aes_args$color <- as.name(color)
-  if (!is.null(shape)) aes_args$shape <- as.name(shape)
+  aes_args <- list(x = rlang::sym("PC1"), y = rlang::sym("PC2"))
 
-  # Build plot
+  if (!is.null(color)) aes_args$color <- rlang::sym(color)
+  if (!is.null(shape)) aes_args$shape <- rlang::sym(shape)
+
   plt <- ggplot2::ggplot(df, do.call(ggplot2::aes, aes_args)) +
     ggplot2::geom_point(size = 3, alpha = 0.8) +
     ggplot2::labs(
@@ -78,7 +77,6 @@ plot_biplot <- function(qf,
     ) +
     ggplot2::theme(legend.position = legendPosition)
 
-  # Add facetting if requested
   if (!is.null(facet_formula)) {
     plt <- plt + ggplot2::facet_wrap(facet_formula)
   }

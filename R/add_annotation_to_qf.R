@@ -153,8 +153,12 @@ add_annotation_to_qf = function(qf,
     fun = MsCoreUtils::colSumsMat,
     na.rm = TRUE)
 
-  # Keep only non-adjacency columns- it was causing problems with downstream analysis
-  rowData(qf[["protein_groups"]]) <- rowData(qf[["protein_groups"]])[ , !is_adj, drop = FALSE]
+  # Define adjacency columns after aggregation / renaming
+  adj_cols <- grepl("_adjacency_matrix$", colnames(rowData(qf[["protein_groups"]])))
+
+  # Keep only non-adjacency columns
+  rowData(qf[["protein_groups"]]) <- rowData(qf[["protein_groups"]])[ , !adj_cols, drop = FALSE]
+
 
   return(qf)
 

@@ -89,6 +89,3 @@ download_fasta_from_proteome_id <- function(proteome_ids,
   }
 }
 
-# Useage
-
-proteome_ids <- readr::read_delim(("../Desktop/proteome_ids.txt"))$proteome_id

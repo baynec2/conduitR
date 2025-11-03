@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-download_fasta_from_proteome_id <- function(proteome_ids,
+download_fasta_from_proteome_ids <- function(proteome_ids,
                                             parallel = FALSE,
                                             proteome_id_destination_fp = paste0(
                                               getwd(), "/",

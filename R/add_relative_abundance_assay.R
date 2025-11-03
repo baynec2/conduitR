@@ -26,14 +26,14 @@
 #' @examples
 #' # Add relative abundance assays for all default taxonomic levels:
 #' # qf_with_rel_abundance <- add_relative_abundance_assays(qfeatures_obj)
-#' 
+#'
 #' # Add relative abundance for specific assays:
 #' # qf_with_rel_abundance <- add_relative_abundance_assays(qfeatures_obj,
 #' #   assay_names = c("genus", "species"))
-#' 
+#'
 #' # The resulting assays can be used with plotting functions:
 #' # plot_relative_abundance(qf_with_rel_abundance, "genus_rel_abundance")
-#' 
+#'
 #' # Or for downstream analysis:
 #' # perform_limma_analysis(qf_with_rel_abundance, "species_rel_abundance", ~group, "groupB - groupA")
 #'
@@ -48,38 +48,38 @@
 #'
 #' @seealso \code{\link[plot_relative_abundance]{plot_relative_abundance}} for visualizing
 #'   the relative abundance data
-add_relative_abundance_assays <- function(qf, assay_names = c("domain",
-                                                              "kingdom",
-                                                              "phylum",
-                                                              "class",
-                                                              "order",
-                                                              "family",
-                                                              "genus",
-                                                              "species")
-                                          ){
 
-  # Loop through all specified assay names, add relative abundance.
-  for(i in assay_names){
-    # Check if the specified assay exists in the QFeatures object
-    if (!(i %in% names(qf))) {
-      stop("The specified assay name does not exist in the QFeatures object.")
-    }
-    # Extract the assay data
-    assay_data <- SummarizedExperiment::assay(qf, i)
+add_relative_abundance_assay <- function(qf, assay_name = "phylum") {
+  allowed_assays <- c(
+    "domain", "kingdom", "phylum", "class", "order", "family",
+    "genus", "species"
+  )
 
-    # Calculate column sums (total abundance for each sample)
-    col_sums <- colSums(assay_data, na.rm = TRUE)
-
-    # Normalize each value by its corresponding column sum to get relative abundance, multiply by 100 to get percentage
-    rel_abundance <- QFeatures::sweep(assay_data, 2, col_sums, FUN = "/") * 100
-
-    # Ensure the relative abundance is wrapped in a SummarizedExperiment
-    rel_abundance_se <- SummarizedExperiment::SummarizedExperiment(assays = rel_abundance)
-
-    # Add the relative abundance as a new assay in the QFeatures object
-    qf <- QFeatures::addAssay(qf, rel_abundance_se, name = paste0(i, "_rel_abundance"))
-
+  if (!(assay_name %in% allowed_assays)) {
+    stop("The specified assay name does not exist in the QFeatures object.")
   }
+
+  # Extract the assay
+  se <- qf[[assay_name]]
+  assay_data <- SummarizedExperiment::assay(se)
+
+  # Compute relative abundance (%)
+  col_sums <- colSums(assay_data, na.rm = TRUE)
+  rel_abundance <- sweep(assay_data, 2, col_sums, FUN = "/") * 100
+
+  # Create a new SummarizedExperiment with original metadata
+  rel_abundance_se <- SummarizedExperiment::SummarizedExperiment(
+    assays = list(rel_abundance = rel_abundance),
+    rowData = SummarizedExperiment::rowData(se),
+    colData = SummarizedExperiment::colData(se)
+  )
+
+
+  # Add the relative abundance as a new assay in the QFeatures object
+  qf <- QFeatures::addAssay(qf, rel_abundance_se, name = paste0(
+    assay_name,
+    "_rel_abundance"
+  ))
 
   # Return the modified QFeatures object
   return(qf)

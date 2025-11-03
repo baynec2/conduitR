@@ -88,4 +88,3 @@ download_fasta_from_proteome_id <- function(proteome_ids,
     log_with_timestamp("Temporary directory deleted.\n")
   }
 }
-

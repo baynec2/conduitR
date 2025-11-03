@@ -28,52 +28,75 @@
 #' @examples
 #' # Basic usage with default settings:
 #' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj)
-#' 
+#'
 #' # Using log10 transformation and min imputation:
 #' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj, base = 10)
-#' 
+#'
 #' # With normalization:
 #' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj,
 #' #                                             norm_method = "center.scale")
-#' 
+#'
 #' # The transformed assays can be used with plotting functions:
 #' # plot_density(qf_transformed, "protein", color = "group")
-add_log_imputed_norm_assays <- function(qf,
-                                        base = 2,
-                                        impute_method = "min",
-                                        norm_method = "none") {
+add_log_imputed_norm_assay <- function(qf,
+                                       assay = "protein_groups",
+                                       base = 2,
+                                       impute_method = "min",
+                                       norm_method = "none",
+                                       min_n = 1) {
 
-  # Step 1: Replace any zeros with NA
+  # Allowed imputation methods
+  allowed_methods <- c(MsCoreUtils::imputeMethods(), "no_missing")
+  if (!(impute_method %in% allowed_methods)) {
+    stop("Supplied impute method not allowed.")
+  }
+
+  # Names of resulting assays
+  log_name <- paste0(assay, "_log", base)
+  impute_name <- paste0(log_name, "_imputed")
+  norm_name <- paste0(impute_name, "_norm")
+
+  # Step 1: Replace zeros with NA
   qf <- replace_zero_with_na(qf)
 
-  # Step 2: Log2 Transform All Assays. Add a pseudocount of 1 to prevent log(0)
+  # Step 2: Log-transform
   qf <- QFeatures::logTransform(qf,
                                 base = base,
                                 pc = 1,
-                                i = names(qf),
-                                name = paste0(names(qf), "_log", base))
+                                i = assay,
+                                name = log_name)
 
-  # Identify log2-transformed assays
-  log2_assays = names(qf)[grepl(".*log2", names(qf))]
+  # Step 3: Impute
+  if (impute_method == "no_missing") {
+    se <- qf[[log_name]]
+    se_no_na <- se[rowSums(is.na(SummarizedExperiment::assay(se))) == 0, ]
+    qf[[impute_name]] <- se_no_na
+  } else {
+    qf <- QFeatures::impute(qf,
+                            method = impute_method,
+                            i = log_name,
+                            name = impute_name)
+  }
 
-  # Step 3: Impute Missing Values
-  qf <- QFeatures::impute(qf,
-                          method = impute_method,
-                          i = log2_assays,
-                          name = paste0(log2_assays, "_imputed"))
+  # Step 4: Normalize
+  if (norm_method == "none") {
+    # If no normalization has been applied, we will just propogate that to the
+    # norm value. This will make the logic easier for the shiny app
+    qf[[norm_name]] <- qf[[impute_name]]
 
-  # Step 4: Normalize Log-transformed Imputed Values
-  if (norm_method != "none") {
-    # Identify imputed assays
-    imputed_assays = names(qf)[grepl(".*imputed", names(qf))]
+  } else {
+    qf <- QFeatures::normalize(qf,
+                               method = norm_method,
+                               i = impute_name,
+                               name = norm_name)
+  }
 
-    # Perform normalization only if imputed assays exist
-    if (length(imputed_assays) > 0) {
-      qf <- QFeatures::normalize(qf,
-                                 method = norm_method,
-                                 i = imputed_assays,
-                                 name = paste0(imputed_assays, "_norm_", norm_method))
-    }
+
+  # Step 5: Filter by .n
+  if (!is.null(min_n)) {
+    se <- qf[[norm_name]]
+    se <- se[SummarizedExperiment::rowData(se)$.n >= min_n, ]
+    qf[[norm_name]] <- se
   }
 
   return(qf)

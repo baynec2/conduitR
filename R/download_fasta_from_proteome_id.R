@@ -1,3 +1,14 @@
+#' Title
+#'
+#' @param proteome_ids
+#' @param parallel
+#' @param proteome_id_destination_fp
+#' @param fasta_destination_fp
+#'
+#' @returns
+#' @export
+#'
+#' @examples
 download_fasta_from_proteome_id <- function(proteome_ids,
                                             parallel = FALSE,
                                             proteome_id_destination_fp = paste0(

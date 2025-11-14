@@ -7,7 +7,7 @@
 get_annotations_from_uniprot(
   uniprot_ids,
   columns =
-    "accession,go,xref_kegg,xref_eggnog,cc_subcellular_location,cc_tissue_specificity,xref_cazy,xref_pfam,xref_interpro"
+    "accession,protein_name,go,xref_kegg,xref_eggnog,cc_subcellular_location,cc_tissue_specificity,xref_cazy,xref_pfam,xref_interpro"
 )
 }
 \arguments{

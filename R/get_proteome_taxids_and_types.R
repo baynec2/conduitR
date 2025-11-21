@@ -14,25 +14,31 @@ get_proteome_taxids_and_types <- function(proteome_ids, parallel = FALSE) {
       httr2::request(paste0("https://rest.uniprot.org/proteomes/", id))
     })
 
-  # Perform requests (parallel or sequential)
+  # Perform requests (parallel or sequential) with tryCatch
+  perform_req <- function(req, id) {
+    tryCatch({
+      resp <- httr2::req_perform(req)
+      resp
+    }, error = function(e) {
+      warning(paste("Request failed for", id, ":", e$message))
+      return(NULL)
+    })
+  }
+
   if (parallel) {
-    resps <- httr2::req_perform_parallel(reqs)
+    resps <- mapply(perform_req, reqs, proteome_ids, SIMPLIFY = FALSE)
   } else {
-    resps <- lapply(reqs, httr2::req_perform)
+    resps <- mapply(perform_req, reqs, proteome_ids, SIMPLIFY = FALSE)
   }
 
   # Parse each response
   parse_resp <- function(resp, id) {
-    if (httr2::resp_status(resp) != 200) {
-      warning(paste("Failed to retrieve data for", id))
+    if (is.null(resp) || httr2::resp_status(resp) != 200) {
       return(list(organism_id = NA, proteome_type = NA))
     }
-
     data <- httr2::resp_body_json(resp)
-
     taxid <- if (!is.null(data$taxonomy$taxonId)) as.integer(data$taxonomy$taxonId) else NA
     prot_type <- if (!is.null(data$proteomeType)) data$proteomeType else NA
-
     list(organism_id = taxid, proteome_type = prot_type)
   }
 
@@ -47,4 +53,3 @@ get_proteome_taxids_and_types <- function(proteome_ids, parallel = FALSE) {
 
   return(out)
 }
-

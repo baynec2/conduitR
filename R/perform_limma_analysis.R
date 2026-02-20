@@ -53,6 +53,10 @@ perform_limma_analysis <- function(qf,
 
   colData <- SummarizedExperiment::colData(se)
 
+  # Extracting Row Data
+  rowData <- SummarizedExperiment::rowData(se) |>
+    tibble::as_tibble(rownames = "id")
+
   # Build design matrix from the provided formula
   design <- model.matrix(formula, data = colData)
 
@@ -75,13 +79,15 @@ perform_limma_analysis <- function(qf,
   # Output full table of results
   top_table <- limma::topTable(fit2, adjust.method = "BH", number = Inf) |>
     # Converting for shiny app.
-    dplyr::mutate(neg_log10.adj.P.Val = -log10(adj.P.Val),.after = adj.P.Val)
+    dplyr::mutate(neg_log10.adj.P.Val = -log10(adj.P.Val),.after = adj.P.Val) |>
+    tibble::rownames_to_column("id")
+
+  # Add metadata that was missing
+  top_table2 = dplyr::left_join(top_table,rowData,by = "id")
 
 
-  # Need to have some ways that plot_volcano can figure out what the logFC is
-  # Relative to.
   return(list(
-    top_table = top_table,
+    top_table = top_table2,
     design = design,
     coefficients = fit2$coefficients,
     model_terms = colnames(design),

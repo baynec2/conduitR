@@ -1,0 +1,3 @@
+File.Name	Precursors.Identified	Proteins.Identified	Total.Quantity	MS1.Signal	MS2.Signal	FWHM.Scans	FWHM.RT	Median.Mass.Acc.MS1	Median.Mass.Acc.MS1.Corrected	Median.Mass.Acc.MS2	Median.Mass.Acc.MS2.Corrected	Normalisation.Instability	Median.RT.Prediction.Acc	Average.Peptide.Length	Average.Peptide.Charge	Average.Missed.Tryptic.Cleavages
+experiments/example/input/raw_files/example1.raw	13612	2302	2.26213e+09	4529059598903	350992860328	2.251	0.107	14.6408	13.9669	1.83625	1.28021	0.0449119	0.0265732	12.592	2.369	0.166
+experiments/example/input/raw_files/example2.raw	13054	2262	2.04005e+09	3008273929737	326552410884	2.244	0.107	13.6764	13.449	1.85638	1.1904	0.112324	0.0319707	12.531	2.367	0.174

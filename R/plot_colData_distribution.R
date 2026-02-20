@@ -19,10 +19,10 @@
 #' @examples
 #' # Plot distribution of a categorical variable:
 #' # plot_colData_distribution(conduit_obj, "group")
-#' 
+#'
 #' # Plot distribution of a numeric variable:
 #' # plot_colData_distribution(conduit_obj, "concentration")
-#' 
+#'
 #' # Note: For numeric variables, you might want to use geom_density() instead
 #' # of the default geom_histogram() by modifying the returned plot
 plot_colData_distribution = function(conduit_obj,
@@ -31,7 +31,8 @@ plot_colData_distribution = function(conduit_obj,
   p1 =  SummarizedExperiment::colData(slot(conduit_obj,"QFeatures")) |>
     as.data.frame() |>
     ggplot2::ggplot(ggplot2::aes(.data[[x_axis]]))+
-    ggplot2::geom_histogram(stat = "count")
+    ggplot2::geom_histogram(stat = "count")+
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90))
 
   return(p1)
 

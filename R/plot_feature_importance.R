@@ -23,10 +23,10 @@
 #' @examples
 #' # Plot top 10 most important features:
 #' # plot_feature_importance(model_results)
-#' 
+#'
 #' # Plot features ranked 5-15:
 #' # plot_feature_importance(model_results, start = 5, end = 15)
-#' 
+#'
 #' # Plot only top 5 features:
 #' # plot_feature_importance(model_results, end = 5)
 plot_feature_importance <- function(predict_classification_list,
@@ -37,12 +37,11 @@ plot_feature_importance <- function(predict_classification_list,
   data = predict_classification_list$importance |>
     dplyr::slice(start:end)
 
-
   p1 = data |>
-    ggplot(aes(reorder(feature,importance),importance))+
-    geom_col()+
-    coord_flip()+
-    xlab("Feature")
+    ggplot2::ggplot(ggplot2::aes(reorder(feature,importance),importance))+
+    ggplot2::geom_col()+
+    ggplot2::coord_flip()+
+    ggplot2:::xlab("Feature")
 
   p1
 

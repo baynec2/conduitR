@@ -26,10 +26,10 @@
 #' @examples
 #' # Basic volcano plot:
 #' # plot_volcano(limma_results$top_table)
-#' 
+#'
 #' # With significance threshold and coloring:
 #' # plot_volcano(limma_results$top_table, color_by = "group", pval_threshold = 0.01)
-#' 
+#'
 #' # With faceting:
 #' # plot_volcano(limma_results$top_table, facet_formula = ~group)
 plot_volcano <- function(limma_stats,
@@ -38,7 +38,7 @@ plot_volcano <- function(limma_stats,
                          pval_threshold = 0.05) {
 
   p1 <- limma_stats |>
-    ggplot2::ggplot(ggplot2::aes(x = logFC, y = neg_log10.adj.P.Value))
+    ggplot2::ggplot(ggplot2::aes(x = logFC, y = neg_log10.adj.P.Val))
 
   # Dealing with weird shiny "" input problems
   if (is.null(color_by) || identical(color_by, "")) color_by <- NULL
@@ -46,9 +46,9 @@ plot_volcano <- function(limma_stats,
 
   # Add colored points if specified
   if (!is.null(color_by)) {
-    p1 <- p1 + ggplot2::geom_point(ggplot2::aes(color = .data[[color_by]]))
+    p1 <- p1 + ggplot2::geom_point(ggplot2::aes(color = .data[[color_by]]),alpha = 0.5)
   } else {
-    p1 <- p1 + ggplot2::geom_point()
+    p1 <- p1 + ggplot2::geom_point(alpha = 0.5)
   }
 
   # Facet if formula is given

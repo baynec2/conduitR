@@ -44,14 +44,15 @@ plot_biplot <- function(qf,
                         shape = NULL,
                         removeVar = 0.1,
                         legendPosition = "right",
-                        facet_formula = NULL) {
+                        facet_formula = NULL,
+                        shape_bins = 4) {
 
   # Extract assay and metadata
   se <- qf[[assay_name]]
   assay_data <- SummarizedExperiment::assay(se)
   meta <- as.data.frame(SummarizedExperiment::colData(se))
 
-  # Dealing with weird shiny "" input problems
+  # Handle shiny "" inputs
   if (is.null(color) || identical(color, "")) color <- NULL
   if (is.null(shape) || identical(shape, "")) shape <- NULL
   if (is.null(facet_formula) || identical(facet_formula, "")) facet_formula <- NULL
@@ -64,11 +65,34 @@ plot_biplot <- function(qf,
   # Combine PCA results and metadata
   df <- cbind(p$rotated, p$metadata)
 
-  aes_args <- list(x = rlang::sym("PC1"), y = rlang::sym("PC2"))
+  # Handle shape variable: bin continuous variables with readable labels
+  if (!is.null(shape)) {
+    shape_data <- df[[shape]]
+    if (is.numeric(shape_data)) {
+      shape_data <- cut(
+        shape_data,
+        breaks = shape_bins,
+        include.lowest = TRUE,
+        dig.lab = 4
+      )
+    } else {
+      shape_data <- factor(shape_data)
+    }
+    df[[shape]] <- shape_data
+  }
 
+  # Handle color variable: convert character columns to factor
+  if (!is.null(color)) {
+    color_data <- df[[color]]
+    if (is.character(color_data)) df[[color]] <- factor(color_data)
+  }
+
+  # Build aes mapping
+  aes_args <- list(x = rlang::sym("PC1"), y = rlang::sym("PC2"))
   if (!is.null(color)) aes_args$color <- rlang::sym(color)
   if (!is.null(shape)) aes_args$shape <- rlang::sym(shape)
 
+  # Build ggplot
   plt <- ggplot2::ggplot(df, do.call(ggplot2::aes, aes_args)) +
     ggplot2::geom_point(size = 3, alpha = 0.8) +
     ggplot2::labs(
@@ -77,6 +101,7 @@ plot_biplot <- function(qf,
     ) +
     ggplot2::theme(legend.position = legendPosition)
 
+  # Add facet if specified
   if (!is.null(facet_formula)) {
     plt <- plt + ggplot2::facet_wrap(facet_formula)
   }

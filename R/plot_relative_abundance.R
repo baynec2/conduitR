@@ -33,13 +33,13 @@
 #' @examples
 #' # Basic relative abundance plot:
 #' # plot_relative_abundance(qfeatures_obj, "protein")
-#' 
+#'
 #' # With faceting by experimental group:
 #' # plot_relative_abundance(qfeatures_obj, "protein", ~group)
-#' 
+#'
 #' # With faceting by multiple variables:
 #' # plot_relative_abundance(qfeatures_obj, "protein", ~treatment + timepoint)
-#' 
+#'
 #' # The resulting plot can be customized further:
 #' # p <- plot_relative_abundance(qfeatures_obj, "protein", ~group)
 #' # p + ggplot2::theme_minimal() +
@@ -66,7 +66,7 @@ plot_relative_abundance <- function(qf,
   tidy_qf <- conduitR::tidy_conduit(qf,assay_name)
 
   p1 = tidy_qf |>
-    ggplot2::ggplot(ggplot2::aes(sample_name,
+    ggplot2::ggplot(ggplot2::aes(file,
                                  value,
                                  fill = rowid))+
     ggplot2::geom_col()+

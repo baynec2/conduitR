@@ -27,83 +27,98 @@
 #' @examples
 #' # Basic missing value heatmap:
 #' # plot_missing_val_heatmap(qfeatures_obj, "protein")
-#' 
+#'
 #' # With sample annotations:
 #' # plot_missing_val_heatmap(qfeatures_obj, "protein",
 #' #                         col_color_variables = c("group", "batch"))
-#' 
+#'
 #' # With both sample and feature annotations:
 #' # plot_missing_val_heatmap(qfeatures_obj, "protein",
 #' #                         col_color_variables = c("treatment", "replicate"),
 #' #                         row_color_variables = c("protein_class"))
-plot_missing_val_heatmap = function(qf,
-                                    assay_name,
-                                    col_color_variables = NULL,
-                                    row_color_variables = NULL,
-                                    scale = FALSE) {
+plot_missing_val_heatmap <- function(qf,
+                                     assay_name,
+                                     col_color_variables = NULL,
+                                     row_color_variables = NULL,
+                                     max_rows = 5000) {
 
-  # Extracting the SummarizedExperiment
-  se = qf[[assay_name]]
-
-  # Ensure the object is a SummarizedExperiment
+  # Extract SummarizedExperiment
+  se <- qf[[assay_name]]
   assertthat::assert_that(inherits(se, "SummarizedExperiment"))
 
-  # Allow the user the ability to annotate the rows and columns by colors
+  # For taxonomic aggregations, treat 0 as NA
+  assay_data <- assay(se)
+  assay_data[assay_data == 0] <- NA
+
+  ###### Missing value matrix ######
+  missval <- +(!is.na(assay_data))  # 1 = present, 0 = missing
+
+  # Safety check
+  if (length(unique(missval)) < 2) {
+    warning("All values are either missing or present. Heatmap cannot be plotted.")
+    return(NULL)
+  }
+
+  ###### Downsample rows if needed ######
+  n_rows <- nrow(missval)
+  if (n_rows > max_rows) {
+    message(glue::glue("Downsampling from {n_rows} to {max_rows} rows for visualization"))
+    sampled_rows <- withr::with_seed(123, sample(n_rows, max_rows))
+
+    # Subset the entire SE object, not just rowData
+    se <- se[sampled_rows, , drop = FALSE]
+    missval <- missval[sampled_rows, , drop = FALSE]
+  }
+
+  ###### Build annotation color maps dynamically ######
   metadata(se)$anno_colors <- list()
 
-  # Assign column annotation colors dynamically if specified
-  col_anno <- NULL
   if (!is.null(col_color_variables)) {
     for (var in col_color_variables) {
-      values <- unique(colData(se)[[var]])
-      values <- values[!is.na(values)]  # Removing NA values
-      n_values <- length(values)
-      palette <- viridis::viridis(n_values)
-      metadata(se)$anno_colors[[var]] <- setNames(palette, values)
-
-      # Prepare for ComplexHeatmap column annotation
-      col_anno <- c(col_anno, var)
+      values <- na.omit(unique(colData(se)[[var]]))
+      metadata(se)$anno_colors[[var]] <- setNames(
+        viridis::viridis(length(values)),
+        values
+      )
     }
   }
 
-  # Assign row annotation colors dynamically if specified
-  row_anno <- NULL
   if (!is.null(row_color_variables)) {
     for (var in row_color_variables) {
-      values <- unique(rowData(se)[[var]])
-      values <- values[!is.na(values)]  # Removing NA values
-      n_values <- length(values)
-      palette <- viridis::magma(n_values)
-      metadata(se)$anno_colors[[var]] <- setNames(palette, values)
-
-      # Prepare for ComplexHeatmap row annotation
-      row_anno <- c(row_anno, var)
+      values <- na.omit(unique(rowData(se)[[var]]))
+      metadata(se)$anno_colors[[var]] <- setNames(
+        viridis::magma(length(values)),
+        values
+      )
     }
   }
 
-  # Extract the assay data
-  se_assay <- assay(se)
-
-  # Find rows with missing values
-  missval <- ifelse(is.na(se_assay), 0, 1)
-
-  # Create the heatmap with missing value pattern
-  ht2 = ComplexHeatmap::Heatmap(
+  ###### Create the heatmap ######
+  ht <- ComplexHeatmap::Heatmap(
     missval,
     col = c("white", "black"),
-    column_names_side = "top",
     show_row_names = FALSE,
     show_column_names = FALSE,
-    name = "Missing values pattern",
-    column_names_gp = grid::gpar(fontsize = 16),
+    use_raster = TRUE,  # improves performance on large matrices
+    name = "Missing values",
+    column_names_gp = grid::gpar(fontsize = 12),
     heatmap_legend_param = list(
       at = c(0, 1),
-      labels = c("Missing value", "Valid value")
+      labels = c("Missing", "Present")
     ),
-    top_annotation = if (!is.null(col_anno)) ComplexHeatmap::HeatmapAnnotation(col_annot = colData(se)[, col_anno]),
-    left_annotation = if (!is.null(row_anno)) ComplexHeatmap::HeatmapAnnotation(row_annot = rowData(se)[, row_anno])
+    top_annotation = if (!is.null(col_color_variables))
+      ComplexHeatmap::HeatmapAnnotation(
+        df = colData(se)[, col_color_variables, drop = FALSE],
+        col = metadata(se)$anno_colors
+      ),
+    right_annotation = if (!is.null(row_color_variables))
+      ComplexHeatmap::rowAnnotation(
+        df = rowData(se)[, row_color_variables, drop = FALSE],
+        col = metadata(se)$anno_colors
+      )
   )
 
-  # Draw the heatmap with the legend on top
-  ComplexHeatmap::draw(ht2, heatmap_legend_side = "top")
+  ###### Draw heatmap ######
+  ComplexHeatmap::draw(ht, heatmap_legend_side = "right")
 }
+

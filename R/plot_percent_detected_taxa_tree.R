@@ -28,10 +28,10 @@
 #' @examples
 #' # Basic taxonomic tree with default settings:
 #' # plot_percent_detected_taxa_tree(conduit_obj)
-#' 
+#'
 #' # Using alternative detection rate calculation:
 #' # plot_percent_detected_taxa_tree(conduit_obj, type = "any_protein_in_group")
-#' 
+#'
 #' # Customizing the heat tree appearance:
 #' # plot_percent_detected_taxa_tree(conduit_obj,
 #' #                                node_label = "taxon_names",
@@ -42,14 +42,15 @@ plot_percent_detected_taxa_tree = function(conduit_obj,
                                            ...){
 
   # Accessing data stored in the conduit object
-  database_protein_taxonomy = slot(conduit_obj,"database_protein_taxonomy")
-  detected_protein_taxonomy = slot(conduit_obj,"detected_protein_taxonomy")
+  protein_coverage_species = slot(conduit_obj,"metrics")$protein_coverage_species
+  taxonomy = slot(conduit_obj,"taxonomy")
 
-  # Calculating the percent of proteins detected.
-  pd = calc_percent_proteins_detected(conduit_obj,type = type)
+   coverage_full_taxa = dplyr::left_join(protein_coverage_species,taxonomy,
+                                          by = c("taxon" = "species")) |>
+      dplyr::rename(species = taxon)
 
   # Create taxonomy string for use with metacoder
-  taxonomy_data <- pd |>
+  taxonomy_data <- coverage_full_taxa |>
     dplyr::mutate(taxonomy = paste0(
       "organism_type__", organism_type, ";",
       "domain__", domain, ";",
@@ -61,7 +62,7 @@ plot_percent_detected_taxa_tree = function(conduit_obj,
       "genus__", genus, ";",
       "species__", species
     )) |>
-    dplyr::select(species, taxonomy, n_detected,n_in_db,percent_detected)
+    dplyr::select(species, taxonomy, n_proteins_detected,n_proteins_db,coverage)
 
   # Parse the taxonomy string to create the taxmap object
   taxmap <- metacoder::parse_tax_data(
@@ -77,15 +78,15 @@ plot_percent_detected_taxa_tree = function(conduit_obj,
 
   # Extracting the amount in the db
   taxmap$data$tax_abund_db <- metacoder::calc_taxon_abund(taxmap, "tax_data",
-                                               cols = "n_in_db",
-                                               groups = "n_in_db")
+                                               cols = "n_proteins_db",
+                                               groups = "n_proteins_db")
   # Getting the amount detected
   taxmap$data$tax_abund_total <- metacoder::calc_taxon_abund(taxmap, "tax_data",
-                                                  cols = "n_detected",
+                                                  cols = "n_proteins_detected",
                                                   groups = "total_count")
   # Calculating the percent detected
  taxmap$data$tax_abund_per <- tibble::tibble(taxon_id = taxmap$data$tax_abund_total$taxon_id,
-                                             percent_proteins_detected = (taxmap$data$tax_abund_total$total_count / taxmap$data$tax_abund_db$n_in_db) * 100)
+                                             percent_proteins_detected = (taxmap$data$tax_abund_total$total_count / taxmap$data$tax_abund_db$n_proteins_db) * 100)
 
   # plot the heat tree
  p1 = metacoder::heat_tree(taxmap,

@@ -31,18 +31,18 @@
 #' @examples
 #' # Basic usage to prepare data for visualization:
 #' # tidy_data <- tidy_conduit(qfeatures_obj, "protein")
-#' # 
+#' #
 #' # # Create a boxplot of protein abundances by group:
 #' # tidy_data |>
 #' #   ggplot2::ggplot(ggplot2::aes(x = group, y = value)) +
 #' #   ggplot2::geom_boxplot()
-#' 
+#'
 #' # Use with other analysis functions:
 #' # - Calculate summary statistics
 #' # tidy_data |>
 #' #   dplyr::group_by(group) |>
 #' #   dplyr::summarise(mean_abundance = mean(value))
-#' 
+#'
 #' # - Filter and transform data
 #' # tidy_data |>
 #' #   dplyr::filter(value > 0) |>
@@ -57,7 +57,7 @@
 #'   \item Use with \code{\link[plot_selected_features]{plot_selected_features}}
 #'     for feature-specific plots
 #' }
-#' 
+#'
 #' Important considerations:
 #' \itemize{
 #'   \item The function maintains all metadata from both samples and features
@@ -80,6 +80,7 @@ tidy_conduit = function(qf,
 
   # Extracting the assay data
   assay_data <- SummarizedExperiment::assay(qf, assay_name)  |>
+    as.data.frame() |>
     tibble::rownames_to_column("rowid")
 
   # Finding the ncol of assay data. This is the last col in pivot_longer()

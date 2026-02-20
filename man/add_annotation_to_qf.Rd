@@ -10,22 +10,23 @@ aggregation while keeping assay links intact.}
 \usage{
 add_annotation_to_qf(
   qf,
-  uniprot_annotation,
+  id_column = Protein.Group,
+  conduit_annotations,
   column_name = go,
-  regex = "GO:\\\\d{7}"
+  regex = "[^;]+(?=;|$)"
 )
 }
 \arguments{
 \item{qf}{A QFeatures object containing a protein assay named "protein_groups".}
-
-\item{uniprot_annotation}{A data frame or tibble containing protein annotations,
-with a column for protein IDs and a column for the terms of interest.}
 
 \item{column_name}{Unquoted name of the column in \code{uniprot_annotation} that
 contains the annotation terms to extract.}
 
 \item{regex}{A regular expression pattern used to extract annotation terms into a list.
 For example: \code{xref_pfam = "PF\\d{5}"}, \code{xref_interpro = "IPR\\d{6}"}.}
+
+\item{uniprot_annotation}{A data frame or tibble containing protein annotations,
+with a column for protein IDs and a column for the terms of interest.}
 }
 \value{
 A QFeatures object with:

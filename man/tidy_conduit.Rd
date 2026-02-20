@@ -57,7 +57,7 @@ Important considerations:
 \examples{
 # Basic usage to prepare data for visualization:
 # tidy_data <- tidy_conduit(qfeatures_obj, "protein")
-# 
+#
 # # Create a boxplot of protein abundances by group:
 # tidy_data |>
 #   ggplot2::ggplot(ggplot2::aes(x = group, y = value)) +

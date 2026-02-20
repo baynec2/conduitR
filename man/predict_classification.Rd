@@ -9,7 +9,7 @@ predict_classification(
   assay_name,
   outcome,
   train_percent = 70,
-  model_type = "lasso_regression",
+  model_type = "random_forest",
   v = 5,
   grid_size = 20
 )

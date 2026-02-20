@@ -46,7 +46,7 @@ through faceting, coloring, and point shapes.
 }
 \examples{
 # Basic plot of selected proteins:
-# plot_selected_features(qfeatures_obj, "protein", 
+# plot_selected_features(qfeatures_obj, "protein",
 #                       features = c("P12345", "P67890"),
 #                       x_axis = "sample")
 

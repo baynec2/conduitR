@@ -9,7 +9,7 @@ plot_missing_val_heatmap(
   assay_name,
   col_color_variables = NULL,
   row_color_variables = NULL,
-  scale = FALSE
+  max_rows = 5000
 )
 }
 \arguments{

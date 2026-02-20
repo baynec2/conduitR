@@ -7,9 +7,10 @@
 \S4method{initialize}{conduit}(
   .Object,
   QFeatures,
-  combined_metrics = NULL,
-  database_protein_taxonomy = NULL,
-  detected_protein_taxonomy = NULL
+  metrics = NULL,
+  database = NULL,
+  annotations = NULL,
+  taxonomy = NULL
 )
 }
 \arguments{

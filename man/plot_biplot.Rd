@@ -11,7 +11,8 @@ plot_biplot(
   shape = NULL,
   removeVar = 0.1,
   legendPosition = "right",
-  facet_formula = NULL
+  facet_formula = NULL,
+  shape_bins = 4
 )
 }
 \arguments{

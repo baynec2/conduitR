@@ -36,11 +36,24 @@ test_that("works with multiple batches",{
     "hsa:5406", "hsa:2720", "hsa:3009"
   )
 
- out <- get_kegg_in_batches(kegg_ids)
-
-
-
-
+expect_no_error(get_kegg_in_batches(kegg_ids))
 
 })
 
+# Having a problem with a specific term
+
+test_that("works with problematic term",{
+          problem = "fbs:N510_000502"
+          get_kegg_in_batches(problem)
+
+
+
+# Having trouble getting it to run with multiple batches.
+test_that("pathways and pathway ids match",{
+  kegg_ids <- c(
+    "hsa:1636;"
+  )
+
+t3 = get_kegg_in_batches(kegg_ids)
+
+})

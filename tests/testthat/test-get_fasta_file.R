@@ -5,11 +5,12 @@ test_that("this works", {
   unlink(tmp_dir)
 })
 
-# For whatever reason, this id downloads but has no body. Making sure a message is found for this case.
-test_that("this gives an error with problematic id", {
-  tmp_dir <- tempdir()  # Automatically deleted after session
-  proteome_id = "UP000050895"
-  expect_message(get_fasta_file(proteome_id),"Failed to download FASTA for Proteome: UP000050895")
+# UP000050895 has no sequences in UniProtKB; we fall back to UniParc (may or may not have sequences).
+test_that("proteome with empty UniProtKB returns valid source (uniparc or not_downloaded)", {
+  tmp_dir <- tempdir()
+  proteome_id <- "UP000050895"
+  result <- get_fasta_file(proteome_id, tmp_dir)
+  expect_true(result$source %in% c("uniparc", "not_downloaded"))
   unlink(tmp_dir)
 })
 

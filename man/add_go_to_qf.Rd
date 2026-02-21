@@ -2,13 +2,30 @@
 % Please edit documentation in R/add_go_to_qf.R
 \name{add_go_to_qf}
 \alias{add_go_to_qf}
-\title{Title}
+\title{Add Gene Ontology Terms to a QFeatures Object}
 \usage{
 add_go_to_qf(qf, uniprot_annotation)
 }
 \arguments{
-\item{uniprot_annotation}{}
+\item{qf}{A \code{QFeatures} object with an assay named \code{"protein_groups"} and
+rowData containing \code{Protein.Group}.}
+
+\item{uniprot_annotation}{A data frame or tibble with at least columns
+\code{protein_id} and \code{go} (GO IDs, e.g. from \code{get_annotations_from_uniprot}).}
+}
+\value{
+The same \code{QFeatures} object with GO terms in rowData of
+\code{protein_groups} and a new assay \code{go_terms} (aggregated by GO).
 }
 \description{
-Title
+Maps Gene Ontology (GO) terms from a UniProt annotation table onto the
+protein group assay, adds a GO list-column to rowData, builds a
+protein–GO adjacency matrix, and aggregates the assay by GO terms to create
+a new assay \code{go_terms}. Assumes the protein assay is named \code{"protein_groups"}.
+}
+\examples{
+\dontrun{
+ann <- get_annotations_from_uniprot(rownames(qf[["protein_groups"]]))
+qf <- add_go_to_qf(qf, ann)
+}
 }

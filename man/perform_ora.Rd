@@ -2,7 +2,7 @@
 % Please edit documentation in R/perform_ora.R
 \name{perform_ora}
 \alias{perform_ora}
-\title{perform_ora}
+\title{Over-Representation Analysis (ORA) on Limma Results}
 \usage{
 perform_ora(
   limma_stats,
@@ -15,8 +15,47 @@ perform_ora(
 )
 }
 \arguments{
-\item{...}{}
+\item{limma_stats}{Tibble or data frame of limma results; must include
+columns for adjusted p-value, logFC, protein/feature ID, and the
+annotation type column (e.g. species).}
+
+\item{direction}{Character. \code{"up"} or \code{"down"} to test over-representation of
+upregulated or downregulated features (default: \code{"up"}).}
+
+\item{conduit}{A conduit object whose \verb{@annotations} slot can supply
+TERM2NAME when \code{annotation_type} matches.}
+
+\item{annotation_type}{Character. Name of the column in \code{limma_stats} (and
+in conduit annotations) used as the term (e.g. \code{"species"}) (default:
+\code{"species"}).}
+
+\item{adj_pval_threshold}{Numeric. Maximum adjusted p-value for significant
+features (default: 0.05).}
+
+\item{logFC_threshold}{Numeric. Minimum absolute log fold change for
+inclusion; must be >= 0 for \code{direction = "up"} and <= 0 for \code{"down"}
+(default: 1).}
+
+\item{...}{Additional arguments passed to \code{clusterProfiler::enricher}.}
+}
+\value{
+Result of \code{clusterProfiler::enricher} (enrichResult object).
 }
 \description{
-perform_ora
+Takes differential expression results from limma, filters by significance and
+direction (up/down), and runs gene set enrichment (ORA) using
+\code{clusterProfiler::enricher} with term-to-gene and term-to-name mappings
+derived from the limma stats and optional conduit annotations.
+}
+\examples{
+\dontrun{
+# After perform_limma_analysis and with a conduit object
+limma_res <- perform_limma_analysis(qf, "protein_groups", ~ group, "B - A")
+ora_up <- perform_ora(
+  limma_res$top_table,
+  direction = "up",
+  conduit = conduit_obj,
+  annotation_type = "species"
+)
+}
 }

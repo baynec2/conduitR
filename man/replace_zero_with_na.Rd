@@ -20,14 +20,16 @@ and imputation, as zeros in proteomics data often represent missing values
 rather than true zero abundances.
 }
 \examples{
-# Replace zeros with NA in all assays:
-# qf_no_zeros <- replace_zero_with_na(qfeatures_obj)
+\dontrun{
+# Replace zeros with NA in all assays
+qf_no_zeros <- replace_zero_with_na(qf)
 
-# This is often used as a preprocessing step:
-# qf_processed <- qfeatures_obj |>
-#   replace_zero_with_na() |>
-#   add_log_imputed_norm_assays()
+# Preprocessing pipeline before normalization
+qf_processed <- qf |>
+  replace_zero_with_na() |>
+  add_log_imputed_norm_assay("protein_groups", "log2_imputed")
 
-# The resulting object can be used with plotting functions:
-# plot_missing_val_heatmap(qf_no_zeros, "protein")
+# Then inspect missingness
+plot_missing_val_heatmap(qf_no_zeros, "protein_groups")
+}
 }

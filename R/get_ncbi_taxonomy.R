@@ -19,18 +19,19 @@
 #' @export
 #'
 #' @examples
-#' # Fetch taxonomy for a single organism:
-#' # taxonomy <- get_ncbi_taxonomy(9606)  # Human
+#' \dontrun{
+#' # Single organism (human)
+#' taxonomy <- get_ncbi_taxonomy(9606)
 #'
-#' # Fetch taxonomy for multiple organisms:
-#' # taxonomy <- get_ncbi_taxonomy(c(9606, 10090))  # Human and Mouse
+#' # Multiple organisms (human and mouse)
+#' taxonomy <- get_ncbi_taxonomy(c(9606, 10090))
 #'
-#' # The results can be used with other functions:
-#' # plot_taxa_tree(taxonomy)
-#' # plot_sunburst(taxonomy)
+#' # Use with plotting functions
+#' plot_taxa_tree(taxonomy)
+#' plot_sunburst(taxonomy)
+#' }
+#' # Requires internet; NCBI may rate-limit requests.
 #'
-#' # Note: This function requires an internet connection and may be
-#' # rate-limited by NCBI's API policies.
 get_ncbi_taxonomy <- function(ncbi_ids) {
   taxonomy_list <- list()
   for (id in ncbi_ids) {

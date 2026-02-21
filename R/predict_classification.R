@@ -16,7 +16,11 @@
 #' @export
 #'
 #' @examples
-#' # predict_classification(qf, "myassay", "Group", model_type = "random_forest")
+#' \dontrun{
+#' res <- predict_classification(qf, "protein_groups", "group", model_type = "random_forest")
+#' plot_confusion_matrix(res)
+#' plot_feature_importance(res)
+#' }
 predict_classification <- function(qf,
                                    assay_name,
                                    outcome,

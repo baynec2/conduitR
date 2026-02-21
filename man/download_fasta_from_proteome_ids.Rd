@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_fasta_from_proteome_ids.R
 \name{download_fasta_from_proteome_ids}
 \alias{download_fasta_from_proteome_ids}
-\title{Title}
+\title{Download and Concatenate FASTA Files for Multiple Proteomes}
 \usage{
 download_fasta_from_proteome_ids(
   proteome_ids,
@@ -12,8 +12,47 @@ download_fasta_from_proteome_ids(
 )
 }
 \arguments{
-\item{fasta_destination_fp}{}
+\item{proteome_ids}{Character vector of UniProt proteome IDs (e.g.
+\code{"UP000005640"}). Duplicates are removed with a warning.}
+
+\item{parallel}{Logical. If \code{TRUE}, download proteomes in parallel using
+\code{future::multisession} with \code{availableCores() - 1} workers. Default
+\code{FALSE}.}
+
+\item{proteome_id_destination_fp}{Character. Path for the output file
+containing proteome IDs and metadata (default: \code{getwd()} plus current
+date and \code{.txt}).}
+
+\item{fasta_destination_fp}{Character. Path for the concatenated FASTA
+output (default: \code{getwd()} plus current date and \code{.fasta}).}
+}
+\value{
+When \code{parallel} is \code{FALSE}, returns the result of
+\code{concatenate_fasta_files} after writing the proteome info file; the temp
+directory is removed. When \code{parallel} is \code{TRUE}, returns the combined
+result of \code{get_fasta_file} across proteomes (no concatenation or
+proteome info file in that path). In both cases, FASTA and metadata files
+are written to the specified paths.
 }
 \description{
-Title
+For each UniProt proteome ID, downloads the proteome FASTA from UniProt
+(UniProtKB or UniParc), saves per-proteome FASTA files in a temporary
+directory, then concatenates them into a single FASTA file. Also writes a
+delimited file with proteome IDs and associated taxonomy/type information.
+}
+\examples{
+\dontrun{
+# Download two proteomes and write one FASTA + one metadata file
+download_fasta_from_proteome_ids(
+  c("UP000005640", "UP000000625"),
+  fasta_destination_fp = "my_proteomes.fasta",
+  proteome_id_destination_fp = "my_proteomes.txt"
+)
+
+# Parallel downloads (no concatenation; check temp dir for FASTA files)
+download_fasta_from_proteome_ids(
+  c("UP000005640", "UP000000625"),
+  parallel = TRUE
+)
+}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/perform_gsea.R
 \name{perform_gsea}
 \alias{perform_gsea}
-\title{Title}
+\title{Gene Set Enrichment Analysis (GSEA) on Ranked Limma Results}
 \usage{
 perform_gsea(
   limma_stats,
@@ -12,8 +12,32 @@ perform_gsea(
 )
 }
 \arguments{
-\item{ranking_column}{}
+\item{limma_stats}{Tibble of limma results with an ID column and a numeric
+ranking column (e.g. \code{logFC}). Must also contain the column used for
+\code{annotation_type} (e.g. GO terms).}
+
+\item{conduit}{A conduit object; its \verb{@annotations} slot is used for
+TERM2NAME when \code{annotation_type} matches.}
+
+\item{annotation_type}{Character. Column name in \code{limma_stats} and in
+conduit annotations for term IDs (default: \code{"go"}).}
+
+\item{ranking_column}{Character. Column name in \code{limma_stats} used to rank
+genes (default: \code{"logFC"}). Values must be numeric, non-NA, with unique
+row names.}
+}
+\value{
+Result of \code{clusterProfiler::GSEA} (enrichResult object).
 }
 \description{
-Title
+Runs GSEA using \code{clusterProfiler::GSEA} with a ranked gene list (e.g. by
+logFC) and custom TERM2GENE/TERM2NAME derived from limma stats and optional
+conduit annotations.
+}
+\examples{
+\dontrun{
+limma_res <- perform_limma_analysis(qf, "protein_groups", ~ group, "B - A")
+gsea_res <- perform_gsea(limma_res$top_table, conduit = conduit_obj,
+  annotation_type = "go", ranking_column = "logFC")
+}
 }

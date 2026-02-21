@@ -1,6 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # conduitR <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
@@ -9,79 +7,140 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-## Overview
+## What is conduitR?
 
-conduitR is an R package that provides tools for metaproteomics analysis
-using conduit and conduit-GUI. It offers a comprehensive suite of
-functions for processing, analyzing, and visualizing metaproteomics
-data. These functions are designed to be used in conjunction with the
-[conduit](https://github.com/baynec2/conduit) and
-[conduit-GUI](https://github.com/baynec2/conduit-GUI) packages, or
-independently for custom analyses.
+**conduitR** is an R package for **metaproteomics**: the large-scale
+identification and quantification of proteins from microbial communities
+(e.g. gut microbiome, soil, bioreactors). It provides a single,
+consistent toolkit for building search databases, processing DIA-NN
+output, linking proteins to taxonomy and function, and running
+differential analysis and visualizations.
+
+The package powers [Conduit](https://github.com/baynec2/conduit) (a
+Snakemake workflow for metaproteomics) and
+[Conduit-GUI](https://github.com/baynec2/conduit-GUI) (a graphical
+interface to explore Conduit results), but you can use conduitR on its
+own for custom pipelines and analyses.
+
+## Typical workflow
+
+1.  **Database building** — Get proteome FASTA files from UniProt by
+    organism or proteome ID, concatenate them, and optionally create
+    custom FASTA from a list of UniProt accessions.
+2.  **Import & structure** — Convert DIA-NN parquet reports into a
+    `QFeatures` object (precursors → peptides → protein groups) with
+    assay links.
+3.  **Annotations** — Attach taxonomy, Gene Ontology, KEGG, EggNOG, or
+    CAZy annotations from UniProt and optional conduit annotation
+    tables.
+4.  **Analysis** — Run limma-style differential expression,
+    over-representation (ORA), or GSEA; train classification/regression
+    models (e.g. random forest, XGBoost).
+5.  **Visualization** — Volcano plots, heatmaps, PCA biplots, taxonomic
+    heat trees, sunbursts, and KEGG pathway figures, with consistent
+    Conduit themes and palettes.
 
 ## Features
 
-### Getting Data
+### Data and databases
 
-- Download FASTA files from UniProt and NCBI
-- Download and process taxonomy data from NCBI
-- Manage and combine multiple proteome databases
+  - Download proteome FASTA files from UniProt (UniProtKB and UniParc)
+    by proteome or organism ID.
+  - Concatenate FASTA files and extract metadata (protein ID, organism,
+    taxonomy) from UniProt-style headers.
+  - Create custom FASTA from a list of UniProt accessions.
+  - Fetch NCBI taxonomy and UniProt proteome metadata (organism ID,
+    proteome type).
 
-### Data Processing
+### Data processing and structure
 
-- Create custom protein sequence databases
-- Associate sample proteomics data and metadata using QFeatures
-  integration
-- Transformation, imputation, and normalization of proteomics data
-- Quality control and filtering options
+  - **DIA-NN → QFeatures**: turn a DIA-NN parquet report into a
+    `QFeatures` object with precursors, peptides, and protein groups.
+  - Build `QFeatures` from sample annotations and multiple count
+    matrices.
+  - Replace zeros with NA, add log2-imputed assays, and normalize
+    protein abundance to species level.
+  - Taxonomy matrices: join DIA-NN output with FASTA and taxonomy to
+    produce per-taxon count matrices.
 
-### Statistical Analysis
+### Statistical analysis
 
-- Perform LIMMA differential expression analysis
-- Support for various machine learning models:
-  - LASSO regression
-  - Random Forest
-  - XGBoost
-- Feature importance analysis and selection
-- Statistical testing and multiple testing correction
+  - **Limma**: design matrix, contrast testing, and empirical Bayes
+    moderation for differential expression.
+  - **ORA & GSEA**: over-representation and gene set enrichment with
+    custom term–gene mappings (e.g. GO, species).
+  - **Classification/regression**: LASSO, random forest, XGBoost with
+    optional tuning; confusion matrix, ROC, precision–recall, feature
+    importance.
 
 ### Visualization
 
-- Interactive heatmaps with customizable annotations
-- PCA biplots with flexible aesthetics
-- Taxonomic visualizations:
-  - Barplots for abundance analysis
-  - Heat trees for hierarchical relationships
-- Volcano plots for differential expression
-- KEGG pathway visualization
-- Feature-specific plots
-- Custom plot aesthetics and themes
+  - Volcano plots, heatmaps (static and interactive), PCA biplots.
+  - Taxonomic heat trees and sunbursts, relative abundance barplots.
+  - KEGG pathway figures, feature-by-sample plots, missing-value
+    heatmaps.
+  - Conduit color palettes and themes (`scale_color_conduit_d`,
+    `scale_fill_conduit_c`, `set_plot_theme`, etc.).
 
-### Miscellaneous
+### Utilities
 
-- Comprehensive logging functions
-- Error handling and validation
-- Integration with existing bioinformatics workflows
-
-## Dependencies
-
-The package requires the following R packages: - QFeatures for
-proteomics data management - limma for statistical analysis - ggplot2
-for visualization - tidyr and dplyr for data manipulation - Additional
-packages for specific functionalities (see DESCRIPTION file)
+  - Validate UniProt accession IDs; check API reachability (UniProt,
+    NCBI).
+  - Logging with timestamps; `%!in%` operator; integration with existing
+    R workflows.
 
 ## Installation
 
-You can install the development version of conduitR from GitHub:
+Install the development version from GitHub:
 
-`r, eval = FALSE # install.packages("devtools") devtools::install_github("baynec2/conduitR")`
+``` r
+# install.packages("devtools")
+devtools::install_github("baynec2/conduitR")
+```
 
-## Usage
+## Quick start
 
-This is a work in progress. The package documentation and vignettes will
-be updated with detailed examples demonstrating: - Data import and
-preprocessing - Statistical analysis workflows - Visualization
-techniques - Integration with conduit and conduit-GUI - Best practices
-and recommendations
+After installation, load the package and try a few entry points:
 
-Stay tuned for updates!
+``` r
+library(conduitR)
+
+# Check that the UniProt API is reachable (required for downloads)
+check_api_service()
+
+# Validate UniProt IDs (no network needed)
+validate_uniprot_accession_ids(c("P12345", "invalid_id", "A0A023GPI8"))
+
+# Convert a DIA-NN parquet report to QFeatures (requires a local file)
+# qf <- diann_to_qfeatures("path/to/report.parquet")
+# plot_features_per_sample(qf, assay = "protein_groups")
+
+# Run differential analysis (after building design/contrast)
+# terms <- find_possible_contrast_terms(qf, "protein_groups", ~ group)
+# res <- perform_limma_analysis(qf, "protein_groups", ~ group, "treatmentB - treatmentA")
+# plot_volcano(res$top_table)
+```
+
+Function help and examples are in the built-in documentation:
+e.g. `?get_fasta_file`, `?diann_to_qfeatures`,
+`?perform_limma_analysis`.
+
+## Dependencies
+
+Core dependencies include **QFeatures** (proteomics data structures),
+**limma** (differential expression), **SummarizedExperiment**,
+**Biostrings**, **httr2**, **KEGGREST**, **rentrez**, **tidyr**,
+**dplyr**, **ggplot2**, **plotly**, **metacoder**, **arrow**, and others
+for specific features. See the [DESCRIPTION](DESCRIPTION) file for the
+full list.
+
+## Documentation
+
+  - In R: `?function_name` for any exported function; many have runnable
+    or `\dontrun` examples.
+  - Conduit workflow: [conduit](https://github.com/baynec2/conduit).
+  - Conduit-GUI: [conduit-GUI](https://github.com/baynec2/conduit-GUI).
+
+## License
+
+MIT License; see [LICENSE](LICENSE) for details.

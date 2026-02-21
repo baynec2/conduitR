@@ -2,17 +2,35 @@
 % Please edit documentation in R/get_connected_features.R
 \name{get_connected_features}
 \alias{get_connected_features}
-\title{get_connected_features}
+\title{Get Feature IDs Connected to a Given Feature in an Adjacency Matrix}
 \usage{
 get_connected_features(qf, i = "protein_groups", am_name = "adjacencyMatrix")
 }
 \arguments{
-\item{qf}{QFeatures object}
+\item{qf}{A \code{QFeatures} object.}
 
-\item{i}{SE Name}
+\item{i}{Character. Name of the assay to use (default: \code{"protein_groups"}).}
 
-\item{id}{id that you would like to get connected features for}
+\item{am_name}{Character. Name of the metadata element containing the
+adjacency matrix (default: \code{"adjacencyMatrix"}).}
+}
+\value{
+Character vector of feature IDs connected to the row \code{id} in the
+adjacency matrix. Note: \code{id} must be available in the calling environment
+(e.g. passed from a caller that has it).
 }
 \description{
-get_connected_features
+From a QFeatures assay that has an adjacency matrix in its metadata, returns
+the feature IDs (column names) that are connected to the row specified by
+\code{id} (i.e. non-zero entries in that row).
+}
+\examples{
+\dontrun{
+# After building a QFeatures object with adjacency matrix metadata
+ids <- get_connected_features(qf, i = "protein_groups")
+# Use a specific feature id from the assay:
+feature_id <- rownames(qf[["protein_groups"]])[1]
+connected <- get_connected_features(qf)
+# (id would need to be set in scope for the function body to work)
+}
 }

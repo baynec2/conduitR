@@ -1,12 +1,23 @@
-#' Title
+#' Plot Number of Features Detected per Sample Count
 #'
-#' @param qf
-#' @param assay
+#' For a chosen assay, counts how many features (e.g. proteins) are detected in
+#' 1 sample, 2 samples, ... N samples, and plots a bar chart of these counts.
+#' Useful to assess detection consistency across samples.
 #'
-#' @returns
+#' @param qf A `QFeatures` object.
+#' @param assay Character. Name of the assay to use (default: `"protein_groups"`).
+#'
+#' @return A ggplot object: bar chart of count of features (y) vs number of
+#'   samples they are detected in (x).
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' qf <- diann_to_qfeatures("report.parquet")
+#' plot_features_per_sample(qf, assay = "protein_groups")
+#' plot_features_per_sample(qf, assay = "peptides")
+#' }
 plot_features_per_sample <- function(qf, assay = "protein_groups") {
   se <- qf[[assay]]
 

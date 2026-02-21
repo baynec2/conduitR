@@ -64,20 +64,19 @@ Important considerations:
 }
 }
 \examples{
-# Get basic information for a single protein:
-# insulin_data <- get_uniprot_data("P01308")
+\dontrun{
+# Single protein
+insulin_data <- get_uniprot_data("P01308")
 
-# Request specific fields for multiple proteins:
-# protein_data <- get_uniprot_data(
-#   c("P01308", "P01325"),
-#   columns = "accession,protein_name,gene_primary,go"
-# )
+# Multiple proteins, specific columns
+protein_data <- get_uniprot_data(
+  c("P01308", "P01325"),
+  columns = "accession,protein_name,gene_primary,go"
+)
 
-# Use with other functions:
-# annotated_data <- annotate_uniprot_ids(
-#   c("P01308", "P01325"),
-#   columns = "accession,protein_name,go"
-# )
+# Used internally by annotate_uniprot_ids
+annotated_data <- annotate_uniprot_ids(c("P01308", "P01325"), columns = "accession,protein_name,go")
+}
 
 }
 \seealso{

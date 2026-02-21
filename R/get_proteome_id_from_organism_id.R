@@ -20,14 +20,16 @@
 #' @export
 #'
 #' @examples
-#' # Get proteome ID for human:
-#' # human_proteome <- get_proteome_id_from_organism_id(9606)
+#' \dontrun{
+#' # Human (NCBI taxid 9606)
+#' human_proteome <- get_proteome_id_from_organism_id(9606)
 #'
-#' # Get proteome ID for E. coli:
-#' # ecoli_proteome <- get_proteome_id_from_organism_id(562)
+#' # E. coli (562)
+#' ecoli_proteome <- get_proteome_id_from_organism_id(562)
 #'
-#' # The function is typically used with get_proteome_ids_from_organism_ids:
-#' # proteomes <- get_proteome_ids_from_organism_ids(c(9606, 562))
+#' # Batch: use get_proteome_ids_from_organism_ids instead
+#' proteomes <- get_proteome_ids_from_organism_ids(c(9606, 562))
+#' }
 #'
 #' @note
 #' This function:

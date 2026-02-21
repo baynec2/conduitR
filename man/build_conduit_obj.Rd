@@ -51,3 +51,15 @@ This function requires:
 The function will read all files into memory, so ensure sufficient RAM is
 available for large datasets.
 }
+\examples{
+\dontrun{
+conduit_obj <- build_conduit_obj(
+  QFeatures = qf_rds,
+  diann_stats = "diann_stats.tsv",
+  database = "database.tsv",
+  annotations = "annotations.tsv",
+  taxonomy = "taxonomy.tsv"
+)
+}
+
+}

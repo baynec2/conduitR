@@ -45,21 +45,14 @@ Creates a scatter plot showing the expression/abundance values of selected featu
 through faceting, coloring, and point shapes.
 }
 \examples{
-# Basic plot of selected proteins:
-# plot_selected_features(qfeatures_obj, "protein",
-#                       features = c("P12345", "P67890"),
-#                       x_axis = "sample")
-
-# With grouping and faceting:
-# plot_selected_features(qfeatures_obj, "protein",
-#                       features = c("P12345", "P67890"),
-#                       x_axis = "timepoint",
-#                       color_by = "group",
-#                       facet_formula = ~treatment)
-
-# With custom point shapes:
-# plot_selected_features(qfeatures_obj, "protein",
-#                       features = c("P12345", "P67890"),
-#                       x_axis = "sample",
-#                       shape = "replicate")
+\dontrun{
+plot_selected_features(qf, "protein_groups",
+  features = c("Protein1", "Protein2"),
+  x_axis = "sample_id"
+)
+plot_selected_features(qf, "protein_groups",
+  features = c("Protein1", "Protein2"),
+  x_axis = "timepoint", color_by = "group", facet_formula = ~ treatment
+)
+}
 }

@@ -13,16 +13,18 @@
 #' @export
 #'
 #' @examples
-#' # Replace zeros with NA in all assays:
-#' # qf_no_zeros <- replace_zero_with_na(qfeatures_obj)
-#' 
-#' # This is often used as a preprocessing step:
-#' # qf_processed <- qfeatures_obj |>
-#' #   replace_zero_with_na() |>
-#' #   add_log_imputed_norm_assays()
-#' 
-#' # The resulting object can be used with plotting functions:
-#' # plot_missing_val_heatmap(qf_no_zeros, "protein")
+#' \dontrun{
+#' # Replace zeros with NA in all assays
+#' qf_no_zeros <- replace_zero_with_na(qf)
+#'
+#' # Preprocessing pipeline before normalization
+#' qf_processed <- qf |>
+#'   replace_zero_with_na() |>
+#'   add_log_imputed_norm_assay("protein_groups", "log2_imputed")
+#'
+#' # Then inspect missingness
+#' plot_missing_val_heatmap(qf_no_zeros, "protein_groups")
+#' }
 replace_zero_with_na <- function(qf) {
   for (assay_name in names(qf)) {
     expr_mat <- SummarizedExperiment::assay(qf[[assay_name]])  # Extract assay data

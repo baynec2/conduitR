@@ -2,15 +2,29 @@
 % Please edit documentation in R/plot_conduit_metric_diann.R
 \name{plot_conduit_metric_diann}
 \alias{plot_conduit_metric_diann}
-\title{Plot Diann Sample Level Metrics for Conduit Object}
+\title{Plot DIA-NN Sample-Level Metrics from a Conduit Object}
 \usage{
 plot_conduit_metric_diann(conduit_obj, column_name = "MS1.Signal")
 }
 \arguments{
-\item{conduit_obj}{conduit object}
+\item{conduit_obj}{A conduit object with a \code{metrics} slot containing
+\code{diann_stats} (tibble with sample-level metrics).}
 
-\item{column_name}{column name to plot}
+\item{column_name}{Character. Name of the column in \code{diann_stats} to plot
+on the y-axis (default: \code{"MS1.Signal"}).}
+}
+\value{
+A ggplot object: x = File.Name, y = selected metric, with points
+and a line (group = 1); x-axis labels rotated 90 degrees.
 }
 \description{
-Plot Diann Sample Level Metrics for Conduit Object
+Plots a chosen metric from the DIA-NN stats stored in the conduit object
+(e.g. MS1 signal, retention time) by sample (File.Name). Points are
+connected by a line to show trend across files.
+}
+\examples{
+\dontrun{
+plot_conduit_metric_diann(conduit_obj, column_name = "MS1.Signal")
+plot_conduit_metric_diann(conduit_obj, column_name = "RT.Mean")
+}
 }

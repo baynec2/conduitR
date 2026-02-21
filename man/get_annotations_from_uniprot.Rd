@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_annotations_from_uniprot.R
 \name{get_annotations_from_uniprot}
 \alias{get_annotations_from_uniprot}
-\title{get_annotations_from_uniprot}
+\title{Get Annotations from UniProt for a Set of Accession IDs}
 \usage{
 get_annotations_from_uniprot(
   uniprot_ids,
@@ -11,18 +11,25 @@ get_annotations_from_uniprot(
 )
 }
 \arguments{
-\item{pg_matrix_fp}{pg_matrix output of diann}
+\item{uniprot_ids}{Character vector of UniProt accession IDs.}
 
-\item{outdir}{out directory}
+\item{columns}{Character. Comma-separated list of UniProt fields to request
+(default includes accession, protein_name, go, xref_kegg, xref_eggnog,
+cc_subcellular_location, cc_tissue_specificity, xref_cazy, xref_pfam,
+xref_interpro).}
 }
 \value{
-tsv at output directory location
+A tibble with one row per protein and columns corresponding to the
+requested UniProt fields.
 }
 \description{
-given the pg_matrix output of diann, assign go terms to each protein group
-and summarise.
+Fetches UniProt annotations (GO, KEGG, EggNOG, subcellular location,
+tissue specificity, CAZy, Pfam, InterPro) for the given IDs and returns a
+tibble with empty/missing values cleaned (NA for blank or single space).
 }
 \examples{
-insulin <- get_annotations_from_uniprot("P01308")
-t <- get_annotations_from_uniprot("P47340")
+\dontrun{
+ann <- get_annotations_from_uniprot(c("P01308", "P47340"))
+get_annotations_from_uniprot("P01308", columns = "accession,protein_name,go")
+}
 }

@@ -28,14 +28,11 @@ This function provides a convenient way to maintain consistent plot styling
 across multiple visualizations.
 }
 \examples{
-# Set minimal theme (default):
-# set_plot_theme()
+# Default: minimal theme for all subsequent ggplots
+set_plot_theme()
 
-# Set publication-ready theme:
-# set_plot_theme("ggprism")
-
-# Set classic theme:
-# set_plot_theme("theme_classic")
-
-# Note: The theme will affect all subsequent ggplot2 plots until changed again
+\dontrun{
+set_plot_theme("theme_classic")
+set_plot_theme("ggprism")  # requires ggprism
+}
 }

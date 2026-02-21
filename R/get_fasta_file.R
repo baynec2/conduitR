@@ -24,18 +24,20 @@
 #' @export
 #'
 #' @examples
-#' # Download human proteome:
-#' # result <- get_fasta_file("UP000005640")
+#' \dontrun{
+#' # Download human proteome to current directory
+#' result <- get_fasta_file("UP000005640")
 #'
-#' # Download to a specific directory:
-#' # result <- get_fasta_file("UP000005640", fasta_dir = "data/proteomes")
+#' # Download to a specific directory
+#' result <- get_fasta_file("UP000005640", fasta_dir = "data/proteomes")
 #'
-#' # Check download status:
-#' # if (result$resp_status == 200) {
-#' #   message("Download successful")
-#' # } else {
-#' #   message("Download failed")
-#' # }
+#' # Check download status
+#' if (result$resp_status == 200) {
+#'   message("Download successful")
+#' } else {
+#'   message("Download failed")
+#' }
+#' }
 #'
 #' @note
 #' This function:

@@ -19,9 +19,11 @@ A tibble containing download information with the following columns:
 \itemize{
 \item proteome_id: The input proteome identifier
 \item resp_status: HTTP response status code (200 for success)
+\item source: Either "uniprotkb", "uniparc", or "not_downloaded"
 }
 The function also saves a FASTA file named "{proteome_id}.fasta" in the
-specified directory.
+specified directory when sequences are found in UniProtKB or (if empty)
+in UniParc.
 }
 \description{
 Downloads a proteome FASTA file from UniProt using their REST API. This function
@@ -41,17 +43,19 @@ The UniProt API is free to use but has rate limits. For bulk downloads,
 consider implementing appropriate delays between requests.
 }
 \examples{
-# Download human proteome:
-# result <- get_fasta_file("UP000005640")
+\dontrun{
+# Download human proteome to current directory
+result <- get_fasta_file("UP000005640")
 
-# Download to a specific directory:
-# result <- get_fasta_file("UP000005640", fasta_dir = "data/proteomes")
+# Download to a specific directory
+result <- get_fasta_file("UP000005640", fasta_dir = "data/proteomes")
 
-# Check download status:
-# if (result$resp_status == 200) {
-#   message("Download successful")
-# } else {
-#   message("Download failed")
-# }
+# Check download status
+if (result$resp_status == 200) {
+  message("Download successful")
+} else {
+  message("Download failed")
+}
+}
 
 }

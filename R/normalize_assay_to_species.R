@@ -13,10 +13,18 @@
 #' @param species_col column in rowData of protein_assay indicating species
 #' the feature was derived from.
 #' @param out_assay name of assay normalized to species abundance.
-#' @returns a QFeatures assasy with the specified assay included.
+#' @return The input `QFeatures` object with an additional assay (name given by
+#'   `out_assay`) containing protein abundances normalized to species abundance.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' qf <- normalize_assay_to_species(qf,
+#'   protein_assay = "protein_groups_log2",
+#'   species_assay = "species_log2",
+#'   out_assay = "protein_groups_log2_species_normalized"
+#' )
+#' }
 normalize_assay_to_species <- function(qf,
                                           protein_assay = "protein_groups_log2",
                                           species_assay = "species_log2",

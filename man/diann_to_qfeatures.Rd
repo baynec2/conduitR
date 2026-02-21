@@ -2,18 +2,30 @@
 % Please edit documentation in R/diann_to_qfeatures.R
 \name{diann_to_qfeatures}
 \alias{diann_to_qfeatures}
-\title{Convert DIANN Parquet file into a QFeatures object containing precursors,
-peptides, and proteins, all with assay links.}
+\title{Convert DIA-NN Parquet Output into a QFeatures Object}
 \usage{
 diann_to_qfeatures(diann_parquet_fp)
 }
 \arguments{
-\item{diann_parquet_fp}{}
+\item{diann_parquet_fp}{Character. Path to the DIA-NN output parquet file.}
 }
 \value{
-a QFeatures object
+A \code{QFeatures} object with assays \code{precursors}, \code{peptides}, and
+\code{protein_groups}, and assay links from precursors to peptides and from
+peptides to protein groups.
 }
 \description{
-Convert DIANN Parquet file into a QFeatures object containing precursors,
-peptides, and proteins, all with assay links.
+Reads a DIA-NN parquet file, applies standard quality filters (Q.Value,
+Lib.Q.Value, Lib.PG.Q.Value, Global.PG.Q.Value, PG.Q.Value), and builds a
+QFeatures object with three assays: precursors, peptides (aggregated by
+stripped sequence), and protein groups (using DIA-NN's PG.MaxLFQ), with
+assay links between them.
+}
+\examples{
+\dontrun{
+qf <- diann_to_qfeatures("path/to/report.parquet")
+QFeatures::assayNames(qf)
+# "precursors" "peptides" "protein_groups"
+dim(qf)[["protein_groups"]]
+}
 }

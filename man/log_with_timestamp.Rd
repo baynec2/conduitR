@@ -2,18 +2,25 @@
 % Please edit documentation in R/log_with_timestamp.R
 \name{log_with_timestamp}
 \alias{log_with_timestamp}
-\title{Log a message with a timestamp}
+\title{Log a Message with a Timestamp}
 \usage{
 log_with_timestamp(message, ...)
 }
 \arguments{
-\item{message}{A character string containing the message to log.}
+\item{message}{Character string to log; may include \code{sprintf} placeholders
+(e.g. \code{"\%s"}, \code{"\%d"}).}
 
-\item{...}{Additional arguments to pass to the message formatting.}
+\item{...}{Values passed to \code{sprintf(message, ...)} when formatting.}
 }
 \value{
-None. The function logs the message to the console.
+Invisibly returns nothing; output is printed to the console.
 }
 \description{
-This function logs a message with a timestamp to the console.
+Prints a message to the console prefixed with the current time. Uses
+\code{sprintf}-style formatting for the message when additional arguments
+are passed.
+}
+\examples{
+log_with_timestamp("Processing started")
+log_with_timestamp("Proteome \%s: \%d proteins", "UP000005640", 20000)
 }

@@ -1,12 +1,25 @@
-#' Title
+#' Add Gene Ontology Terms to a QFeatures Object
 #'
-#' @param qf
-#' @param uniprot_annotation
+#' Maps Gene Ontology (GO) terms from a UniProt annotation table onto the
+#' protein group assay, adds a GO list-column to rowData, builds a
+#' protein–GO adjacency matrix, and aggregates the assay by GO terms to create
+#' a new assay `go_terms`. Assumes the protein assay is named `"protein_groups"`.
 #'
-#' @returns
+#' @param qf A `QFeatures` object with an assay named `"protein_groups"` and
+#'   rowData containing `Protein.Group`.
+#' @param uniprot_annotation A data frame or tibble with at least columns
+#'   `protein_id` and `go` (GO IDs, e.g. from `get_annotations_from_uniprot`).
+#'
+#' @return The same `QFeatures` object with GO terms in rowData of
+#'   `protein_groups` and a new assay `go_terms` (aggregated by GO).
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' ann <- get_annotations_from_uniprot(rownames(qf[["protein_groups"]]))
+#' qf <- add_go_to_qf(qf, ann)
+#' }
 add_go_to_qf = function(qf,
                         uniprot_annotation){
   # 1. Prepare the GO annotation data

@@ -1,12 +1,26 @@
-#' Convert DIANN Parquet file into a QFeatures object containing precursors,
-#' peptides, and proteins, all with assay links.
+#' Convert DIA-NN Parquet Output into a QFeatures Object
 #'
-#' @param diann_parquet_fp
+#' Reads a DIA-NN parquet file, applies standard quality filters (Q.Value,
+#' Lib.Q.Value, Lib.PG.Q.Value, Global.PG.Q.Value, PG.Q.Value), and builds a
+#' QFeatures object with three assays: precursors, peptides (aggregated by
+#' stripped sequence), and protein groups (using DIA-NN's PG.MaxLFQ), with
+#' assay links between them.
 #'
-#' @returns a QFeatures object
+#' @param diann_parquet_fp Character. Path to the DIA-NN output parquet file.
+#'
+#' @return A `QFeatures` object with assays `precursors`, `peptides`, and
+#'   `protein_groups`, and assay links from precursors to peptides and from
+#'   peptides to protein groups.
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' qf <- diann_to_qfeatures("path/to/report.parquet")
+#' QFeatures::assayNames(qf)
+#' # "precursors" "peptides" "protein_groups"
+#' dim(qf)[["protein_groups"]]
+#' }
 diann_to_qfeatures = function(diann_parquet_fp){
   # Read DIANN parquet file
   diann_parquet <- arrow::read_parquet(diann_parquet_fp) |>

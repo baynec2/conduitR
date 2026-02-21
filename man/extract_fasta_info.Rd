@@ -34,14 +34,11 @@ particularly useful for processing UniProt FASTA files and extracting
 metadata from the headers.
 }
 \examples{
-# Extract information from a UniProt FASTA file:
-# protein_info <- extract_fasta_info("uniprot_proteins.fasta")
+\dontrun{
+protein_info <- extract_fasta_info("uniprot_proteins.fasta")
+head(protein_info[, c("protein_id", "organism_name", "organism_id")])
+# Use for taxonomy matrices or mapping proteins to organisms
+}
+# Expects UniProt-style headers (OS=, OX=); other formats may not parse.
 
-# The extracted information can be used for:
-# - Creating taxonomy databases
-# - Mapping proteins to organisms
-# - Analyzing sequence properties
-
-# Note: The function expects UniProt-style headers. For other formats,
-# the extraction of organism information may not work as expected.
 }

@@ -15,14 +15,12 @@
 #' @export
 #'
 #' @examples
-#' # Find possible contrasts for a simple group comparison:
-#' # terms <- find_possible_contrast_terms(qfeatures_obj, "protein", ~group)
-#'
-#' # Find possible contrasts for a more complex design:
-#' # terms <- find_possible_contrast_terms(qfeatures_obj, "protein", ~group + batch)
-#'
-#' # The returned terms can be used to construct contrasts for limma analysis:
-#' # contrast <- paste(terms[2], "-", terms[1])  # e.g., "groupB - groupA"
+#' \dontrun{
+#' terms <- find_possible_contrast_terms(qf, "protein_groups", ~ group)
+#' # Use one of the terms to build a contrast, e.g. "groupB - groupA"
+#' contrast <- paste(terms[2], "-", terms[1])
+#' perform_limma_analysis(qf, "protein_groups", ~ group, contrast)
+#' }
 find_possible_contrast_terms <- function(qf,
                                          assay_name,
                                          formula) {

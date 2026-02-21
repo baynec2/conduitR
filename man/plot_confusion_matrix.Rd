@@ -27,11 +27,8 @@ Creates a heatmap visualization of the confusion matrix from a classification mo
 showing the distribution of predicted versus true class labels.
 }
 \examples{
-# Plot confusion matrix from classification results:
-# plot_confusion_matrix(model_results)
-
-# The confusion matrix can be used to evaluate:
-# - True positives (diagonal elements)
-# - False positives (off-diagonal elements in columns)
-# - False negatives (off-diagonal elements in rows)
+\dontrun{
+res <- predict_classification(qf, "protein_groups", "group")
+plot_confusion_matrix(res)
+}
 }

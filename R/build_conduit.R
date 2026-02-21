@@ -31,7 +31,16 @@
 #' @export
 #'
 #' @examples
-
+#' \dontrun{
+#' conduit_obj <- build_conduit_obj(
+#'   QFeatures = qf_rds,
+#'   diann_stats = "diann_stats.tsv",
+#'   database = "database.tsv",
+#'   annotations = "annotations.tsv",
+#'   taxonomy = "taxonomy.tsv"
+#' )
+#' }
+#'
 #' @note
 #' This function requires:
 #' \itemize{

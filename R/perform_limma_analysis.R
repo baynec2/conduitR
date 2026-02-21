@@ -29,14 +29,16 @@
 #' @export
 #'
 #' @examples
-#' # Basic usage with a simple group comparison:
-#' # results <- perform_limma_analysis(qfeatures_obj, "protein", ~group, "groupB - groupA")
+#' \dontrun{
+#' # Simple group comparison
+#' results <- perform_limma_analysis(qf, "protein_groups", ~ group, "groupB - groupA")
 #'
-#' # More complex design with batch effect:
-#' # results <- perform_limma_analysis(qfeatures_obj, "protein", ~group + batch, "groupB - groupA")
+#' # Design with batch
+#' results <- perform_limma_analysis(qf, "protein_groups", ~ group + batch, "groupB - groupA")
 #'
-#' # Multiple group comparison:
-#' # results <- perform_limma_analysis(qfeatures_obj, "protein", ~treatment, "treatmentB - treatmentA")
+#' # Use find_possible_contrast_terms to see valid contrast names
+#' find_possible_contrast_terms(qf, "protein_groups", ~ group)
+#' }
 perform_limma_analysis <- function(qf,
                                    assay_name,
                                    formula,

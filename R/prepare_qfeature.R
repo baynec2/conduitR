@@ -32,23 +32,25 @@
 #' @export
 #'
 #' @examples
-#' # Basic usage with default matrix names:
-#' # qf <- prepare_qfeature(
-#' #   sample_annotation_fp = "samples.tsv",
-#' #   vector_of_matrix_fps = c("protein_matrix.tsv", "peptide_matrix.tsv")
-#' # )
-#' 
-#' # Specify custom names for the matrices:
-#' # qf <- prepare_qfeature(
-#' #   sample_annotation_fp = "samples.tsv",
-#' #   vector_of_matrix_fps = c("protein_matrix.tsv", "peptide_matrix.tsv"),
-#' #   vector_of_matrices_names = c("protein", "peptide")
-#' # )
-#' 
-#' # The resulting QFeatures object can be used with other functions:
-#' # plot_heatmap(qf, "protein")
-#' # calc_relative_abundance(qf, "protein")
-#' # perform_limma_analysis(qf, "protein", ~group, "groupB - groupA")
+#' \dontrun{
+#' # Basic usage with default matrix names (from filenames)
+#' qf <- prepare_qfeature(
+#'   sample_annotation_fp = "samples.tsv",
+#'   vector_of_matrix_fps = c("protein_matrix.tsv", "peptide_matrix.tsv")
+#' )
+#'
+#' # Custom assay names
+#' qf <- prepare_qfeature(
+#'   sample_annotation_fp = "samples.tsv",
+#'   vector_of_matrix_fps = c("protein_matrix.tsv", "peptide_matrix.tsv"),
+#'   vector_of_matrices_names = c("protein", "peptide")
+#' )
+#'
+#' # Downstream use
+#' plot_heatmap(qf, "protein")
+#' calc_relative_abundance(qf, "protein")
+#' perform_limma_analysis(qf, "protein", ~ group, "groupB - groupA")
+#' }
 #'
 #' @note
 #' This function:

@@ -2,13 +2,24 @@
 % Please edit documentation in R/keggpath_to_map.R
 \name{keggpath_to_map}
 \alias{keggpath_to_map}
-\title{Title}
+\title{Convert KEGG Organism Pathway IDs to Reference Map IDs}
 \usage{
 keggpath_to_map(kegg_pathway_ids)
 }
 \arguments{
-\item{kegg_pathway_ids}{}
+\item{kegg_pathway_ids}{Character vector of KEGG pathway IDs in form
+\code{org:number} or \code{org12345} (e.g. \code{hsa04110}, \code{eco00010}).}
+}
+\value{
+Character vector of the same length with organism code replaced by
+\code{map}.
 }
 \description{
-Title
+Replaces the three-letter organism code in KEGG pathway IDs (e.g. \code{hsa}, \code{eco})
+with \code{map} to obtain the reference pathway map ID (e.g. \code{hsa04110} -> \code{map04110}).
+Useful for pathway visualization or lookup in the reference KEGG map.
+}
+\examples{
+keggpath_to_map(c("hsa04110", "eco00010"))
+# "map04110" "map00010"
 }

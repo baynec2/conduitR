@@ -1,12 +1,15 @@
-#' Conduit color palette
+#' Conduit Color Palette
 #'
-#' @returns A character vector of hex color codes representing the Conduit color
-#' palette.
+#' Returns the official Conduit color palette (nine hex codes) used for logos and
+#' consistent plotting (e.g. with `scale_color_conduit_d`, `scale_fill_conduit_d`).
+#'
+#' @return A character vector of 9 hex color codes.
+#'
 #' @export
 #'
 #' @examples
-#' # Returns 9 colors that go along with the conduit logos.
 #' conduit_palette()
+#' # Use in ggplot: scale_fill_manual(values = conduit_palette())
 conduit_palette <- function(){
   cp <- c(
     "#F3B24A",  # orange

@@ -24,14 +24,12 @@
 #' @export
 #'
 #' @examples
-#' # Basic volcano plot:
-#' # plot_volcano(limma_results$top_table)
-#'
-#' # With significance threshold and coloring:
-#' # plot_volcano(limma_results$top_table, color_by = "group", pval_threshold = 0.01)
-#'
-#' # With faceting:
-#' # plot_volcano(limma_results$top_table, facet_formula = ~group)
+#' \dontrun{
+#' limma_res <- perform_limma_analysis(qf, "protein_groups", ~ group, "B - A")
+#' plot_volcano(limma_res$top_table)
+#' plot_volcano(limma_res$top_table, color_by = "group", pval_threshold = 0.01)
+#' plot_volcano(limma_res$top_table, facet_formula = ~ batch)
+#' }
 plot_volcano <- function(limma_stats,
                          facet_formula = NULL,
                          color_by = NULL,

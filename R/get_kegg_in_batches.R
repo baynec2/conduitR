@@ -1,17 +1,23 @@
-#' get_kegg_in_batches
+#' Fetch KEGG Gene/Pathway Information in Batches
 #'
-#' Given a vector of kegg ids, get all of the functional information using the
-#' KEGG API.
+#' Queries the KEGG API for functional information (gene, orthology, pathway,
+#' etc.) for a set of KEGG IDs. IDs can be semicolon-separated; they are split
+#' and queried in batches to respect API limits.
 #'
-#' @param kegg_ids = kegg ides in the format "hsa:1234"
+#' @param kegg_ids Character vector of KEGG IDs in format like `"hsa:1234"` or
+#'   `"hsa:123;hsa:456"`. Semicolons are split and whitespace is trimmed.
+#' @param batch_size Integer. Number of IDs per API batch (default: 10).
 #'
-#' @returns
+#' @return A tibble with KEGG-derived columns (e.g. gene ID, organism, name,
+#'   orthology, pathway). Failed or missing entries are omitted.
+#'
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' insulin <- get_kegg_in_batches("hsa:3630")
-#'
+#' get_kegg_in_batches(c("hsa:3630", "hsa:3640"), batch_size = 5)
+#' }
 get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
   # original vector (e.g. kegg_ids <- c("hsa:123", "hsa:456;hsa:789", ...))
   split_ids <- stringr::str_split(kegg_ids, ";", simplify = FALSE) |> unlist()

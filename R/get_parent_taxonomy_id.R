@@ -1,11 +1,23 @@
-#' Title
+#' Get Parent Taxonomy ID from UniProt Taxonomy API
 #'
-#' @param organism_id
+#' Queries the UniProt taxonomy REST API for a given organism (NCBI taxonomy ID)
+#' and returns the parent taxon ID and rank. On failure returns a one-row
+#' tibble with NAs and a warning.
 #'
-#' @returns
+#' @param organism_id Integer or character. NCBI taxonomy ID (e.g. 9606 for
+#'   human).
+#'
+#' @return A tibble with columns `parent_id`, `child_id`, `child_rank`. On
+#'   success, `parent_id` is the parent taxon ID and `child_rank` is the rank
+#'   of the requested organism.
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' get_parent_taxonomy_id(9606)   # human
+#' get_parent_taxonomy_id(562)    # E. coli
+#' }
 get_parent_taxonomy_id <- function(organism_id) {
   taxon_url <- paste0("https://rest.uniprot.org/taxonomy/", organism_id)
 

@@ -2,13 +2,28 @@
 % Please edit documentation in R/plot_features_per_sample.R
 \name{plot_features_per_sample}
 \alias{plot_features_per_sample}
-\title{Title}
+\title{Plot Number of Features Detected per Sample Count}
 \usage{
 plot_features_per_sample(qf, assay = "protein_groups")
 }
 \arguments{
-\item{assay}{}
+\item{qf}{A \code{QFeatures} object.}
+
+\item{assay}{Character. Name of the assay to use (default: \code{"protein_groups"}).}
+}
+\value{
+A ggplot object: bar chart of count of features (y) vs number of
+samples they are detected in (x).
 }
 \description{
-Title
+For a chosen assay, counts how many features (e.g. proteins) are detected in
+1 sample, 2 samples, ... N samples, and plots a bar chart of these counts.
+Useful to assess detection consistency across samples.
+}
+\examples{
+\dontrun{
+qf <- diann_to_qfeatures("report.parquet")
+plot_features_per_sample(qf, assay = "protein_groups")
+plot_features_per_sample(qf, assay = "peptides")
+}
 }

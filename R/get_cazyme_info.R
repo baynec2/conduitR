@@ -1,11 +1,25 @@
-#' Getting Cazyme infromation for a vector of cazyme ids
+#' Get CAZy Class and Description for CAZy Family IDs
 #'
-#' @param uniprot_annotated_data
+#' Joins a set of CAZy family IDs (e.g. from UniProt xref_cazy) to the dbCAN2
+#' CAZy family–activity table to return class (e.g. GH, GT) and description.
+#' Downloads the reference table from the web if needed.
 #'
-#' @returns
+#' @param cazyme_ids Character vector of CAZy family IDs (e.g. `GH1`, `CBM12`).
+#'   Can also be a data frame with an `xref_cazy` column; the function uses
+#'   `uniprot_annotated_data` from the environment for the join if present.
+#'
+#' @return A tibble with columns `protein_id`, `xref_cazy`, `cazy_class`,
+#'   `cazy_description`. Requires a matching `uniprot_annotated_data` in scope
+#'   (data frame with `xref_cazy` column) for the full join.
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' ann <- get_annotations_from_uniprot(ids)
+#' # Expand xref_cazy and join with CAZy DB
+#' get_cazyme_info(unique(unlist(strsplit(ann$xref_cazy, ";"))))
+#' }
 get_cazyme_info = function(cazyme_ids){
 
 # Reading in cazyme infomation

@@ -2,19 +2,28 @@
 % Please edit documentation in R/get_kegg_in_batches.R
 \name{get_kegg_in_batches}
 \alias{get_kegg_in_batches}
-\title{get_kegg_in_batches}
+\title{Fetch KEGG Gene/Pathway Information in Batches}
 \usage{
 get_kegg_in_batches(kegg_ids, batch_size = 10)
 }
 \arguments{
-\item{kegg_ids}{= kegg ides in the format "hsa:1234"}
+\item{kegg_ids}{Character vector of KEGG IDs in format like \code{"hsa:1234"} or
+\code{"hsa:123;hsa:456"}. Semicolons are split and whitespace is trimmed.}
+
+\item{batch_size}{Integer. Number of IDs per API batch (default: 10).}
+}
+\value{
+A tibble with KEGG-derived columns (e.g. gene ID, organism, name,
+orthology, pathway). Failed or missing entries are omitted.
 }
 \description{
-Given a vector of kegg ids, get all of the functional information using the
-KEGG API.
+Queries the KEGG API for functional information (gene, orthology, pathway,
+etc.) for a set of KEGG IDs. IDs can be semicolon-separated; they are split
+and queried in batches to respect API limits.
 }
 \examples{
-
+\dontrun{
 insulin <- get_kegg_in_batches("hsa:3630")
-
+get_kegg_in_batches(c("hsa:3630", "hsa:3640"), batch_size = 5)
+}
 }

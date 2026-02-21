@@ -2,9 +2,7 @@
 % Please edit documentation in R/create_fasta_from_uniprot_ids.R
 \name{create_fasta_from_uniprot_ids}
 \alias{create_fasta_from_uniprot_ids}
-\title{create_fasta_from_uniprot_ids
-Creates a .fasta database from a list of uniprot ids.
-file from the first proteome returned via uniprots API.}
+\title{Create a FASTA File from UniProt Accession IDs}
 \usage{
 create_fasta_from_uniprot_ids(
   uniprot_ids,
@@ -12,19 +10,23 @@ create_fasta_from_uniprot_ids(
 )
 }
 \arguments{
-\item{uniprot_ids}{= vector of uniprot ids}
+\item{uniprot_ids}{Character vector of UniProt accession IDs.}
 
-\item{fasta_out_fp}{= file path to write the .fasta database too}
+\item{fasta_out_fp}{Character. Path for the output FASTA file (default:
+\code{getwd()} plus current date and \code{.fasta}).}
 }
 \value{
-a downloaded concatinated
+No return value; writes the FASTA file to \code{fasta_out_fp} and prints
+a message. IDs without sequence in the current release are omitted.
 }
 \description{
-create_fasta_from_uniprot_ids
-Creates a .fasta database from a list of uniprot ids.
-file from the first proteome returned via uniprots API.
+Fetches sequences and metadata from UniProt for the given accession IDs and
+writes a single FASTA file with UniProt-style headers (OS=, OX=, GN=, etc.).
+IDs that no longer have sequences in the current UniProt release are
+dropped and a message reports how many were removed.
 }
 \examples{
-# Human and mouse insulin, will pull down the human and mouse proteome.
-create_fasta_from_uniprot_ids(c("P01325", "P01308"), fasta_out_fp = "test.fasta")
+\dontrun{
+create_fasta_from_uniprot_ids(c("P01325", "P01308"), fasta_out_fp = "insulin.fasta")
+}
 }

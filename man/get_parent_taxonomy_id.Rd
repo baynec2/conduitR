@@ -2,13 +2,27 @@
 % Please edit documentation in R/get_parent_taxonomy_id.R
 \name{get_parent_taxonomy_id}
 \alias{get_parent_taxonomy_id}
-\title{Title}
+\title{Get Parent Taxonomy ID from UniProt Taxonomy API}
 \usage{
 get_parent_taxonomy_id(organism_id)
 }
 \arguments{
-\item{organism_id}{}
+\item{organism_id}{Integer or character. NCBI taxonomy ID (e.g. 9606 for
+human).}
+}
+\value{
+A tibble with columns \code{parent_id}, \code{child_id}, \code{child_rank}. On
+success, \code{parent_id} is the parent taxon ID and \code{child_rank} is the rank
+of the requested organism.
 }
 \description{
-Title
+Queries the UniProt taxonomy REST API for a given organism (NCBI taxonomy ID)
+and returns the parent taxon ID and rank. On failure returns a one-row
+tibble with NAs and a warning.
+}
+\examples{
+\dontrun{
+get_parent_taxonomy_id(9606)   # human
+get_parent_taxonomy_id(562)    # E. coli
+}
 }

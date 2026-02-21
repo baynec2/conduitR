@@ -2,13 +2,35 @@
 % Please edit documentation in R/check_api_service.R
 \name{check_api_service}
 \alias{check_api_service}
-\title{Title}
+\title{Check That an API Endpoint Is Reachable}
 \usage{
 check_api_service(api_url = "https://rest.uniprot.org/proteomes/UP000005640")
 }
 \arguments{
-\item{api_url}{}
+\item{api_url}{Character string. URL to test (default: UniProt human proteome
+endpoint).}
+}
+\value{
+Invisibly returns \code{TRUE} on success. Stops with an error if the
+request fails or the URL is unreachable.
 }
 \description{
-Title
+Performs a simple HTTP request to the given URL. If the request succeeds
+(status 200), the function returns invisibly; otherwise it throws an error.
+Use this before running workflows that depend on external APIs (e.g. UniProt,
+NCBI) to fail fast with a clear message when the service is down.
+}
+\examples{
+\dontrun{
+# Default: check UniProt proteomes API
+check_api_service()
+
+# Check a specific UniProt proteome
+check_api_service("https://rest.uniprot.org/proteomes/UP000005640")
+
+# Check NCBI taxonomy API
+check_api_service(
+  "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/einfo.fcgi?db=taxonomy"
+)
+}
 }

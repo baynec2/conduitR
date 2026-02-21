@@ -1,13 +1,33 @@
-#' prepare_taxonomy_matricies
+#' Build Taxonomy-Level Matrices from DIA-NN and FASTA Data
 #'
-#' @param full_taxonomy_fp file path to taxonomy file
-#' @param pr_group_matrix_fp file path to pr_group matrix from DIAnn
-#' @param fasta_fp file path to fasta used for experiment.
+#' Joins full taxonomy, DIA-NN protein group matrix, and FASTA-derived protein
+#' IDs to produce one TSV matrix per taxonomic level (domain, kingdom, phylum,
+#' class, order, family, genus, species). Each file contains log2-transformed
+#' intensities by sample and taxon.
 #'
-#' @returns taxonomy_matrix.tsv for each level of taxonomy
+#' @param full_taxonomy_fp Character. Path to the full taxonomy file (e.g.
+#'   organism_id and taxonomic columns).
+#' @param pr_group_matrix_fp Character. Path to the DIA-NN protein group matrix
+#'   (Protein.Ids and sample intensity columns).
+#' @param fasta_fp Character. Path to the FASTA used in the experiment (for
+#'   protein_id to organism_id mapping via `extract_fasta_info`).
+#' @param output_dir Character. Directory to write `*_matrix.tsv` files
+#'   (default: `getwd()`).
+#'
+#' @return No return value; writes one TSV per taxonomic level named
+#'   `{level}_matrix.tsv` in `output_dir`.
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' prepare_taxonomy_matricies(
+#'   full_taxonomy_fp = "taxonomy.tsv",
+#'   pr_group_matrix_fp = "pg_matrix.tsv",
+#'   fasta_fp = "combined.fasta",
+#'   output_dir = "taxonomy_matrices"
+#' )
+#' }
 prepare_taxonomy_matricies <- function(full_taxonomy_fp,
                                        pr_group_matrix_fp,
                                        fasta_fp,

@@ -1,14 +1,45 @@
-#' Title
+#' Download and Concatenate FASTA Files for Multiple Proteomes
 #'
-#' @param proteome_ids
-#' @param parallel
-#' @param proteome_id_destination_fp
-#' @param fasta_destination_fp
+#' For each UniProt proteome ID, downloads the proteome FASTA from UniProt
+#' (UniProtKB or UniParc), saves per-proteome FASTA files in a temporary
+#' directory, then concatenates them into a single FASTA file. Also writes a
+#' delimited file with proteome IDs and associated taxonomy/type information.
 #'
-#' @returns
+#' @param proteome_ids Character vector of UniProt proteome IDs (e.g.
+#'   `"UP000005640"`). Duplicates are removed with a warning.
+#' @param parallel Logical. If `TRUE`, download proteomes in parallel using
+#'   `future::multisession` with `availableCores() - 1` workers. Default
+#'   `FALSE`.
+#' @param proteome_id_destination_fp Character. Path for the output file
+#'   containing proteome IDs and metadata (default: `getwd()` plus current
+#'   date and `.txt`).
+#' @param fasta_destination_fp Character. Path for the concatenated FASTA
+#'   output (default: `getwd()` plus current date and `.fasta`).
+#'
+#' @return When `parallel` is `FALSE`, returns the result of
+#'   `concatenate_fasta_files` after writing the proteome info file; the temp
+#'   directory is removed. When `parallel` is `TRUE`, returns the combined
+#'   result of `get_fasta_file` across proteomes (no concatenation or
+#'   proteome info file in that path). In both cases, FASTA and metadata files
+#'   are written to the specified paths.
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' # Download two proteomes and write one FASTA + one metadata file
+#' download_fasta_from_proteome_ids(
+#'   c("UP000005640", "UP000000625"),
+#'   fasta_destination_fp = "my_proteomes.fasta",
+#'   proteome_id_destination_fp = "my_proteomes.txt"
+#' )
+#'
+#' # Parallel downloads (no concatenation; check temp dir for FASTA files)
+#' download_fasta_from_proteome_ids(
+#'   c("UP000005640", "UP000000625"),
+#'   parallel = TRUE
+#' )
+#' }
 download_fasta_from_proteome_ids <- function(proteome_ids,
                                             parallel = FALSE,
                                             proteome_id_destination_fp = paste0(

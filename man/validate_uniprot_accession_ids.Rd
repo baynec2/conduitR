@@ -8,11 +8,10 @@ validate_uniprot_accession_ids(uniprot_ids)
 }
 \arguments{
 \item{uniprot_ids}{Character vector containing UniProt accession IDs to validate.
-The function checks for two valid formats:
-\itemize{
-\item Format 1: \link[=0-9]{OPQ}[A-Z0-9]{3}\link{0-9} (e.g., "P12345", "O12345")
-\item Format 2: \link[=0-9]{A-NR-Z}([A-Z][A-Z0-9]{2}\link{0-9}){1,2} (e.g., "A0A023GPI8")
-}}
+The function checks for two valid formats via regex: (1) Swiss-Prot/TrEMBL
+style starting with O, P, or Q followed by digits and alphanumerics (e.g.
+"P12345", "O12345"); (2) TrEMBL style starting with A-N or R-Z, then digits
+and blocks of 4 characters (e.g. "A0A023GPI8").}
 }
 \value{
 A character vector containing only the valid UniProt accession IDs.
@@ -25,13 +24,10 @@ they match the official UniProt format. Invalid IDs are filtered out, and a
 message reports how many were removed.
 }
 \examples{
-# Validate a list of UniProt IDs:
-# valid_ids <- validate_uniprot_accession_ids(c("P12345", "invalid", "A0A023GPI8"))
+# Valid IDs are kept; invalid ones removed (message printed)
+validate_uniprot_accession_ids(c("P12345", "invalid", "A0A023GPI8"))
+# Returns: c("P12345", "A0A023GPI8")
 
-# The function will print a message if invalid IDs are found:
-# "1 invalid UniProt IDs removed."
-
-# The validated IDs can be used with other functions:
-# protein_info <- extract_fasta_info("uniprot.fasta")
-# valid_proteins <- protein_info[protein_info$protein_id \%in\% valid_ids,]
+# All valid: no message
+validate_uniprot_accession_ids(c("P12345", "O12345", "A0A023GPI8"))
 }

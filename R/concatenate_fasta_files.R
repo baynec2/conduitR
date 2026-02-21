@@ -15,14 +15,13 @@
 #' @export
 #'
 #' @examples
-#' # Concatenate all FASTA files in a directory:
-#' # concatenate_fasta_files("path/to/fasta_files", "combined.fasta")
-#' 
-#' # The resulting file can be used with other functions:
-#' # protein_info <- extract_fasta_info("combined.fasta")
-#' 
-#' # Note: Make sure all input files are valid FASTA files and that
-#' # you have sufficient disk space for the combined file.
+#' \dontrun{
+#' # Combine all FASTA files in a folder into one file
+#' concatenate_fasta_files("path/to/fasta_files", "combined.fasta")
+#'
+#' # Then extract metadata from the combined file
+#' protein_info <- extract_fasta_info("combined.fasta")
+#' }
 concatenate_fasta_files <- function(fasta_dir, destination_fp) {
   files <- list.files(fasta_dir, full.names = TRUE) # Get all file paths.
   # Read all lines from each file

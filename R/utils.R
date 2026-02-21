@@ -13,14 +13,17 @@
 #' @export
 #'
 #' @examples
-#' # Check if elements are not in a vector:
-#' # c("a", "b", "c") %!in% c("a", "d")  # Returns: FALSE TRUE TRUE
-#' 
-#' # Filter data frame rows:
-#' # df[df$column %!in% c("value1", "value2"),]
-#' 
-#' # Remove specific elements:
-#' # x <- x[x %!in% c("remove1", "remove2")]
+#' # Check if elements are not in a vector
+#' c("a", "b", "c") %!in% c("a", "d")
+#' # Returns: FALSE TRUE TRUE
+#'
+#' # Filter data frame rows
+#' df <- data.frame(id = c("a", "b", "c"), val = 1:3)
+#' df[df$id %!in% c("a"), ]
+#'
+#' # Remove specific elements from a vector
+#' x <- c("keep", "remove1", "keep2", "remove2")
+#' x[x %!in% c("remove1", "remove2")]
 #'
 #' @seealso \code{\link[base]{\%in\%}} for the original operator
 `%!in%` <- Negate(`%in%`)

@@ -2,13 +2,29 @@
 % Please edit documentation in R/get_proteome_taxids_and_types.R
 \name{get_proteome_taxids_and_types}
 \alias{get_proteome_taxids_and_types}
-\title{Title}
+\title{Get Organism IDs and Proteome Types for UniProt Proteome IDs}
 \usage{
 get_proteome_taxids_and_types(proteome_ids, parallel = FALSE)
 }
 \arguments{
-\item{proteome_ids}{}
+\item{proteome_ids}{Character vector of UniProt proteome IDs (e.g.
+\code{"UP000005640"}).}
+
+\item{parallel}{Logical. If \code{TRUE}, perform HTTP requests in parallel via
+\code{mapply}. Default \code{FALSE}.}
+}
+\value{
+A tibble with columns \code{proteome_id}, \code{organism_id}, \code{proteome_type}.
+Failed requests have \code{NA} for \code{organism_id} and \code{proteome_type}.
 }
 \description{
-Title
+For each UniProt proteome ID, fetches the NCBI taxonomy ID (organism_id) and
+proteome type from the UniProt REST API. Used to annotate downloaded
+proteomes (e.g. in \code{download_fasta_from_proteome_ids}).
+}
+\examples{
+\dontrun{
+get_proteome_taxids_and_types(c("UP000005640", "UP000000625"))
+get_proteome_taxids_and_types(c("UP000005640"), parallel = TRUE)
+}
 }

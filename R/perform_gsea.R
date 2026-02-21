@@ -1,14 +1,30 @@
-#' Title
+#' Gene Set Enrichment Analysis (GSEA) on Ranked Limma Results
 #'
-#' @param limma_stats
-#' @param conduit
-#' @param annotation_type
-#' @param ranking_column
+#' Runs GSEA using `clusterProfiler::GSEA` with a ranked gene list (e.g. by
+#' logFC) and custom TERM2GENE/TERM2NAME derived from limma stats and optional
+#' conduit annotations.
 #'
-#' @returns
+#' @param limma_stats Tibble of limma results with an ID column and a numeric
+#'   ranking column (e.g. `logFC`). Must also contain the column used for
+#'   `annotation_type` (e.g. GO terms).
+#' @param conduit A conduit object; its `@annotations` slot is used for
+#'   TERM2NAME when `annotation_type` matches.
+#' @param annotation_type Character. Column name in `limma_stats` and in
+#'   conduit annotations for term IDs (default: `"go"`).
+#' @param ranking_column Character. Column name in `limma_stats` used to rank
+#'   genes (default: `"logFC"`). Values must be numeric, non-NA, with unique
+#'   row names.
+#'
+#' @return Result of `clusterProfiler::GSEA` (enrichResult object).
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' limma_res <- perform_limma_analysis(qf, "protein_groups", ~ group, "B - A")
+#' gsea_res <- perform_gsea(limma_res$top_table, conduit = conduit_obj,
+#'   annotation_type = "go", ranking_column = "logFC")
+#' }
 perform_gsea = function(limma_stats,
                         conduit,
                         annotation_type = "go",

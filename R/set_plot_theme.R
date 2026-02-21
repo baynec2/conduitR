@@ -21,16 +21,13 @@
 #' @export
 #'
 #' @examples
-#' # Set minimal theme (default):
-#' # set_plot_theme()
-#' 
-#' # Set publication-ready theme:
-#' # set_plot_theme("ggprism")
-#' 
-#' # Set classic theme:
-#' # set_plot_theme("theme_classic")
-#' 
-#' # Note: The theme will affect all subsequent ggplot2 plots until changed again
+#' # Default: minimal theme for all subsequent ggplots
+#' set_plot_theme()
+#'
+#' \dontrun{
+#' set_plot_theme("theme_classic")
+#' set_plot_theme("ggprism")  # requires ggprism
+#' }
 set_plot_theme <- function(theme_name = "theme_minimal") {
   `%!in%` <- Negate(`%in%`)
 

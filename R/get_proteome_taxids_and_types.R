@@ -1,12 +1,25 @@
-#' Title
+#' Get Organism IDs and Proteome Types for UniProt Proteome IDs
 #'
-#' @param proteome_ids
+#' For each UniProt proteome ID, fetches the NCBI taxonomy ID (organism_id) and
+#' proteome type from the UniProt REST API. Used to annotate downloaded
+#' proteomes (e.g. in `download_fasta_from_proteome_ids`).
 #'
-#' @returns
+#' @param proteome_ids Character vector of UniProt proteome IDs (e.g.
+#'   `"UP000005640"`).
+#' @param parallel Logical. If `TRUE`, perform HTTP requests in parallel via
+#'   `mapply`. Default `FALSE`.
+#'
+#' @return A tibble with columns `proteome_id`, `organism_id`, `proteome_type`.
+#'   Failed requests have `NA` for `organism_id` and `proteome_type`.
+#'
 #' @export
 #'
 #' @examples
-get_proteome_taxids_and_types <- function(proteome_ids, parallel = FALSE) {
+#' \dontrun{
+#' get_proteome_taxids_and_types(c("UP000005640", "UP000000625"))
+#' get_proteome_taxids_and_types(c("UP000005640"), parallel = TRUE)
+#' }
+get_proteome_taxids_and_types <- function(proteome_ids) {
 
   # Construct requests
   reqs <- proteome_ids |>
@@ -24,12 +37,8 @@ get_proteome_taxids_and_types <- function(proteome_ids, parallel = FALSE) {
       return(NULL)
     })
   }
-
-  if (parallel) {
-    resps <- mapply(perform_req, reqs, proteome_ids, SIMPLIFY = FALSE)
-  } else {
-    resps <- mapply(perform_req, reqs, proteome_ids, SIMPLIFY = FALSE)
-  }
+   resps <- mapply(perform_req, reqs, proteome_ids, SIMPLIFY = FALSE)
+  
 
   # Parse each response
   parse_resp <- function(resp, id) {

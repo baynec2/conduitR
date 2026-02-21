@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare_taxonomy_matricies.R
 \name{prepare_taxonomy_matricies}
 \alias{prepare_taxonomy_matricies}
-\title{prepare_taxonomy_matricies}
+\title{Build Taxonomy-Level Matrices from DIA-NN and FASTA Data}
 \usage{
 prepare_taxonomy_matricies(
   full_taxonomy_fp,
@@ -12,15 +12,35 @@ prepare_taxonomy_matricies(
 )
 }
 \arguments{
-\item{full_taxonomy_fp}{file path to taxonomy file}
+\item{full_taxonomy_fp}{Character. Path to the full taxonomy file (e.g.
+organism_id and taxonomic columns).}
 
-\item{pr_group_matrix_fp}{file path to pr_group matrix from DIAnn}
+\item{pr_group_matrix_fp}{Character. Path to the DIA-NN protein group matrix
+(Protein.Ids and sample intensity columns).}
 
-\item{fasta_fp}{file path to fasta used for experiment.}
+\item{fasta_fp}{Character. Path to the FASTA used in the experiment (for
+protein_id to organism_id mapping via \code{extract_fasta_info}).}
+
+\item{output_dir}{Character. Directory to write \verb{*_matrix.tsv} files
+(default: \code{getwd()}).}
 }
 \value{
-taxonomy_matrix.tsv for each level of taxonomy
+No return value; writes one TSV per taxonomic level named
+\verb{\{level\}_matrix.tsv} in \code{output_dir}.
 }
 \description{
-prepare_taxonomy_matricies
+Joins full taxonomy, DIA-NN protein group matrix, and FASTA-derived protein
+IDs to produce one TSV matrix per taxonomic level (domain, kingdom, phylum,
+class, order, family, genus, species). Each file contains log2-transformed
+intensities by sample and taxon.
+}
+\examples{
+\dontrun{
+prepare_taxonomy_matricies(
+  full_taxonomy_fp = "taxonomy.tsv",
+  pr_group_matrix_fp = "pg_matrix.tsv",
+  fasta_fp = "combined.fasta",
+  output_dir = "taxonomy_matrices"
+)
+}
 }

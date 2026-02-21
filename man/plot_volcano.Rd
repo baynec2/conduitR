@@ -39,12 +39,10 @@ The plot shows log fold changes on the x-axis and -log10 adjusted p-values on th
 with options for coloring points and faceting.
 }
 \examples{
-# Basic volcano plot:
-# plot_volcano(limma_results$top_table)
-
-# With significance threshold and coloring:
-# plot_volcano(limma_results$top_table, color_by = "group", pval_threshold = 0.01)
-
-# With faceting:
-# plot_volcano(limma_results$top_table, facet_formula = ~group)
+\dontrun{
+limma_res <- perform_limma_analysis(qf, "protein_groups", ~ group, "B - A")
+plot_volcano(limma_res$top_table)
+plot_volcano(limma_res$top_table, color_by = "group", pval_threshold = 0.01)
+plot_volcano(limma_res$top_table, facet_formula = ~ batch)
+}
 }

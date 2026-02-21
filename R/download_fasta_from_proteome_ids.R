@@ -46,7 +46,7 @@ download_fasta_from_proteome_ids <- function(proteome_ids,
     )
     future::plan(future::sequential) # Reset to sequential processing
   } else {
-    purrr::map_dfr(
+    download_results <- purrr::map_dfr(
       proteome_ids_to_search,
       function(id, ...) {
         get_fasta_file(id, ...)
@@ -77,14 +77,18 @@ download_fasta_from_proteome_ids <- function(proteome_ids,
     # Assembling proteome id dataframe (organism_id included)
     final_proteome_df <- get_proteome_taxids_and_types(proteome_ids_to_search)
 
-    success <- gsub(".fasta", "", fasta_files)
-
-    # annotating with whether or not the proteome was downloaded
+    # Annotate using per-proteome source (uniprotkb vs uniparc) from get_fasta_file
     annotated_downloads <- final_proteome_df |>
+      dplyr::left_join(
+        download_results |> dplyr::select("proteome_id", "source"),
+        by = "proteome_id"
+      ) |>
       dplyr::mutate(download_info = dplyr::case_when(
-        proteome_id %!in% success ~ "not_downloaded",
-        TRUE ~ proteome_type
-      ))
+        is.na(.data$source) | .data$source == "not_downloaded" ~ "not_downloaded",
+        .data$source == "uniparc" ~ "uniparc",
+        TRUE ~ .data$proteome_type
+      )) |>
+      dplyr::select(-"source")
 
     # Writing proteome ids that coorespond with taxa ids to file path.
     log_with_timestamp(paste0(

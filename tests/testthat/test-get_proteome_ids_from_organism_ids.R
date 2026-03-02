@@ -1,5 +1,6 @@
 # Simple Test
 test_that("Simple Test works", {
+  skip_if_offline()
   organism_ids = c("9606", "818")
   expect_no_error(get_proteome_ids_from_organism_ids(organism_ids))
 })
@@ -16,11 +17,13 @@ prob =c(10090,818,927665,1339352,1401073,1339280,457389,1287488,1339350,328812,
   702447,397290,1262986,1235786,397291,397288)
 
 test_that("it works with problematic ids", {
+  skip_if_offline()
   expect_no_error(get_proteome_ids_from_organism_ids(as.character(prob)))
 })
 
 # These IDs were also problematic at some point
 test_that("it works with new problematic ids",{
+  skip_if_offline()
     problematic_ids = c(77133,2320102)
     out = get_proteome_ids_from_organism_ids(problematic_ids)
 })
@@ -28,6 +31,7 @@ test_that("it works with new problematic ids",{
 # Was having a problem where some ids were silently dropped- this happens if the
 # proteome for that taxa is not in the uniprot database.
 test_that("you get the same number out as you put in",{
+  skip_if_offline()
   # These IDs are from Sho, its a realistic set size.
   ids <- c(
     2173, 1263088, 2317, 1860157, 1197717, 457415, 508460, 1906168, 1262868, 79604,
@@ -83,18 +87,20 @@ test_that("you get the same number out as you put in",{
   out = get_proteome_ids_from_organism_ids(ids)
   out_length = nrow(out)
   expect_equal(length(ids_not_in_output), 0)
-}
+})
 
 # Test for duplicate ids
 test_that("it works with duplicate ids",{
+  skip_if_offline()
   ids = c(77133,77133)
   expect_no_error(get_proteome_ids_from_organism_ids(ids))
 })
 
 
 test_that("it produces NAs for organism IDs with no ID", {
+  skip_if_offline()
 
-  t = readr::read_delim("tests/data/organisms.txt")
+  t = readr::read_delim(organism_ids_txt())
 
   organism_ids <- t$organism_id
 
@@ -105,5 +111,3 @@ test_that("it produces NAs for organism IDs with no ID", {
 
   expect_true(is.na(pi$`Proteome Id`[[418]]))
 })
-
-

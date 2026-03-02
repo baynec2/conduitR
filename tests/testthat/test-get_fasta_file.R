@@ -1,4 +1,5 @@
 test_that("this works", {
+  skip_if_offline()
   tmp_dir <- tempdir()  # Automatically deleted after session
   proteome_id = "UP000270929"
   expect_no_error(get_fasta_file(proteome_id))
@@ -7,6 +8,7 @@ test_that("this works", {
 
 # UP000050895 has no sequences in UniProtKB; we fall back to UniParc (may or may not have sequences).
 test_that("proteome with empty UniProtKB returns valid source (uniparc or not_downloaded)", {
+  skip_if_offline()
   tmp_dir <- tempdir()
   proteome_id <- "UP000050895"
   result <- get_fasta_file(proteome_id, tmp_dir)
@@ -15,6 +17,7 @@ test_that("proteome with empty UniProtKB returns valid source (uniparc or not_do
 })
 
 test_that("this works with a problematic id",{
+  skip_if_offline()
   # Create a temporary directory
   tmp_dir <- tempdir()  # Automatically deleted after session
   proteome_id = "UP000041370"

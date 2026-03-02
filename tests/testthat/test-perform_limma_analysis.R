@@ -1,5 +1,5 @@
 test_that("perform_limma_analysis() works", {
-  qf = add_log_imputed_norm_assays(readRDS("tests/data/conduit.rds")@QFeatures)
+  qf = add_log_imputed_norm_assays(readRDS(conduit_rds())@QFeatures)
   assay_name = "protein_group_log2_imputed"
   formula = ~microbiome_treatment
 

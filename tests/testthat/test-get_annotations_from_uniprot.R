@@ -1,5 +1,6 @@
 test_that("this works", {
-  pg_groups = readr::read_tsv("inst/extdata/report.pg_matrix.tsv")
+  skip_if_offline()
+  pg_groups = readr::read_tsv(system.file("extdata/report.pg_matrix.tsv", package = "conduitR"))
 
   uniprot_ids = pg_groups |>
     dplyr::pull("Protein.Group") |>
@@ -11,6 +12,7 @@ test_that("this works", {
 })
 
 test_that("this works with ids that were previously having col type problems",{
+  skip_if_offline()
   expect_no_error({
   problem_id = "A0A0R4J083"
   conduitR::get_annotations_from_uniprot(problem_id)
@@ -20,8 +22,9 @@ test_that("this works with ids that were previously having col type problems",{
 })
 
 test_that("this works with ids that were problematic previously",{
+  skip_if_offline()
   expect_no_error({
-    problems = readr::read_delim("tests/data/detected_protein_info.txt") |>
+    problems = readr::read_delim(detected_proteins_txt()) |>
       pull(protein_id)
 
 
@@ -30,5 +33,3 @@ test_that("this works with ids that were problematic previously",{
   })
 
 })
-
-

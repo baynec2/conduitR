@@ -1,4 +1,5 @@
 test_that("818 expected results", {
+  skip_if_offline()
 
   # Create a temporary directory for test output
   tmp_dir <- withr::local_tempdir()
@@ -22,6 +23,7 @@ test_that("818 expected results", {
 
 
 test_that("9606 expected results", {
+  skip_if_offline()
 
   # Create a temporary directory for test output
   tmp_dir <- withr::local_tempdir()
@@ -46,6 +48,7 @@ test_that("9606 expected results", {
 
 
 test_that("83333 expected results: reference level strain", {
+  skip_if_offline()
 
   # Create a temporary directory for test output
   tmp_dir <- withr::local_tempdir()
@@ -68,6 +71,7 @@ test_that("83333 expected results: reference level strain", {
 })
 
 test_that("8888 expected results: not valid taxa id", {
+  skip_if_offline()
 
   # Create a temporary directory for test output
   tmp_dir <- withr::local_tempdir()
@@ -91,6 +95,7 @@ test_that("8888 expected results: not valid taxa id", {
 
 
 test_that("1682 expected results: Reference Proteome", {
+  skip_if_offline()
 
   # Create a temporary directory for test output
   tmp_dir <- withr::local_tempdir()
@@ -114,6 +119,7 @@ test_that("1682 expected results: Reference Proteome", {
 
 
 test_that("works with all", {
+  skip_if_offline()
 
   all_ids = c(1682,8888,83333,9606,818)
 
@@ -136,5 +142,3 @@ test_that("works with all", {
   print(downloads)
 
 })
-
-

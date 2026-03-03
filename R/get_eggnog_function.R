@@ -102,7 +102,7 @@ get_eggnog_function <- function(eggnog_ids) {
         cat("GO terms downloaded for Eggnog ID:", id, "\n")
       } else {
         # No GO terms found, add empty row
-        results <- dplyr::bind_rows(results, tibble(
+        results <- dplyr::bind_rows(results, tibble::tibble(
           eggnog_id = id, go_type = NA_character_, go_id = NA_character_,
           go_description = NA_character_, evidence_codes = NA_character_,
           seq_count = NA_real_, frequency = NA_real_, annotation_count = NA_real_
@@ -111,7 +111,7 @@ get_eggnog_function <- function(eggnog_ids) {
       }
     } else {
       # Failed API request, add empty row
-      results <- bind_rows(results, tibble(
+      results <- dplyr::bind_rows(results, tibble::tibble(
         eggnog_id = id, go_type = NA_character_, go_id = NA_character_,
         go_description = NA_character_, evidence_codes = NA_character_,
         seq_count = NA_real_, frequency = NA_real_, annotation_count = NA_real_

@@ -25,7 +25,7 @@ test_that("this works with ids that were problematic previously",{
   skip_if_offline()
   expect_no_error({
     problems = readr::read_delim(detected_proteins_txt()) |>
-      pull(protein_id)
+      dplyr::pull(protein_id)
 
 
     out = conduitR::get_annotations_from_uniprot(problems)

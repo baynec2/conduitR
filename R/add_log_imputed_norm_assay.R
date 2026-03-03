@@ -1,43 +1,58 @@
 #' Add Log-Transformed, Imputed, and Normalized Assays
 #'
-#' Performs a series of data transformations on all assays in a QFeatures object:
-#' 1. Replaces zeros with NA values
-#' 2. Applies log transformation with a pseudocount
-#' 3. Imputes missing values
-#' 4. Optionally normalizes the data
-#' Each step creates a new assay in the QFeatures object.
+#' Applies the log-transform, imputation, and normalization pipeline to every
+#' assay currently in a QFeatures object. Each step creates a new assay:
+#' \enumerate{
+#'   \item Zeros replaced with NA
+#'   \item Log transformation
+#'   \item Imputation
+#'   \item Normalization (or copy if norm_method = "none")
+#' }
 #'
-#' @param qf A QFeatures object containing the data to transform
-#' @param base Numeric value specifying the base for log transformation (default: 2)
-#' @param impute_method Character string specifying the imputation method to use.
-#'   Must be one of the methods supported by QFeatures::impute() (default: "min")
-#' @param norm_method Character string specifying the normalization method to use.
-#'   Must be one of the methods supported by QFeatures::normalize(), or "none"
-#'   to skip normalization (default: "none")
+#' @param qf A QFeatures object.
+#' @param base Numeric log base (default: 2).
+#' @param impute_method Imputation method supported by \code{QFeatures::impute()} (default: "min").
+#' @param norm_method Normalization method supported by \code{QFeatures::normalize()}, or
+#'   "none" to skip (default: "none").
+#' @param min_n Minimum number of non-NA values required to keep a row (default: 1).
 #'
-#' @return A QFeatures object with additional assays:
-#'   \itemize{
-#'     \item {assay_name}_log{base}: Log-transformed data
-#'     \item {assay_name}_log{base}_imputed: Log-transformed and imputed data
-#'     \item {assay_name}_log{base}_imputed_norm_{norm_method}: Normalized data
-#'       (only if norm_method is not "none")
-#'   }
-#'
+#' @return A QFeatures object with additional derived assays for each original assay.
 #' @export
 #'
 #' @examples
-#' # Basic usage with default settings:
 #' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj)
-#'
-#' # Using log10 transformation and min imputation:
 #' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj, base = 10)
+add_log_imputed_norm_assays <- function(qf,
+                                        base = 2,
+                                        impute_method = "min",
+                                        norm_method = "none",
+                                        min_n = 1) {
+  for (assay in names(qf)) {
+    qf <- add_log_imputed_norm_assay(qf,
+                                     assay = assay,
+                                     base = base,
+                                     impute_method = impute_method,
+                                     norm_method = norm_method,
+                                     min_n = min_n)
+  }
+  return(qf)
+}
+
+#' Add Log-Transformed, Imputed, and Normalized Assays for a Single Assay
 #'
-#' # With normalization:
-#' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj,
-#' #                                             norm_method = "center.scale")
+#' Transforms one assay in a QFeatures object through log transformation,
+#' imputation, and optional normalization.
 #'
-#' # The transformed assays can be used with plotting functions:
-#' # plot_density(qf_transformed, "protein", color = "group")
+#' @param qf A QFeatures object.
+#' @param assay Name of the assay to transform (default: "protein_groups").
+#' @param base Numeric log base (default: 2).
+#' @param impute_method Imputation method supported by \code{QFeatures::impute()} (default: "min").
+#' @param norm_method Normalization method or "none" (default: "none").
+#' @param min_n Minimum number of non-NA values required to keep a row (default: 1).
+#'
+#' @return A QFeatures object with additional \code{{assay}_log{base}},
+#'   \code{{assay}_log{base}_imputed}, and \code{{assay}_log{base}_imputed_norm} assays.
+#' @export
 add_log_imputed_norm_assay <- function(qf,
                                        assay = "protein_groups",
                                        base = 2,
@@ -92,8 +107,8 @@ add_log_imputed_norm_assay <- function(qf,
   }
 
 
-  # Step 5: Filter by .n
-  if (!is.null(min_n)) {
+  # Step 5: Filter by .n (only when the column exists in rowData)
+  if (!is.null(min_n) && ".n" %in% colnames(SummarizedExperiment::rowData(qf[[norm_name]]))) {
     se <- qf[[norm_name]]
     se <- se[SummarizedExperiment::rowData(se)$.n >= min_n, ]
     qf[[norm_name]] <- se

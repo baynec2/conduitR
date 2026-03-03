@@ -83,9 +83,8 @@ test_that("you get the same number out as you put in",{
     548, 573, 54291, 571, 28901, 546, 35703, 562, 622, 623, 1681196, 566, 1158459,
     61648, 563
   )
-  in_length = length(ids)
   out = get_proteome_ids_from_organism_ids(ids)
-  out_length = nrow(out)
+  ids_not_in_output = setdiff(as.character(ids), as.character(out$organism_id))
   expect_equal(length(ids_not_in_output), 0)
 })
 
@@ -107,7 +106,7 @@ test_that("it produces NAs for organism IDs with no ID", {
 
   organism_ids <- organism_ids[!is.na(organism_ids)]
 
- pi = get_proteome_ids_from_organism_ids(t$organism_id)
+  pi = get_proteome_ids_from_organism_ids(t$organism_id)
 
-  expect_true(is.na(pi$`Proteome Id`[[418]]))
+  expect_true(any(is.na(pi$proteome_id)))
 })

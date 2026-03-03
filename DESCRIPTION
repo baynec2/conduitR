@@ -24,6 +24,7 @@ Imports:
     XML,
     tidyr,
     SummarizedExperiment,
+    S4Vectors,
     limma,
     readr,
     plotly,

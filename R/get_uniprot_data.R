@@ -81,15 +81,26 @@
 #'     retrieving EggNOG annotations
 #' }
 get_uniprot_data <- function(ids, columns = NULL, batch_size = 150) {
+  # UniProt's search endpoint has a query-length limit. Split into chunks of 50
+  # IDs per request to avoid HTTP 400 errors and combine results.
+  chunk_size <- 50
+  if (length(ids) > chunk_size) {
+    chunks <- split(ids, ceiling(seq_along(ids) / chunk_size))
+    return(dplyr::bind_rows(lapply(chunks, get_uniprot_data,
+                                   columns = columns,
+                                   batch_size = batch_size)))
+  }
+
   # Base URL for request
-  base_url <- "https://rest.uniprot.org/uniprotkb/search?"
-  query <- paste0(paste0("accession:", ids, collapse = " OR "))
+  base_url <- "https://rest.uniprot.org/uniprotkb/search"
+  # Compact query: "accession:(ID1 OR ID2 OR ...)" is shorter than individual terms
+  query <- paste0("accession:(", paste(ids, collapse = " OR "), ")")
   req <- httr2::request(base_url) |>
     httr2::req_url_query(
       query = query,
       format = "tsv",
       fields = columns,
-      size = batch_size # Max limit per request
+      size = batch_size
     ) |>
     httr2::req_perform()
 

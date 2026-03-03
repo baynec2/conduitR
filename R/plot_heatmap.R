@@ -54,30 +54,30 @@ plot_heatmap = function(qf,
   se <- qf[[assay_name]]
 
   # Set heatmap colors
-  metadata(se)$hmcols <- viridis::viridis(1000)
+  S4Vectors::metadata(se)$hmcols <- viridis::viridis(1000)
 
   # Initialize color list
-  metadata(se)$anno_colors <- list()
+  S4Vectors::metadata(se)$anno_colors <- list()
 
   # Assign column annotation colors dynamically
   if (!is.null(col_color_variables)) {
     for (var in col_color_variables) {
-      values <- unique(colData(se)[[var]])
+      values <- unique(SummarizedExperiment::colData(se)[[var]])
       values <- values[!is.na(values)]
       n_values <- length(values)
       palette <- viridis::viridis(n_values)
-      metadata(se)$anno_colors[[var]] <- setNames(palette, values)
+      S4Vectors::metadata(se)$anno_colors[[var]] <- setNames(palette, values)
     }
   }
 
   # Assign row annotation colors dynamically
   if (!is.null(row_color_variables)) {
     for (var in row_color_variables) {
-      values <- unique(rowData(se)[[var]])
+      values <- unique(SummarizedExperiment::rowData(se)[[var]])
       values <- values[!is.na(values)]
       n_values <- length(values)
       palette <- viridis::magma(n_values)
-      metadata(se)$anno_colors[[var]] <- setNames(palette, values)
+      S4Vectors::metadata(se)$anno_colors[[var]] <- setNames(palette, values)
     }
   }
 

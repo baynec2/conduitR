@@ -79,6 +79,7 @@ test_that("this works with problematic set of ids", {
 # previously.
 test_that("get_uniprot_data works with a set of 5000 ids", {
   skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
   uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
   batch_not_working <- uniprot_ids_5000[301:450]
   results <- get_uniprot_data(batch_not_working, columns = "accession")

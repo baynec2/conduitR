@@ -42,6 +42,7 @@ test_that("We get same ids out as we put in", {
 
 test_that("Does this work with a large, realistic set?", {
   skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
   # 5000 ids
   uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
   annotated <- annotate_uniprot_ids(uniprot_ids_5000,
@@ -55,6 +56,7 @@ test_that("Does this work with a large, realistic set?", {
 
 test_that("Does this work with a large, realistic set without parallel?", {
   skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
   # 5000 ids
   uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
   annotated <- annotate_uniprot_ids(uniprot_ids_5000,
@@ -69,6 +71,7 @@ test_that("Does this work with a large, realistic set without parallel?", {
 
 test_that("parallel is faster than non parallel", {
   skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
   # 5000 ids
   uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
 

@@ -35,6 +35,6 @@ test_that("this works with a problematic id",{
   problematic_id  = c(818,77133,2320102)
   # Define temporary file path
   temp_fp =paste0(file.path(tmp_dir),"test.fasta")
-  expect_no_error(download_fasta_from_organism_ids(problematic_id,destination_fp = temp_fp))
+  expect_no_error(download_fasta_from_organism_ids(problematic_id, fasta_destination_fp = temp_fp))
   unlink(temp_fp)
 })

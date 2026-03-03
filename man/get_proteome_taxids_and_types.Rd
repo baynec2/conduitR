@@ -4,7 +4,7 @@
 \alias{get_proteome_taxids_and_types}
 \title{Get Organism IDs and Proteome Types for UniProt Proteome IDs}
 \usage{
-get_proteome_taxids_and_types(proteome_ids, parallel = FALSE)
+get_proteome_taxids_and_types(proteome_ids)
 }
 \arguments{
 \item{proteome_ids}{Character vector of UniProt proteome IDs (e.g.

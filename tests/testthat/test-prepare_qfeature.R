@@ -1,5 +1,6 @@
 test_that("prepare_qfeature works as intended", {
   sample_annotation_fp <- test_path("fixtures/prepare_qfeature/sample_annotation.txt")
+  skip_if_not(file.exists(sample_annotation_fp), "prepare_qfeature fixtures missing — generate them first")
 
   vector_of_matrix_fps <- c(
     test_path("fixtures/prepare_qfeature/superkingdom_matrix.tsv"),

@@ -56,6 +56,16 @@
 #'     \item Full taxonomic designation (Domain - species)
 #'     \item Organism type (user-specified ie host vs microbiome)
 #'   }
+#' @slot provenance An optional named list capturing reproducibility metadata.
+#'   When populated (e.g. via [create_provenance()]), contains:
+#'   \itemize{
+#'     \item \code{workflow_version}: character string of the conduit-ascent version
+#'     \item \code{generated_date}: \code{Date} the object was created
+#'     \item \code{uniprotkb_release}: character string of the UniProtKB release used (e.g. \code{"2024_05"})
+#'     \item \code{config}: optional \code{tbl_df} with columns \code{parameter} and \code{value}
+#'       containing key-value pairs from the Snakemake configuration
+#'   }
+#'   Defaults to \code{NULL} for backwards compatibility with existing objects.
 #'
 #' @details
 #' The `conduit` class is designed to combine raw quantitative proteomics data
@@ -93,7 +103,8 @@ setClass(
     metrics     = "list",
     database    = "tbl_df",
     annotations = "tbl_df",
-    taxonomy = "tbl_df"
+    taxonomy    = "tbl_df",
+    provenance  = "ANY"
   )
 )
 
@@ -128,12 +139,14 @@ setMethod("initialize", "conduit",
                    metrics = NULL,
                    database = NULL,
                    annotations = NULL,
-                   taxonomy = NULL) {
+                   taxonomy = NULL,
+                   provenance = NULL) {
             .Object@QFeatures   <- QFeatures
             .Object@metrics     <- metrics
             .Object@database    <- database
             .Object@annotations <- annotations
-            .Object@taxonomy <- taxonomy
+            .Object@taxonomy    <- taxonomy
+            .Object@provenance  <- provenance
             return(.Object)
           })
 
@@ -167,4 +180,18 @@ setMethod("show", "conduit",
 
             cat("Taxonomy:",
                 if (!is.null(object@taxonomy)) "Available" else "Not Available", "\n")
+
+            prov <- tryCatch(object@provenance, error = function(e) NULL)
+            cat("Provenance:\n")
+            if (is.null(prov)) {
+              cat("  Not Available\n")
+            } else {
+              cat("  Workflow version :",
+                  if (!is.null(prov$workflow_version)) prov$workflow_version else "Not Available", "\n")
+              cat("  Generated date   :", format(prov$generated_date), "\n")
+              cat("  UniProtKB release:",
+                  if (!is.null(prov$uniprotkb_release)) prov$uniprotkb_release else "Not Available", "\n")
+              cat("  Config entries   :",
+                  if (is.null(prov$config)) 0L else nrow(prov$config), "\n")
+            }
           })

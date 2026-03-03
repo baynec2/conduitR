@@ -106,12 +106,15 @@ download_fasta_from_organism_ids <- function(organism_ids,
   proteome_id_df <- get_proteome_ids_from_organism_ids(organism_ids,
     parallel = parallel
   ) |>
-    dplyr::mutate(selected_proteome_id = dplyr::case_when(is.na(redundant_to) ~
-      proteome_id, TRUE ~ redundant_to))
+    dplyr::mutate(selected_proteome_id = dplyr::case_when(
+      is.na(redundant_to) ~ proteome_id,
+      .default = redundant_to
+    ))
 
   # Figuring out what level of taxonomy the proteome ids are at
   taxon_df <- organism_ids |>
-    purrr::map_dfr(.f = get_parent_taxonomy_id, .progress = TRUE)
+    purrr::map(.f = get_parent_taxonomy_id, .progress = TRUE) |>
+    dplyr::bind_rows()
 
   proteome_taxa_level <- dplyr::left_join(proteome_id_df,
     taxon_df,
@@ -152,8 +155,10 @@ download_fasta_from_organism_ids <- function(organism_ids,
     parallel = parallel
   ) |>
     dplyr::mutate(
-      selected_proteome_id = dplyr::case_when(is.na(redundant_to) ~
-        proteome_id, TRUE ~ redundant_to),
+      selected_proteome_id = dplyr::case_when(
+        is.na(redundant_to) ~ proteome_id,
+        .default = redundant_to
+      ),
       child_rank = "species"
     )
   } else {
@@ -176,8 +181,10 @@ download_fasta_from_organism_ids <- function(organism_ids,
   # Figuring out what proteomes to just use the strain level info from.
   strain_level_ids_okay_df <- bad_strain_proteome_ids_df |>
     dplyr::filter(parent_id %!in% good_parent_df$organism_id) |>
-    dplyr::mutate(selected_proteome_id = dplyr::case_when(is.na(redundant_to) ~
-      proteome_id, TRUE ~ redundant_to))
+    dplyr::mutate(selected_proteome_id = dplyr::case_when(
+      is.na(redundant_to) ~ proteome_id,
+      .default = redundant_to
+    ))
 
   # Defining the ids
   strain_level_ids_okay <- strain_level_ids_okay_df |>
@@ -240,21 +247,21 @@ download_fasta_from_organism_ids <- function(organism_ids,
   }
   if (parallel) {
     future::plan(future::multisession, workers = future::availableCores() - 1)
-    furrr::future_map_dfr(proteome_ids_to_search,
+    furrr::future_map(proteome_ids_to_search,
       get_fasta_file,
       fasta_dir = fasta_dir,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
     future::plan(future::sequential) # Reset to sequential processing
   } else {
-    purrr::map_dfr(
+    purrr::map(
       proteome_ids_to_search,
       function(id, ...) {
         get_fasta_file(id, ...)
       },
       fasta_dir = fasta_dir,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
   }
   ##############################################################################
   # Retry for any files that were not downloaded the first time
@@ -294,7 +301,7 @@ download_fasta_from_organism_ids <- function(organism_ids,
   annotated_downloads <- final_proteome_df |>
     dplyr::mutate(download_info = dplyr::case_when(
       selected_proteome_id %!in% success ~ "not_downloaded",
-      TRUE ~ proteome_type
+      .default = proteome_type
     ))
 
   # Writing proteome ids that coorespond with taxa ids to file path.

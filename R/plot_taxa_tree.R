@@ -129,7 +129,7 @@ plot_taxa_tree <- function(taxonomy_data,
       # There will always be NA colored nodes. Changing to 0
       dplyr::mutate(node_color = dplyr::case_when(
         is.na(node_color) ~ 0,
-        TRUE ~ node_color
+        .default = node_color
       )) |>
       # Adding 1 to NA (0) nodes so we can select color in vector later.
       dplyr::mutate(node_color = node_color + 1)

@@ -53,7 +53,8 @@ get_better_proteome_ids <- function(proteome_id_df,
   log_with_timestamp("Getting parent taxonomy for each proteome")
 
   # Get taxonomy info for each organism
-  taxon_df <- purrr::map_dfr(organism_ids, get_parent_taxonomy_id, .progress = TRUE)
+  taxon_df <- purrr::map(organism_ids, get_parent_taxonomy_id, .progress = TRUE) |>
+    dplyr::bind_rows()
 
   # Merge proteome info with taxonomy
   proteome_taxa <- dplyr::left_join(

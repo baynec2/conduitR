@@ -96,18 +96,18 @@ annotate_uniprot_ids <- function(uniprot_ids,
   # Enable parallelization if requested
   if (parallel) {
     future::plan(future::multisession, workers = parallel::detectCores() - 1) # Use max cores - 1
-    results <- furrr::future_map_dfr(batches, get_uniprot_data,
+    results <- furrr::future_map(batches, get_uniprot_data,
       columns = columns,
       batch_size = batch_size,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
     future::plan(future::sequential) # Reset to sequential processing
   } else {
-    results <- purrr::map_dfr(batches, get_uniprot_data,
+    results <- purrr::map(batches, get_uniprot_data,
       columns = columns,
       batch_size = batch_size,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
   }
 
   # Convert to tibble

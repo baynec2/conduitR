@@ -52,6 +52,6 @@ get_taxonomy_from_proteome_ids <- function(proteome_ids) {
   }
 
   # loop over all proteome IDs
-  result <- purrr::map_dfr(proteome_ids, fetch_one)
+  result <- purrr::map(proteome_ids, fetch_one) |> dplyr::bind_rows()
   return(result)
 }

@@ -84,15 +84,15 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
 
   if (parallel) {
     future::plan(future::multisession, workers = future::availableCores() - 1)
-    results <- furrr::future_map_dfr(organism_ids,
-                                     get_proteome_id_from_organism_id,
+    results <- furrr::future_map(organism_ids,
+                                 get_proteome_id_from_organism_id,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
     future::plan(future::sequential) # Reset to sequential processing
   } else {
-    results <- purrr::map_dfr(organism_ids, get_proteome_id_from_organism_id,
+    results <- purrr::map(organism_ids, get_proteome_id_from_organism_id,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
   }
   return(results)
 }

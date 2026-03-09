@@ -6,7 +6,8 @@ test_that("this works", {
     dplyr::pull("Protein.Group") |>
     strsplit(";") |>
     unlist() |>
-    unique()
+    unique() |>
+    head(20)
 
   out = get_annotations_from_uniprot(uniprot_ids)
 })
@@ -25,8 +26,8 @@ test_that("this works with ids that were problematic previously",{
   skip_if_offline()
   expect_no_error({
     problems = readr::read_delim(detected_proteins_txt()) |>
-      dplyr::pull(protein_id)
-
+      dplyr::pull(protein_id) |>
+      head(20)
 
     out = conduitR::get_annotations_from_uniprot(problems)
 

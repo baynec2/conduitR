@@ -41,7 +41,7 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
     entries <- entries[!sapply(entries, is.null)]
     # Process each entry and store results
     if (length(entries) > 0) {
-      results <- purrr::map_dfr(entries, function(entry) {
+      results <- purrr::map(entries, function(entry) {
         if (is.null(entry)) {
           return(NULL)
         } # Handle missing entries gracefully
@@ -78,7 +78,7 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
           org_id = org_id
           # brite_info = brite_info
         )
-      })
+      }) |> dplyr::bind_rows()
 
       all_results[[i]] <- results
     }

@@ -70,21 +70,21 @@ download_fasta_from_proteome_ids <- function(proteome_ids,
   }
   if (parallel) {
     future::plan(future::multisession, workers = future::availableCores() - 1)
-    furrr::future_map_dfr(proteome_ids_to_search,
+    furrr::future_map(proteome_ids_to_search,
       get_fasta_file,
       fasta_dir = fasta_dir,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
     future::plan(future::sequential) # Reset to sequential processing
   } else {
-    download_results <- purrr::map_dfr(
+    download_results <- purrr::map(
       proteome_ids_to_search,
       function(id, ...) {
         get_fasta_file(id, ...)
       },
       fasta_dir = fasta_dir,
       .progress = TRUE
-    )
+    ) |> dplyr::bind_rows()
 
     # Checking to make sure the correct number of proteome ids were downloaded.
     fasta_files <- list.files(fasta_dir)
@@ -117,7 +117,7 @@ download_fasta_from_proteome_ids <- function(proteome_ids,
       dplyr::mutate(download_info = dplyr::case_when(
         is.na(.data$source) | .data$source == "not_downloaded" ~ "not_downloaded",
         .data$source == "uniparc" ~ "uniparc",
-        TRUE ~ .data$proteome_type
+        .default = .data$proteome_type
       )) |>
       dplyr::select(-"source")
 

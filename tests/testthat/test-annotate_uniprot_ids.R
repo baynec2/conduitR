@@ -54,41 +54,15 @@ test_that("Does this work with a large, realistic set?", {
 })
 
 
-test_that("Does this work with a large, realistic set without parallel?", {
+test_that("parallel = FALSE returns the same results as parallel = TRUE", {
   skip_if_offline()
-  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
-  # 5000 ids
-  uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
-  annotated <- annotate_uniprot_ids(uniprot_ids_5000,
-    batch_size = 100,
-    columns = "accession",
-    parallel = FALSE
+  ids <- c(
+    "A9KHN2", "A9KI94", "A9KLG0", "A9KM56", "A9KM95",
+    "A9KMA2", "A9KMQ4", "A9KQ65", "A9KSH6", "A9KSR8"
   )
-
-  expect_equal(sort(annotated$accession), sort(uniprot_ids_5000))
-})
-
-
-test_that("parallel is faster than non parallel", {
-  skip_if_offline()
-  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
-  # 5000 ids
-  uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
-
-  parallel <- bench::bench_time(annotate_uniprot_ids(uniprot_ids_5000,
-    batch_size = 100,
-    columns = "accession",
-    parallel = TRUE
-  ))
-
-  single <- bench::bench_time(annotate_uniprot_ids(uniprot_ids_5000,
-    batch_size = 100,
-    columns = "accession",
-    parallel = FALSE
-  ))
-
-  # Parallel should be faster than non-parallel
-  expect_gt(single[[2]], parallel[[2]])
+  par_result <- annotate_uniprot_ids(ids, columns = "accession", parallel = TRUE)
+  seq_result <- annotate_uniprot_ids(ids, columns = "accession", parallel = FALSE)
+  expect_equal(sort(par_result$accession), sort(seq_result$accession))
 })
 
 

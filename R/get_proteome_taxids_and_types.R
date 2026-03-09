@@ -6,8 +6,6 @@
 #'
 #' @param proteome_ids Character vector of UniProt proteome IDs (e.g.
 #'   `"UP000005640"`).
-#' @param parallel Logical. If `TRUE`, perform HTTP requests in parallel via
-#'   `mapply`. Default `FALSE`.
 #'
 #' @return A tibble with columns `proteome_id`, `organism_id`, `proteome_type`.
 #'   Failed requests have `NA` for `organism_id` and `proteome_type`.

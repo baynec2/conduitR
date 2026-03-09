@@ -14,26 +14,21 @@ build_conduit_obj(
 )
 }
 \arguments{
-\item{QFeatures}{Character string specifying the file path to a saved QFeatures
-object (.rds file). The QFeatures object should contain proteomics data with
-protein abundances across samples.}
+\item{QFeatures}{A QFeatures object containing proteomics data with protein
+abundances across samples.}
 
-\item{diann_stats}{Character string specifying the file path to a
-tab-delimited text file containing protein metrics (e.g., identification scores,
-sequence coverage, etc.).}
+\item{diann_stats}{A named list of tibbles containing protein metrics (e.g.,
+identification scores, sequence coverage, etc.).}
+
+\item{database}{A tibble containing protein IDs and the corresponding taxonomy ID.}
+
+\item{annotations}{A tibble containing protein group, protein ID, annotations
+and taxonomy at the LCA level.}
+
+\item{taxonomy}{A tibble containing the taxonomy detected in the experiment.}
 
 \item{provenance}{Optional named list of provenance metadata created by
 \code{\link[=create_provenance]{create_provenance()}}. Defaults to NULL.}
-
-\item{database_fp}{Character string specifying the file path to
-a tab-delimited text file containing protein ids and the corresponding taxonomy id.}
-
-\item{annotations_fp}{Character string specifying the file path to
-a tab-delimited text file containing protein group, protein id, annnotations
-and taxonomy at the lca level/].}
-
-\item{taxonomy_fp}{Character string specifying the file path to a
-tab-delimited text file containing the taxonomy detected in the experiment}
 }
 \value{
 A conduit object containing:

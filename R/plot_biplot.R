@@ -12,6 +12,8 @@
 #'   before PCA (default: 0.1)
 #' @param legendPosition Character string specifying legend position (default: "right")
 #' @param facet_formula Optional formula for faceting the plot (e.g., ~group)
+#' @param shape_bins Integer specifying the number of shape bins to use when
+#'   discretizing a continuous shape variable (default: 4)
 #'
 #' @return A ggplot object containing the PCA biplot with:
 #'   \itemize{

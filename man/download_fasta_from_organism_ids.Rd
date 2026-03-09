@@ -18,6 +18,10 @@ download_fasta_from_organism_ids(
 \item{parallel}{Logical indicating whether to use parallel processing (default: FALSE).
 When TRUE, uses all available CPU cores minus one for downloading FASTA files.}
 
+\item{proteome_id_destination_fp}{Character string specifying the path where the
+proteome IDs text file should be saved (default: creates a file named with the
+current date in the working directory).}
+
 \item{fasta_destination_fp}{Character string specifying the path where the combined
 FASTA file should be saved (default: creates a file named with the current date
 in the working directory).}

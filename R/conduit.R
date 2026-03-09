@@ -113,13 +113,17 @@ setClass(
 #' Creates a new instance of the conduit class, combining proteomics data with
 #' taxonomic and detection metrics into a single integrated object.
 #'
+#' @param .Object The conduit object being initialized (handled internally by `new()`)
 #' @param QFeatures A QFeatures object containing proteomics data and metadata
-#' @param combined_metrics A tibble containing metrics about protein detection and
-#'   taxonomy (default: NULL)
-#' @param database_protein_taxonomy A tibble containing taxonomy information for
-#'   all proteins in the database (default: NULL)
-#' @param detected_protein_taxonomy A tibble containing taxonomy information for
-#'   detected proteins (default: NULL)
+#' @param metrics A named list of tibbles containing metrics about protein detection
+#'   and taxonomy (default: NULL)
+#' @param database A tibble containing taxonomy information for all proteins in
+#'   the database (default: NULL)
+#' @param annotations A tibble containing annotation information for detected
+#'   proteins (default: NULL)
+#' @param taxonomy A tibble containing taxonomy detected in the experiment
+#'   (default: NULL)
+#' @param provenance Optional named list of provenance metadata (default: NULL)
 #'
 #' @return A new conduit object containing the provided data
 #'

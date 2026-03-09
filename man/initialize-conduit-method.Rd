@@ -15,16 +15,23 @@
 )
 }
 \arguments{
+\item{.Object}{The conduit object being initialized (handled internally by \code{new()})}
+
 \item{QFeatures}{A QFeatures object containing proteomics data and metadata}
 
-\item{combined_metrics}{A tibble containing metrics about protein detection and
-taxonomy (default: NULL)}
+\item{metrics}{A named list of tibbles containing metrics about protein detection
+and taxonomy (default: NULL)}
 
-\item{database_protein_taxonomy}{A tibble containing taxonomy information for
-all proteins in the database (default: NULL)}
+\item{database}{A tibble containing taxonomy information for all proteins in
+the database (default: NULL)}
 
-\item{detected_protein_taxonomy}{A tibble containing taxonomy information for
-detected proteins (default: NULL)}
+\item{annotations}{A tibble containing annotation information for detected
+proteins (default: NULL)}
+
+\item{taxonomy}{A tibble containing taxonomy detected in the experiment
+(default: NULL)}
+
+\item{provenance}{Optional named list of provenance metadata (default: NULL)}
 }
 \value{
 A new conduit object containing the provided data

@@ -9,9 +9,6 @@ get_proteome_taxids_and_types(proteome_ids)
 \arguments{
 \item{proteome_ids}{Character vector of UniProt proteome IDs (e.g.
 \code{"UP000005640"}).}
-
-\item{parallel}{Logical. If \code{TRUE}, perform HTTP requests in parallel via
-\code{mapply}. Default \code{FALSE}.}
 }
 \value{
 A tibble with columns \code{proteome_id}, \code{organism_id}, \code{proteome_type}.

@@ -5,19 +5,14 @@
 #' organized data structure that maintains relationships between proteins, their
 #' taxonomy, and associated metrics.
 #'
-#' @param QFeatures  Character string specifying the file path to a saved QFeatures
-#'   object (.rds file). The QFeatures object should contain proteomics data with
-#'   protein abundances across samples.
-#' @param diann_stats Character string specifying the file path to a
-#'   tab-delimited text file containing protein metrics (e.g., identification scores,
-#'   sequence coverage, etc.).
-#' @param database_fp Character string specifying the file path to
-#'   a tab-delimited text file containing protein ids and the corresponding taxonomy id.
-#' @param annotations_fp Character string specifying the file path to
-#'   a tab-delimited text file containing protein group, protein id, annnotations
-#'   and taxonomy at the lca level/].
-#' @param taxonomy_fp Character string specifying the file path to a
-#' tab-delimited text file containing the taxonomy detected in the experiment
+#' @param QFeatures A QFeatures object containing proteomics data with protein
+#'   abundances across samples.
+#' @param diann_stats A named list of tibbles containing protein metrics (e.g.,
+#'   identification scores, sequence coverage, etc.).
+#' @param database A tibble containing protein IDs and the corresponding taxonomy ID.
+#' @param annotations A tibble containing protein group, protein ID, annotations
+#'   and taxonomy at the LCA level.
+#' @param taxonomy A tibble containing the taxonomy detected in the experiment.
 #' @param provenance Optional named list of provenance metadata created by
 #'   [create_provenance()]. Defaults to NULL.
 #'

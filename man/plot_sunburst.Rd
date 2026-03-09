@@ -7,18 +7,9 @@
 plot_sunburst(taxonomy)
 }
 \arguments{
-\item{conduit_obj}{A conduit object containing protein taxonomy information
-and protein group data. The object must have a valid taxonomy database
-and protein group information.}
-
-\item{type}{Character string specifying how to calculate protein counts:
-\itemize{
-\item "multiple_proteins_in_group": Count all proteins in detected groups
-\item "one_protein_in_group": Count only uniquely identified proteins
-}}
-
-\item{...}{Additional arguments passed to \code{plotly::plot_ly()} for customizing
-the appearance of the sunburst plot.}
+\item{taxonomy}{A tibble containing taxonomic information for detected proteins,
+with columns for organism_type, domain, kingdom, phylum, class, order,
+family, genus, and species (e.g. \code{conduit_obj@taxonomy}).}
 }
 \value{
 An interactive plotly sunburst plot object with the following features:

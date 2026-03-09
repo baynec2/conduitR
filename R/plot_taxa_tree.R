@@ -21,6 +21,8 @@
 #' @param node_size Character string specifying what variable to use for node sizing
 #'   (default: "n_obs"). Currently only supports "n_obs" (number of observations)
 #'   or NULL (uniform node sizes).
+#' @param node_color Character string specifying the column to use for node color
+#'   (default: "phylum").
 #' @param ... Additional arguments passed to metacoder::heat_tree() for customizing
 #'   the appearance of the tree.
 #'

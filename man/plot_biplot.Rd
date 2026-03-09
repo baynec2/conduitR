@@ -30,6 +30,9 @@ before PCA (default: 0.1)}
 \item{legendPosition}{Character string specifying legend position (default: "right")}
 
 \item{facet_formula}{Optional formula for faceting the plot (e.g., ~group)}
+
+\item{shape_bins}{Integer specifying the number of shape bins to use when
+discretizing a continuous shape variable (default: 4)}
 }
 \value{
 A ggplot object containing the PCA biplot with:

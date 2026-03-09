@@ -6,9 +6,11 @@
 #' aggregation while keeping assay links intact.
 #'
 #' @param qf A QFeatures object containing a protein assay named "protein_groups".
-#' @param uniprot_annotation A data frame or tibble containing protein annotations,
+#' @param id_column Unquoted name of the column in \code{conduit_annotations} that
+#'   contains protein identifiers (default: \code{Protein.Group}).
+#' @param conduit_annotations A data frame or tibble containing protein annotations,
 #'   with a column for protein IDs and a column for the terms of interest.
-#' @param column_name Unquoted name of the column in \code{uniprot_annotation} that
+#' @param column_name Unquoted name of the column in \code{conduit_annotations} that
 #'   contains the annotation terms to extract.
 #' @param regex A regular expression pattern used to extract annotation terms into a list.
 #'   For example: \code{xref_pfam = "PF\\d{5}"}, \code{xref_interpro = "IPR\\d{6}"}.
@@ -26,7 +28,7 @@
 #' # Add GO annotations
 #' qf <- add_annotation_to_qf(
 #'   qf,
-#'   uniprot_annotation = uniprot_df,
+#'   conduit_annotations = uniprot_df,
 #'   column_name = go,
 #'   regex = "GO:\\d{7}"
 #' )
@@ -34,7 +36,7 @@
 #' # Add Pfam annotations
 #' qf <- add_annotation_to_qf(
 #'   qf,
-#'   uniprot_annotation = uniprot_df,
+#'   conduit_annotations = uniprot_df,
 #'   column_name = xref_pfam,
 #'   regex = "PF\\d{5}"
 #' )

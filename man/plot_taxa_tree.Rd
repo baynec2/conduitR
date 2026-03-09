@@ -33,6 +33,9 @@ plot_taxa_tree(
 (default: "n_obs"). Currently only supports "n_obs" (number of observations)
 or NULL (uniform node sizes).}
 
+\item{node_color}{Character string specifying the column to use for node color
+(default: "phylum").}
+
 \item{...}{Additional arguments passed to metacoder::heat_tree() for customizing
 the appearance of the tree.}
 }

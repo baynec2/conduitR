@@ -11,8 +11,8 @@
 #'   colData to use for column annotations (e.g., c("group", "batch"))
 #' @param row_color_variables Optional character vector specifying which columns from
 #'   rowData to use for row annotations (e.g., c("protein_class", "pathway"))
-#' @param scale Logical indicating whether to scale the data before plotting
-#'   (default: FALSE)
+#' @param max_rows Integer specifying the maximum number of rows to display in the
+#'   heatmap (default: 5000). Rows are randomly sampled when the dataset exceeds this limit.
 #'
 #' @return A ComplexHeatmap object containing:
 #'   \itemize{

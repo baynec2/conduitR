@@ -5,18 +5,9 @@
 #' taxonomic composition of the dataset by clicking on segments to zoom in
 #' and see more detailed information.
 #'
-#' @param conduit_obj A conduit object containing protein taxonomy information
-#'   and protein group data. The object must have a valid taxonomy database
-#'   and protein group information.
-#'
-#' @param type Character string specifying how to calculate protein counts:
-#'   \itemize{
-#'     \item "multiple_proteins_in_group": Count all proteins in detected groups
-#'     \item "one_protein_in_group": Count only uniquely identified proteins
-#'   }
-#'
-#' @param ... Additional arguments passed to `plotly::plot_ly()` for customizing
-#'   the appearance of the sunburst plot.
+#' @param taxonomy A tibble containing taxonomic information for detected proteins,
+#'   with columns for organism_type, domain, kingdom, phylum, class, order,
+#'   family, genus, and species (e.g. \code{conduit_obj@@taxonomy}).
 #'
 #' @return An interactive plotly sunburst plot object with the following features:
 #'   \itemize{
@@ -51,11 +42,11 @@ plot_sunburst = function(taxonomy){
 
   #Summarizing taxonomy by some metric.
   sum = taxonomy |>
-    dplyr::group_by(organism_type,superkingdom,kingdom,phylum,class,order,family,genus,species) |>
+    dplyr::group_by(organism_type,domain,kingdom,phylum,class,order,family,genus,species) |>
     dplyr::summarise(size = dplyr::n(),.groups = "drop") |>
-    dplyr::mutate(superkingdom = as.character(superkingdom)) |>
+    dplyr::mutate(domain = as.character(domain)) |>
     tidyr::replace_na(list(
-      superkingdom = "Unknown",
+      domain = "Unknown",
       kingdom = "Unknown",
       phylum = "Unknown",
       class = "Unknown",

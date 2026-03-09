@@ -10,6 +10,9 @@
 #'   562 for E. coli). These IDs are used to identify organisms in UniProt.
 #' @param parallel Logical indicating whether to use parallel processing (default: FALSE).
 #'   When TRUE, uses all available CPU cores minus one for downloading FASTA files.
+#' @param proteome_id_destination_fp Character string specifying the path where the
+#'   proteome IDs text file should be saved (default: creates a file named with the
+#'   current date in the working directory).
 #' @param fasta_destination_fp Character string specifying the path where the combined
 #'   FASTA file should be saved (default: creates a file named with the current date
 #'   in the working directory).

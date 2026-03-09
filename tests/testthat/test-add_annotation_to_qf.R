@@ -1,6 +1,6 @@
-qf <- readRDS("inst/extdata/add_annotation/qf.rds")
+qf <- readRDS(test_path("fixtures/add_annotation/qf.rds"))
 
-conduit_annotations_wide <- readr::read_delim("inst/extdata/add_annotation/conduit_annotations.txt") |>
+conduit_annotations_wide <- readr::read_delim(test_path("fixtures/add_annotation/conduit_annotations.txt")) |>
   dplyr::select(Protein.Group, annotation_type, term) |>  # keep columns of interest
   # pivot so each annotation_type becomes a column
   tidyr::pivot_wider(

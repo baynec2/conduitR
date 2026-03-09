@@ -1,4 +1,5 @@
 test_that("this works with simple test set.", {
+  skip_if_offline()
   # Human and B.theta
   human_btheta = c(9606,818)
   # getting the taxonomy
@@ -7,6 +8,7 @@ test_that("this works with simple test set.", {
   expect_contains(out$species,c("Homo sapiens","Bacteroides thetaiotaomicron"))
 })
 test_that("there are no NAs",{
+  skip_if_offline()
   # Human and B.theta
   human_btheta <- c(9606, 818)
 
@@ -26,6 +28,7 @@ test_that("there are no NAs",{
 })
 
 test_that("problematic IDs work",{
+  skip_if_offline()
   problematic_ids = c(77133,2320102)
 
   out = get_ncbi_taxonomy(problematic_ids)

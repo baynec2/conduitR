@@ -1,10 +1,12 @@
 test_that("works with no trailing ;", {
+  skip_if_offline()
   kegg_ids = "ype:YPO2670"
   expect_no_error(get_kegg_in_batches(kegg_ids))
 })
 
 
 test_that("works with trailing ;", {
+  skip_if_offline()
   kegg_ids = "ype:YPO2670;"
   expect_no_error(get_kegg_in_batches(kegg_ids))
 
@@ -12,6 +14,7 @@ test_that("works with trailing ;", {
 
 
 test_that("works with multiple ;", {
+  skip_if_offline()
   kegg_ids = "ype:YPO2670;ypk:y1242;ypm:YP_2471;"
   # Note this only extracts the first kegg term.
   expect_no_error(get_kegg_in_batches(kegg_ids))
@@ -19,6 +22,7 @@ test_that("works with multiple ;", {
 
 
 test_that("works with problem ;", {
+  skip_if_offline()
   kegg_ids = "rbc:BN938_0910;"
   expect_no_error(get_kegg_in_batches(kegg_ids))
 })
@@ -26,6 +30,7 @@ test_that("works with problem ;", {
 
 # Having trouble getting it to run with multiple batches.
 test_that("works with multiple batches",{
+  skip_if_offline()
   kegg_ids <- c(
     "hsa:1636;", "hsa:999; hsa:4625", "hsa:6714", "hsa:5184", "hsa:1327", "hsa:4624", "hsa:1938",
     "hsa:3858", "hsa:3860", "hsa:3852", "hsa:9601", "hsa:54", "hsa:210", "hsa:3936", "hsa:5358",
@@ -36,24 +41,24 @@ test_that("works with multiple batches",{
     "hsa:5406", "hsa:2720", "hsa:3009"
   )
 
-expect_no_error(get_kegg_in_batches(kegg_ids))
+  expect_no_error(get_kegg_in_batches(kegg_ids))
 
 })
 
 # Having a problem with a specific term
-
 test_that("works with problematic term",{
-          problem = "fbs:N510_000502"
-          get_kegg_in_batches(problem)
-
+  skip_if_offline()
+  problem = "fbs:N510_000502"
+  expect_no_error(get_kegg_in_batches(problem))
+})
 
 
 # Having trouble getting it to run with multiple batches.
 test_that("pathways and pathway ids match",{
+  skip_if_offline()
   kegg_ids <- c(
     "hsa:1636;"
   )
 
-t3 = get_kegg_in_batches(kegg_ids)
-
+  expect_no_error(get_kegg_in_batches(kegg_ids))
 })

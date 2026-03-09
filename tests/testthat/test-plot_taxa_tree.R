@@ -60,12 +60,12 @@ test_that("plot_taxa_tree() works with info column", {
 })
 
 test_that("this works with real data",{
-taxonomy_data = readr::read_delim("tests/data/01_taxonomy.txt")
+taxonomy_data = readr::read_delim(taxonomy_txt())
 expect_no_error(plot_taxa_tree(taxonomy_data,node_color = "download_info"))
 })
 
 
 test_that("this works with real data",{
-  taxonomy_data = readr::read_delim("tests/data/01_taxonomy.txt")
+  taxonomy_data = readr::read_delim(taxonomy_txt())
   expect_no_error(plot_taxa_tree(taxonomy_data,node_size = NULL))
 })

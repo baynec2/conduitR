@@ -1,8 +1,10 @@
 test_that("annotate_uniprot_ids works", {
+  skip_if_offline()
   expect_equal(annotate_uniprot_ids("P01308")$Entry, "P01308")
 })
 
 test_that("We get same ids out as we put in", {
+  skip_if_offline()
   # 150 ids
   uniprot_ids_150 <- c(
     "A9KHN2", "A9KI94", "A9KLG0", "A9KM56", "A9KM95", "A9KMA2", "A9KMQ4",
@@ -39,8 +41,10 @@ test_that("We get same ids out as we put in", {
 
 
 test_that("Does this work with a large, realistic set?", {
+  skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
   # 5000 ids
-  uniprot_ids_5000 <- readRDS("tests/testthat/5000_uniprot_ids.rds")
+  uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
   annotated <- annotate_uniprot_ids(uniprot_ids_5000,
     batch_size = 100,
     columns = "accession"
@@ -51,8 +55,10 @@ test_that("Does this work with a large, realistic set?", {
 
 
 test_that("Does this work with a large, realistic set without parallel?", {
+  skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
   # 5000 ids
-  uniprot_ids_5000 <- readRDS("tests/testthat/5000_uniprot_ids.rds")
+  uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
   annotated <- annotate_uniprot_ids(uniprot_ids_5000,
     batch_size = 100,
     columns = "accession",
@@ -63,10 +69,11 @@ test_that("Does this work with a large, realistic set without parallel?", {
 })
 
 
-
 test_that("parallel is faster than non parallel", {
+  skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
   # 5000 ids
-  uniprot_ids_5000 <- readRDS("tests/testthat/5000_uniprot_ids.rds")
+  uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
 
   parallel <- bench::bench_time(annotate_uniprot_ids(uniprot_ids_5000,
     batch_size = 100,
@@ -85,8 +92,9 @@ test_that("parallel is faster than non parallel", {
 })
 
 
-test_that({
-
-  annotate_uniprot_ids("Q8A1G1",columns = "xref_pfam,xref_cazy,xref_eggnog")
-
+test_that("extended columns work (pfam, cazy, eggnog)", {
+  skip_if_offline()
+  expect_no_error(
+    annotate_uniprot_ids("Q8A1G1", columns = "xref_pfam,xref_cazy,xref_eggnog")
+  )
 })

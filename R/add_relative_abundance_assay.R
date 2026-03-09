@@ -1,54 +1,40 @@
-#' Add Relative Abundance Assays to QFeatures Object
+#' Add Relative Abundance Assays for Multiple Taxonomic Levels
 #'
-#' Adds new assays containing relative abundance values (as percentages) to a QFeatures object
-#' for each specified taxonomic level. This function calculates the relative abundance of
-#' features within each sample by normalizing the raw abundance values to percentages,
-#' making it easier to compare the composition of features across samples.
+#' Wrapper around \code{\link{add_relative_abundance_assay}} that converts all
+#' standard taxonomic-level assays present in a QFeatures object to relative
+#' abundance (percentage) assays.
 #'
-#' @param qf A QFeatures object containing the abundance data. The assays should contain
-#'   non-negative abundance values (e.g., protein intensities or species counts).
-#' @param assay_names A character vector specifying which assays to convert to relative
-#'   abundances. By default, includes all taxonomic levels: domain, kingdom, phylum,
-#'   class, order, family, genus, and species. Each assay should exist in the QFeatures
-#'   object.
-#'
-#' @return A QFeatures object with additional assays named "{assay_name}_rel_abundance"
-#'   for each input assay. Each new assay contains:
-#'   \itemize{
-#'     \item Values normalized to percentages (0-100%)
-#'     \item Same dimensions as the input assay
-#'     \item NA values preserved from the input
-#'     \item Column sums equal to 100% for each sample (excluding NA values)
-#'   }
-#'
+#' @param qf A QFeatures object.
+#' @param assay_names Character vector of assay names to convert. Defaults to all
+#'   standard taxonomic levels that are present in \code{qf}.
+#' @return A QFeatures object with additional \code{{assay_name}_rel_abundance} assays.
 #' @export
 #'
 #' @examples
-#' # Add relative abundance assays for all default taxonomic levels:
 #' # qf_with_rel_abundance <- add_relative_abundance_assays(qfeatures_obj)
-#'
-#' # Add relative abundance for specific assays:
 #' # qf_with_rel_abundance <- add_relative_abundance_assays(qfeatures_obj,
 #' #   assay_names = c("genus", "species"))
-#'
-#' # The resulting assays can be used with plotting functions:
-#' # plot_relative_abundance(qf_with_rel_abundance, "genus_rel_abundance")
-#'
-#' # Or for downstream analysis:
-#' # perform_limma_analysis(qf_with_rel_abundance, "species_rel_abundance", ~group, "groupB - groupA")
-#'
-#' @note
-#' The input assays should contain non-negative abundance values. The function:
-#' \itemize{
-#'   \item Preserves NA values from the input data
-#'   \item Handles each assay independently
-#'   \item Normalizes each sample separately
-#' }
-#' For large datasets, consider processing one assay at a time to manage memory usage.
-#'
-#' @seealso \code{\link[plot_relative_abundance]{plot_relative_abundance}} for visualizing
-#'   the relative abundance data
+add_relative_abundance_assays <- function(qf,
+                                          assay_names = c("domain", "kingdom", "phylum",
+                                                          "class", "order", "family",
+                                                          "genus", "species")) {
+  assay_names <- intersect(assay_names, names(qf))
+  for (assay_name in assay_names) {
+    qf <- add_relative_abundance_assay(qf, assay_name = assay_name)
+  }
+  return(qf)
+}
 
+#' Add Relative Abundance Assay for a Single Taxonomic Level
+#'
+#' Adds a new assay containing relative abundance values (as percentages) for
+#' one taxonomic level in a QFeatures object.
+#'
+#' @param qf A QFeatures object.
+#' @param assay_name Name of the taxonomic assay to convert. One of: "domain",
+#'   "kingdom", "phylum", "class", "order", "family", "genus", "species".
+#' @return A QFeatures object with an additional \code{{assay_name}_rel_abundance} assay.
+#' @export
 add_relative_abundance_assay <- function(qf, assay_name = "phylum") {
   allowed_assays <- c(
     "domain", "kingdom", "phylum", "class", "order", "family",

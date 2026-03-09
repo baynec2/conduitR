@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_log_imputed_norm_assay.R
 \name{add_log_imputed_norm_assay}
 \alias{add_log_imputed_norm_assay}
-\title{Add Log-Transformed, Imputed, and Normalized Assays}
+\title{Add Log-Transformed, Imputed, and Normalized Assays for a Single Assay}
 \usage{
 add_log_imputed_norm_assay(
   qf,
@@ -14,47 +14,23 @@ add_log_imputed_norm_assay(
 )
 }
 \arguments{
-\item{qf}{A QFeatures object containing the data to transform}
+\item{qf}{A QFeatures object.}
 
-\item{base}{Numeric value specifying the base for log transformation (default: 2)}
+\item{assay}{Name of the assay to transform (default: "protein_groups").}
 
-\item{impute_method}{Character string specifying the imputation method to use.
-Must be one of the methods supported by QFeatures::impute() (default: "min")}
+\item{base}{Numeric log base (default: 2).}
 
-\item{norm_method}{Character string specifying the normalization method to use.
-Must be one of the methods supported by QFeatures::normalize(), or "none"
-to skip normalization (default: "none")}
+\item{impute_method}{Imputation method supported by \code{QFeatures::impute()} (default: "min").}
+
+\item{norm_method}{Normalization method or "none" (default: "none").}
+
+\item{min_n}{Minimum number of non-NA values required to keep a row (default: 1).}
 }
 \value{
-A QFeatures object with additional assays:
-\itemize{
-\item {assay_name}_log{base}: Log-transformed data
-\item {assay_name}_log{base}_imputed: Log-transformed and imputed data
-\item {assay_name}_log{base}\emph{imputed_norm}{norm_method}: Normalized data
-(only if norm_method is not "none")
-}
+A QFeatures object with additional \code{{assay}_log{base}},
+\code{{assay}_log{base}_imputed}, and \code{{assay}_log{base}_imputed_norm} assays.
 }
 \description{
-Performs a series of data transformations on all assays in a QFeatures object:
-\enumerate{
-\item Replaces zeros with NA values
-\item Applies log transformation with a pseudocount
-\item Imputes missing values
-\item Optionally normalizes the data
-Each step creates a new assay in the QFeatures object.
-}
-}
-\examples{
-# Basic usage with default settings:
-# qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj)
-
-# Using log10 transformation and min imputation:
-# qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj, base = 10)
-
-# With normalization:
-# qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj,
-#                                             norm_method = "center.scale")
-
-# The transformed assays can be used with plotting functions:
-# plot_density(qf_transformed, "protein", color = "group")
+Transforms one assay in a QFeatures object through log transformation,
+imputation, and optional normalization.
 }

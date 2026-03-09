@@ -1,9 +1,11 @@
 # Testing with one ID
 test_that("get_uniprot_data works as expected ", {
+  skip_if_offline()
   expect_equal(get_uniprot_data("P01308")$Entry, "P01308")
 })
 # Testing with multiple IDs
 test_that("get_uniprot_data works with multiple IDs", {
+  skip_if_offline()
   # 150 ids
   uniprot_ids_150 <- c(
     "A9KHN2", "A9KI94", "A9KLG0", "A9KM56", "A9KM95", "A9KMA2", "A9KMQ4",
@@ -36,6 +38,7 @@ test_that("get_uniprot_data works with multiple IDs", {
 
 # Here is a different set of IDs where it doesn't work right
 test_that("this works with problematic set of ids", {
+  skip_if_offline()
   # Was having problems with this set:
   problematic_uniprot <- c(
     "A9KMM6", "A9KMM8", "A9KMN8", "A9KMP3", "A9KMP5", "A9KMP8", "A9KMQ8",
@@ -75,7 +78,9 @@ test_that("this works with problematic set of ids", {
 # Test that this works with the subset of the 5000 that was causing problems
 # previously.
 test_that("get_uniprot_data works with a set of 5000 ids", {
-  uniprot_ids_5000 <- readRDS("tests/testthat/5000_uniprot_ids.rds")
+  skip_if_offline()
+  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
+  uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
   batch_not_working <- uniprot_ids_5000[301:450]
   results <- get_uniprot_data(batch_not_working, columns = "accession")
 

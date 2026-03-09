@@ -18,6 +18,8 @@
 #'   and taxonomy at the lca level/].
 #' @param taxonomy_fp Character string specifying the file path to a
 #' tab-delimited text file containing the taxonomy detected in the experiment
+#' @param provenance Optional named list of provenance metadata created by
+#'   [create_provenance()]. Defaults to NULL.
 #'
 #' @return A conduit object containing:
 #'   \itemize{
@@ -54,15 +56,17 @@ build_conduit_obj <- function(QFeatures,
                               diann_stats,
                               database,
                               annotations,
-                              taxonomy) {
+                              taxonomy,
+                              provenance = NULL) {
 
   # Create the  conduit object
   conduit_obj <- new("conduit",
     QFeatures = QFeatures,
-    metrics = metrics,
+    metrics = diann_stats,
     database = database,
     annotations = annotations,
-    taxonomy = taxonomy
+    taxonomy = taxonomy,
+    provenance = provenance
   )
 
   invisible(conduit_obj)

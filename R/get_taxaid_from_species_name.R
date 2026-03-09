@@ -11,7 +11,9 @@
 #' @export
 #'
 #' @examples
-#' get_taxaid_from_species_name("homo sapiens")
+#' \dontrun{
+#' get_taxid_from_species_name("homo sapiens")
+#' }
 get_taxid_from_species_name <- function(organism) {
   url <- paste0("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=taxonomy&term=", URLencode(organism), "&retmode=json")
   res <- jsonlite::fromJSON(url)

@@ -4,7 +4,14 @@
 \alias{build_conduit_obj}
 \title{Build a Conduit Object from Multiple Data Sources}
 \usage{
-build_conduit_obj(QFeatures, diann_stats, database, annotations, taxonomy)
+build_conduit_obj(
+  QFeatures,
+  diann_stats,
+  database,
+  annotations,
+  taxonomy,
+  provenance = NULL
+)
 }
 \arguments{
 \item{QFeatures}{Character string specifying the file path to a saved QFeatures
@@ -14,6 +21,9 @@ protein abundances across samples.}
 \item{diann_stats}{Character string specifying the file path to a
 tab-delimited text file containing protein metrics (e.g., identification scores,
 sequence coverage, etc.).}
+
+\item{provenance}{Optional named list of provenance metadata created by
+\code{\link[=create_provenance]{create_provenance()}}. Defaults to NULL.}
 
 \item{database_fp}{Character string specifying the file path to
 a tab-delimited text file containing protein ids and the corresponding taxonomy id.}

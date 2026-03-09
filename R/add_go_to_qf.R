@@ -34,7 +34,7 @@ add_go_to_qf = function(qf,
   # protein groups. Need to map the two.
   protein_count <- rowData(qf[["protein_groups"]]) |>
     as.data.frame() |>
-    dplyr::mutate(count = stringr:::str_count(Protein.Group,pattern =";") + 1) |>
+    dplyr::mutate(count = stringr::str_count(Protein.Group,pattern =";") + 1) |>
     dplyr::group_by(Protein.Group,Protein.Group.Full = Protein.Group) |>
     tidyr::separate_rows(Protein.Group,sep = ";") |>
     dplyr::select(Protein.Group = Protein.Group.Full,protein_id = Protein.Group,count)

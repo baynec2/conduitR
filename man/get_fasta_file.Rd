@@ -21,7 +21,7 @@ A tibble containing download information with the following columns:
 \item resp_status: HTTP response status code (200 for success)
 \item source: Either "uniprotkb", "uniparc", or "not_downloaded"
 }
-The function also saves a FASTA file named "{proteome_id}.fasta" in the
+The function also saves a FASTA file named \code{<proteome_id>.fasta} in the
 specified directory when sequences are found in UniProtKB or (if empty)
 in UniParc.
 }

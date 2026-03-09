@@ -10,7 +10,7 @@
 #' @param assay_name Character string specifying which assay to use for calculating
 #'   relative abundances. The assay must exist in the QFeatures object.
 #'
-#' @return A QFeatures object with an additional assay named "{assay_name}_rel_abundance"
+#' @return A QFeatures object with an additional assay named \code{<assay_name>_rel_abundance}
 #'   containing:
 #'   \itemize{
 #'     \item Values normalized to proportions (0-1)

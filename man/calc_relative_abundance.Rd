@@ -14,7 +14,7 @@ non-negative abundance values (e.g., protein intensities or species counts).}
 relative abundances. The assay must exist in the QFeatures object.}
 }
 \value{
-A QFeatures object with an additional assay named "{assay_name}_rel_abundance"
+A QFeatures object with an additional assay named \code{<assay_name>_rel_abundance}
 containing:
 \itemize{
 \item Values normalized to proportions (0-1)

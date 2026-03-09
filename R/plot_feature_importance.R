@@ -41,7 +41,7 @@ plot_feature_importance <- function(predict_classification_list,
     ggplot2::ggplot(ggplot2::aes(reorder(feature,importance),importance))+
     ggplot2::geom_col()+
     ggplot2::coord_flip()+
-    ggplot2:::xlab("Feature")
+    ggplot2::xlab("Feature")
 
   p1
 

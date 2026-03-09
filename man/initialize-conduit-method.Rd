@@ -10,7 +10,8 @@
   metrics = NULL,
   database = NULL,
   annotations = NULL,
-  taxonomy = NULL
+  taxonomy = NULL,
+  provenance = NULL
 )
 }
 \arguments{

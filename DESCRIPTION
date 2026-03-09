@@ -10,6 +10,7 @@ Description:
     (graphic interface to explore results from the Conduit workflow).
 License: MIT + file LICENSE
 Imports:
+    methods,
     future,
     parallel,
     furrr,

@@ -73,6 +73,17 @@ Includes:
 \item Full taxonomic designation (Domain - species)
 \item Organism type (user-specified ie host vs microbiome)
 }}
+
+\item{\code{provenance}}{An optional named list capturing reproducibility metadata.
+When populated (e.g. via \code{\link[=create_provenance]{create_provenance()}}), contains:
+\itemize{
+\item \code{workflow_version}: character string of the conduit-ascent version
+\item \code{generated_date}: \code{Date} the object was created
+\item \code{uniprotkb_release}: character string of the UniProtKB release used (e.g. \code{"2024_05"})
+\item \code{config}: optional \code{tbl_df} with columns \code{parameter} and \code{value}
+containing key-value pairs from the Snakemake configuration
+}
+Defaults to \code{NULL} for backwards compatibility with existing objects.}
 }}
 
 \examples{

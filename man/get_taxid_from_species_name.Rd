@@ -19,5 +19,7 @@ and NA is returned. If more than one match is found, an informative message
 and the first match is returned.
 }
 \examples{
-get_taxaid_from_species_name("homo sapiens")
+\dontrun{
+get_taxid_from_species_name("homo sapiens")
+}
 }

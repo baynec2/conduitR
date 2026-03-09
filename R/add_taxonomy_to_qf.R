@@ -38,7 +38,7 @@ add_taxonomy_to_qf = function(qf,
 
   protein_count <- SummarizedExperiment::rowData(qf[["protein_groups"]])[,"Protein.Group", drop = FALSE] |>
     tibble::as_tibble() |>
-    dplyr::mutate(count = stringr:::str_count(Protein.Group,pattern =";") + 1) |>
+    dplyr::mutate(count = stringr::str_count(Protein.Group,pattern =";") + 1) |>
     dplyr::group_by(Protein.Group,Protein.Group.Full = Protein.Group) |>
     tidyr::separate_rows(Protein.Group,sep = ";") |>
     dplyr::select(Protein.Group = Protein.Group.Full,protein_id = Protein.Group,count)

@@ -72,6 +72,8 @@
 #' with functional and taxonomic context, streamlining analyses that link protein
 #' abundance with microbial community structure.
 #'
+#' @importClassesFrom QFeatures QFeatures
+#' @importClassesFrom tibble tbl_df
 #' @export
 #'
 #' @examples

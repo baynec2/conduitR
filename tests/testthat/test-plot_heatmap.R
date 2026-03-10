@@ -1,8 +1,10 @@
 test_that("plot_heatmap() works", {
-  skip_if_not(file.exists(conduit_rds()), "conduit.rds fixture not available")
-  qf = readRDS(conduit_rds())@QFeatures
-  plot_heatmap(qf,
-               "species",
-               c("microbiome_treatment","day","tumor_classification"),
-               "organism_type")
+  qf = add_log_imputed_norm_assays(make_minimal_conduit()@QFeatures)
+  expect_no_error(
+    plot_heatmap(qf,
+                 "species_log2_imputed_norm",
+                 c("microbiome_treatment", "day", "tumor_classification"),
+                 "organism_type",
+                 scale = FALSE)
+  )
 })

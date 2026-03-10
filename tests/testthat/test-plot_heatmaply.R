@@ -1,6 +1,4 @@
 test_that("plot_heatmaply works", {
-  skip_if_not(file.exists(conduit_rds()), "conduit.rds fixture not available")
-  qf = readRDS(conduit_rds())@QFeatures
-
-  plot_heatmaply(qf,"species","microbiome_treatment")
+  qf = add_log_imputed_norm_assays(make_minimal_conduit()@QFeatures)
+  plot_heatmaply(qf, "species_log2_imputed_norm", "microbiome_treatment")
 })

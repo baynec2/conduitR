@@ -1,4 +1,5 @@
 test_that("perform_limma_analysis() works", {
+  skip_if_not(file.exists(conduit_rds()), "conduit.rds fixture not available")
   qf = add_log_imputed_norm_assays(readRDS(conduit_rds())@QFeatures)
   assay_name = "protein_group_log2_imputed"
   formula = ~microbiome_treatment

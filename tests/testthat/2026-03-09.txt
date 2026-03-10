@@ -1,4 +1,0 @@
-proteome_id organism_id organism protein_count proteome_type redundant_to genome_assembly_id genome_assembly_level annotation_score selected_proteome_id parent_id child_rank download_info
-UP001200544 818 "Bacteroides thetaiotaomicron" 5654 "Other proteome" NA GCA_021411885.1 full 1 UP001200544 816 species "Other proteome"
-UP001523243 77133 "uncultured bacterium" 1493 Excluded NA GCA_023612235.1 full NA UP001523243 48479 species Excluded
-UP000273581 2320102 "bacterium 1XD42-8" 7100 Excluded NA GCA_003612415.1 full NA UP000273581 49928 species Excluded

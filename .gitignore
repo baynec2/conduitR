@@ -4,3 +4,9 @@ tests/data/
 .Rhistory
 conduit.rds
 conduitR.Rproj
+
+# Test artifacts
+tests/testthat/*.txt
+tests/testthat/*.pdf
+tests/testthat/*.fasta
+tests/testthat/*.rds

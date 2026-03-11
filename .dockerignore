@@ -1,0 +1,7 @@
+.git
+.github
+*.Rcheck
+*.tar.gz
+*.Rproj
+README.html
+temp/

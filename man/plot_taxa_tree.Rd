@@ -15,7 +15,6 @@ plot_taxa_tree(
 \arguments{
 \item{taxonomy_data}{A tibble containing taxonomic information. Must have columns:
 \itemize{
-\item organism_type: Type of organism (e.g., "Bacteria", "Archaea")
 \item domain: Taxonomic domain
 \item kingdom: Taxonomic kingdom
 \item phylum: Taxonomic phylum

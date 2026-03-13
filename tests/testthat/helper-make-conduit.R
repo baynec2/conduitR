@@ -56,9 +56,8 @@ make_minimal_conduit <- function() {
   sp_se <- SummarizedExperiment::SummarizedExperiment(
     assays  = list(intensity = sp_mat),
     rowData = S4Vectors::DataFrame(
-      row.names     = sp_names,
-      organism_type = c("host", "microbiome", "microbiome", "microbiome"),
-      species       = sp_names
+      row.names = sp_names,
+      species   = sp_names
     ),
     colData = col_data
   )
@@ -71,7 +70,6 @@ make_minimal_conduit <- function() {
 
   # ---- @taxonomy ---------------------------------------------------------
   taxonomy <- tibble::tibble(
-    organism_type         = c("host", "microbiome", "microbiome", "microbiome"),
     organism_id           = c(10090L, 818L, 239935L, 562L),
     domain                = c("Eukaryota", "Bacteria", "Bacteria", "Bacteria"),
     kingdom               = c("Metazoa", NA_character_, NA_character_, NA_character_),

@@ -26,7 +26,7 @@ calc_percent_proteins_detected(
 \value{
 A data frame containing:
 \itemize{
-\item Taxonomic columns (organism_type, domain, kingdom, phylum, class, order, family, genus, species)
+\item Taxonomic columns (domain, kingdom, phylum, class, order, family, genus, species)
 \item n_in_db: Number of proteins in the database for each taxon
 \item n_detected: Number of proteins detected for each taxon
 \item percent_detected: Percentage of proteins detected (n_detected/n_in_db * 100)

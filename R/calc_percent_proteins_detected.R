@@ -18,7 +18,7 @@
 #'
 #' @return A data frame containing:
 #'   \itemize{
-#'     \item Taxonomic columns (organism_type, domain, kingdom, phylum, class, order, family, genus, species)
+#'     \item Taxonomic columns (domain, kingdom, phylum, class, order, family, genus, species)
 #'     \item n_in_db: Number of proteins in the database for each taxon
 #'     \item n_detected: Number of proteins detected for each taxon
 #'     \item percent_detected: Percentage of proteins detected (n_detected/n_in_db * 100)
@@ -65,8 +65,7 @@ calc_percent_proteins_detected = function(conduit_obj,
     dplyr::rename(n_detected = n)
 
   # Combining db and detected into one df. Calculating percent detected
-  all = dplyr::left_join(db,detected, by = c("organism_type",
-                                             "domain",
+  all = dplyr::left_join(db,detected, by = c("domain",
                                              "kingdom",
                                              "phylum",
                                              "class",

@@ -7,7 +7,6 @@
 #' @param tibble A data frame or tibble containing protein taxonomy information.
 #'   Must have the following columns:
 #'   \itemize{
-#'     \item organism_type: Type of organism (e.g., "Bacteria", "Archaea")
 #'     \item domain: Taxonomic domain
 #'     \item kingdom: Taxonomic kingdom
 #'     \item phylum: Taxonomic phylum
@@ -38,7 +37,7 @@
 count_proteins_per_taxon = function(tibble){
 
   sum = tibble |>
-    dplyr::group_by(.data$organism_type,.data$domain,.data$kingdom,
+    dplyr::group_by(.data$domain,.data$kingdom,
                     .data$phylum,.data$class,.data$order,.data$family,
                     .data$genus,.data$species) |>
     dplyr::summarise(n = dplyr::n()) |>

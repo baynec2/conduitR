@@ -4,7 +4,7 @@ test_that("plot_heatmap() works", {
     plot_heatmap(qf,
                  "species_log2_imputed_norm",
                  c("microbiome_treatment", "day", "tumor_classification"),
-                 "organism_type",
+                 "species",
                  scale = FALSE)
   )
 })

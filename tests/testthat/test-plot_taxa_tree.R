@@ -1,7 +1,6 @@
 
 
-test10 = tibble::tibble(organism_type = paste0("host",1:10),
-                        domain = paste0("domain",1:10),
+test10 = tibble::tibble(domain = paste0("domain",1:10),
                         kingdom = paste0("kingdom",1:10),
                         phylum = paste0("phylum",1:10),
                         class = paste0("class",1:10),
@@ -16,8 +15,7 @@ plot_taxa_tree(test10,node_color = "domain")
 
 # Was having some problems for a case where there is ony one taxa
 
-test1 = tibble::tibble(organism_type = paste0("host",1),
-                        domain = paste0("domain",1),
+test1 = tibble::tibble(domain = paste0("domain",1),
                         kingdom = paste0("kingdom",1),
                         phylum = paste0("phylum",1),
                         class = paste0("class",1),
@@ -30,8 +28,7 @@ test_that("plot_taxa_tree() works", {
   plot_taxa_tree(test1, node_size = NULL)
 })
 
-test2 = tibble::tibble(organism_type = paste0("host",1:2),
-                       domain = paste0("domain",1:2),
+test2 = tibble::tibble(domain = paste0("domain",1:2),
                        kingdom = paste0("kingdom",1:2),
                        phylum = paste0("phylum",1:2),
                        class = paste0("class",1:2),
@@ -46,8 +43,7 @@ test_that("plot_taxa_tree() works", {
 
 
 test_that("plot_taxa_tree() works with info column", {
-  taxonomy_data = tibble::tibble(organism_type = paste0("host",1:2),
-                       domain = paste0("domain",1:2),
+  taxonomy_data = tibble::tibble(domain = paste0("domain",1:2),
                        kingdom = paste0("kingdom",1:2),
                        phylum = paste0("phylum",1:2),
                        class = paste0("class",1:2),

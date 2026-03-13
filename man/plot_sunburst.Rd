@@ -8,7 +8,7 @@ plot_sunburst(taxonomy)
 }
 \arguments{
 \item{taxonomy}{A tibble containing taxonomic information for detected proteins,
-with columns for organism_type, domain, kingdom, phylum, class, order,
+with columns for domain, kingdom, phylum, class, order,
 family, genus, and species (e.g. \code{conduit_obj@taxonomy}).}
 }
 \value{

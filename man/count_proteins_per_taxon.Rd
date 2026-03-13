@@ -10,7 +10,6 @@ count_proteins_per_taxon(tibble)
 \item{tibble}{A data frame or tibble containing protein taxonomy information.
 Must have the following columns:
 \itemize{
-\item organism_type: Type of organism (e.g., "Bacteria", "Archaea")
 \item domain: Taxonomic domain
 \item kingdom: Taxonomic kingdom
 \item phylum: Taxonomic phylum

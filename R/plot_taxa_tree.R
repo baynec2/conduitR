@@ -6,7 +6,6 @@
 #'
 #' @param taxonomy_data A tibble containing taxonomic information. Must have columns:
 #'   \itemize{
-#'     \item organism_type: Type of organism (e.g., "Bacteria", "Archaea")
 #'     \item domain: Taxonomic domain
 #'     \item kingdom: Taxonomic kingdom
 #'     \item phylum: Taxonomic phylum
@@ -61,7 +60,7 @@ plot_taxa_tree <- function(taxonomy_data,
     cat("There is only one taxa in the data.")
     taxonomy_data <- tidyr::pivot_longer(taxonomy_data,
       cols = c(
-        "organism_type", "domain", "kingdom", "phylum", "class", "order",
+        "domain", "kingdom", "phylum", "class", "order",
         "family", "genus", "species"
       ),
       names_to = "taxon_rank",
@@ -69,21 +68,20 @@ plot_taxa_tree <- function(taxonomy_data,
     ) |>
       dplyr::mutate(taxon_rank = factor(taxon_rank,
         levels = c(
-          "organism_type", "domain",
-          "kingdom", "phylum", "class",
+          "domain", "kingdom", "phylum", "class",
           "order", "family", "genus",
           "species"
         )
       )) |>
       dplyr::arrange(taxon_rank)
 
-    p1 <- ggplot2::ggplot(taxonomy_data, ggplot2::aes(x = 1:9, y = 0.5)) +
+    p1 <- ggplot2::ggplot(taxonomy_data, ggplot2::aes(x = 1:8, y = 0.5)) +
       ggplot2::geom_point(
         shape = 21, size = 15,
         fill = "lightblue", color = "black"
       ) +
       ggplot2::geom_text(ggplot2::aes(label = taxon), size = 4) +
-      ggplot2::xlim(0, 9) +
+      ggplot2::xlim(0, 8) +
       ggplot2::ylim(0, 1) +
       ggplot2::theme_void()
 
@@ -92,7 +90,6 @@ plot_taxa_tree <- function(taxonomy_data,
     # Adding a string with all levels of taxonomy concatenated
     taxonomy <- taxonomy_data |>
       dplyr::mutate(taxonomy = paste0(
-        "organism_type__", organism_type, ";",
         "domain__", domain, ";",
         "kingdom__", kingdom, ";",
         "phylum__", phylum, ";",

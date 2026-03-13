@@ -33,7 +33,7 @@ add_taxonomy_to_qf = function(qf,
 
   # Load the Annotation data
   taxonomy <- uniprot_annotation |>
-    dplyr::select(protein_id,organism_id,organism_type,domain,kingdom,phylum,class,
+    dplyr::select(protein_id,organism_id,domain,kingdom,phylum,class,
            order,family,genus,species)
 
   protein_count <- SummarizedExperiment::rowData(qf[["protein_groups"]])[,"Protein.Group", drop = FALSE] |>

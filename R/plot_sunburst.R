@@ -6,7 +6,7 @@
 #' and see more detailed information.
 #'
 #' @param taxonomy A tibble containing taxonomic information for detected proteins,
-#'   with columns for organism_type, domain, kingdom, phylum, class, order,
+#'   with columns for domain, kingdom, phylum, class, order,
 #'   family, genus, and species (e.g. \code{conduit_obj@@taxonomy}).
 #'
 #' @return An interactive plotly sunburst plot object with the following features:
@@ -42,7 +42,7 @@ plot_sunburst = function(taxonomy){
 
   #Summarizing taxonomy by some metric.
   sum = taxonomy |>
-    dplyr::group_by(organism_type,domain,kingdom,phylum,class,order,family,genus,species) |>
+    dplyr::group_by(domain,kingdom,phylum,class,order,family,genus,species) |>
     dplyr::summarise(size = dplyr::n(),.groups = "drop") |>
     dplyr::mutate(domain = as.character(domain)) |>
     tidyr::replace_na(list(

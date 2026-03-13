@@ -1,479 +1,479 @@
-organism_type organism_id domain kingdom phylum class order family genus species "Proteome Id" reference downloaded_by_conduit download_info
-host 9606 Eukaryota Metazoa Chordata Mammalia Primates Hominidae Homo "Homo sapiens" UP000005640 TRUE TRUE downloaded_by_conduit
-microbiome 2173 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanobrevibacter "Methanobrevibacter smithii" UP000232133 FALSE TRUE downloaded_by_conduit
-microbiome 1263088 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanobrevibacter "Methanobrevibacter smithii CAG:186" UP000018189 FALSE TRUE downloaded_by_conduit
-microbiome 2317 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanosphaera "Methanosphaera stadtmanae" UP000248557 FALSE TRUE downloaded_by_conduit
-microbiome 1860157 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanosphaera "Methanosphaera sp. A6" UP000094981 FALSE TRUE downloaded_by_conduit
-microbiome 1197717 Bacteria Thermotogati Synergistota Synergistia Synergistales Synergistaceae Cloacibacillus "Cloacibacillus porcorum" UP000093044 TRUE TRUE downloaded_by_conduit
-microbiome 457415 Bacteria Thermotogati Synergistota Synergistia Synergistales Synergistaceae Synergistes "Synergistes sp. 3_1_syn1" UP000003380 FALSE FALSE excluded_in_uniprot_db
-microbiome 508460 Bacteria Thermotogati Synergistota Synergistia Synergistales Synergistaceae Cloacibacillus "Cloacibacillus evryensis" UP001205919 FALSE TRUE downloaded_by_conduit
-microbiome 1906168 Bacteria Bacillati "Candidatus Melainabacteria" NA "Candidatus Gastranaerophilales" NA NA "Candidatus Gastranaerophilales bacterium MH_37" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1262868 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Cryptobacterium "Cryptobacterium sp. CAG:338" UP000018369 FALSE TRUE downloaded_by_conduit
-microbiome 79604 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Denitrobacterium "Denitrobacterium detoxificans" UP000182975 TRUE TRUE downloaded_by_conduit
-microbiome 446660 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Adlercreutzia "Adlercreutzia equolifaciens" UP000472380 FALSE TRUE downloaded_by_conduit
-microbiome 671266 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Adlercreutzia "Adlercreutzia caecimuris" UP000308978 FALSE TRUE downloaded_by_conduit
-microbiome 580026 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Adlercreutzia "Adlercreutzia mucosicola" UP000463388 FALSE TRUE downloaded_by_conduit
-microbiome 1473216 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Senegalimassilia "Senegalimassilia anaerobia" UP000253792 TRUE TRUE downloaded_by_conduit
-microbiome 502558 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Eggerthella "Eggerthella sp. YY7918" UP000008929 TRUE TRUE downloaded_by_conduit
-microbiome 471189 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Gordonibacter "Gordonibacter pamelaeae" UP000254000 FALSE TRUE downloaded_by_conduit
-microbiome 84112 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Eggerthella "Eggerthella lenta" UP000253752 FALSE TRUE downloaded_by_conduit
-microbiome 147207 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella intestinalis" UP000283983 TRUE TRUE downloaded_by_conduit
-microbiome 147206 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella stercoris" UP001058380 FALSE FALSE excluded_in_uniprot_db
-microbiome 1499681 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella sp. MS5" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 74426 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella aerofaciens" UP000095454 FALSE TRUE downloaded_by_conduit
-microbiome 1262850 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella sp. CAG:166" UP000018358 FALSE TRUE downloaded_by_conduit
-microbiome 1871022 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Atopobiaceae Parolsenella "Parolsenella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 42817 Bacteria Bacillati Actinomycetota Actinomycetes Mycobacteriales Corynebacteriaceae Corynebacterium "Corynebacterium argentoratense" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1747 Bacteria Bacillati Actinomycetota Actinomycetes Propionibacteriales Propionibacteriaceae Cutibacterium "Cutibacterium acnes" UP000223982 FALSE TRUE downloaded_by_conduit
-microbiome 43675 Bacteria Bacillati Actinomycetota Actinomycetes Micrococcales Micrococcaceae Rothia "Rothia mucilaginosa" UP000066203 FALSE TRUE downloaded_by_conduit
-microbiome 2047 Bacteria Bacillati Actinomycetota Actinomycetes Micrococcales Micrococcaceae Rothia "Rothia dentocariosa" UP000219947 TRUE TRUE downloaded_by_conduit
-microbiome 419015 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Alloscardovia "Alloscardovia omnicolens" UP000242263 FALSE TRUE downloaded_by_conduit
-microbiome 230143 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Scardovia "Scardovia wiggsiae" UP000722106 FALSE FALSE excluded_in_uniprot_db
-microbiome 78344 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium pullorum subsp. gallinarum" UP000029046 TRUE TRUE downloaded_by_conduit
-microbiome 1689 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium dentium" UP000429211 FALSE TRUE downloaded_by_conduit
-microbiome 1680 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium adolescentis" UP000095647 FALSE TRUE downloaded_by_conduit
-microbiome 1681 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium bifidum" UP000070092 FALSE TRUE downloaded_by_conduit
-microbiome 158787 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium scardovii" UP000029033 TRUE TRUE downloaded_by_conduit
-microbiome 762212 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium biavatii" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1683 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium angulatum" UP000029105 FALSE FALSE excluded_in_uniprot_db
-microbiome 762209 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium callitrichos" UP000240228 TRUE TRUE downloaded_by_conduit
-microbiome 762211 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium stellenboschense" UP000029004 TRUE TRUE downloaded_by_conduit
-microbiome 1329411 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium aesculapii" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 762210 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium saguini" UP000663729 FALSE FALSE excluded_in_uniprot_db
-microbiome 983706 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium reuteri" UP000326251 FALSE TRUE downloaded_by_conduit
-microbiome 216816 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium longum" UP000028505 FALSE TRUE downloaded_by_conduit
-microbiome 1685 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium breve" UP000232491 FALSE TRUE downloaded_by_conduit
-microbiome 55565 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces graevenitzii" UP000830236 FALSE TRUE downloaded_by_conduit
-microbiome 544580 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces oris" UP000185736 FALSE TRUE downloaded_by_conduit
-microbiome 544581 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces johnsonii" UP000319010 FALSE TRUE downloaded_by_conduit
-microbiome 1659 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces israelii" UP001072034 FALSE FALSE excluded_in_uniprot_db
-microbiome 461393 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 184870 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Varibaculum "Varibaculum cambriense" UP001200537 TRUE TRUE downloaded_by_conduit
-microbiome 1661 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Trueperella "Trueperella pyogenes" UP000275951 FALSE TRUE downloaded_by_conduit
-microbiome 29303 Bacteria Bacillati Actinomycetota Actinomycetes Kitasatosporales Streptomycetaceae Streptantibioticus "Streptantibioticus cattleyicolor" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1118058 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces sp. ph3" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 712121 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces sp. oral taxon 181" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 178339 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Pauljensenia "Pauljensenia hongkongensis" UP000095214 TRUE TRUE downloaded_by_conduit
-microbiome 1660 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Schaalia "Schaalia odontolytica" UP000250192 TRUE TRUE downloaded_by_conduit
-microbiome 52773 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Schaalia "Schaalia meyeri" UP000595220 FALSE TRUE downloaded_by_conduit
-microbiome 1711 Bacteria Bacillati Actinomycetota Actinomycetes Micrococcales Cellulomonadaceae Cellulomonas "Cellulomonas flavigena" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 209880 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Allisonella "Allisonella histaminiformans" UP000199689 TRUE TRUE downloaded_by_conduit
-microbiome 218538 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Dialister "Dialister invisus" UP000757890 FALSE TRUE downloaded_by_conduit
-microbiome 1263072 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Dialister "Dialister invisus CAG:218" UP000017966 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262980 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Veillonella "Veillonella sp. CAG:933" UP000018347 FALSE TRUE downloaded_by_conduit
-microbiome 29466 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Veillonella "Veillonella parvula" UP000778864 FALSE TRUE downloaded_by_conduit
-microbiome 1000569 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Megasphaera "Megasphaera sp. UPII 135-E" UP000004137 FALSE TRUE downloaded_by_conduit
-microbiome 1000568 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Megasphaera "Megasphaera lornae" UP000003242 TRUE TRUE downloaded_by_conduit
-microbiome 626940 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Phascolarctobacterium "Phascolarctobacterium succinatutens" UP000186777 FALSE TRUE downloaded_by_conduit
-microbiome 1262914 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Phascolarctobacterium "Phascolarctobacterium sp. CAG:207" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 187327 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Acidaminococcus "Acidaminococcus intestini" UP000754226 FALSE TRUE downloaded_by_conduit
-microbiome 1263033 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Acidaminococcus "Acidaminococcus intestini CAG:325" UP000018020 FALSE FALSE excluded_in_uniprot_db
-microbiome 905 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Acidaminococcus "Acidaminococcus fermentans" UP000182379 FALSE TRUE downloaded_by_conduit
-microbiome 36834 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium celatum" UP001185172 FALSE FALSE excluded_in_uniprot_db
-microbiome 84024 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium disporicum" UP000095558 FALSE TRUE downloaded_by_conduit
-microbiome 29363 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium paraputrificum" UP000092714 TRUE TRUE downloaded_by_conduit
-microbiome 1561 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium baratii" UP000095563 FALSE TRUE downloaded_by_conduit
-microbiome 1492 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium butyricum" UP000238081 FALSE TRUE downloaded_by_conduit
-microbiome 214853 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Anaerofustis "Anaerofustis stercorihominis" UP000261212 FALSE TRUE downloaded_by_conduit
-microbiome 1736 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium limosum" UP000192391 FALSE TRUE downloaded_by_conduit
-microbiome 33033 Bacteria Bacillati Bacillota Tissierellia Tissierellales Peptoniphilaceae Parvimonas "Parvimonas micra" UP000031386 TRUE TRUE downloaded_by_conduit
-microbiome 1852373 Bacteria Bacillati Bacillota Tissierellia Tissierellales Peptoniphilaceae Murdochiella "Murdochiella vaginalis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 938289 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Levyella "Levyella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1776392 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Massilimicrobiota "Massilimicrobiota timonensis" UP000195305 FALSE TRUE downloaded_by_conduit
-microbiome 1871336 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Filifactoraceae Criibacterium "Criibacterium bergeronii" UP000093352 TRUE TRUE downloaded_by_conduit
-microbiome 1261 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Peptostreptococcus "Peptostreptococcus anaerobius" UP000070326 FALSE TRUE downloaded_by_conduit
-microbiome 1263100 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Peptostreptococcus "Peptostreptococcus anaerobius CAG:621" UP000018261 FALSE FALSE excluded_in_uniprot_db
-microbiome 261299 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Intestinibacter "Intestinibacter bartlettii" UP000078259 FALSE FALSE excluded_in_uniprot_db
-microbiome 1505 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Paraclostridium "Paraclostridium sordellii" UP000049127 FALSE TRUE downloaded_by_conduit
-microbiome 1476973 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae NA "Peptostreptococcaceae bacterium VA2" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1496 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Clostridioides "Clostridioides difficile" UP000189137 FALSE TRUE downloaded_by_conduit
-microbiome 1263005 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:145" UP000018044 FALSE FALSE excluded_in_uniprot_db
-microbiome 1776384 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Anaerovoracaceae Emergencia "Emergencia timonensis" UP000284841 TRUE TRUE downloaded_by_conduit
-microbiome 270498 Bacteria Bacillati Bacillota Clostridia Christensenellales Christensenellaceae Christensenella "Christensenella hongkongensis" UP000034076 TRUE TRUE downloaded_by_conduit
-microbiome 1851429 Bacteria Bacillati Bacillota Clostridia Christensenellales Christensenellaceae Christensenella "Christensenella intestinihominis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1262775 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:138" UP000017905 FALSE TRUE downloaded_by_conduit
-microbiome 1930012 Bacteria Bacillati Bacillota Clostridia Christensenellales Christensenellaceae NA "Christensenellaceae bacterium Phil1" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 39488 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Anaerobutyricum "Anaerobutyricum hallii" UP000284621 TRUE TRUE downloaded_by_conduit
-microbiome 1262879 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:146" UP000018404 FALSE FALSE excluded_in_uniprot_db
-microbiome 105841 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Anaerostipes "Anaerostipes caccae" UP000004032 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263014 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:270" UP000018350 FALSE FALSE excluded_in_uniprot_db
-microbiome 649756 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Anaerostipes "Anaerostipes hadrus" UP000008960 FALSE TRUE downloaded_by_conduit
-microbiome 411489 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. L2-50" UP000003352 FALSE TRUE downloaded_by_conduit
-microbiome 1262862 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus sp. CAG:131" UP000017923 FALSE FALSE excluded_in_uniprot_db
-microbiome 33043 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus eutactus" UP000283295 FALSE TRUE downloaded_by_conduit
-microbiome 290052 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Acetivibrio "Acetivibrio ethanolgignens" UP000054874 TRUE TRUE downloaded_by_conduit
-microbiome 1896990 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:62_40_43" UP000187212 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262782 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:230" UP000017961 FALSE TRUE downloaded_by_conduit
-microbiome 1703332 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Butyribacter "Butyribacter intestini" UP000050833 FALSE TRUE downloaded_by_conduit
-microbiome 796942 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Stomatobaculum "Stomatobaculum longum" UP000018466 TRUE TRUE downloaded_by_conduit
-microbiome 43995 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Johnsonella "Johnsonella ignava" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 936595 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnoanaerobaculum "Lachnoanaerobaculum sp. OBRC5-5" UP000006070 FALSE TRUE downloaded_by_conduit
-microbiome 1262824 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:58" UP000018263 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262842 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:81" UP000018235 FALSE FALSE excluded_in_uniprot_db
-microbiome 1512 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnoclostridium "[Clostridium] symbiosum" UP001203136 FALSE TRUE downloaded_by_conduit
-microbiome 1262792 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:299" UP000017929 FALSE TRUE downloaded_by_conduit
-microbiome 411486 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. M62/1" UP000004936 FALSE TRUE downloaded_by_conduit
-microbiome 154046 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Hungatella "Hungatella hathewayi" UP000095651 FALSE TRUE downloaded_by_conduit
-microbiome 84030 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lacrimispora "Lacrimispora saccharolytica" UP000199789 FALSE FALSE excluded_in_uniprot_db
-microbiome 333367 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster asparagiformis" UP000283880 FALSE TRUE downloaded_by_conduit
-microbiome 457421 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA NA "Clostridiales bacterium 1_7_47FAA" UP000004695 FALSE FALSE excluded_in_uniprot_db
-microbiome 358743 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster citroniae" UP000708338 FALSE TRUE downloaded_by_conduit
-microbiome 208479 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster bolteae" UP000261287 FALSE TRUE downloaded_by_conduit
-microbiome 1263064 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster bolteae CAG:59" UP000017941 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263065 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "[Clostridium] clostridioforme CAG:132" UP000018009 FALSE TRUE downloaded_by_conduit
-microbiome 1263066 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "[Clostridium] clostridioforme CAG:511" UP000018273 FALSE FALSE excluded_in_uniprot_db
-microbiome 1531 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster clostridioformis" UP000251853 TRUE TRUE downloaded_by_conduit
-microbiome 39496 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium ventriosum" UP000284779 TRUE TRUE downloaded_by_conduit
-microbiome 1263062 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Eshraghiella "Eshraghiella crossota CAG:259" UP000018300 FALSE TRUE downloaded_by_conduit
-microbiome 45851 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Eshraghiella "Eshraghiella crossota" UP000186985 FALSE FALSE excluded_in_uniprot_db
-microbiome 384638 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA NA "[Bacteroides] pectinophilus" UP001057905 FALSE FALSE excluded_in_uniprot_db
-microbiome 39485 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnospira "Lachnospira eligens" UP000095621 FALSE TRUE downloaded_by_conduit
-microbiome 1262845 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:91" UP000018298 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262994 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:65" UP000018207 FALSE FALSE excluded_in_uniprot_db
-microbiome 397287 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium 28-4" UP000014112 TRUE TRUE downloaded_by_conduit
-microbiome 1263012 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:24" UP000017963 FALSE FALSE excluded_in_uniprot_db
-microbiome 1226325 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. KLE 1755" UP000016509 FALSE FALSE excluded_in_uniprot_db
-microbiome 1855376 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium NLAE-zl-G231" UP000198576 FALSE TRUE downloaded_by_conduit
-microbiome 1432052 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Eisenbergiella "Eisenbergiella tayi" UP000094067 FALSE TRUE downloaded_by_conduit
-microbiome 1042156 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. SY8519" UP000008937 TRUE TRUE downloaded_by_conduit
-microbiome 39490 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium ramulus" UP000245288 TRUE TRUE downloaded_by_conduit
-microbiome 1235790 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. 14-2" UP000014176 TRUE TRUE downloaded_by_conduit
-microbiome 397288 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium 3-1" UP000014188 TRUE TRUE downloaded_by_conduit
-microbiome 397290 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium A2" UP000014150 TRUE TRUE downloaded_by_conduit
-microbiome 360807 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia inulinivorans" UP000049828 TRUE TRUE downloaded_by_conduit
-microbiome 166486 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia intestinalis" UP000479531 TRUE TRUE downloaded_by_conduit
-microbiome 301301 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia hominis" UP000266172 FALSE TRUE downloaded_by_conduit
-microbiome 140626 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnobacterium "Lachnobacterium bovis" UP000182471 FALSE TRUE downloaded_by_conduit
-microbiome 39491 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Agathobacter "Agathobacter rectalis" UP000049472 TRUE TRUE downloaded_by_conduit
-microbiome 301302 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia faecis" UP000049979 TRUE TRUE downloaded_by_conduit
-microbiome 1896976 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. CAG:37_48_57" UP000187411 FALSE FALSE excluded_in_uniprot_db
-microbiome 1150298 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Fusicatenibacter "Fusicatenibacter saccharivorans" UP000095706 FALSE TRUE downloaded_by_conduit
-microbiome 1262757 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. CAG:37" UP000018204 FALSE FALSE excluded_in_uniprot_db
-microbiome 341220 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Lactonifactor "Lactonifactor longoviformis" UP000237187 FALSE FALSE excluded_in_uniprot_db
-microbiome 1322 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia hansenii" UP000822142 FALSE FALSE excluded_in_uniprot_db
-microbiome 33035 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia producta" UP000289794 FALSE TRUE downloaded_by_conduit
-microbiome 1263061 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia hydrogenotrophica CAG:147" UP000018163 FALSE FALSE excluded_in_uniprot_db
-microbiome 53443 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia hydrogenotrophica" UP001299923 FALSE FALSE excluded_in_uniprot_db
-microbiome 180164 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia schinkii" UP000729774 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262964 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus sp. CAG:60" UP000017995 FALSE FALSE excluded_in_uniprot_db
-microbiome 40520 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia obeum" UP000409147 TRUE TRUE downloaded_by_conduit
-microbiome 1226324 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. KLE 1732" UP000016485 FALSE TRUE downloaded_by_conduit
-microbiome 1262755 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. CAG:237" UP000017983 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263107 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia obeum CAG:39" UP000018059 FALSE FALSE excluded_in_uniprot_db
-microbiome 1078091 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus sp. HPP0048" UP000014415 FALSE FALSE excluded_in_uniprot_db
-microbiome 742723 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium 2_1_46FAA" UP000018451 TRUE TRUE downloaded_by_conduit
-microbiome 1263069 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Tyzzerella "[Clostridium] nexile CAG:348" UP000018368 FALSE FALSE excluded_in_uniprot_db
-microbiome 29361 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Tyzzerella "[Clostridium] nexile" UP000284287 FALSE FALSE excluded_in_uniprot_db
-microbiome 180311 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Hespellia "Hespellia stercorisuis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1235792 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium M18-1" UP000014090 TRUE TRUE downloaded_by_conduit
-microbiome 342942 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter glycyrrhizinilyticus" UP000762161 FALSE FALSE excluded_in_uniprot_db
-microbiome 39482 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Faecalicatena "Faecalicatena contorta" UP000254051 TRUE TRUE downloaded_by_conduit
-microbiome 33038 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter gnavus" UP000234840 FALSE TRUE downloaded_by_conduit
-microbiome 1720300 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 33039 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "[Ruminococcus] torques" UP000363661 TRUE TRUE downloaded_by_conduit
-microbiome 1263108 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "[Ruminococcus] torques CAG:61" UP000017998 FALSE TRUE downloaded_by_conduit
-microbiome 592978 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter faecis" UP000448177 FALSE TRUE downloaded_by_conduit
-microbiome 46228 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "[Ruminococcus] lactaris" UP000260793 FALSE TRUE downloaded_by_conduit
-microbiome 1653434 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Sellimonas "Sellimonas intestinalis" UP000261080 TRUE TRUE downloaded_by_conduit
-microbiome 1632013 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Drancourtella "Drancourtella massiliensis" UP000775686 FALSE FALSE excluded_in_uniprot_db
-microbiome 1745713 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Bariatricus "Bariatricus massiliensis" UP001279793 FALSE FALSE excluded_in_uniprot_db
-microbiome 1896996 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus sp. 43_8" UP000243608 FALSE FALSE excluded_in_uniprot_db
-microbiome 410072 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus comes" UP000283360 TRUE TRUE downloaded_by_conduit
-microbiome 1519438 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. ER2" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1262872 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea sp. CAG:105" UP000017921 FALSE FALSE excluded_in_uniprot_db
-microbiome 39486 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea formicigenerans" UP000261055 TRUE TRUE downloaded_by_conduit
-microbiome 88431 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea longicatena" UP000284095 TRUE TRUE downloaded_by_conduit
-microbiome 1896999 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea sp. 42_8" UP000187258 FALSE TRUE downloaded_by_conduit
-microbiome 29347 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnoclostridium "[Clostridium] scindens" UP000462363 FALSE TRUE downloaded_by_conduit
-microbiome 1235798 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea sp. 5-2" UP000014211 FALSE FALSE excluded_in_uniprot_db
-microbiome 160404 Bacteria Bacillati Bacillota Clostridia Lachnospirales Anaerotignaceae Anaerotignum "Anaerotignum lactatifermentans" UP000195455 FALSE TRUE downloaded_by_conduit
-microbiome 1263025 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:466" UP000018338 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262814 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:505" UP000018153 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263021 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:41" UP000018139 FALSE FALSE excluded_in_uniprot_db
-microbiome 501571 Bacteria Bacillati Bacillota Clostridia Eubacteriales Butyricicoccaceae Butyricicoccus "Butyricicoccus pullicaecorum" UP000195326 FALSE TRUE downloaded_by_conduit
-microbiome 1828554 Bacteria Bacillati Bacillota Clostridia Eubacteriales Butyricicoccaceae Butyricicoccus "Butyricicoccus sp. K4410.MGS-46" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 39484 Bacteria Bacillati Bacillota Clostridia Eubacteriales Butyricicoccaceae Agathobaculum "Agathobaculum desmolans" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1697794 Bacteria Bacillati Bacillota Clostridia NA NA NA "Clostridia bacterium UC5.1-1D1" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1897029 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:137_57_8" UP000187611 FALSE TRUE downloaded_by_conduit
-microbiome 1263004 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:137" UP000018011 FALSE TRUE downloaded_by_conduit
-microbiome 1650661 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium phoceensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 552398 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "Ruminococcaceae bacterium D16" UP000002801 TRUE TRUE downloaded_by_conduit
-microbiome 1673721 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Intestinimonas "Intestinimonas massiliensis (ex Afouda et al. 2020)" UP001204562 FALSE TRUE downloaded_by_conduit
-microbiome 3062493 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Intestinimonas "Intestinimonas massiliensis (ex Liu et al. 2021)" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1297617 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Intestinimonas "Intestinimonas butyriciproducens" UP000064844 TRUE TRUE downloaded_by_conduit
-microbiome 292800 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Flavonifractor "Flavonifractor plautii" UP000429811 FALSE TRUE downloaded_by_conduit
-microbiome 106588 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Pseudoflavonifractor "Pseudoflavonifractor capillosus" UP000760668 FALSE TRUE downloaded_by_conduit
-microbiome 1519439 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Oscillibacter "Oscillibacter sp. ER4" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1262992 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:83" UP000018101 FALSE FALSE excluded_in_uniprot_db
-microbiome 1897030 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:176_59_8" UP000188228 FALSE TRUE downloaded_by_conduit
-microbiome 1897011 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Oscillibacter "Oscillibacter sp. 57_20" UP000187510 FALSE FALSE excluded_in_uniprot_db
-microbiome 1226323 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Oscillibacter "Oscillibacter sp. KLE 1745" UP000016601 FALSE FALSE excluded_in_uniprot_db
-microbiome 3083063 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales NA "Candidatus Colimorpha" "Candidatus Colimorpha enterica" UP000017938 FALSE TRUE downloaded_by_conduit
-microbiome 1897033 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:272_52_7" UP000187597 FALSE TRUE downloaded_by_conduit
-microbiome 1262886 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:251" UP000018414 FALSE TRUE downloaded_by_conduit
-microbiome 1262882 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:180" UP000018411 FALSE TRUE downloaded_by_conduit
-microbiome 1262798 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:352" UP000018340 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262848 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:964" UP000018136 FALSE TRUE downloaded_by_conduit
-microbiome 1262890 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:581" UP000017975 FALSE FALSE excluded_in_uniprot_db
-microbiome 1897020 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus sp. CAG:108-related_41_35" UP000187231 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263068 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Clostridium] leptum CAG:27" UP000018168 FALSE TRUE downloaded_by_conduit
-microbiome 1535 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Clostridium] leptum" UP000284751 TRUE TRUE downloaded_by_conduit
-microbiome 1262989 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:94" UP000018237 FALSE TRUE downloaded_by_conduit
-microbiome 1776382 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Neglectibacter "Neglectibacter timonensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1697793 Bacteria Bacillati Bacillota Clostridia NA NA NA "Clostridia bacterium UC5.1-1E11" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1720313 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae "Bittarella (ex Durand et al. 2017)" "Bittarella massiliensis (ex Durand et al. 2017)" UP000184089 FALSE TRUE downloaded_by_conduit
-microbiome 3062437 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae "Bittarella (ex Liu et al. 2021)" "Bittarella massiliensis (ex Liu et al. 2021)" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1550024 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruthenibacterium "Ruthenibacterium lactatiformans" UP000032483 TRUE TRUE downloaded_by_conduit
-microbiome 1650663 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Allofournierella "Allofournierella massiliensis" UP000295184 FALSE TRUE downloaded_by_conduit
-microbiome 214851 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Subdoligranulum "Subdoligranulum variabile" UP000759273 FALSE TRUE downloaded_by_conduit
-microbiome 853 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Faecalibacterium "Faecalibacterium prausnitzii" UP000406184 TRUE TRUE downloaded_by_conduit
-microbiome 1897006 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Faecalibacterium "Faecalibacterium sp. CAG:82-related_59_9" UP000187270 FALSE TRUE downloaded_by_conduit
-microbiome 1871018 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Angelakisella "Angelakisella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 2897707 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Merdimmobilis "Merdimmobilis hominis" UP000774750 TRUE TRUE downloaded_by_conduit
-microbiome 169435 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Anaerotruncus "Anaerotruncus colihominis" UP000446866 TRUE TRUE downloaded_by_conduit
-microbiome 1235835 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Anaerotruncus "Anaerotruncus sp. G3(2012)" UP000014129 TRUE TRUE downloaded_by_conduit
-microbiome 1870991 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Massilioclostridium "Massilioclostridium coli" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 84026 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Clostridium] methylpentosum" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 39492 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Eubacterium] siraeum" UP000095662 FALSE TRUE downloaded_by_conduit
-microbiome 1897004 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. 45_250" UP000187215 FALSE TRUE downloaded_by_conduit
-microbiome 1161942 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus champanellensis" UP001306196 FALSE FALSE excluded_in_uniprot_db
-microbiome 40519 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus callidus" UP001196334 FALSE FALSE excluded_in_uniprot_db
-microbiome 1930001 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus sp. Zagget7" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1160721 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus bicirculans (ex Wegman et al. 2014)" UP001206236 FALSE TRUE downloaded_by_conduit
-microbiome 3062497 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus bicirculans (ex Liu et al. 2021)" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1896986 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:245_30_32" UP000187275 FALSE TRUE downloaded_by_conduit
-microbiome 154288 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Turicibacteraceae Turicibacter "Turicibacter sanguinis" UP000487649 FALSE TRUE downloaded_by_conduit
-microbiome 1712675 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Turicibacteraceae Turicibacter "Turicibacter sp. H121" UP000057144 TRUE TRUE downloaded_by_conduit
-microbiome 1504823 Bacteria NA NA NA NA NA NA "bacterium LF-3" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1547 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Thomasclavelia "Thomasclavelia ramosa" UP000261032 FALSE TRUE downloaded_by_conduit
-microbiome 29348 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Thomasclavelia "Thomasclavelia spiroformis" UP000196258 FALSE TRUE downloaded_by_conduit
-microbiome 341225 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Thomasclavelia "Thomasclavelia saccharogumia" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1658109 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae "Candidatus Stoquefichus" "Candidatus Stoquefichus sp. SB1" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 100884 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Coprobacillus "Coprobacillus cateniformis" UP000003157 TRUE TRUE downloaded_by_conduit
-microbiome 1468449 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemania "Holdemania massiliensis" UP000433575 FALSE TRUE downloaded_by_conduit
-microbiome 61171 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemania "Holdemania filiformis" UP000284178 TRUE TRUE downloaded_by_conduit
-microbiome 1852366 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemania "Holdemania sp. Marseille-P2844" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 118748 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Bulleidia "Bulleidia extructa" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 102148 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Solobacterium "Solobacterium moorei" UP000284731 FALSE TRUE downloaded_by_conduit
-microbiome 1903263 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Traorella "Traorella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1034346 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Dielma "Dielma fastidiosa" UP000247612 TRUE TRUE downloaded_by_conduit
-microbiome 1697790 Bacteria Bacillati Bacillota Clostridia NA NA NA "Clostridia bacterium UC5.1-1C12" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1232449 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA NA "Clostridiales bacterium VE202-08" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1735 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemanella "Holdemanella biformis" UP000265489 FALSE TRUE downloaded_by_conduit
-microbiome 1323 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Faecalicoccus "Faecalicoccus pleomorphus" UP000255523 TRUE TRUE downloaded_by_conduit
-microbiome 39483 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Faecalitalea "Faecalitalea cylindroides" UP000195447 TRUE TRUE downloaded_by_conduit
-microbiome 1263016 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:308" UP000017945 FALSE TRUE downloaded_by_conduit
-microbiome 1871030 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Merdibacter "Merdibacter massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1263076 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Amedibacillus "Amedibacillus dolichus CAG:375" UP000018093 FALSE TRUE downloaded_by_conduit
-microbiome 31971 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Amedibacillus "Amedibacillus dolichus" UP000284868 TRUE TRUE downloaded_by_conduit
-microbiome 552396 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium 5_2_54FAA" UP000016858 TRUE TRUE downloaded_by_conduit
-microbiome 457402 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. 3_1_31" UP000004469 FALSE FALSE excluded_in_uniprot_db
-microbiome 1522 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "[Clostridium] innocuum" UP000030008 FALSE TRUE downloaded_by_conduit
-microbiome 1834207 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium I46" UP000092604 FALSE TRUE downloaded_by_conduit
-microbiome 658657 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium 21_3" UP000003424 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262981 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium CAG:64" UP000018179 FALSE FALSE excluded_in_uniprot_db
-microbiome 908340 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. HGF2" UP000004918 FALSE FALSE excluded_in_uniprot_db
-microbiome 198467 Bacteria Bacillati Bacillota Bacilli Bacillales Anoxybacillaceae Anoxybacillus "Anoxybacillus gonensis" UP001176117 FALSE TRUE downloaded_by_conduit
-microbiome 1664069 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus glycinifermentans" UP000036168 FALSE TRUE downloaded_by_conduit
-microbiome 1402 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus licheniformis" UP000435910 FALSE TRUE downloaded_by_conduit
-microbiome 1549811 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. BSC154" UP000028985 FALSE FALSE excluded_in_uniprot_db
-microbiome 1423 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus subtilis" UP000032247 FALSE TRUE downloaded_by_conduit
-microbiome 1390 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus amyloliquefaciens" UP000037707 FALSE TRUE downloaded_by_conduit
-microbiome 492670 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus velezensis" UP000587477 FALSE TRUE downloaded_by_conduit
-microbiome 936599 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. GZB" UP000189801 FALSE FALSE excluded_in_uniprot_db
-microbiome 1007654 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. 916" UP000005157 FALSE FALSE excluded_in_uniprot_db
-microbiome 1449047 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. UNC69MF" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 84135 Bacteria Bacillati Bacillota Bacilli Bacillales Gemellaceae Gemella "Gemella sanguinis" UP000235670 FALSE TRUE downloaded_by_conduit
-microbiome 1284 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus hyicus" UP000285625 FALSE TRUE downloaded_by_conduit
-microbiome 1295 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus schleiferi" UP000264146 FALSE TRUE downloaded_by_conduit
-microbiome 283734 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus pseudintermedius" UP000246351 FALSE TRUE downloaded_by_conduit
-microbiome 1286 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus simulans" UP000058481 FALSE FALSE excluded_in_uniprot_db
-microbiome 61015 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus succinus" UP000241960 FALSE TRUE downloaded_by_conduit
-microbiome 246432 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus equorum" UP000095464 FALSE TRUE downloaded_by_conduit
-microbiome 29385 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus saprophyticus" UP000254707 FALSE TRUE downloaded_by_conduit
-microbiome 28035 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus lugdunensis" UP000293637 FALSE TRUE downloaded_by_conduit
-microbiome 1283 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus haemolyticus" UP000053523 FALSE TRUE downloaded_by_conduit
-microbiome 308354 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus simiae" UP000236235 FALSE FALSE excluded_in_uniprot_db
-microbiome 1280 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus aureus" UP000032274 FALSE TRUE downloaded_by_conduit
-microbiome 1292 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus warneri" UP000240717 FALSE TRUE downloaded_by_conduit
-microbiome 29388 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus capitis" UP000291949 FALSE TRUE downloaded_by_conduit
-microbiome 1282 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus epidermidis" UP000192417 FALSE TRUE downloaded_by_conduit
-microbiome 1640 Bacteria Bacillati Bacillota Bacilli Bacillales Listeriaceae Listeria "Listeria seeligeri" UP000523362 FALSE TRUE downloaded_by_conduit
-microbiome 1642 Bacteria Bacillati Bacillota Bacilli Bacillales Listeriaceae Listeria "Listeria innocua" UP000552309 FALSE TRUE downloaded_by_conduit
-microbiome 1639 Bacteria Bacillati Bacillota Bacilli Bacillales Listeriaceae Listeria "Listeria monocytogenes" UP000193519 FALSE TRUE downloaded_by_conduit
-microbiome 180295 Bacteria Bacillati Bacillota Bacilli Lactobacillales Carnobacteriaceae Atopostipes "Atopostipes suicloacalis" UP001171584 FALSE FALSE excluded_in_uniprot_db
-microbiome 166939 Bacteria Bacillati Bacillota Bacilli Lactobacillales Carnobacteriaceae Allofustis "Allofustis seminis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1351 Bacteria Bacillati Bacillota Bacilli Lactobacillales Enterococcaceae Enterococcus "Enterococcus faecalis" UP000244101 FALSE TRUE downloaded_by_conduit
-microbiome 1352 Bacteria Bacillati Bacillota Bacilli Lactobacillales Enterococcaceae Enterococcus "Enterococcus faecium" UP000070452 FALSE TRUE downloaded_by_conduit
-microbiome 53345 Bacteria Bacillati Bacillota Bacilli Lactobacillales Enterococcaceae Enterococcus "Enterococcus durans" UP000220669 FALSE TRUE downloaded_by_conduit
-microbiome 1363 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Lactococcus "Lactococcus garvieae" UP000181969 FALSE TRUE downloaded_by_conduit
-microbiome 1358 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Lactococcus "Lactococcus lactis" UP000215635 FALSE TRUE downloaded_by_conduit
-microbiome 1307 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus suis" UP000069526 FALSE TRUE downloaded_by_conduit
-microbiome 1318 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus parasanguinis" UP000285725 FALSE TRUE downloaded_by_conduit
-microbiome 68892 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus infantis" UP000033405 FALSE TRUE downloaded_by_conduit
-microbiome 1303 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus oralis" UP000028098 FALSE TRUE downloaded_by_conduit
-microbiome 28037 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus mitis" UP000028022 FALSE TRUE downloaded_by_conduit
-microbiome 1328 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus anginosus" UP000238573 FALSE TRUE downloaded_by_conduit
-microbiome 1338 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus intermedius" UP000217792 FALSE TRUE downloaded_by_conduit
-microbiome 45634 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus cristatus" UP000070377 FALSE TRUE downloaded_by_conduit
-microbiome 1302 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus gordonii" UP000033375 FALSE TRUE downloaded_by_conduit
-microbiome 1305 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus sanguinis" UP000183504 FALSE TRUE downloaded_by_conduit
-microbiome 1309 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus mutans" UP000595884 FALSE TRUE downloaded_by_conduit
-microbiome 1304 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus salivarius" UP000027855 FALSE TRUE downloaded_by_conduit
-microbiome 1308 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus thermophilus" UP000249634 FALSE TRUE downloaded_by_conduit
-microbiome 315405 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus gallolyticus" UP000027584 FALSE TRUE downloaded_by_conduit
-microbiome 1311 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus agalactiae" UP000035174 FALSE TRUE downloaded_by_conduit
-microbiome 1314 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus pyogenes" UP000316580 FALSE TRUE downloaded_by_conduit
-microbiome 361101 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus pseudoporcinus" UP000304914 FALSE TRUE downloaded_by_conduit
-microbiome 47715 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lacticaseibacillus "Lacticaseibacillus rhamnosus" UP000189067 FALSE TRUE downloaded_by_conduit
-microbiome 1597 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lacticaseibacillus "Lacticaseibacillus paracasei" UP000234512 FALSE TRUE downloaded_by_conduit
-microbiome 1582 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lacticaseibacillus "Lacticaseibacillus casei" UP000195609 FALSE TRUE downloaded_by_conduit
-microbiome 60520 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lactiplantibacillus "Lactiplantibacillus paraplantarum" UP000277896 FALSE TRUE downloaded_by_conduit
-microbiome 1244 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Leuconostoc "Leuconostoc gelidum" UP001309402 FALSE FALSE excluded_in_uniprot_db
-microbiome 1245 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Leuconostoc "Leuconostoc mesenteroides" UP000469952 FALSE TRUE downloaded_by_conduit
-microbiome 1633 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Limosilactobacillus "Limosilactobacillus vaginalis" UP001212401 FALSE TRUE downloaded_by_conduit
-microbiome 97478 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Limosilactobacillus "Limosilactobacillus mucosae" UP000030001 FALSE TRUE downloaded_by_conduit
-microbiome 1613 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Limosilactobacillus "Limosilactobacillus fermentum" UP000094714 TRUE TRUE downloaded_by_conduit
-microbiome 1581062 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lactobacillus "Lactobacillus sp. HMSC24D01" UP000178539 FALSE FALSE excluded_in_uniprot_db
-microbiome 1625 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Fructilactobacillus "Fructilactobacillus sanfranciscensis" UP000313312 FALSE TRUE downloaded_by_conduit
-microbiome 103810 Bacteria Pseudomonadati Bacteroidota Flavobacteriia Flavobacteriales Weeksellaceae Riemerella "Riemerella columbina" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 28139 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Rikenella "Rikenella microfusus" UP000255233 TRUE TRUE downloaded_by_conduit
-microbiome 626932 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes indistinctus" UP000284138 FALSE FALSE excluded_in_uniprot_db
-microbiome 1470347 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes ihumii" UP000696855 FALSE FALSE excluded_in_uniprot_db
-microbiome 1897041 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales NA NA "Bacteroidales bacterium 55_9" UP000237541 FALSE FALSE excluded_in_uniprot_db
-microbiome 2585118 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes communis" UP000318946 TRUE TRUE downloaded_by_conduit
-microbiome 28117 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes putredinis" UP000187417 FALSE TRUE downloaded_by_conduit
-microbiome 214856 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes finegoldii" UP001055105 FALSE TRUE downloaded_by_conduit
-microbiome 328814 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes shahii" UP000322658 FALSE TRUE downloaded_by_conduit
-microbiome 1930002 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes sp. Zagget8" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1465754 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes timonensis" UP001204612 FALSE FALSE excluded_in_uniprot_db
-microbiome 1288121 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes senegalensis" UP001214327 FALSE FALSE excluded_in_uniprot_db
-microbiome 1547597 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Porphyromonadaceae Sanguibacteroides "Sanguibacteroides justesenii" UP000031980 TRUE TRUE downloaded_by_conduit
-microbiome 544645 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Butyricimonas "Butyricimonas virosa" UP000283589 FALSE TRUE downloaded_by_conduit
-microbiome 544644 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Butyricimonas "Butyricimonas synergistica" UP000186382 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263090 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Odoribacter "Odoribacter splanchnicus CAG:14" UP000018252 FALSE FALSE excluded_in_uniprot_db
-microbiome 1897010 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Odoribacter "Odoribacter sp. 43_10" UP000185632 FALSE TRUE downloaded_by_conduit
-microbiome 28118 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Odoribacter "Odoribacter splanchnicus" UP000283426 FALSE TRUE downloaded_by_conduit
-microbiome 1841857 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Culturomica "Culturomica massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 322095 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Porphyromonadaceae Porphyromonas "Porphyromonas somerae" UP000070224 FALSE TRUE downloaded_by_conduit
-microbiome 823 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides distasonis" UP000095332 FALSE TRUE downloaded_by_conduit
-microbiome 574930 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides gordonii" UP000261291 FALSE FALSE excluded_in_uniprot_db
-microbiome 328812 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides goldsteinii" UP000036166 FALSE TRUE downloaded_by_conduit
-microbiome 387661 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides johnsonii" UP000195975 FALSE TRUE downloaded_by_conduit
-microbiome 1263094 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides merdae CAG:48" UP000018407 FALSE FALSE excluded_in_uniprot_db
-microbiome 487174 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Barnesiellaceae Barnesiella "Barnesiella intestinihominis" UP000260276 FALSE FALSE excluded_in_uniprot_db
-microbiome 397865 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Barnesiellaceae Barnesiella "Barnesiella viscericola" UP000757103 FALSE TRUE downloaded_by_conduit
-microbiome 1501392 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Barnesiellaceae Coprobacter "Coprobacter secundus" UP000031050 FALSE FALSE excluded_in_uniprot_db
-microbiome 1807744 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales NA NA "Bacteroidales bacterium K10" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1262754 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides sp. CAG:98" UP000018115 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263042 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola dorei CAG:222" UP000018210 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263056 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola vulgatus CAG:6" UP000018171 FALSE FALSE excluded_in_uniprot_db
-microbiome 821 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola vulgatus" UP000061587 FALSE TRUE downloaded_by_conduit
-microbiome 376805 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola salanitronis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 310298 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola coprocola" UP000285864 TRUE TRUE downloaded_by_conduit
-microbiome 376804 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola barnesiae" UP001204579 FALSE TRUE downloaded_by_conduit
-microbiome 387090 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola coprophilus" UP000283855 TRUE TRUE downloaded_by_conduit
-microbiome 310297 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola plebeius" UP000260862 TRUE TRUE downloaded_by_conduit
-microbiome 1841865 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Mediterranea "Mediterranea massiliensis" UP000717835 FALSE TRUE downloaded_by_conduit
-microbiome 246787 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides cellulosilyticus" UP000061809 FALSE TRUE downloaded_by_conduit
-microbiome 626931 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides oleiciplenus" UP000260983 FALSE TRUE downloaded_by_conduit
-microbiome 46506 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides stercoris" UP000056419 TRUE TRUE downloaded_by_conduit
-microbiome 820 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides uniformis" UP000095419 FALSE TRUE downloaded_by_conduit
-microbiome 626930 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides fluxus" UP001271927 FALSE FALSE excluded_in_uniprot_db
-microbiome 1347393 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides neonati" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 291644 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides salyersiae" UP000422221 FALSE TRUE downloaded_by_conduit
-microbiome 1263046 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides fragilis CAG:47" UP000018271 FALSE FALSE excluded_in_uniprot_db
-microbiome 817 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides fragilis" UP000006425 FALSE TRUE downloaded_by_conduit
-microbiome 310300 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides pyogenes" UP000324383 TRUE TRUE downloaded_by_conduit
-microbiome 871325 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides faecichinchillae" UP000184436 TRUE TRUE downloaded_by_conduit
-microbiome 1263044 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides faecis CAG:32" UP000017967 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263054 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides thetaiotaomicron CAG:40" UP000018192 FALSE FALSE excluded_in_uniprot_db
-microbiome 818 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides thetaiotaomicron" UP000095541 FALSE TRUE downloaded_by_conduit
-microbiome 1897051 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides sp. 43_46" UP000186723 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263037 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides caccae CAG:21" UP000017990 FALSE FALSE excluded_in_uniprot_db
-microbiome 338188 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides finegoldii" UP000095517 FALSE TRUE downloaded_by_conduit
-microbiome 1263045 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides finegoldii CAG:203" UP000018058 FALSE FALSE excluded_in_uniprot_db
-microbiome 1263050 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides ovatus CAG:22" UP000018233 FALSE FALSE excluded_in_uniprot_db
-microbiome 556259 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides sp. D2" UP000003135 TRUE TRUE downloaded_by_conduit
-microbiome 28116 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides ovatus" UP000181870 FALSE TRUE downloaded_by_conduit
-microbiome 1263095 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Paraprevotella "Paraprevotella clara CAG:116" UP000017958 FALSE FALSE excluded_in_uniprot_db
-microbiome 454155 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Paraprevotella "Paraprevotella xylaniphila" UP000260932 FALSE FALSE excluded_in_uniprot_db
-microbiome 76122 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Alloprevotella "Alloprevotella tannerae" UP000704068 FALSE TRUE downloaded_by_conduit
-microbiome 1852370 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotellamassilia "Prevotellamassilia timonensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1676614 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Xylanibacter "Xylanibacter rarus" UP000036951 TRUE TRUE downloaded_by_conduit
-microbiome 363265 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Leyella "Leyella stercorea" UP000286598 TRUE TRUE downloaded_by_conduit
-microbiome 28127 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Hoylesella "Hoylesella buccalis" UP000235564 FALSE TRUE downloaded_by_conduit
-microbiome 386414 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Hoylesella "Hoylesella timonensis" UP000235661 FALSE TRUE downloaded_by_conduit
-microbiome 28125 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella bivia" UP000070093 FALSE TRUE downloaded_by_conduit
-microbiome 419005 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella amnii" UP000070531 FALSE TRUE downloaded_by_conduit
-microbiome 28128 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella corporis" UP000070533 TRUE TRUE downloaded_by_conduit
-microbiome 28130 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella disiens" UP000254072 FALSE TRUE downloaded_by_conduit
-microbiome 1287488 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella sp. S7 MS 2" UP000029732 TRUE TRUE downloaded_by_conduit
-microbiome 1284775 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella sp. S7-1-8" UP000029597 TRUE TRUE downloaded_by_conduit
-microbiome 305719 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Segatella "Segatella baroniae" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1131336 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. KLE1605" UP000077642 FALSE FALSE excluded_in_uniprot_db
-microbiome 1574265 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. KLE1798" UP000070454 FALSE TRUE downloaded_by_conduit
-microbiome 1574264 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. KLE1797" UP000070313 FALSE FALSE excluded_in_uniprot_db
-microbiome 1262691 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. CAG:344" UP000017903 FALSE FALSE excluded_in_uniprot_db
-microbiome 3134035 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. CAG 344" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 239935 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia muciniphila" UP000235914 FALSE TRUE downloaded_by_conduit
-microbiome 1263034 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia muciniphila CAG:154" UP000018106 FALSE FALSE excluded_in_uniprot_db
-microbiome 1929996 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. Phil8" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1896967 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. 54_46" UP000185941 FALSE FALSE excluded_in_uniprot_db
-microbiome 1638783 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. UNK.MGS-1" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 35833 Bacteria Pseudomonadati Thermodesulfobacteriota Desulfovibrionia Desulfovibrionales Desulfovibrionaceae Bilophila "Bilophila wadsworthia" UP000715760 FALSE FALSE excluded_in_uniprot_db
-microbiome 44742 Bacteria Pseudomonadati Thermodesulfobacteriota Desulfovibrionia Desulfovibrionales Desulfovibrionaceae Desulfovibrio "Desulfovibrio fairfieldensis" UP000069241 FALSE TRUE downloaded_by_conduit
-microbiome 1262706 Bacteria Pseudomonadati Pseudomonadota Alphaproteobacteria Rhodospirillales Azospirillaceae Azospirillum "Azospirillum sp. CAG:260" UP000018110 FALSE FALSE excluded_in_uniprot_db
-microbiome 1638782 Bacteria Pseudomonadati Pseudomonadota Alphaproteobacteria Rhodospirillales Rhodospirillaceae Rhodospirillum "Rhodospirillum sp. UNK.MGS-17" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1896971 Bacteria Pseudomonadati Pseudomonadota Alphaproteobacteria Rhodospirillales Azospirillaceae Azospirillum "Azospirillum sp. 47_25" UP000187252 FALSE FALSE excluded_in_uniprot_db
-microbiome 1637509 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Moraxellales Moraxellaceae Acinetobacter "Acinetobacter sp. N54.MGS-139" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 1262986 Bacteria Pseudomonadati Pseudomonadota NA NA NA NA "Proteobacteria bacterium CAG:139" UP000018405 FALSE TRUE downloaded_by_conduit
-microbiome 487175 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Sutterellaceae Parasutterella "Parasutterella excrementihominis" UP000462362 FALSE TRUE downloaded_by_conduit
-microbiome 1263099 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Sutterellaceae Parasutterella "Parasutterella excrementihominis CAG:233" UP000018034 FALSE FALSE excluded_in_uniprot_db
-microbiome 847 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Oxalobacteraceae Oxalobacter "Oxalobacter formigenes" UP000242137 FALSE FALSE excluded_in_uniprot_db
-microbiome 80866 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Comamonadaceae Delftia "Delftia acidovorans" UP000594778 FALSE TRUE downloaded_by_conduit
-microbiome 1244513 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Lysobacterales Lysobacteraceae Luteimonas "Luteimonas huabeiensis" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 291995 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Stutzerimonas "Stutzerimonas azotifigens" UP000786387 FALSE FALSE excluded_in_uniprot_db
-microbiome 157784 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Zestomonas "Zestomonas thermotolerans" NA NA FALSE taxa_id_not_in_uniprot_db
-microbiome 43263 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Aquipseudomonas "Aquipseudomonas alcaligenes" UP000185841 FALSE TRUE downloaded_by_conduit
-microbiome 43306 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Halopseudomonas "Pseudomonas denitrificans (nom. rej.)" UP000326659 FALSE TRUE downloaded_by_conduit
-microbiome 65741 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Pseudomonas "Pseudomonas knackmussii" UP000831189 FALSE FALSE excluded_in_uniprot_db
-microbiome 53412 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Metapseudomonas "Metapseudomonas resinovorans" UP001165099 FALSE FALSE excluded_in_uniprot_db
-microbiome 319939 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Metapseudomonas "Metapseudomonas otitidis" UP000461288 FALSE TRUE downloaded_by_conduit
-microbiome 300 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Ectopseudomonas "Ectopseudomonas mendocina" UP000238327 FALSE TRUE downloaded_by_conduit
-microbiome 729 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pasteurellales Pasteurellaceae Haemophilus "Haemophilus parainfluenzae" UP000092740 FALSE TRUE downloaded_by_conduit
-microbiome 582 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Morganellaceae Morganella "Morganella morganii" UP000032582 FALSE TRUE downloaded_by_conduit
-microbiome 1581059 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Hafniaceae Hafnia "Hafnia sp. HMSC23F03" UP000176590 FALSE FALSE excluded_in_uniprot_db
-microbiome 82983 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Hafniaceae Obesumbacterium "Obesumbacterium proteus" UP000034345 FALSE FALSE excluded_in_uniprot_db
-microbiome 632 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Yersiniaceae Yersinia "Yersinia pestis" UP000000815 TRUE TRUE downloaded_by_conduit
-microbiome 1484157 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Erwiniaceae Pantoea "Pantoea sp. PSNIH2" UP000030310 FALSE FALSE excluded_in_uniprot_db
-microbiome 158822 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Cedecea "Cedecea neteri" UP000029481 TRUE TRUE downloaded_by_conduit
-microbiome 565 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Atlantibacter "Atlantibacter hermannii" UP000037641 FALSE FALSE excluded_in_uniprot_db
-microbiome 357233 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Siccibacter "Siccibacter turicensis" UP000240212 FALSE TRUE downloaded_by_conduit
-microbiome 28141 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Cronobacter "Cronobacter sakazakii" UP000244856 FALSE TRUE downloaded_by_conduit
-microbiome 435910 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Franconibacter "Franconibacter pulveris" UP000037315 FALSE TRUE downloaded_by_conduit
-microbiome 399742 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Enterobacter "Enterobacter sp. 638" UP000000230 FALSE TRUE downloaded_by_conduit
-microbiome 83655 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Leclercia "Leclercia adecarboxylata" UP000222768 FALSE TRUE downloaded_by_conduit
-microbiome 550 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Enterobacter "Enterobacter cloacae" UP000076008 FALSE TRUE downloaded_by_conduit
-microbiome 61646 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Lelliottia "Lelliottia amnigena" UP000653275 FALSE TRUE downloaded_by_conduit
-microbiome 1334193 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Pluralibacter "[Enterobacter] lignolyticus" UP000069162 FALSE TRUE downloaded_by_conduit
-microbiome 61647 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Pluralibacter "Pluralibacter gergoviae" UP000036196 TRUE TRUE downloaded_by_conduit
-microbiome 158877 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Yokenella "Yokenella regensburgei" UP000251313 FALSE TRUE downloaded_by_conduit
-microbiome 379893 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Trabulsiella "Trabulsiella odontotermitis" UP000037393 TRUE TRUE downloaded_by_conduit
-microbiome 580 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kluyvera "Kluyvera cryocrescens" UP000401081 TRUE TRUE downloaded_by_conduit
-microbiome 51288 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kluyvera "Kluyvera ascorbata" UP000268051 FALSE TRUE downloaded_by_conduit
-microbiome 548 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella aerogenes" UP000514462 FALSE TRUE downloaded_by_conduit
-microbiome 573 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella pneumoniae" UP000031820 FALSE TRUE downloaded_by_conduit
-microbiome 54291 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Raoultella "Raoultella ornithinolytica" UP000229713 FALSE TRUE downloaded_by_conduit
-microbiome 571 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella oxytoca" UP000247485 FALSE TRUE downloaded_by_conduit
-microbiome 28901 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Salmonella "Salmonella enterica" UP000055793 FALSE TRUE downloaded_by_conduit
-microbiome 546 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Citrobacter "Citrobacter freundii" UP000019194 FALSE TRUE downloaded_by_conduit
-microbiome 35703 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Citrobacter "Citrobacter amalonaticus" UP000237003 FALSE TRUE downloaded_by_conduit
-microbiome 562 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Escherichia "Escherichia coli" UP000036331 FALSE TRUE downloaded_by_conduit
-microbiome 622 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Shigella "Shigella dysenteriae" UP000238186 FALSE TRUE downloaded_by_conduit
-microbiome 623 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Shigella "Shigella flexneri" UP000001006 TRUE TRUE downloaded_by_conduit
-microbiome 1681196 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella sp. RIT-PI-d" UP000053401 TRUE TRUE downloaded_by_conduit
-microbiome 566 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Pseudescherichia "Pseudescherichia vulneris" UP000254392 FALSE FALSE excluded_in_uniprot_db
-microbiome 1158459 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kosakonia "Kosakonia sacchari" UP000183569 FALSE TRUE downloaded_by_conduit
-microbiome 61648 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kluyvera "Kluyvera intermedia" UP000867740 FALSE TRUE downloaded_by_conduit
-microbiome 563 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Shimwellia "Shimwellia blattae" UP000278701 FALSE FALSE excluded_in_uniprot_db
+organism_id domain kingdom phylum class order family genus species "Proteome Id" reference downloaded_by_conduit download_info
+9606 Eukaryota Metazoa Chordata Mammalia Primates Hominidae Homo "Homo sapiens" UP000005640 TRUE TRUE downloaded_by_conduit
+2173 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanobrevibacter "Methanobrevibacter smithii" UP000232133 FALSE TRUE downloaded_by_conduit
+1263088 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanobrevibacter "Methanobrevibacter smithii CAG:186" UP000018189 FALSE TRUE downloaded_by_conduit
+2317 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanosphaera "Methanosphaera stadtmanae" UP000248557 FALSE TRUE downloaded_by_conduit
+1860157 Archaea Methanobacteriati Methanobacteriota Methanobacteria Methanobacteriales Methanobacteriaceae Methanosphaera "Methanosphaera sp. A6" UP000094981 FALSE TRUE downloaded_by_conduit
+1197717 Bacteria Thermotogati Synergistota Synergistia Synergistales Synergistaceae Cloacibacillus "Cloacibacillus porcorum" UP000093044 TRUE TRUE downloaded_by_conduit
+457415 Bacteria Thermotogati Synergistota Synergistia Synergistales Synergistaceae Synergistes "Synergistes sp. 3_1_syn1" UP000003380 FALSE FALSE excluded_in_uniprot_db
+508460 Bacteria Thermotogati Synergistota Synergistia Synergistales Synergistaceae Cloacibacillus "Cloacibacillus evryensis" UP001205919 FALSE TRUE downloaded_by_conduit
+1906168 Bacteria Bacillati "Candidatus Melainabacteria" NA "Candidatus Gastranaerophilales" NA NA "Candidatus Gastranaerophilales bacterium MH_37" NA NA FALSE taxa_id_not_in_uniprot_db
+1262868 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Cryptobacterium "Cryptobacterium sp. CAG:338" UP000018369 FALSE TRUE downloaded_by_conduit
+79604 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Denitrobacterium "Denitrobacterium detoxificans" UP000182975 TRUE TRUE downloaded_by_conduit
+446660 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Adlercreutzia "Adlercreutzia equolifaciens" UP000472380 FALSE TRUE downloaded_by_conduit
+671266 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Adlercreutzia "Adlercreutzia caecimuris" UP000308978 FALSE TRUE downloaded_by_conduit
+580026 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Adlercreutzia "Adlercreutzia mucosicola" UP000463388 FALSE TRUE downloaded_by_conduit
+1473216 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Senegalimassilia "Senegalimassilia anaerobia" UP000253792 TRUE TRUE downloaded_by_conduit
+502558 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Eggerthella "Eggerthella sp. YY7918" UP000008929 TRUE TRUE downloaded_by_conduit
+471189 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Gordonibacter "Gordonibacter pamelaeae" UP000254000 FALSE TRUE downloaded_by_conduit
+84112 Bacteria Bacillati Actinomycetota Coriobacteriia Eggerthellales Eggerthellaceae Eggerthella "Eggerthella lenta" UP000253752 FALSE TRUE downloaded_by_conduit
+147207 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella intestinalis" UP000283983 TRUE TRUE downloaded_by_conduit
+147206 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella stercoris" UP001058380 FALSE FALSE excluded_in_uniprot_db
+1499681 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella sp. MS5" NA NA FALSE taxa_id_not_in_uniprot_db
+74426 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella aerofaciens" UP000095454 FALSE TRUE downloaded_by_conduit
+1262850 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Coriobacteriaceae Collinsella "Collinsella sp. CAG:166" UP000018358 FALSE TRUE downloaded_by_conduit
+1871022 Bacteria Bacillati Actinomycetota Coriobacteriia Coriobacteriales Atopobiaceae Parolsenella "Parolsenella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+42817 Bacteria Bacillati Actinomycetota Actinomycetes Mycobacteriales Corynebacteriaceae Corynebacterium "Corynebacterium argentoratense" NA NA FALSE taxa_id_not_in_uniprot_db
+1747 Bacteria Bacillati Actinomycetota Actinomycetes Propionibacteriales Propionibacteriaceae Cutibacterium "Cutibacterium acnes" UP000223982 FALSE TRUE downloaded_by_conduit
+43675 Bacteria Bacillati Actinomycetota Actinomycetes Micrococcales Micrococcaceae Rothia "Rothia mucilaginosa" UP000066203 FALSE TRUE downloaded_by_conduit
+2047 Bacteria Bacillati Actinomycetota Actinomycetes Micrococcales Micrococcaceae Rothia "Rothia dentocariosa" UP000219947 TRUE TRUE downloaded_by_conduit
+419015 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Alloscardovia "Alloscardovia omnicolens" UP000242263 FALSE TRUE downloaded_by_conduit
+230143 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Scardovia "Scardovia wiggsiae" UP000722106 FALSE FALSE excluded_in_uniprot_db
+78344 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium pullorum subsp. gallinarum" UP000029046 TRUE TRUE downloaded_by_conduit
+1689 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium dentium" UP000429211 FALSE TRUE downloaded_by_conduit
+1680 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium adolescentis" UP000095647 FALSE TRUE downloaded_by_conduit
+1681 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium bifidum" UP000070092 FALSE TRUE downloaded_by_conduit
+158787 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium scardovii" UP000029033 TRUE TRUE downloaded_by_conduit
+762212 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium biavatii" NA NA FALSE taxa_id_not_in_uniprot_db
+1683 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium angulatum" UP000029105 FALSE FALSE excluded_in_uniprot_db
+762209 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium callitrichos" UP000240228 TRUE TRUE downloaded_by_conduit
+762211 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium stellenboschense" UP000029004 TRUE TRUE downloaded_by_conduit
+1329411 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium aesculapii" NA NA FALSE taxa_id_not_in_uniprot_db
+762210 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium saguini" UP000663729 FALSE FALSE excluded_in_uniprot_db
+983706 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium reuteri" UP000326251 FALSE TRUE downloaded_by_conduit
+216816 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium longum" UP000028505 FALSE TRUE downloaded_by_conduit
+1685 Bacteria Bacillati Actinomycetota Actinomycetes Bifidobacteriales Bifidobacteriaceae Bifidobacterium "Bifidobacterium breve" UP000232491 FALSE TRUE downloaded_by_conduit
+55565 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces graevenitzii" UP000830236 FALSE TRUE downloaded_by_conduit
+544580 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces oris" UP000185736 FALSE TRUE downloaded_by_conduit
+544581 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces johnsonii" UP000319010 FALSE TRUE downloaded_by_conduit
+1659 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces israelii" UP001072034 FALSE FALSE excluded_in_uniprot_db
+461393 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+184870 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Varibaculum "Varibaculum cambriense" UP001200537 TRUE TRUE downloaded_by_conduit
+1661 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Trueperella "Trueperella pyogenes" UP000275951 FALSE TRUE downloaded_by_conduit
+29303 Bacteria Bacillati Actinomycetota Actinomycetes Kitasatosporales Streptomycetaceae Streptantibioticus "Streptantibioticus cattleyicolor" NA NA FALSE taxa_id_not_in_uniprot_db
+1118058 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces sp. ph3" NA NA FALSE taxa_id_not_in_uniprot_db
+712121 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Actinomyces "Actinomyces sp. oral taxon 181" NA NA FALSE taxa_id_not_in_uniprot_db
+178339 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Pauljensenia "Pauljensenia hongkongensis" UP000095214 TRUE TRUE downloaded_by_conduit
+1660 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Schaalia "Schaalia odontolytica" UP000250192 TRUE TRUE downloaded_by_conduit
+52773 Bacteria Bacillati Actinomycetota Actinomycetes Actinomycetales Actinomycetaceae Schaalia "Schaalia meyeri" UP000595220 FALSE TRUE downloaded_by_conduit
+1711 Bacteria Bacillati Actinomycetota Actinomycetes Micrococcales Cellulomonadaceae Cellulomonas "Cellulomonas flavigena" NA NA FALSE taxa_id_not_in_uniprot_db
+209880 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Allisonella "Allisonella histaminiformans" UP000199689 TRUE TRUE downloaded_by_conduit
+218538 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Dialister "Dialister invisus" UP000757890 FALSE TRUE downloaded_by_conduit
+1263072 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Dialister "Dialister invisus CAG:218" UP000017966 FALSE FALSE excluded_in_uniprot_db
+1262980 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Veillonella "Veillonella sp. CAG:933" UP000018347 FALSE TRUE downloaded_by_conduit
+29466 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Veillonella "Veillonella parvula" UP000778864 FALSE TRUE downloaded_by_conduit
+1000569 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Megasphaera "Megasphaera sp. UPII 135-E" UP000004137 FALSE TRUE downloaded_by_conduit
+1000568 Bacteria Bacillati Bacillota Negativicutes Veillonellales Veillonellaceae Megasphaera "Megasphaera lornae" UP000003242 TRUE TRUE downloaded_by_conduit
+626940 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Phascolarctobacterium "Phascolarctobacterium succinatutens" UP000186777 FALSE TRUE downloaded_by_conduit
+1262914 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Phascolarctobacterium "Phascolarctobacterium sp. CAG:207" NA NA FALSE taxa_id_not_in_uniprot_db
+187327 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Acidaminococcus "Acidaminococcus intestini" UP000754226 FALSE TRUE downloaded_by_conduit
+1263033 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Acidaminococcus "Acidaminococcus intestini CAG:325" UP000018020 FALSE FALSE excluded_in_uniprot_db
+905 Bacteria Bacillati Bacillota Negativicutes Acidaminococcales Acidaminococcaceae Acidaminococcus "Acidaminococcus fermentans" UP000182379 FALSE TRUE downloaded_by_conduit
+36834 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium celatum" UP001185172 FALSE FALSE excluded_in_uniprot_db
+84024 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium disporicum" UP000095558 FALSE TRUE downloaded_by_conduit
+29363 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium paraputrificum" UP000092714 TRUE TRUE downloaded_by_conduit
+1561 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium baratii" UP000095563 FALSE TRUE downloaded_by_conduit
+1492 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium butyricum" UP000238081 FALSE TRUE downloaded_by_conduit
+214853 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Anaerofustis "Anaerofustis stercorihominis" UP000261212 FALSE TRUE downloaded_by_conduit
+1736 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium limosum" UP000192391 FALSE TRUE downloaded_by_conduit
+33033 Bacteria Bacillati Bacillota Tissierellia Tissierellales Peptoniphilaceae Parvimonas "Parvimonas micra" UP000031386 TRUE TRUE downloaded_by_conduit
+1852373 Bacteria Bacillati Bacillota Tissierellia Tissierellales Peptoniphilaceae Murdochiella "Murdochiella vaginalis" NA NA FALSE taxa_id_not_in_uniprot_db
+938289 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Levyella "Levyella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+1776392 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Massilimicrobiota "Massilimicrobiota timonensis" UP000195305 FALSE TRUE downloaded_by_conduit
+1871336 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Filifactoraceae Criibacterium "Criibacterium bergeronii" UP000093352 TRUE TRUE downloaded_by_conduit
+1261 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Peptostreptococcus "Peptostreptococcus anaerobius" UP000070326 FALSE TRUE downloaded_by_conduit
+1263100 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Peptostreptococcus "Peptostreptococcus anaerobius CAG:621" UP000018261 FALSE FALSE excluded_in_uniprot_db
+261299 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Intestinibacter "Intestinibacter bartlettii" UP000078259 FALSE FALSE excluded_in_uniprot_db
+1505 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Paraclostridium "Paraclostridium sordellii" UP000049127 FALSE TRUE downloaded_by_conduit
+1476973 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae NA "Peptostreptococcaceae bacterium VA2" NA NA FALSE taxa_id_not_in_uniprot_db
+1496 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Peptostreptococcaceae Clostridioides "Clostridioides difficile" UP000189137 FALSE TRUE downloaded_by_conduit
+1263005 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:145" UP000018044 FALSE FALSE excluded_in_uniprot_db
+1776384 Bacteria Bacillati Bacillota Clostridia Peptostreptococcales Anaerovoracaceae Emergencia "Emergencia timonensis" UP000284841 TRUE TRUE downloaded_by_conduit
+270498 Bacteria Bacillati Bacillota Clostridia Christensenellales Christensenellaceae Christensenella "Christensenella hongkongensis" UP000034076 TRUE TRUE downloaded_by_conduit
+1851429 Bacteria Bacillati Bacillota Clostridia Christensenellales Christensenellaceae Christensenella "Christensenella intestinihominis" NA NA FALSE taxa_id_not_in_uniprot_db
+1262775 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:138" UP000017905 FALSE TRUE downloaded_by_conduit
+1930012 Bacteria Bacillati Bacillota Clostridia Christensenellales Christensenellaceae NA "Christensenellaceae bacterium Phil1" NA NA FALSE taxa_id_not_in_uniprot_db
+39488 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Anaerobutyricum "Anaerobutyricum hallii" UP000284621 TRUE TRUE downloaded_by_conduit
+1262879 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:146" UP000018404 FALSE FALSE excluded_in_uniprot_db
+105841 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Anaerostipes "Anaerostipes caccae" UP000004032 FALSE FALSE excluded_in_uniprot_db
+1263014 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:270" UP000018350 FALSE FALSE excluded_in_uniprot_db
+649756 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Anaerostipes "Anaerostipes hadrus" UP000008960 FALSE TRUE downloaded_by_conduit
+411489 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. L2-50" UP000003352 FALSE TRUE downloaded_by_conduit
+1262862 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus sp. CAG:131" UP000017923 FALSE FALSE excluded_in_uniprot_db
+33043 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus eutactus" UP000283295 FALSE TRUE downloaded_by_conduit
+290052 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Acetivibrio "Acetivibrio ethanolgignens" UP000054874 TRUE TRUE downloaded_by_conduit
+1896990 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:62_40_43" UP000187212 FALSE FALSE excluded_in_uniprot_db
+1262782 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:230" UP000017961 FALSE TRUE downloaded_by_conduit
+1703332 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Butyribacter "Butyribacter intestini" UP000050833 FALSE TRUE downloaded_by_conduit
+796942 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Stomatobaculum "Stomatobaculum longum" UP000018466 TRUE TRUE downloaded_by_conduit
+43995 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Johnsonella "Johnsonella ignava" NA NA FALSE taxa_id_not_in_uniprot_db
+936595 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnoanaerobaculum "Lachnoanaerobaculum sp. OBRC5-5" UP000006070 FALSE TRUE downloaded_by_conduit
+1262824 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:58" UP000018263 FALSE FALSE excluded_in_uniprot_db
+1262842 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:81" UP000018235 FALSE FALSE excluded_in_uniprot_db
+1512 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnoclostridium "[Clostridium] symbiosum" UP001203136 FALSE TRUE downloaded_by_conduit
+1262792 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:299" UP000017929 FALSE TRUE downloaded_by_conduit
+411486 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. M62/1" UP000004936 FALSE TRUE downloaded_by_conduit
+154046 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Hungatella "Hungatella hathewayi" UP000095651 FALSE TRUE downloaded_by_conduit
+84030 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lacrimispora "Lacrimispora saccharolytica" UP000199789 FALSE FALSE excluded_in_uniprot_db
+333367 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster asparagiformis" UP000283880 FALSE TRUE downloaded_by_conduit
+457421 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA NA "Clostridiales bacterium 1_7_47FAA" UP000004695 FALSE FALSE excluded_in_uniprot_db
+358743 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster citroniae" UP000708338 FALSE TRUE downloaded_by_conduit
+208479 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster bolteae" UP000261287 FALSE TRUE downloaded_by_conduit
+1263064 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster bolteae CAG:59" UP000017941 FALSE FALSE excluded_in_uniprot_db
+1263065 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "[Clostridium] clostridioforme CAG:132" UP000018009 FALSE TRUE downloaded_by_conduit
+1263066 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "[Clostridium] clostridioforme CAG:511" UP000018273 FALSE FALSE excluded_in_uniprot_db
+1531 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Enterocloster "Enterocloster clostridioformis" UP000251853 TRUE TRUE downloaded_by_conduit
+39496 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium ventriosum" UP000284779 TRUE TRUE downloaded_by_conduit
+1263062 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Eshraghiella "Eshraghiella crossota CAG:259" UP000018300 FALSE TRUE downloaded_by_conduit
+45851 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Eshraghiella "Eshraghiella crossota" UP000186985 FALSE FALSE excluded_in_uniprot_db
+384638 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA NA "[Bacteroides] pectinophilus" UP001057905 FALSE FALSE excluded_in_uniprot_db
+39485 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnospira "Lachnospira eligens" UP000095621 FALSE TRUE downloaded_by_conduit
+1262845 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:91" UP000018298 FALSE FALSE excluded_in_uniprot_db
+1262994 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:65" UP000018207 FALSE FALSE excluded_in_uniprot_db
+397287 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium 28-4" UP000014112 TRUE TRUE downloaded_by_conduit
+1263012 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:24" UP000017963 FALSE FALSE excluded_in_uniprot_db
+1226325 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. KLE 1755" UP000016509 FALSE FALSE excluded_in_uniprot_db
+1855376 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium NLAE-zl-G231" UP000198576 FALSE TRUE downloaded_by_conduit
+1432052 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Eisenbergiella "Eisenbergiella tayi" UP000094067 FALSE TRUE downloaded_by_conduit
+1042156 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. SY8519" UP000008937 TRUE TRUE downloaded_by_conduit
+39490 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium ramulus" UP000245288 TRUE TRUE downloaded_by_conduit
+1235790 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. 14-2" UP000014176 TRUE TRUE downloaded_by_conduit
+397288 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium 3-1" UP000014188 TRUE TRUE downloaded_by_conduit
+397290 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium A2" UP000014150 TRUE TRUE downloaded_by_conduit
+360807 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia inulinivorans" UP000049828 TRUE TRUE downloaded_by_conduit
+166486 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia intestinalis" UP000479531 TRUE TRUE downloaded_by_conduit
+301301 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia hominis" UP000266172 FALSE TRUE downloaded_by_conduit
+140626 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnobacterium "Lachnobacterium bovis" UP000182471 FALSE TRUE downloaded_by_conduit
+39491 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Agathobacter "Agathobacter rectalis" UP000049472 TRUE TRUE downloaded_by_conduit
+301302 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Roseburia "Roseburia faecis" UP000049979 TRUE TRUE downloaded_by_conduit
+1896976 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. CAG:37_48_57" UP000187411 FALSE FALSE excluded_in_uniprot_db
+1150298 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Fusicatenibacter "Fusicatenibacter saccharivorans" UP000095706 FALSE TRUE downloaded_by_conduit
+1262757 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. CAG:37" UP000018204 FALSE FALSE excluded_in_uniprot_db
+341220 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Lactonifactor "Lactonifactor longoviformis" UP000237187 FALSE FALSE excluded_in_uniprot_db
+1322 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia hansenii" UP000822142 FALSE FALSE excluded_in_uniprot_db
+33035 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia producta" UP000289794 FALSE TRUE downloaded_by_conduit
+1263061 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia hydrogenotrophica CAG:147" UP000018163 FALSE FALSE excluded_in_uniprot_db
+53443 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia hydrogenotrophica" UP001299923 FALSE FALSE excluded_in_uniprot_db
+180164 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia schinkii" UP000729774 FALSE FALSE excluded_in_uniprot_db
+1262964 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus sp. CAG:60" UP000017995 FALSE FALSE excluded_in_uniprot_db
+40520 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia obeum" UP000409147 TRUE TRUE downloaded_by_conduit
+1226324 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. KLE 1732" UP000016485 FALSE TRUE downloaded_by_conduit
+1262755 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia sp. CAG:237" UP000017983 FALSE FALSE excluded_in_uniprot_db
+1263107 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Blautia "Blautia obeum CAG:39" UP000018059 FALSE FALSE excluded_in_uniprot_db
+1078091 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus sp. HPP0048" UP000014415 FALSE FALSE excluded_in_uniprot_db
+742723 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium 2_1_46FAA" UP000018451 TRUE TRUE downloaded_by_conduit
+1263069 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Tyzzerella "[Clostridium] nexile CAG:348" UP000018368 FALSE FALSE excluded_in_uniprot_db
+29361 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Tyzzerella "[Clostridium] nexile" UP000284287 FALSE FALSE excluded_in_uniprot_db
+180311 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Hespellia "Hespellia stercorisuis" NA NA FALSE taxa_id_not_in_uniprot_db
+1235792 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae NA "Lachnospiraceae bacterium M18-1" UP000014090 TRUE TRUE downloaded_by_conduit
+342942 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter glycyrrhizinilyticus" UP000762161 FALSE FALSE excluded_in_uniprot_db
+39482 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Faecalicatena "Faecalicatena contorta" UP000254051 TRUE TRUE downloaded_by_conduit
+33038 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter gnavus" UP000234840 FALSE TRUE downloaded_by_conduit
+1720300 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+33039 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "[Ruminococcus] torques" UP000363661 TRUE TRUE downloaded_by_conduit
+1263108 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "[Ruminococcus] torques CAG:61" UP000017998 FALSE TRUE downloaded_by_conduit
+592978 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "Mediterraneibacter faecis" UP000448177 FALSE TRUE downloaded_by_conduit
+46228 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Mediterraneibacter "[Ruminococcus] lactaris" UP000260793 FALSE TRUE downloaded_by_conduit
+1653434 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Sellimonas "Sellimonas intestinalis" UP000261080 TRUE TRUE downloaded_by_conduit
+1632013 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Drancourtella "Drancourtella massiliensis" UP000775686 FALSE FALSE excluded_in_uniprot_db
+1745713 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Bariatricus "Bariatricus massiliensis" UP001279793 FALSE FALSE excluded_in_uniprot_db
+1896996 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus sp. 43_8" UP000243608 FALSE FALSE excluded_in_uniprot_db
+410072 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Coprococcus "Coprococcus comes" UP000283360 TRUE TRUE downloaded_by_conduit
+1519438 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. ER2" NA NA FALSE taxa_id_not_in_uniprot_db
+1262872 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea sp. CAG:105" UP000017921 FALSE FALSE excluded_in_uniprot_db
+39486 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea formicigenerans" UP000261055 TRUE TRUE downloaded_by_conduit
+88431 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea longicatena" UP000284095 TRUE TRUE downloaded_by_conduit
+1896999 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea sp. 42_8" UP000187258 FALSE TRUE downloaded_by_conduit
+29347 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Lachnoclostridium "[Clostridium] scindens" UP000462363 FALSE TRUE downloaded_by_conduit
+1235798 Bacteria Bacillati Bacillota Clostridia Lachnospirales Lachnospiraceae Dorea "Dorea sp. 5-2" UP000014211 FALSE FALSE excluded_in_uniprot_db
+160404 Bacteria Bacillati Bacillota Clostridia Lachnospirales Anaerotignaceae Anaerotignum "Anaerotignum lactatifermentans" UP000195455 FALSE TRUE downloaded_by_conduit
+1263025 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:466" UP000018338 FALSE FALSE excluded_in_uniprot_db
+1262814 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:505" UP000018153 FALSE FALSE excluded_in_uniprot_db
+1263021 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:41" UP000018139 FALSE FALSE excluded_in_uniprot_db
+501571 Bacteria Bacillati Bacillota Clostridia Eubacteriales Butyricicoccaceae Butyricicoccus "Butyricicoccus pullicaecorum" UP000195326 FALSE TRUE downloaded_by_conduit
+1828554 Bacteria Bacillati Bacillota Clostridia Eubacteriales Butyricicoccaceae Butyricicoccus "Butyricicoccus sp. K4410.MGS-46" NA NA FALSE taxa_id_not_in_uniprot_db
+39484 Bacteria Bacillati Bacillota Clostridia Eubacteriales Butyricicoccaceae Agathobaculum "Agathobaculum desmolans" NA NA FALSE taxa_id_not_in_uniprot_db
+1697794 Bacteria Bacillati Bacillota Clostridia NA NA NA "Clostridia bacterium UC5.1-1D1" NA NA FALSE taxa_id_not_in_uniprot_db
+1897029 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:137_57_8" UP000187611 FALSE TRUE downloaded_by_conduit
+1263004 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:137" UP000018011 FALSE TRUE downloaded_by_conduit
+1650661 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium phoceensis" NA NA FALSE taxa_id_not_in_uniprot_db
+552398 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "Ruminococcaceae bacterium D16" UP000002801 TRUE TRUE downloaded_by_conduit
+1673721 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Intestinimonas "Intestinimonas massiliensis (ex Afouda et al. 2020)" UP001204562 FALSE TRUE downloaded_by_conduit
+3062493 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Intestinimonas "Intestinimonas massiliensis (ex Liu et al. 2021)" NA NA FALSE taxa_id_not_in_uniprot_db
+1297617 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA Intestinimonas "Intestinimonas butyriciproducens" UP000064844 TRUE TRUE downloaded_by_conduit
+292800 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Flavonifractor "Flavonifractor plautii" UP000429811 FALSE TRUE downloaded_by_conduit
+106588 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Pseudoflavonifractor "Pseudoflavonifractor capillosus" UP000760668 FALSE TRUE downloaded_by_conduit
+1519439 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Oscillibacter "Oscillibacter sp. ER4" NA NA FALSE taxa_id_not_in_uniprot_db
+1262992 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:83" UP000018101 FALSE FALSE excluded_in_uniprot_db
+1897030 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:176_59_8" UP000188228 FALSE TRUE downloaded_by_conduit
+1897011 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Oscillibacter "Oscillibacter sp. 57_20" UP000187510 FALSE FALSE excluded_in_uniprot_db
+1226323 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Oscillibacter "Oscillibacter sp. KLE 1745" UP000016601 FALSE FALSE excluded_in_uniprot_db
+3083063 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales NA "Candidatus Colimorpha" "Candidatus Colimorpha enterica" UP000017938 FALSE TRUE downloaded_by_conduit
+1897033 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:272_52_7" UP000187597 FALSE TRUE downloaded_by_conduit
+1262886 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:251" UP000018414 FALSE TRUE downloaded_by_conduit
+1262882 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:180" UP000018411 FALSE TRUE downloaded_by_conduit
+1262798 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:352" UP000018340 FALSE FALSE excluded_in_uniprot_db
+1262848 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:964" UP000018136 FALSE TRUE downloaded_by_conduit
+1262890 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. CAG:581" UP000017975 FALSE FALSE excluded_in_uniprot_db
+1897020 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus sp. CAG:108-related_41_35" UP000187231 FALSE FALSE excluded_in_uniprot_db
+1263068 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Clostridium] leptum CAG:27" UP000018168 FALSE TRUE downloaded_by_conduit
+1535 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Clostridium] leptum" UP000284751 TRUE TRUE downloaded_by_conduit
+1262989 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:94" UP000018237 FALSE TRUE downloaded_by_conduit
+1776382 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Neglectibacter "Neglectibacter timonensis" NA NA FALSE taxa_id_not_in_uniprot_db
+1697793 Bacteria Bacillati Bacillota Clostridia NA NA NA "Clostridia bacterium UC5.1-1E11" NA NA FALSE taxa_id_not_in_uniprot_db
+1720313 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae "Bittarella (ex Durand et al. 2017)" "Bittarella massiliensis (ex Durand et al. 2017)" UP000184089 FALSE TRUE downloaded_by_conduit
+3062437 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae "Bittarella (ex Liu et al. 2021)" "Bittarella massiliensis (ex Liu et al. 2021)" NA NA FALSE taxa_id_not_in_uniprot_db
+1550024 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruthenibacterium "Ruthenibacterium lactatiformans" UP000032483 TRUE TRUE downloaded_by_conduit
+1650663 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Allofournierella "Allofournierella massiliensis" UP000295184 FALSE TRUE downloaded_by_conduit
+214851 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Subdoligranulum "Subdoligranulum variabile" UP000759273 FALSE TRUE downloaded_by_conduit
+853 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Faecalibacterium "Faecalibacterium prausnitzii" UP000406184 TRUE TRUE downloaded_by_conduit
+1897006 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Faecalibacterium "Faecalibacterium sp. CAG:82-related_59_9" UP000187270 FALSE TRUE downloaded_by_conduit
+1871018 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Angelakisella "Angelakisella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+2897707 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Merdimmobilis "Merdimmobilis hominis" UP000774750 TRUE TRUE downloaded_by_conduit
+169435 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Anaerotruncus "Anaerotruncus colihominis" UP000446866 TRUE TRUE downloaded_by_conduit
+1235835 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Anaerotruncus "Anaerotruncus sp. G3(2012)" UP000014129 TRUE TRUE downloaded_by_conduit
+1870991 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Massilioclostridium "Massilioclostridium coli" NA NA FALSE taxa_id_not_in_uniprot_db
+84026 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Clostridium] methylpentosum" NA NA FALSE taxa_id_not_in_uniprot_db
+39492 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae NA "[Eubacterium] siraeum" UP000095662 FALSE TRUE downloaded_by_conduit
+1897004 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. 45_250" UP000187215 FALSE TRUE downloaded_by_conduit
+1161942 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus champanellensis" UP001306196 FALSE FALSE excluded_in_uniprot_db
+40519 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus callidus" UP001196334 FALSE FALSE excluded_in_uniprot_db
+1930001 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus sp. Zagget7" NA NA FALSE taxa_id_not_in_uniprot_db
+1160721 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus bicirculans (ex Wegman et al. 2014)" UP001206236 FALSE TRUE downloaded_by_conduit
+3062497 Bacteria Bacillati Bacillota Clostridia Eubacteriales Oscillospiraceae Ruminococcus "Ruminococcus bicirculans (ex Liu et al. 2021)" NA NA FALSE taxa_id_not_in_uniprot_db
+1896986 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. CAG:245_30_32" UP000187275 FALSE TRUE downloaded_by_conduit
+154288 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Turicibacteraceae Turicibacter "Turicibacter sanguinis" UP000487649 FALSE TRUE downloaded_by_conduit
+1712675 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Turicibacteraceae Turicibacter "Turicibacter sp. H121" UP000057144 TRUE TRUE downloaded_by_conduit
+1504823 Bacteria NA NA NA NA NA NA "bacterium LF-3" NA NA FALSE taxa_id_not_in_uniprot_db
+1547 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Thomasclavelia "Thomasclavelia ramosa" UP000261032 FALSE TRUE downloaded_by_conduit
+29348 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Thomasclavelia "Thomasclavelia spiroformis" UP000196258 FALSE TRUE downloaded_by_conduit
+341225 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Thomasclavelia "Thomasclavelia saccharogumia" NA NA FALSE taxa_id_not_in_uniprot_db
+1658109 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae "Candidatus Stoquefichus" "Candidatus Stoquefichus sp. SB1" NA NA FALSE taxa_id_not_in_uniprot_db
+100884 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Coprobacillaceae Coprobacillus "Coprobacillus cateniformis" UP000003157 TRUE TRUE downloaded_by_conduit
+1468449 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemania "Holdemania massiliensis" UP000433575 FALSE TRUE downloaded_by_conduit
+61171 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemania "Holdemania filiformis" UP000284178 TRUE TRUE downloaded_by_conduit
+1852366 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemania "Holdemania sp. Marseille-P2844" NA NA FALSE taxa_id_not_in_uniprot_db
+118748 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Bulleidia "Bulleidia extructa" NA NA FALSE taxa_id_not_in_uniprot_db
+102148 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Solobacterium "Solobacterium moorei" UP000284731 FALSE TRUE downloaded_by_conduit
+1903263 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Traorella "Traorella massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+1034346 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Dielma "Dielma fastidiosa" UP000247612 TRUE TRUE downloaded_by_conduit
+1697790 Bacteria Bacillati Bacillota Clostridia NA NA NA "Clostridia bacterium UC5.1-1C12" NA NA FALSE taxa_id_not_in_uniprot_db
+1232449 Bacteria Bacillati Bacillota Clostridia Eubacteriales NA NA "Clostridiales bacterium VE202-08" NA NA FALSE taxa_id_not_in_uniprot_db
+1735 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Holdemanella "Holdemanella biformis" UP000265489 FALSE TRUE downloaded_by_conduit
+1323 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Faecalicoccus "Faecalicoccus pleomorphus" UP000255523 TRUE TRUE downloaded_by_conduit
+39483 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Faecalitalea "Faecalitalea cylindroides" UP000195447 TRUE TRUE downloaded_by_conduit
+1263016 Bacteria Bacillati Bacillota NA NA NA NA "Firmicutes bacterium CAG:308" UP000017945 FALSE TRUE downloaded_by_conduit
+1871030 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Merdibacter "Merdibacter massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+1263076 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Amedibacillus "Amedibacillus dolichus CAG:375" UP000018093 FALSE TRUE downloaded_by_conduit
+31971 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae Amedibacillus "Amedibacillus dolichus" UP000284868 TRUE TRUE downloaded_by_conduit
+552396 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium 5_2_54FAA" UP000016858 TRUE TRUE downloaded_by_conduit
+457402 Bacteria Bacillati Bacillota Clostridia Eubacteriales Eubacteriaceae Eubacterium "Eubacterium sp. 3_1_31" UP000004469 FALSE FALSE excluded_in_uniprot_db
+1522 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "[Clostridium] innocuum" UP000030008 FALSE TRUE downloaded_by_conduit
+1834207 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium I46" UP000092604 FALSE TRUE downloaded_by_conduit
+658657 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium 21_3" UP000003424 FALSE FALSE excluded_in_uniprot_db
+1262981 Bacteria Bacillati Bacillota Erysipelotrichia Erysipelotrichales Erysipelotrichaceae NA "Erysipelotrichaceae bacterium CAG:64" UP000018179 FALSE FALSE excluded_in_uniprot_db
+908340 Bacteria Bacillati Bacillota Clostridia Eubacteriales Clostridiaceae Clostridium "Clostridium sp. HGF2" UP000004918 FALSE FALSE excluded_in_uniprot_db
+198467 Bacteria Bacillati Bacillota Bacilli Bacillales Anoxybacillaceae Anoxybacillus "Anoxybacillus gonensis" UP001176117 FALSE TRUE downloaded_by_conduit
+1664069 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus glycinifermentans" UP000036168 FALSE TRUE downloaded_by_conduit
+1402 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus licheniformis" UP000435910 FALSE TRUE downloaded_by_conduit
+1549811 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. BSC154" UP000028985 FALSE FALSE excluded_in_uniprot_db
+1423 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus subtilis" UP000032247 FALSE TRUE downloaded_by_conduit
+1390 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus amyloliquefaciens" UP000037707 FALSE TRUE downloaded_by_conduit
+492670 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus velezensis" UP000587477 FALSE TRUE downloaded_by_conduit
+936599 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. GZB" UP000189801 FALSE FALSE excluded_in_uniprot_db
+1007654 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. 916" UP000005157 FALSE FALSE excluded_in_uniprot_db
+1449047 Bacteria Bacillati Bacillota Bacilli Bacillales Bacillaceae Bacillus "Bacillus sp. UNC69MF" NA NA FALSE taxa_id_not_in_uniprot_db
+84135 Bacteria Bacillati Bacillota Bacilli Bacillales Gemellaceae Gemella "Gemella sanguinis" UP000235670 FALSE TRUE downloaded_by_conduit
+1284 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus hyicus" UP000285625 FALSE TRUE downloaded_by_conduit
+1295 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus schleiferi" UP000264146 FALSE TRUE downloaded_by_conduit
+283734 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus pseudintermedius" UP000246351 FALSE TRUE downloaded_by_conduit
+1286 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus simulans" UP000058481 FALSE FALSE excluded_in_uniprot_db
+61015 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus succinus" UP000241960 FALSE TRUE downloaded_by_conduit
+246432 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus equorum" UP000095464 FALSE TRUE downloaded_by_conduit
+29385 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus saprophyticus" UP000254707 FALSE TRUE downloaded_by_conduit
+28035 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus lugdunensis" UP000293637 FALSE TRUE downloaded_by_conduit
+1283 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus haemolyticus" UP000053523 FALSE TRUE downloaded_by_conduit
+308354 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus simiae" UP000236235 FALSE FALSE excluded_in_uniprot_db
+1280 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus aureus" UP000032274 FALSE TRUE downloaded_by_conduit
+1292 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus warneri" UP000240717 FALSE TRUE downloaded_by_conduit
+29388 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus capitis" UP000291949 FALSE TRUE downloaded_by_conduit
+1282 Bacteria Bacillati Bacillota Bacilli Bacillales Staphylococcaceae Staphylococcus "Staphylococcus epidermidis" UP000192417 FALSE TRUE downloaded_by_conduit
+1640 Bacteria Bacillati Bacillota Bacilli Bacillales Listeriaceae Listeria "Listeria seeligeri" UP000523362 FALSE TRUE downloaded_by_conduit
+1642 Bacteria Bacillati Bacillota Bacilli Bacillales Listeriaceae Listeria "Listeria innocua" UP000552309 FALSE TRUE downloaded_by_conduit
+1639 Bacteria Bacillati Bacillota Bacilli Bacillales Listeriaceae Listeria "Listeria monocytogenes" UP000193519 FALSE TRUE downloaded_by_conduit
+180295 Bacteria Bacillati Bacillota Bacilli Lactobacillales Carnobacteriaceae Atopostipes "Atopostipes suicloacalis" UP001171584 FALSE FALSE excluded_in_uniprot_db
+166939 Bacteria Bacillati Bacillota Bacilli Lactobacillales Carnobacteriaceae Allofustis "Allofustis seminis" NA NA FALSE taxa_id_not_in_uniprot_db
+1351 Bacteria Bacillati Bacillota Bacilli Lactobacillales Enterococcaceae Enterococcus "Enterococcus faecalis" UP000244101 FALSE TRUE downloaded_by_conduit
+1352 Bacteria Bacillati Bacillota Bacilli Lactobacillales Enterococcaceae Enterococcus "Enterococcus faecium" UP000070452 FALSE TRUE downloaded_by_conduit
+53345 Bacteria Bacillati Bacillota Bacilli Lactobacillales Enterococcaceae Enterococcus "Enterococcus durans" UP000220669 FALSE TRUE downloaded_by_conduit
+1363 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Lactococcus "Lactococcus garvieae" UP000181969 FALSE TRUE downloaded_by_conduit
+1358 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Lactococcus "Lactococcus lactis" UP000215635 FALSE TRUE downloaded_by_conduit
+1307 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus suis" UP000069526 FALSE TRUE downloaded_by_conduit
+1318 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus parasanguinis" UP000285725 FALSE TRUE downloaded_by_conduit
+68892 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus infantis" UP000033405 FALSE TRUE downloaded_by_conduit
+1303 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus oralis" UP000028098 FALSE TRUE downloaded_by_conduit
+28037 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus mitis" UP000028022 FALSE TRUE downloaded_by_conduit
+1328 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus anginosus" UP000238573 FALSE TRUE downloaded_by_conduit
+1338 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus intermedius" UP000217792 FALSE TRUE downloaded_by_conduit
+45634 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus cristatus" UP000070377 FALSE TRUE downloaded_by_conduit
+1302 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus gordonii" UP000033375 FALSE TRUE downloaded_by_conduit
+1305 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus sanguinis" UP000183504 FALSE TRUE downloaded_by_conduit
+1309 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus mutans" UP000595884 FALSE TRUE downloaded_by_conduit
+1304 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus salivarius" UP000027855 FALSE TRUE downloaded_by_conduit
+1308 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus thermophilus" UP000249634 FALSE TRUE downloaded_by_conduit
+315405 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus gallolyticus" UP000027584 FALSE TRUE downloaded_by_conduit
+1311 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus agalactiae" UP000035174 FALSE TRUE downloaded_by_conduit
+1314 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus pyogenes" UP000316580 FALSE TRUE downloaded_by_conduit
+361101 Bacteria Bacillati Bacillota Bacilli Lactobacillales Streptococcaceae Streptococcus "Streptococcus pseudoporcinus" UP000304914 FALSE TRUE downloaded_by_conduit
+47715 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lacticaseibacillus "Lacticaseibacillus rhamnosus" UP000189067 FALSE TRUE downloaded_by_conduit
+1597 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lacticaseibacillus "Lacticaseibacillus paracasei" UP000234512 FALSE TRUE downloaded_by_conduit
+1582 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lacticaseibacillus "Lacticaseibacillus casei" UP000195609 FALSE TRUE downloaded_by_conduit
+60520 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lactiplantibacillus "Lactiplantibacillus paraplantarum" UP000277896 FALSE TRUE downloaded_by_conduit
+1244 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Leuconostoc "Leuconostoc gelidum" UP001309402 FALSE FALSE excluded_in_uniprot_db
+1245 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Leuconostoc "Leuconostoc mesenteroides" UP000469952 FALSE TRUE downloaded_by_conduit
+1633 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Limosilactobacillus "Limosilactobacillus vaginalis" UP001212401 FALSE TRUE downloaded_by_conduit
+97478 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Limosilactobacillus "Limosilactobacillus mucosae" UP000030001 FALSE TRUE downloaded_by_conduit
+1613 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Limosilactobacillus "Limosilactobacillus fermentum" UP000094714 TRUE TRUE downloaded_by_conduit
+1581062 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Lactobacillus "Lactobacillus sp. HMSC24D01" UP000178539 FALSE FALSE excluded_in_uniprot_db
+1625 Bacteria Bacillati Bacillota Bacilli Lactobacillales Lactobacillaceae Fructilactobacillus "Fructilactobacillus sanfranciscensis" UP000313312 FALSE TRUE downloaded_by_conduit
+103810 Bacteria Pseudomonadati Bacteroidota Flavobacteriia Flavobacteriales Weeksellaceae Riemerella "Riemerella columbina" NA NA FALSE taxa_id_not_in_uniprot_db
+28139 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Rikenella "Rikenella microfusus" UP000255233 TRUE TRUE downloaded_by_conduit
+626932 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes indistinctus" UP000284138 FALSE FALSE excluded_in_uniprot_db
+1470347 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes ihumii" UP000696855 FALSE FALSE excluded_in_uniprot_db
+1897041 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales NA NA "Bacteroidales bacterium 55_9" UP000237541 FALSE FALSE excluded_in_uniprot_db
+2585118 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes communis" UP000318946 TRUE TRUE downloaded_by_conduit
+28117 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes putredinis" UP000187417 FALSE TRUE downloaded_by_conduit
+214856 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes finegoldii" UP001055105 FALSE TRUE downloaded_by_conduit
+328814 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes shahii" UP000322658 FALSE TRUE downloaded_by_conduit
+1930002 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes sp. Zagget8" NA NA FALSE taxa_id_not_in_uniprot_db
+1465754 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes timonensis" UP001204612 FALSE FALSE excluded_in_uniprot_db
+1288121 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Rikenellaceae Alistipes "Alistipes senegalensis" UP001214327 FALSE FALSE excluded_in_uniprot_db
+1547597 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Porphyromonadaceae Sanguibacteroides "Sanguibacteroides justesenii" UP000031980 TRUE TRUE downloaded_by_conduit
+544645 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Butyricimonas "Butyricimonas virosa" UP000283589 FALSE TRUE downloaded_by_conduit
+544644 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Butyricimonas "Butyricimonas synergistica" UP000186382 FALSE FALSE excluded_in_uniprot_db
+1263090 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Odoribacter "Odoribacter splanchnicus CAG:14" UP000018252 FALSE FALSE excluded_in_uniprot_db
+1897010 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Odoribacter "Odoribacter sp. 43_10" UP000185632 FALSE TRUE downloaded_by_conduit
+28118 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Odoribacter "Odoribacter splanchnicus" UP000283426 FALSE TRUE downloaded_by_conduit
+1841857 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Odoribacteraceae Culturomica "Culturomica massiliensis" NA NA FALSE taxa_id_not_in_uniprot_db
+322095 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Porphyromonadaceae Porphyromonas "Porphyromonas somerae" UP000070224 FALSE TRUE downloaded_by_conduit
+823 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides distasonis" UP000095332 FALSE TRUE downloaded_by_conduit
+574930 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides gordonii" UP000261291 FALSE FALSE excluded_in_uniprot_db
+328812 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides goldsteinii" UP000036166 FALSE TRUE downloaded_by_conduit
+387661 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides johnsonii" UP000195975 FALSE TRUE downloaded_by_conduit
+1263094 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Tannerellaceae Parabacteroides "Parabacteroides merdae CAG:48" UP000018407 FALSE FALSE excluded_in_uniprot_db
+487174 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Barnesiellaceae Barnesiella "Barnesiella intestinihominis" UP000260276 FALSE FALSE excluded_in_uniprot_db
+397865 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Barnesiellaceae Barnesiella "Barnesiella viscericola" UP000757103 FALSE TRUE downloaded_by_conduit
+1501392 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Barnesiellaceae Coprobacter "Coprobacter secundus" UP000031050 FALSE FALSE excluded_in_uniprot_db
+1807744 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales NA NA "Bacteroidales bacterium K10" NA NA FALSE taxa_id_not_in_uniprot_db
+1262754 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides sp. CAG:98" UP000018115 FALSE FALSE excluded_in_uniprot_db
+1263042 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola dorei CAG:222" UP000018210 FALSE FALSE excluded_in_uniprot_db
+1263056 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola vulgatus CAG:6" UP000018171 FALSE FALSE excluded_in_uniprot_db
+821 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola vulgatus" UP000061587 FALSE TRUE downloaded_by_conduit
+376805 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola salanitronis" NA NA FALSE taxa_id_not_in_uniprot_db
+310298 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola coprocola" UP000285864 TRUE TRUE downloaded_by_conduit
+376804 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola barnesiae" UP001204579 FALSE TRUE downloaded_by_conduit
+387090 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola coprophilus" UP000283855 TRUE TRUE downloaded_by_conduit
+310297 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Phocaeicola "Phocaeicola plebeius" UP000260862 TRUE TRUE downloaded_by_conduit
+1841865 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Mediterranea "Mediterranea massiliensis" UP000717835 FALSE TRUE downloaded_by_conduit
+246787 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides cellulosilyticus" UP000061809 FALSE TRUE downloaded_by_conduit
+626931 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides oleiciplenus" UP000260983 FALSE TRUE downloaded_by_conduit
+46506 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides stercoris" UP000056419 TRUE TRUE downloaded_by_conduit
+820 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides uniformis" UP000095419 FALSE TRUE downloaded_by_conduit
+626930 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides fluxus" UP001271927 FALSE FALSE excluded_in_uniprot_db
+1347393 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides neonati" NA NA FALSE taxa_id_not_in_uniprot_db
+291644 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides salyersiae" UP000422221 FALSE TRUE downloaded_by_conduit
+1263046 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides fragilis CAG:47" UP000018271 FALSE FALSE excluded_in_uniprot_db
+817 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides fragilis" UP000006425 FALSE TRUE downloaded_by_conduit
+310300 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides pyogenes" UP000324383 TRUE TRUE downloaded_by_conduit
+871325 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides faecichinchillae" UP000184436 TRUE TRUE downloaded_by_conduit
+1263044 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides faecis CAG:32" UP000017967 FALSE FALSE excluded_in_uniprot_db
+1263054 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides thetaiotaomicron CAG:40" UP000018192 FALSE FALSE excluded_in_uniprot_db
+818 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides thetaiotaomicron" UP000095541 FALSE TRUE downloaded_by_conduit
+1897051 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides sp. 43_46" UP000186723 FALSE FALSE excluded_in_uniprot_db
+1263037 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides caccae CAG:21" UP000017990 FALSE FALSE excluded_in_uniprot_db
+338188 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides finegoldii" UP000095517 FALSE TRUE downloaded_by_conduit
+1263045 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides finegoldii CAG:203" UP000018058 FALSE FALSE excluded_in_uniprot_db
+1263050 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides ovatus CAG:22" UP000018233 FALSE FALSE excluded_in_uniprot_db
+556259 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides sp. D2" UP000003135 TRUE TRUE downloaded_by_conduit
+28116 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Bacteroidaceae Bacteroides "Bacteroides ovatus" UP000181870 FALSE TRUE downloaded_by_conduit
+1263095 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Paraprevotella "Paraprevotella clara CAG:116" UP000017958 FALSE FALSE excluded_in_uniprot_db
+454155 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Paraprevotella "Paraprevotella xylaniphila" UP000260932 FALSE FALSE excluded_in_uniprot_db
+76122 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Alloprevotella "Alloprevotella tannerae" UP000704068 FALSE TRUE downloaded_by_conduit
+1852370 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotellamassilia "Prevotellamassilia timonensis" NA NA FALSE taxa_id_not_in_uniprot_db
+1676614 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Xylanibacter "Xylanibacter rarus" UP000036951 TRUE TRUE downloaded_by_conduit
+363265 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Leyella "Leyella stercorea" UP000286598 TRUE TRUE downloaded_by_conduit
+28127 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Hoylesella "Hoylesella buccalis" UP000235564 FALSE TRUE downloaded_by_conduit
+386414 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Hoylesella "Hoylesella timonensis" UP000235661 FALSE TRUE downloaded_by_conduit
+28125 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella bivia" UP000070093 FALSE TRUE downloaded_by_conduit
+419005 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella amnii" UP000070531 FALSE TRUE downloaded_by_conduit
+28128 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella corporis" UP000070533 TRUE TRUE downloaded_by_conduit
+28130 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella disiens" UP000254072 FALSE TRUE downloaded_by_conduit
+1287488 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella sp. S7 MS 2" UP000029732 TRUE TRUE downloaded_by_conduit
+1284775 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Prevotella "Prevotella sp. S7-1-8" UP000029597 TRUE TRUE downloaded_by_conduit
+305719 Bacteria Pseudomonadati Bacteroidota Bacteroidia Bacteroidales Prevotellaceae Segatella "Segatella baroniae" NA NA FALSE taxa_id_not_in_uniprot_db
+1131336 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. KLE1605" UP000077642 FALSE FALSE excluded_in_uniprot_db
+1574265 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. KLE1798" UP000070454 FALSE TRUE downloaded_by_conduit
+1574264 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. KLE1797" UP000070313 FALSE FALSE excluded_in_uniprot_db
+1262691 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. CAG:344" UP000017903 FALSE FALSE excluded_in_uniprot_db
+3134035 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. CAG 344" NA NA FALSE taxa_id_not_in_uniprot_db
+239935 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia muciniphila" UP000235914 FALSE TRUE downloaded_by_conduit
+1263034 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia muciniphila CAG:154" UP000018106 FALSE FALSE excluded_in_uniprot_db
+1929996 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. Phil8" NA NA FALSE taxa_id_not_in_uniprot_db
+1896967 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. 54_46" UP000185941 FALSE FALSE excluded_in_uniprot_db
+1638783 Bacteria Pseudomonadati Verrucomicrobiota Verrucomicrobiia Verrucomicrobiales Akkermansiaceae Akkermansia "Akkermansia sp. UNK.MGS-1" NA NA FALSE taxa_id_not_in_uniprot_db
+35833 Bacteria Pseudomonadati Thermodesulfobacteriota Desulfovibrionia Desulfovibrionales Desulfovibrionaceae Bilophila "Bilophila wadsworthia" UP000715760 FALSE FALSE excluded_in_uniprot_db
+44742 Bacteria Pseudomonadati Thermodesulfobacteriota Desulfovibrionia Desulfovibrionales Desulfovibrionaceae Desulfovibrio "Desulfovibrio fairfieldensis" UP000069241 FALSE TRUE downloaded_by_conduit
+1262706 Bacteria Pseudomonadati Pseudomonadota Alphaproteobacteria Rhodospirillales Azospirillaceae Azospirillum "Azospirillum sp. CAG:260" UP000018110 FALSE FALSE excluded_in_uniprot_db
+1638782 Bacteria Pseudomonadati Pseudomonadota Alphaproteobacteria Rhodospirillales Rhodospirillaceae Rhodospirillum "Rhodospirillum sp. UNK.MGS-17" NA NA FALSE taxa_id_not_in_uniprot_db
+1896971 Bacteria Pseudomonadati Pseudomonadota Alphaproteobacteria Rhodospirillales Azospirillaceae Azospirillum "Azospirillum sp. 47_25" UP000187252 FALSE FALSE excluded_in_uniprot_db
+1637509 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Moraxellales Moraxellaceae Acinetobacter "Acinetobacter sp. N54.MGS-139" NA NA FALSE taxa_id_not_in_uniprot_db
+1262986 Bacteria Pseudomonadati Pseudomonadota NA NA NA NA "Proteobacteria bacterium CAG:139" UP000018405 FALSE TRUE downloaded_by_conduit
+487175 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Sutterellaceae Parasutterella "Parasutterella excrementihominis" UP000462362 FALSE TRUE downloaded_by_conduit
+1263099 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Sutterellaceae Parasutterella "Parasutterella excrementihominis CAG:233" UP000018034 FALSE FALSE excluded_in_uniprot_db
+847 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Oxalobacteraceae Oxalobacter "Oxalobacter formigenes" UP000242137 FALSE FALSE excluded_in_uniprot_db
+80866 Bacteria Pseudomonadati Pseudomonadota Betaproteobacteria Burkholderiales Comamonadaceae Delftia "Delftia acidovorans" UP000594778 FALSE TRUE downloaded_by_conduit
+1244513 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Lysobacterales Lysobacteraceae Luteimonas "Luteimonas huabeiensis" NA NA FALSE taxa_id_not_in_uniprot_db
+291995 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Stutzerimonas "Stutzerimonas azotifigens" UP000786387 FALSE FALSE excluded_in_uniprot_db
+157784 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Zestomonas "Zestomonas thermotolerans" NA NA FALSE taxa_id_not_in_uniprot_db
+43263 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Aquipseudomonas "Aquipseudomonas alcaligenes" UP000185841 FALSE TRUE downloaded_by_conduit
+43306 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Halopseudomonas "Pseudomonas denitrificans (nom. rej.)" UP000326659 FALSE TRUE downloaded_by_conduit
+65741 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Pseudomonas "Pseudomonas knackmussii" UP000831189 FALSE FALSE excluded_in_uniprot_db
+53412 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Metapseudomonas "Metapseudomonas resinovorans" UP001165099 FALSE FALSE excluded_in_uniprot_db
+319939 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Metapseudomonas "Metapseudomonas otitidis" UP000461288 FALSE TRUE downloaded_by_conduit
+300 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pseudomonadales Pseudomonadaceae Ectopseudomonas "Ectopseudomonas mendocina" UP000238327 FALSE TRUE downloaded_by_conduit
+729 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Pasteurellales Pasteurellaceae Haemophilus "Haemophilus parainfluenzae" UP000092740 FALSE TRUE downloaded_by_conduit
+582 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Morganellaceae Morganella "Morganella morganii" UP000032582 FALSE TRUE downloaded_by_conduit
+1581059 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Hafniaceae Hafnia "Hafnia sp. HMSC23F03" UP000176590 FALSE FALSE excluded_in_uniprot_db
+82983 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Hafniaceae Obesumbacterium "Obesumbacterium proteus" UP000034345 FALSE FALSE excluded_in_uniprot_db
+632 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Yersiniaceae Yersinia "Yersinia pestis" UP000000815 TRUE TRUE downloaded_by_conduit
+1484157 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Erwiniaceae Pantoea "Pantoea sp. PSNIH2" UP000030310 FALSE FALSE excluded_in_uniprot_db
+158822 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Cedecea "Cedecea neteri" UP000029481 TRUE TRUE downloaded_by_conduit
+565 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Atlantibacter "Atlantibacter hermannii" UP000037641 FALSE FALSE excluded_in_uniprot_db
+357233 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Siccibacter "Siccibacter turicensis" UP000240212 FALSE TRUE downloaded_by_conduit
+28141 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Cronobacter "Cronobacter sakazakii" UP000244856 FALSE TRUE downloaded_by_conduit
+435910 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Franconibacter "Franconibacter pulveris" UP000037315 FALSE TRUE downloaded_by_conduit
+399742 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Enterobacter "Enterobacter sp. 638" UP000000230 FALSE TRUE downloaded_by_conduit
+83655 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Leclercia "Leclercia adecarboxylata" UP000222768 FALSE TRUE downloaded_by_conduit
+550 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Enterobacter "Enterobacter cloacae" UP000076008 FALSE TRUE downloaded_by_conduit
+61646 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Lelliottia "Lelliottia amnigena" UP000653275 FALSE TRUE downloaded_by_conduit
+1334193 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Pluralibacter "[Enterobacter] lignolyticus" UP000069162 FALSE TRUE downloaded_by_conduit
+61647 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Pluralibacter "Pluralibacter gergoviae" UP000036196 TRUE TRUE downloaded_by_conduit
+158877 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Yokenella "Yokenella regensburgei" UP000251313 FALSE TRUE downloaded_by_conduit
+379893 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Trabulsiella "Trabulsiella odontotermitis" UP000037393 TRUE TRUE downloaded_by_conduit
+580 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kluyvera "Kluyvera cryocrescens" UP000401081 TRUE TRUE downloaded_by_conduit
+51288 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kluyvera "Kluyvera ascorbata" UP000268051 FALSE TRUE downloaded_by_conduit
+548 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella aerogenes" UP000514462 FALSE TRUE downloaded_by_conduit
+573 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella pneumoniae" UP000031820 FALSE TRUE downloaded_by_conduit
+54291 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Raoultella "Raoultella ornithinolytica" UP000229713 FALSE TRUE downloaded_by_conduit
+571 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella oxytoca" UP000247485 FALSE TRUE downloaded_by_conduit
+28901 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Salmonella "Salmonella enterica" UP000055793 FALSE TRUE downloaded_by_conduit
+546 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Citrobacter "Citrobacter freundii" UP000019194 FALSE TRUE downloaded_by_conduit
+35703 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Citrobacter "Citrobacter amalonaticus" UP000237003 FALSE TRUE downloaded_by_conduit
+562 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Escherichia "Escherichia coli" UP000036331 FALSE TRUE downloaded_by_conduit
+622 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Shigella "Shigella dysenteriae" UP000238186 FALSE TRUE downloaded_by_conduit
+623 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Shigella "Shigella flexneri" UP000001006 TRUE TRUE downloaded_by_conduit
+1681196 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Klebsiella "Klebsiella sp. RIT-PI-d" UP000053401 TRUE TRUE downloaded_by_conduit
+566 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Pseudescherichia "Pseudescherichia vulneris" UP000254392 FALSE FALSE excluded_in_uniprot_db
+1158459 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kosakonia "Kosakonia sacchari" UP000183569 FALSE TRUE downloaded_by_conduit
+61648 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Kluyvera "Kluyvera intermedia" UP000867740 FALSE TRUE downloaded_by_conduit
+563 Bacteria Pseudomonadati Pseudomonadota Gammaproteobacteria Enterobacterales Enterobacteriaceae Shimwellia "Shimwellia blattae" UP000278701 FALSE FALSE excluded_in_uniprot_db

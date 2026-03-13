@@ -52,7 +52,6 @@ plot_percent_detected_taxa_tree = function(conduit_obj,
   # Create taxonomy string for use with metacoder
   taxonomy_data <- coverage_full_taxa |>
     dplyr::mutate(taxonomy = paste0(
-      "organism_type__", organism_type, ";",
       "domain__", domain, ";",
       "kingdom__", kingdom, ";",
       "phylum__", phylum, ";",

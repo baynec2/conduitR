@@ -4,25 +4,53 @@
 \alias{plot_kegg_pathway}
 \title{Plot Data on KEGG Pathway Map}
 \usage{
-plot_kegg_pathway(stats_results, kegg_pathway_id, fill_by = logFC)
+plot_kegg_pathway(
+  stats_results,
+  kegg_pathway_id,
+  kegg_col = NULL,
+  use_ko = TRUE,
+  fill_by = logFC
+)
 }
 \arguments{
-\item{stats_results}{some sort of statistics results (intended to be the
-toptable produced by the perfom_limma_stats function). Must have a column
-named xref_kegg containing the kegg id corresponding to each protein.}
+\item{stats_results}{A data frame of statistics results (e.g. the
+\code{top_table} from \code{\link{perform_limma_analysis}}).}
 
-\item{kegg_pathway_id}{Character string specifying the KEGG pathway ID to
-plot}
+\item{kegg_pathway_id}{Character string specifying the KEGG pathway ID.
+Organism-specific IDs (e.g. \code{"hsa04610"}) are automatically converted
+to their KO equivalent (\code{"ko04610"}) when \code{use_ko = TRUE}.}
 
-\item{fill_by}{the metric to fill the color of the boxes by.}
+\item{kegg_col}{Name of the list-column in \code{stats_results} to join
+against pathway node names.  Defaults to \code{"kegg_orthology"} for KO
+pathways and \code{"xref_kegg"} for organism-specific pathways.  Set
+explicitly to override.}
+
+\item{use_ko}{Logical.  When \code{TRUE} (the default), the pathway ID is
+converted to a KO pathway ID and nodes are joined on KO IDs.  Set to
+\code{FALSE} to use the pathway ID and join column as provided.}
+
+\item{fill_by}{The metric to use for node fill colour. Defaults to
+\code{logFC}.}
 }
 \description{
 Visualizes protein or gene expression data on a KEGG pathway map using the
-ggkegg package.
+ggkegg package.  Two pathway types are supported:
 }
 \details{
-This function creates a pathway diagram where nodes (proteins/genes) are colored according
-to their expression values or other quantitative data.
+\describe{
+\item{KO pathways}{IDs with prefix \code{ko} (e.g. \code{"ko04610"}) or
+any prefix that will be converted via \code{\link{keggpath_to_ko}}.
+Nodes carry KO IDs (\code{"ko:K01320"}); the function joins against
+\code{kegg_col = "kegg_orthology"} by default.  KO pathways are
+accessible via the public KEGG REST API and work with the
+\code{kegg_orthology} column produced by the conduitR annotation
+pipeline.}
+\item{Organism-specific pathways}{IDs with a three-letter organism prefix
+(e.g. \code{"hsa04610"}).  Nodes carry gene IDs (\code{"hsa:1234"});
+the function joins against \code{kegg_col = "xref_kegg"} by default.
+Requires \code{xref_kegg} to be present in the rowData — add it with
+\code{\link{add_kegg_ids_to_qf}}.}
+}
 }
 \examples{
 # Note: KEGG pathway IDs can be found at https://www.genome.jp/kegg/pathway.html

@@ -4,43 +4,35 @@
 #' across samples or groups. This is useful for assessing the effect of data
 #' transformation and imputation on the distribution of values.
 #'
-#' @param qf_norm A QFeatures object containing normalized and transformed data
-#' @param assay_name Character string specifying the base assay name (without transformation suffixes)
-#' @param log_base Numeric value specifying the base for log transformation (default: 2)
-#' @param color Character string specifying which column to use for coloring the density curves
-#'   (typically a sample or group identifier)
+#' @param qf_norm A QFeatures object containing the transformed data.
+#' @param log_assay Character string specifying the name of the log-transformed assay
+#'   (e.g. "protein_groups_log2").
+#' @param imputed_assay Character string specifying the name of the imputed assay
+#'   (e.g. "protein_groups_log2_MinDet").
+#' @param color Character string specifying which colData column to use for coloring
+#'   the density curves.
 #'
-#' @return A ggplot object containing:
-#'   \itemize{
-#'     \item Density curves for each sample/group
-#'     \item Separate facets for log-transformed and imputed data
-#'     \item X-axis showing log-transformed intensity values
-#'     \item Y-axis showing density
-#'   }
+#' @return A ggplot object with density curves faceted by transformation stage.
 #'
 #' @export
 #'
 #' @examples
-#' # Basic density plot colored by sample:
-#' # plot_density(qfeatures_obj, "protein", color = "sample")
-#' 
-#' # Using log10 transformation:
-#' # plot_density(qfeatures_obj, "protein", log_base = 10, color = "group")
-#' 
-#' # The function will automatically look for assays named:
-#' # - {assay_name}_log{log_base}
-#' # - {assay_name}_log{log_base}_imputed
+#' # qf <- add_log_imputed_norm_assay(qf, "protein_groups")
+#' # plot_density(qf,
+#' #   log_assay     = "protein_groups_log2",
+#' #   imputed_assay = "protein_groups_log2_MinDet",
+#' #   color         = "group")
 plot_density <- function(qf_norm,
-                         assay_name,
-                         log_base = 2,
+                         log_assay,
+                         imputed_assay,
                          color) {
   # Log transformed values
-  log <- tidy_conduit(qf_norm, paste0(assay_name, "_log", log_base)) |>
-    dplyr::mutate(conduit_transformation = paste0("log", log_base))
+  log <- tidy_conduit(qf_norm, log_assay) |>
+    dplyr::mutate(conduit_transformation = log_assay)
 
   # Log transformed and imputed values
-  imputed <- tidy_conduit(qf_norm, paste0(assay_name, "_log", log_base, "_imputed")) |>
-    dplyr::mutate(conduit_transformation = paste0("log", log_base, "_imputed"))
+  imputed <- tidy_conduit(qf_norm, imputed_assay) |>
+    dplyr::mutate(conduit_transformation = imputed_assay)
 
   # Combining
   all <- dplyr::bind_rows(log, imputed)
@@ -52,7 +44,7 @@ plot_density <- function(qf_norm,
     )) +
     ggplot2::geom_density() +
     ggplot2::facet_wrap(~conduit_transformation) +
-    ggplot2::xlab(paste0("log", log_base, "(intensity)"))
+    ggplot2::xlab("log-transformed intensity")
 
   p1
 }

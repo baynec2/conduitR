@@ -88,7 +88,7 @@ predict_regression <- function(qf,
   tidy <- conduitR::tidy_conduit(qf, assay_name)
 
   selected_data <- tidy |>
-    dplyr::select(sample, !!rlang::sym(outcome), rowid, value) |>
+    dplyr::select(file, !!rlang::sym(outcome), rowid, value) |>
     tidyr::pivot_wider(names_from = rowid, values_from = value)
 
   split <- rsample::initial_split(selected_data, prop = train_percent / 100,
@@ -101,8 +101,8 @@ predict_regression <- function(qf,
   }
 
   rec <- recipes::recipe(as.formula(paste(outcome, "~ .")), data = train) |>
-    recipes::update_role(sample, new_role = "id") |>
-    recipes::update_role(outcome, new_role = "outcome")
+    recipes::update_role(file, new_role = "id") |>
+    recipes::update_role(!!rlang::sym(outcome), new_role = "outcome")
 
   if (model_type == "lasso_regression") {
     rec <- rec |>
@@ -120,21 +120,21 @@ predict_regression <- function(qf,
   # Model spec with or without tuning
   if (tune) {
     model_spec <- switch(model_type,
-                         "lasso_regression" = parsnip::linear_reg(penalty = tune(), mixture = 1) |>
+                         "lasso_regression" = parsnip::linear_reg(penalty = tune::tune(), mixture = 1) |>
                            parsnip::set_engine("glmnet") |>
                            parsnip::set_mode("regression"),
 
-                         "random_forest" = parsnip::rand_forest(mtry = tune(), min_n = tune(), trees = tune()) |>
+                         "random_forest" = parsnip::rand_forest(mtry = tune::tune(), min_n = tune::tune(), trees = tune::tune()) |>
                            parsnip::set_engine("ranger", importance = "impurity") |>
                            parsnip::set_mode("regression"),
 
                          "xgboost" = parsnip::boost_tree(
                              trees = 1000,
-                             tree_depth = tune(),
-                             learn_rate = tune(),
-                             mtry = tune(),
-                             loss_reduction = tune(),
-                             sample_size = tune()
+                             tree_depth = tune::tune(),
+                             learn_rate = tune::tune(),
+                             mtry = tune::tune(),
+                             loss_reduction = tune::tune(),
+                             sample_size = tune::tune()
                            ) |>
                              parsnip::set_engine("xgboost") |>
                              parsnip::set_mode("regression")
@@ -166,25 +166,25 @@ predict_regression <- function(qf,
     if (model_type == "lasso_regression") {
       # Lasso Regression
       tuning_params <- dials::parameters(
-        penalty(range = c(0.001, 1))
+        dials::penalty(range = c(0.001, 1))
         )
       tuning_grid <- dials::grid_regular(tuning_params, levels = 10)  # Generate grid with 10 levels for each parameter
     } else if (model_type == "random_forest") {
       # Random Forest
       tuning_params <- dials::parameters(
-        mtry(range = c(1, 10)),      # Tune mtry (number of variables to try at each split)
-        min_n(range = c(1, 20)),     # Tune min_n (minimum number of data points required for leaf)
-        trees(range = c(50, 2000))   # Tune number of trees
+        dials::mtry(range = c(1, 10)),
+        dials::min_n(range = c(1, 20)),
+        dials::trees(range = c(50, 2000))
       )
       tuning_grid <- dials::grid_regular(tuning_params, levels = 5)  # Generate grid with 5 levels for each parameter
     } else if (model_type == "xgboost") {
       # XGBoost
       tuning_params <- dials::parameters(
-        tree_depth(range = c(3, 10)),
-        learn_rate(range = c(0.01, 0.3)),
-        mtry(range = c(2, 10)),
-        sample_prop(range = c(0.5, 1.0)),
-        loss_reduction(range = c(0, 5))
+        dials::tree_depth(range = c(3, 10)),
+        dials::learn_rate(range = c(0.01, 0.3)),
+        dials::mtry(range = c(2, 10)),
+        dials::sample_prop(range = c(0.5, 1.0)),
+        dials::loss_reduction(range = c(0, 5))
       )
       tuning_grid <- dials::grid_regular(tuning_params, levels = 5)  # Generate grid with 5 levels for each parameter
     } else {

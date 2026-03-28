@@ -12,16 +12,22 @@ test_that("create_provenance() returns the correct structure", {
   expect_null(prov$config)
 })
 
-test_that("create_provenance() accepts a config tibble", {
-  cfg <- tibble::tibble(parameter = c("fdr", "min_peptides"), value = c("0.01", "2"))
+test_that("create_provenance() accepts a named list of config tibbles", {
+  cfg <- list(
+    snakemake_yaml = tibble::tibble(parameter = c("fdr", "min_peptides"), value = c("0.01", "2")),
+    runtime        = tibble::tibble(parameter = "snakemake_version", value = "8.4.6")
+  )
   prov <- create_provenance(
     workflow_version  = "2.0.0",
     uniprotkb_release = "2025_01",
     config = cfg
   )
 
-  expect_equal(nrow(prov$config), 2)
-  expect_equal(names(prov$config), c("parameter", "value"))
+  expect_type(prov$config, "list")
+  expect_named(prov$config, c("snakemake_yaml", "runtime"))
+  expect_equal(nrow(prov$config$snakemake_yaml), 2)
+  expect_equal(names(prov$config$snakemake_yaml), c("parameter", "value"))
+  expect_equal(nrow(prov$config$runtime), 1)
 })
 
 test_that("create_provenance() uses the supplied generated_date", {
@@ -52,8 +58,19 @@ test_that("create_provenance() errors on bad uniprotkb_release", {
   )
 })
 
-test_that("create_provenance() errors when config lacks required columns", {
-  bad_cfg <- tibble::tibble(key = "fdr", val = "0.01")
+test_that("create_provenance() errors when config is a plain data.frame, not a list", {
+  bad_cfg <- tibble::tibble(parameter = "fdr", value = "0.01")
+  expect_error(
+    create_provenance(
+      workflow_version  = "1.0.0",
+      uniprotkb_release = "2024_05",
+      config = bad_cfg
+    )
+  )
+})
+
+test_that("create_provenance() errors when a config list element lacks required columns", {
+  bad_cfg <- list(snakemake_yaml = tibble::tibble(key = "fdr", val = "0.01"))
   expect_error(
     create_provenance(
       workflow_version  = "1.0.0",
@@ -92,13 +109,17 @@ test_that("show() displays provenance details when populated", {
   prov <- create_provenance(
     workflow_version  = "1.2.3",
     uniprotkb_release = "2024_05",
-    config = tibble::tibble(parameter = "fdr", value = "0.01")
+    config = list(
+      snakemake_yaml = tibble::tibble(parameter = "fdr", value = "0.01"),
+      runtime        = tibble::tibble(parameter = "snakemake_version", value = "8.4.6")
+    )
   )
   obj <- make_test_conduit(provenance = prov)
   out <- capture.output(show(obj))
   expect_true(any(grepl("1\\.2\\.3", out)))
   expect_true(any(grepl("2024_05", out)))
-  expect_true(any(grepl("Config entries.*1", out)))
+  expect_true(any(grepl("snakemake_yaml", out)))
+  expect_true(any(grepl("runtime", out)))
 })
 
 test_that("get_uniprotkb_release() returns a YYYY_MM string", {

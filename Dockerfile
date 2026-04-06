@@ -1,4 +1,4 @@
-FROM rocker/bioconductor:3.22
+FROM bioconductor/bioconductor_docker:3.22
 
 # System dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \

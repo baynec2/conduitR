@@ -2,7 +2,7 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   docker:
@@ -28,7 +28,8 @@ jobs:
         with:
           images: baynec2/conduitr
           tags: |
-            type=raw,value=latest
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=develop,enable=${{ github.ref == 'refs/heads/develop' }}
             type=sha,prefix=
 
       - name: Build and push
@@ -38,5 +39,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=baynec2/conduitr:buildcache
-          cache-to: type=registry,ref=baynec2/conduitr:buildcache,mode=max
+          cache-from: type=registry,ref=baynec2/conduitr:buildcache-${{ github.ref_name }}
+          cache-to: type=registry,ref=baynec2/conduitr:buildcache-${{ github.ref_name }},mode=max

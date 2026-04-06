@@ -1,4 +1,4 @@
-FROM rocker/bioconductor:latest
+FROM rocker/bioconductor:3.22
 
 # System dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -15,25 +15,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pandoc \
     && rm -rf /var/lib/apt/lists/*
 
-# Bioconductor packages
-RUN Rscript -e "BiocManager::install(c( \
-    'QFeatures', \
-    'Biostrings', \
-    'SummarizedExperiment', \
-    'S4Vectors', \
-    'limma', \
-    'MsCoreUtils', \
-    'ComplexHeatmap', \
-    'PCAtools', \
-    'sechm', \
-    'clusterProfiler' \
-), ask = FALSE, update = FALSE)"
+# Install pak for fast parallel package installation
+RUN Rscript -e "install.packages('pak', repos = 'https://r-lib.github.io/p/pak/stable/')"
 
-# GitHub packages
-RUN Rscript -e "remotes::install_github('grunwaldlab/metacoder')"
-
-# CRAN packages
-RUN Rscript -e "install.packages(c( \
+# Install all R dependencies (CRAN, Bioconductor, GitHub) in one pass
+RUN Rscript -e "pak::pak(c( \
+    'bioc::QFeatures', \
+    'bioc::Biostrings', \
+    'bioc::SummarizedExperiment', \
+    'bioc::S4Vectors', \
+    'bioc::limma', \
+    'bioc::MsCoreUtils', \
+    'bioc::ComplexHeatmap', \
+    'bioc::PCAtools', \
+    'bioc::sechm', \
+    'bioc::clusterProfiler', \
+    'grunwaldlab/metacoder', \
     'future', \
     'furrr', \
     'purrr', \
@@ -75,10 +72,10 @@ RUN Rscript -e "install.packages(c( \
     'testthat', \
     'withr', \
     'imputeLCMD' \
-), repos = 'https://cloud.r-project.org')"
+))"
 
 # Install conduitR from the local source
 COPY . /pkg
-RUN Rscript -e "remotes::install_local('/pkg', dependencies = FALSE)"
+RUN Rscript -e "pak::pak('local::/pkg')"
 
 CMD ["R"]

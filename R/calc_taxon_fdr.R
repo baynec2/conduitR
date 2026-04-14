@@ -49,6 +49,11 @@
 #' @export
 #'
 #' @examples
+#' calc_taxon_fdr(
+#'   pep   = c(0.01, 0.05, 0.10, 0.50),
+#'   taxon = c("A",  "A",  "B",  "B"),
+#'   decoy = c(FALSE, TRUE, FALSE, TRUE)
+#' )
 calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL, fdr_threshold = 0.01) {
 
   # --- input validation ---=

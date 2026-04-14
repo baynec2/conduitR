@@ -8,7 +8,7 @@ add_log_imputed_norm_assay(
   qf,
   assay = "protein_groups",
   base = 2,
-  impute_method = "min",
+  impute_method = "MinDet",
   norm_method = "none",
   min_n = 1
 )
@@ -20,7 +20,7 @@ add_log_imputed_norm_assay(
 
 \item{base}{Numeric log base (default: 2).}
 
-\item{impute_method}{Imputation method supported by \code{QFeatures::impute()} (default: "min").}
+\item{impute_method}{Imputation method supported by \code{QFeatures::impute()} (default: "MinDet").}
 
 \item{norm_method}{Normalization method or "none" (default: "none").}
 

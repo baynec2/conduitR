@@ -73,7 +73,7 @@ add_taxonomy_to_qf = function(qf,
   lca_ordered <- lca_ordered |>  dplyr::select(-Protein.Group)
 
   # Assign all columns to rowData
-  rowData(qf[["protein_groups"]]) <- cbind(rowData(qf[["protein_groups"]]), lca_ordered)
+  SummarizedExperiment::rowData(qf[["protein_groups"]]) <- cbind(SummarizedExperiment::rowData(qf[["protein_groups"]]), lca_ordered)
 
   # Define the taxonomic ranks
   ranks <- c("domain","kingdom","phylum","class","order","family","genus","species")

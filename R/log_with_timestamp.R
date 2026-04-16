@@ -17,5 +17,9 @@
 #' log_with_timestamp("Proteome %s: %d proteins", "UP000005640", 20000)
 log_with_timestamp <- function(message, ...) {
   timestamp <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
-  cat(sprintf("[%s] %s\n", timestamp, sprintf(message, ...)))
+  if (...length() == 0) {
+    cat(paste0("[", timestamp, "] ", message, "\n"))
+  } else {
+    cat(sprintf("[%s] %s\n", timestamp, sprintf(message, ...)))
+  }
 }

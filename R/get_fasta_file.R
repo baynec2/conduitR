@@ -50,11 +50,38 @@
 #' The UniProt API is free to use but has rate limits. For bulk downloads,
 #' consider implementing appropriate delays between requests.
 get_fasta_file <- function(proteome_id,
-                           fasta_dir = getwd()) {
+                           fasta_dir = getwd(),
+                           max_tries = 5,
+                           wait_seconds = 30) {
   # Log the proteome id and the time to console.
   log_with_timestamp(paste0("Processing proteome ID: ", proteome_id))
 
   fasta_fp <- paste0(fasta_dir, "/", proteome_id, ".fasta")
+
+  # Helper: perform a request with retry + exponential backoff on transient errors
+  perform_with_retry <- function(req) {
+    result <- NULL
+    for (i in seq_len(max_tries)) {
+      result <- tryCatch(
+        httr2::req_perform(req),
+        error = function(e) {
+          if (i < max_tries) {
+            wait <- wait_seconds * i
+            log_with_timestamp(
+              "Request failed (attempt %d/%d): %s. Retrying in %d seconds...",
+              i, max_tries, conditionMessage(e), wait
+            )
+            Sys.sleep(wait)
+          } else {
+            stop(e)
+          }
+          NULL
+        }
+      )
+      if (!is.null(result)) break
+    }
+    result
+  }
 
   # 1) Try UniProtKB stream first
   base_url <- "https://rest.uniprot.org/uniprotkb/stream"
@@ -62,11 +89,11 @@ get_fasta_file <- function(proteome_id,
     httr2::req_url_query(
       query = paste0("proteome:", proteome_id),
       format = "fasta"
-    ) |>
-    httr2::req_perform()
+    )
+  resp <- perform_with_retry(req)
 
-  status <- httr2::resp_status(req)
-  body <- if (httr2::resp_has_body(req)) httr2::resp_body_string(req) else ""
+  status <- httr2::resp_status(resp)
+  body <- if (httr2::resp_has_body(resp)) httr2::resp_body_string(resp) else ""
 
   # Consider "has sequences" if body contains at least one FASTA header
   has_sequences <- nzchar(trimws(body)) && (grepl("^>", body) || grepl("\n>", body, fixed = TRUE))
@@ -94,7 +121,7 @@ get_fasta_file <- function(proteome_id,
         compressed = "false",
         format = "fasta"
       ) |>
-      httr2::req_perform(),
+      perform_with_retry(),
     error = function(e) NULL
   )
 
@@ -121,7 +148,7 @@ get_fasta_file <- function(proteome_id,
     "Failed to download FASTA for Proteome: ", proteome_id
   ))
   message("status code: ", status)
-  message("has body: ", httr2::resp_has_body(req))
+  message("has body: ", httr2::resp_has_body(resp))
   tibble::tibble(
     proteome_id = proteome_id,
     resp_status = status,

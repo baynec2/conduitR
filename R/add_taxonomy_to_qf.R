@@ -79,6 +79,11 @@ add_taxonomy_to_qf = function(qf,
   ranks <- c("domain","kingdom","phylum","class","order","family","genus","species")
 
   for(i in ranks){
+    rank_vals <- SummarizedExperiment::rowData(qf[["protein_groups"]])[[i]]
+    if (all(is.na(rank_vals))) {
+      log_with_timestamp("Skipping aggregation for rank '%s' — all values are NA", i)
+      next
+    }
     qf <- QFeatures::aggregateFeatures(
       qf,
       i = "protein_groups",

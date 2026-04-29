@@ -56,6 +56,13 @@ plot_taxa_tree <- function(taxonomy_data,
                            node_size = "n_obs",
                            node_color = "phylum",
                            ...) {
+  # metacoder::heat_tree and cowplot::get_plot_component can implicitly open
+  # a graphics device when run non-interactively, which causes R to dump an
+  # empty Rplots.pdf in the cwd. Open a null device first to absorb it.
+  if (!interactive() && is.null(grDevices::dev.list())) {
+    grDevices::pdf(NULL)
+    on.exit(grDevices::dev.off(), add = TRUE)
+  }
   if (nrow(taxonomy_data) == 1) {
     cat("There is only one taxa in the data.")
     taxonomy_data <- tidyr::pivot_longer(taxonomy_data,

@@ -4,7 +4,12 @@
 \alias{get_fasta_file}
 \title{Download Proteome FASTA File from UniProt}
 \usage{
-get_fasta_file(proteome_id, fasta_dir = getwd())
+get_fasta_file(
+  proteome_id,
+  fasta_dir = getwd(),
+  max_tries = 5,
+  wait_seconds = 30
+)
 }
 \arguments{
 \item{proteome_id}{Character string specifying the UniProt proteome identifier

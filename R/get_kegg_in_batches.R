@@ -87,9 +87,17 @@ get_kegg_in_batches <- function(kegg_ids, batch_size = 10) {
     # 0.34 led to IP getting blocked.
     Sys.sleep(1)
   }
-  # Combine all batch results into a single dataframe
+  # KEGG rate-limits or returns all-null can leave all_results empty -> 0-col tibble; return the expected schema with zero rows.
+  expected_cols <- c("kegg_id", "gene_description", "kegg_pathway_id",
+                     "kegg_pathway", "ko", "ko_description", "org_id")
+  if (length(all_results) == 0) {
+    return(tibble::as_tibble(stats::setNames(
+      replicate(length(expected_cols), character(0), simplify = FALSE),
+      expected_cols
+    )))
+  }
   out <- dplyr::bind_rows(all_results) |>
-    dplyr::select(kegg_id,gene_description,kegg_pathway_id,kegg_pathway, ko, ko_description,org_id)
+    dplyr::select(dplyr::all_of(expected_cols))
 
   return(out)
 }

@@ -58,11 +58,14 @@ extract_fasta_info <- function(fasta_file) {
   )
   organism_id <- as.integer(organism_id) # Convert to integer
 
-  # Extract protein ID (first field in UniProt-style headers)
+  # Extract protein ID. UniProt sp/tr headers use "db|ACC|NAME" so we take
+  # the middle pipe-delimited field. UniParc-sourced proteome entries (UPI*)
+  # have no pipes — fall back to the first whitespace token, which is what
+  # DIA-NN uses as Protein.Ids/Protein.Group.
   protein_id <- ifelse(
     grepl("\\|", headers),
     sub("^.*\\|([^|]+)\\|.*$", "\\1", headers),
-    NA
+    sub("^(\\S+).*$", "\\1", headers)
   )
 
 

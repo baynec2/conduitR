@@ -39,8 +39,14 @@
 #'
 #' @returns a list with elements:
 #'   \item{results}{tibble with one row per \code{(taxon, decoy)} combination,
-#'     containing score, decoy status, running FDR, and q-value, sorted by
-#'     descending score}
+#'     containing score, decoy status, running FDR, q-value, and the number of
+#'     unique peptides supporting the taxon (\code{n_unique_peptides_all}; NA
+#'     when \code{peptide} is not provided). \emph{All} contributing peptides
+#'     are counted — including those with weak per-PSM evidence whose effect on
+#'     score is already small via the \code{-log(PEP)} weighting. Callers that
+#'     want a "confident peptides only" count should compute it separately from
+#'     the source PSMs (e.g. filtering by precursor Q.Value) and join it on
+#'     \code{taxon}. Sorted by descending score.}
 #'   \item{detected}{tibble subset of results containing only target taxa
 #'     passing fdr_threshold}
 #'   \item{n_targets}{integer count of target taxa in results}
@@ -95,12 +101,22 @@ calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL, fdr_threshold = 0.
   }
 
   # --- aggregate to taxon level (separately per decoy status) ---
+  # n_unique_peptides_all is meaningful only when peptide info is supplied — it
+  # counts every distinct peptide sequence contributing to the (taxon, decoy)
+  # group's score, regardless of per-PSM evidence strength (weak PSMs already
+  # contribute little to score via -log(PEP) weighting). When peptide is NULL,
+  # set it to NA so downstream code can treat it as missing rather than as a
+  # spurious PSM count.
+
+  agg_specs <- list(
+    score = quote(sum(-log(pep)))
+  )
+  if (!is.null(peptide)) {
+    agg_specs$n_unique_peptides_all <- quote(dplyr::n_distinct(peptide))
+  }
 
   results <- df |>
-    dplyr::summarise(
-      score = sum(-log(pep)),
-      .by   = c(taxon, decoy)
-    ) |>
+    dplyr::summarise(!!!agg_specs, .by = c(taxon, decoy)) |>
     dplyr::arrange(dplyr::desc(score)) |>
     dplyr::mutate(
       n_targets = cumsum(!decoy),
@@ -110,8 +126,14 @@ calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL, fdr_threshold = 0.
         .default = n_decoys / n_targets
       ),
       qvalue = rev(cummin(rev(fdr)))
-    ) |>
-    dplyr::select(taxon, score, decoy, fdr, qvalue)
+    )
+
+  if (is.null(peptide)) {
+    results$n_unique_peptides_all <- NA_integer_
+  }
+
+  results <- results |>
+    dplyr::select(taxon, score, n_unique_peptides_all, decoy, fdr, qvalue)
 
   # --- assemble output ---
 

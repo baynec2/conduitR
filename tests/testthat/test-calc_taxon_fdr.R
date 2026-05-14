@@ -95,7 +95,7 @@ test_that("returns list with correct names and types", {
   res <- calc_taxon_fdr(pep, taxon, decoy)
   expect_named(res, c("results", "detected", "n_targets", "n_decoys", "fdr_threshold"))
   expect_s3_class(res$results, "tbl_df")
-  expect_named(res$results, c("taxon", "score", "decoy", "fdr", "qvalue"))
+  expect_named(res$results, c("taxon", "score", "n_unique_peptides_all", "decoy", "fdr", "qvalue"))
   expect_equal(res$fdr_threshold, 0.01)
 })
 
@@ -130,4 +130,27 @@ test_that("peptide argument collapses to best PSM per (peptide, taxon, decoy)", 
     res$results$score[res$results$taxon == "A" &  res$results$decoy],
     -log(0.2), tolerance = 1e-6
   )
+})
+
+# --- n_unique_peptides_all column ---
+
+test_that("n_unique_peptides_all counts distinct peptides per (taxon, decoy)", {
+  # A/target sees p1 and p2 → 2 unique peptides
+  # A/decoy  sees p1       → 1
+  # B/target sees p3 and p3 → 1 (dedup)
+  res <- calc_taxon_fdr(
+    pep     = c(0.1,   0.05,  0.2,   0.05,  0.3),
+    taxon   = c("A",   "A",   "A",   "B",   "B"),
+    decoy   = c(FALSE, FALSE, TRUE,  FALSE, FALSE),
+    peptide = c("p1",  "p2",  "p1",  "p3",  "p3")
+  )$results
+  expect_equal(res$n_unique_peptides_all[res$taxon == "A" & !res$decoy], 2L)
+  expect_equal(res$n_unique_peptides_all[res$taxon == "A" &  res$decoy], 1L)
+  expect_equal(res$n_unique_peptides_all[res$taxon == "B" & !res$decoy], 1L)
+})
+
+test_that("n_unique_peptides_all is NA when peptide is not supplied", {
+  res <- calc_taxon_fdr(pep, taxon, decoy)$results
+  expect_true(all(is.na(res$n_unique_peptides_all)))
+  expect_type(res$n_unique_peptides_all, "integer")
 })

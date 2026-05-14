@@ -15,7 +15,7 @@
 #'     (e.g. \code{"hsa04610"}).  Nodes carry gene IDs (\code{"hsa:1234"});
 #'     the function joins against \code{kegg_col = "xref_kegg"} by default.
 #'     Requires \code{xref_kegg} to be present in the rowData — add it with
-#'     \code{\link{add_kegg_ids_to_qf}}.}
+#'     \code{\link{add_annotation_to_qf}} using \code{column_name = xref_kegg}.}
 #' }
 #'
 #' @param stats_results A data frame of statistics results (e.g. the
@@ -54,7 +54,7 @@ plot_kegg_pathway <- function(stats_results,
     stop(
       "Column '", kegg_col, "' not found in stats_results. ",
       if (kegg_col == "xref_kegg") {
-        "Add KEGG gene IDs to the QFeatures rowData with add_kegg_ids_to_qf() before running perform_limma_analysis()."
+        "Add KEGG gene IDs to the QFeatures rowData with add_annotation_to_qf(qf, column_name = xref_kegg) before running perform_limma_analysis()."
       } else {
         "Ensure the annotation pipeline has been run and the column is present in the QFeatures rowData."
       }

@@ -39,6 +39,20 @@ extensible as new metrics are added.
 \item protein_coverage_by_taxa: Number of proteins detected per taxon
 relative to the total number of proteins in the database for that taxon.
 The percentage represents coverage of the taxon's proteome.
+\item peptidotyping_first_pass: Family-level taxon-detection FDR
+table from the first pass of a peptidotyping search-space method
+(\code{unipept_peptidotyping} or \code{genome_peptidotyping}). Columns:
+\code{taxon}, \code{taxon_name}, \code{score}, \code{fdr}, \code{qvalue}, \code{decoy},
+\code{n_unique_peptides_all}, \code{n_unique_peptides_q01}, \code{score_fraction},
+\code{cumulative_score_fraction}, \code{carried_forward}, \code{filter_reason}.
+Absent for non-peptidotyping methods.
+\item peptidotyping_second_pass: Species/strain-level FDR table from
+the second pass of a peptidotyping search-space method (same schema
+as the first pass). Absent for non-peptidotyping methods.
+\item hapid_greedy_selection: Greedy set-cover genome ranking from a
+HAPID search-space method (\code{hapid} or \code{unipept_hapid}). Columns:
+\code{genome}, \code{taxon_name}, \code{nSpectraCovered}, \code{cumulative_pct}. Absent
+for non-hapid methods.
 }}
 
 \item{\code{database}}{A tibble containing taxonomic information for all proteins in

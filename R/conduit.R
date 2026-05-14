@@ -25,6 +25,20 @@
 #'     \item protein_coverage_by_taxa: Number of proteins detected per taxon
 #'     relative to the total number of proteins in the database for that taxon.
 #'     The percentage represents coverage of the taxon's proteome.
+#'     \item peptidotyping_first_pass: Family-level taxon-detection FDR
+#'     table from the first pass of a peptidotyping search-space method
+#'     (`unipept_peptidotyping` or `genome_peptidotyping`). Columns:
+#'     `taxon`, `taxon_name`, `score`, `fdr`, `qvalue`, `decoy`,
+#'     `n_unique_peptides_all`, `n_unique_peptides_q01`, `score_fraction`,
+#'     `cumulative_score_fraction`, `carried_forward`, `filter_reason`.
+#'     Absent for non-peptidotyping methods.
+#'     \item peptidotyping_second_pass: Species/strain-level FDR table from
+#'     the second pass of a peptidotyping search-space method (same schema
+#'     as the first pass). Absent for non-peptidotyping methods.
+#'     \item hapid_greedy_selection: Greedy set-cover genome ranking from a
+#'     HAPID search-space method (`hapid` or `unipept_hapid`). Columns:
+#'     `genome`, `taxon_name`, `nSpectraCovered`, `cumulative_pct`. Absent
+#'     for non-hapid methods.
 #'   }
 #' @slot database A tibble containing taxonomic information for all proteins in
 #'   the reference database, including:

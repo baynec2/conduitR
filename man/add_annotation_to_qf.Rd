@@ -2,11 +2,7 @@
 % Please edit documentation in R/add_annotation_to_qf.R
 \name{add_annotation_to_qf}
 \alias{add_annotation_to_qf}
-\title{Add Annotations to a QFeatures Object
-This function adds annotation terms (e.g., GO, Pfam, InterPro) to a QFeatures
-object.It extracts terms from a UniProt annotation file, stores them as a
-list-column in the protein assay, and creates an adjacency matrix for
-aggregation while keeping assay links intact.}
+\title{Attach an Annotation Column to a QFeatures Object}
 \usage{
 add_annotation_to_qf(
   qf,
@@ -17,50 +13,34 @@ add_annotation_to_qf(
 )
 }
 \arguments{
-\item{qf}{A QFeatures object containing a protein assay named "protein_groups".}
+\item{qf}{A QFeatures object containing an assay named \code{"protein_groups"}.}
 
-\item{id_column}{Unquoted name of the column in \code{conduit_annotations} that
-contains protein identifiers (default: \code{Protein.Group}).}
+\item{id_column}{Unquoted name of the column in \code{conduit_annotations}
+that holds protein-group identifiers (default: \code{Protein.Group}).}
 
-\item{conduit_annotations}{A data frame or tibble containing protein annotations,
-with a column for protein IDs and a column for the terms of interest.}
+\item{conduit_annotations}{A data frame with one row per protein-group /
+annotation pair (long format), or a wide table with one row per
+protein-group and the annotation in a delimited cell.}
 
-\item{column_name}{Unquoted name of the column in \code{conduit_annotations} that
-contains the annotation terms to extract.}
+\item{column_name}{Unquoted name of the column in \code{conduit_annotations}
+that holds the annotation terms to extract.}
 
-\item{regex}{A regular expression pattern used to extract annotation terms into a list.
-For example: \code{xref_pfam = "PF\\d{5}"}, \code{xref_interpro = "IPR\\d{6}"}.}
+\item{regex}{Regular expression used to extract individual terms from
+each cell of \code{column_name}. Defaults to splitting on \verb{;}.}
 }
 \value{
-A QFeatures object with:
-\itemize{
-\item A new list-column in the protein assay containing the extracted annotation terms.
-\item An adjacency matrix stored in \code{adjacencyMatrix()} for aggregation.
-}
+The input QFeatures object with one extra list-column on
+\code{rowData(qf[["protein_groups"]])} and the column registered as a
+functional aggregation target. No new assays are created.
 }
 \description{
-Add Annotations to a QFeatures Object
-This function adds annotation terms (e.g., GO, Pfam, InterPro) to a QFeatures
-object.It extracts terms from a UniProt annotation file, stores them as a
-list-column in the protein assay, and creates an adjacency matrix for
-aggregation while keeping assay links intact.
+Extracts annotation terms (e.g. GO, Pfam, KEGG) from a long-format
+annotation table, attaches them as a list-column on the
+\code{protein_groups} assay's rowData, and registers the column as a
+functional aggregation target. Aggregation
+itself is deferred — call \code{\link[=aggregate_assay_by_annotation]{aggregate_assay_by_annotation()}} later when
+you want an aggregated assay.
 }
-\examples{
-\dontrun{
-# Add GO annotations
-qf <- add_annotation_to_qf(
-  qf,
-  conduit_annotations = uniprot_df,
-  column_name = go,
-  regex = "GO:\\\\d{7}"
-)
-
-# Add Pfam annotations
-qf <- add_annotation_to_qf(
-  qf,
-  conduit_annotations = uniprot_df,
-  column_name = xref_pfam,
-  regex = "PF\\\\d{5}"
-)
-}
+\seealso{
+\code{\link[=aggregate_assay_by_annotation]{aggregate_assay_by_annotation()}}, \code{\link[=aggregation_targets]{aggregation_targets()}}
 }

@@ -144,44 +144,43 @@ test_that("per-protein-group LCA collapses to NA when peptides positively disagr
   expect_equal(pg_rd["PG_Ecoli", "lca"],    "Enterobacteriaceae")
 })
 
-test_that("rank assays aggregate peptide intensities by per-peptide LCA", {
-  qf <- make_taxonomy_test_qf()
+test_that("ranks are registered as taxonomic aggregation targets from peptides", {
+  qf  <- make_taxonomy_test_qf()
   ann <- make_taxonomy_test_annotation()
-  qf <- add_taxonomy_to_qf(qf, ann)
+  out <- add_taxonomy_to_qf(qf, ann)
 
-  # species assay: only peptides with non-NA species contribute. That's
-  # pep_eco_a (10,20,30), pep_eco_b (40,50,60), pep_mix_specific (7,8,9) -> all E. coli.
-  # pep_mix_family and pep_cross have NA species and drop out.
-  sp <- SummarizedExperiment::assay(qf[["species"]])
-  expect_true("Escherichia coli" %in% rownames(sp))
-  expect_equal(unname(sp["Escherichia coli", ]), c(10+40+7, 20+50+8, 30+60+9))
+  # No new assays are created — aggregation is deferred
+  expect_equal(length(out), length(qf))
+  expect_setequal(names(out), names(qf))
 
-  # family assay: includes pep_mix_family on top of the species peptides
-  fam <- SummarizedExperiment::assay(qf[["family"]])
-  expect_true("Enterobacteriaceae" %in% rownames(fam))
-  expect_equal(unname(fam["Enterobacteriaceae", ]),
-               c(10+40+7+70, 20+50+8+80, 30+60+9+90))
-
-  # domain assay: cross-domain peptide still drops (its domain is NA)
-  dom <- SummarizedExperiment::assay(qf[["domain"]])
-  expect_true("Bacteria" %in% rownames(dom))
-  expect_equal(unname(dom["Bacteria", ]),
-               c(10+40+7+70, 20+50+8+80, 30+60+9+90))
-  expect_false("Eukaryota" %in% rownames(dom))
+  tgts <- conduitR::aggregation_targets(out)
+  for (rk in c("domain","kingdom","phylum","class","order","family","genus","species")) {
+    expect_true(rk %in% names(tgts), info = rk)
+    expect_equal(tgts[[rk]]$kind, "taxonomic", info = rk)
+    expect_equal(tgts[[rk]]$from, "peptides", info = rk)
+  }
 })
 
-test_that("ranks where every peptide is NA are skipped (no assay created)", {
-  # kingdom is NA for all bacterial peptides in our annotation, and the
-  # Eukaryota peptide collapses to NA. So kingdom should be skipped.
-  qf <- make_taxonomy_test_qf()
+test_that("aggregate_assay_by_annotation(peptides, species) reproduces former rank assay", {
+  qf  <- make_taxonomy_test_qf()
   ann <- make_taxonomy_test_annotation()
-  qf <- add_taxonomy_to_qf(qf, ann)
+  qf  <- add_taxonomy_to_qf(qf, ann)
+  out <- conduitR::aggregate_assay_by_annotation(
+    qf, i = "peptides", fcol = "species", include_na = "drop"
+  )
 
-  expect_false("kingdom" %in% names(qf))
-  # Other ranks were created
-  for (rk in c("domain","phylum","class","order","family","genus","species")) {
-    expect_true(rk %in% names(qf), info = rk)
-  }
+  sp <- SummarizedExperiment::assay(out[["species"]])
+  expect_true("Escherichia coli" %in% rownames(sp))
+  # pep_eco_a (10,20,30) + pep_eco_b (40,50,60) + pep_mix_specific (7,8,9)
+  expect_equal(unname(sp["Escherichia coli", ]), c(10+40+7, 20+50+8, 30+60+9))
+
+  # family aggregation: pep_mix_family additionally contributes
+  out_fam <- conduitR::aggregate_assay_by_annotation(
+    qf, i = "peptides", fcol = "family", include_na = "drop"
+  )
+  fam <- SummarizedExperiment::assay(out_fam[["family"]])
+  expect_equal(unname(fam["Enterobacteriaceae", ]),
+               c(10+40+7+70, 20+50+8+80, 30+60+9+90))
 })
 
 test_that("missing required columns produce a clear error", {

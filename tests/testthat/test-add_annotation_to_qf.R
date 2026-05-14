@@ -1,99 +1,52 @@
 qf <- readRDS(test_path("fixtures/add_annotation/qf.rds"))
 
 conduit_annotations_wide <- readr::read_delim(test_path("fixtures/add_annotation/conduit_annotations.txt")) |>
-  dplyr::select(Protein.Group, annotation_type, term) |>  # keep columns of interest
-  # pivot so each annotation_type becomes a column
+  dplyr::select(Protein.Group, annotation_type, term) |>
   tidyr::pivot_wider(
     names_from = annotation_type,
     values_from = term,
-    values_fn = \(x) paste(unique(x), collapse = ";")  # collapse multiple terms per protein
+    values_fn = \(x) paste(unique(x), collapse = ";")
   )
 
-test_that("it works with go", {
-  expect_no_error({
-  go <- conduitR::add_annotation_to_qf(qf,
-                             id_column = Protein.Group,
-                             column_name = go,
-                             conduit_annotations = conduit_annotations_wide)
-   })
-})
+n_assays_before <- length(qf)
 
+annotation_columns <- list(
+  list(name = "go",                regex = "[^;]+(?=;|$)"),
+  list(name = "pfam",              regex = "[^;]+(?=;|$)"),
+  list(name = "eggnog",            regex = "[^;]+(?=;|$)"),
+  list(name = "eggnog_code",       regex = "[^;]+(?=;)"),
+  list(name = "kegg_pathway",      regex = "[^;]+(?=;|$)"),
+  list(name = "kegg_map_pathway",  regex = "[^;]+(?=;|$)"),
+  list(name = "kegg_orthology",    regex = "[^;]+(?=;|$)"),
+  list(name = "cazy_class",        regex = "[^;]+(?=;|$)"),
+  list(name = "cazy_family",       regex = "[^;]+(?=;|$)")
+)
 
-test_that("it works with pfam", {
-  expect_no_error({
-    pfam <- conduitR::add_annotation_to_qf(qf,
-                                         id_column = Protein.Group,
-                                         column_name = pfam,
-                                         conduit_annotations = conduit_annotations_wide)
+for (spec in annotation_columns) {
+  local({
+    nm    <- spec$name
+    regex <- spec$regex
+    test_that(paste("add_annotation_to_qf adds", nm, "as a rowData list-column and registers it"), {
+      sym <- rlang::sym(nm)
+      out <- rlang::eval_tidy(rlang::call2(
+        "add_annotation_to_qf",
+        qf                 = quote(qf),
+        id_column          = quote(Protein.Group),
+        column_name        = sym,
+        conduit_annotations = quote(conduit_annotations_wide),
+        regex              = regex,
+        .ns                = "conduitR"
+      ))
+
+      expect_equal(length(out), n_assays_before)
+      rd <- SummarizedExperiment::rowData(out[["protein_groups"]])
+      expect_true(nm %in% colnames(rd))
+      expect_true(is.list(rd[[nm]]))
+
+      tgts <- conduitR::aggregation_targets(out)
+      expect_true(nm %in% names(tgts))
+      expect_equal(tgts[[nm]]$kind, "functional")
+      expect_equal(tgts[[nm]]$from, "protein_groups")
+    })
   })
-})
-
-test_that("it works with eggnog", {
-  expect_no_error({
-    eggnog <- conduitR::add_annotation_to_qf(qf,
-                                           id_column = Protein.Group,
-                                           column_name = eggnog,
-                                           conduit_annotations = conduit_annotations_wide)
-  })
-})
-
-test_that("it works with eggnog code", {
-  expect_no_error({
-    eggnog_code <- conduitR::add_annotation_to_qf(qf,
-                                           id_column = Protein.Group,
-                                           column_name = eggnog_code,
-                                           conduit_annotations = conduit_annotations_wide,
-                                           regex = "[^;]+(?=;)")
-  })
-})
-
-
-test_that("it works with kegg_pathway", {
-  expect_no_error({
-    test <- conduitR::add_annotation_to_qf(qf,
-                                           id_column = Protein.Group,
-                                           column_name = kegg_pathway,
-                                           conduit_annotations = conduit_annotations_wide)
-  })
-})
-
-test_that("it works with kegg_map_pathway", {
-  expect_no_error({
-    test <- conduitR::add_annotation_to_qf(qf,
-                                           id_column = Protein.Group,
-                                           column_name = kegg_map_pathway,
-                                           conduit_annotations = conduit_annotations_wide
-                                           )
-  })
-})
-
-test_that("it works with kegg_orthology", {
-  expect_no_error({
-    test <- conduitR::add_annotation_to_qf(qf,
-                                           id_column = Protein.Group,
-                                           column_name = kegg_orthology,
-                                           conduit_annotations = conduit_annotations_wide
-                                           )
-  })
-})
-
-
-test_that("it works with cazy class", {
-  expect_no_error({
-    test <- conduitR::add_annotation_to_qf(qf,
-                                           id_column = Protein.Group,
-                                           column_name = cazy_class,
-                                           conduit_annotations = conduit_annotations_wide)
-  })
-})
-
-
-test_that("it works with cazy family", {
-  expect_no_error({
-    test <- conduitR::add_annotation_to_qf(qf,
-                                           id_column = Protein.Group,
-                                           column_name = cazy_family,
-                                           conduit_annotations = conduit_annotations_wide)
-  })
-})
-
+}

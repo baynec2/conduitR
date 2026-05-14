@@ -1,34 +1,41 @@
 #' Add Taxonomy / LCA Annotations to a QFeatures Object
 #'
-#' This function assigns a Lowest Common Ancestor (LCA) taxonomy to each
-#' peptide in a QFeatures object using the peptide's `Protein.Ids` (the full
-#' set of proteins matching the peptide, as reported by DIA-NN), and then
-#' derives a per-protein-group label from the peptide LCAs. Per-rank
-#' abundance assays (`domain` ... `species`) are aggregated from the
-#' peptides assay so that intensity attributes to each rank only at the
-#' resolution the peptide evidence supports.
+#' Assigns a Lowest Common Ancestor (LCA) taxonomy to each peptide using the
+#' peptide's `Protein.Ids` (the full set of proteins matching the peptide as
+#' reported by DIA-NN), then derives a per-protein-group label from the
+#' peptide LCAs. Per-rank taxonomy columns are written to both the
+#' `peptides` and `protein_groups` rowData, and the eight ranks are
+#' registered as aggregation targets — call
+#' [aggregate_assay_by_annotation()] to materialise a per-rank assay on
+#' demand.
+#'
+#' Peptide-centric summation is the canonical aggregation path for taxonomy
+#' (intensity attributes to a rank only at the resolution the peptide
+#' evidence supports), so each rank is registered with `from = "peptides"`.
 #'
 #' @param qf A QFeatures object containing assays named `peptides` (with a
 #'   `Protein.Ids` column in rowData) and `protein_groups` (with rownames
 #'   matching `Protein.Group`).
-#' @param uniprot_annotation A data frame or tibble containing taxonomy
-#'   information. Must include columns: `protein_id`, `domain`, `kingdom`,
-#'   `phylum`, `class`, `order`, `family`, `genus`, `species`.
+#' @param uniprot_annotation A data frame with columns `protein_id`,
+#'   `domain`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`,
+#'   `species`.
 #'
-#' @return A QFeatures object with:
+#' @return The input QFeatures object with:
 #'   \itemize{
 #'     \item Per-rank taxonomy and `lca` columns added to `peptides` rowData.
 #'     \item Per-rank taxonomy and `lca` columns added to `protein_groups`
-#'           rowData (derived from the constituent peptides' LCAs).
-#'     \item New assays for each rank (`domain` ... `species`) aggregated
-#'           from the peptides assay.
+#'           rowData.
+#'     \item Each rank registered as a taxonomic aggregation target sourced
+#'           from `peptides`.
 #'   }
 #'
+#' @seealso [aggregate_assay_by_annotation()], [aggregation_targets()]
 #' @export
-add_taxonomy_to_qf = function(qf,
-                              uniprot_annotation){
+add_taxonomy_to_qf <- function(qf,
+                               uniprot_annotation) {
 
-  ranks <- c("domain","kingdom","phylum","class","order","family","genus","species")
+  ranks <- c("domain", "kingdom", "phylum", "class",
+             "order", "family", "genus", "species")
 
   if (!"peptides" %in% names(qf)) {
     stop("qf must contain a 'peptides' assay")
@@ -47,8 +54,6 @@ add_taxonomy_to_qf = function(qf,
   taxonomy <- uniprot_annotation |>
     dplyr::select(protein_id, dplyr::all_of(ranks))
 
-  # Per-peptide LCA: split Protein.Ids, join taxonomy, collapse to consensus
-  # at each rank (NA where peptide's matching proteins disagree at that rank).
   peptide_tax <- tibble::tibble(
       Stripped.Sequence = rownames(pep_rd),
       Protein.Ids = pep_rd$Protein.Ids
@@ -68,13 +73,10 @@ add_taxonomy_to_qf = function(qf,
     dplyr::mutate(lca = dplyr::coalesce(species, genus, family, order, class, phylum, kingdom, domain)) |>
     dplyr::ungroup()
 
-  # Order to match peptide assay rownames and write
   peptide_lca_ordered <- peptide_lca[match(rownames(pep_rd), peptide_lca$Stripped.Sequence), ]
   peptide_lca_ordered <- peptide_lca_ordered |> dplyr::select(-Stripped.Sequence)
   SummarizedExperiment::rowData(qf[["peptides"]]) <- cbind(pep_rd, peptide_lca_ordered)
 
-  # Derive per-protein-group LCA from the constituent peptides' rank values.
-  # Same "all-equal-or-NA" collapse, grouped by Protein.Group.
   group_lca <- tibble::tibble(
       Protein.Group = pep_rd$Protein.Group,
       domain = peptide_lca_ordered$domain,
@@ -101,23 +103,10 @@ add_taxonomy_to_qf = function(qf,
   group_lca_ordered <- group_lca_ordered |> dplyr::select(-Protein.Group)
   SummarizedExperiment::rowData(qf[["protein_groups"]]) <- cbind(pg_rd, group_lca_ordered)
 
-  # Build per-rank abundance assays by aggregating peptides by per-peptide LCA.
-  # Peptides with NA at a given rank drop out for that rank's assay; column
-  # sums shrink at finer ranks, which is the honest accounting.
-  for (i in ranks){
-    rank_vals <- SummarizedExperiment::rowData(qf[["peptides"]])[[i]]
-    if (all(is.na(rank_vals))) {
-      log_with_timestamp("Skipping aggregation for rank '%s' — all values are NA", i)
-      next
-    }
-    qf <- QFeatures::aggregateFeatures(
-      qf,
-      i = "peptides",
-      fcol = i,
-      name = i,
-      fun = colSums,
-      na.rm = TRUE
-    )
+  for (r in ranks) {
+    qf <- register_aggregation_target(qf, target = r,
+                                      kind = "taxonomic",
+                                      from = "peptides")
   }
-  return(qf)
+  qf
 }

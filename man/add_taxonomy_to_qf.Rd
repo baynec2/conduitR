@@ -11,26 +11,35 @@ add_taxonomy_to_qf(qf, uniprot_annotation)
 \code{Protein.Ids} column in rowData) and \code{protein_groups} (with rownames
 matching \code{Protein.Group}).}
 
-\item{uniprot_annotation}{A data frame or tibble containing taxonomy
-information. Must include columns: \code{protein_id}, \code{domain}, \code{kingdom},
-\code{phylum}, \code{class}, \code{order}, \code{family}, \code{genus}, \code{species}.}
+\item{uniprot_annotation}{A data frame with columns \code{protein_id},
+\code{domain}, \code{kingdom}, \code{phylum}, \code{class}, \code{order}, \code{family}, \code{genus},
+\code{species}.}
 }
 \value{
-A QFeatures object with:
+The input QFeatures object with:
 \itemize{
 \item Per-rank taxonomy and \code{lca} columns added to \code{peptides} rowData.
 \item Per-rank taxonomy and \code{lca} columns added to \code{protein_groups}
-rowData (derived from the constituent peptides' LCAs).
-\item New assays for each rank (\code{domain} ... \code{species}) aggregated
-from the peptides assay.
+rowData.
+\item Each rank registered as a taxonomic aggregation target sourced
+from \code{peptides}.
 }
 }
 \description{
-This function assigns a Lowest Common Ancestor (LCA) taxonomy to each
-peptide in a QFeatures object using the peptide's \code{Protein.Ids} (the full
-set of proteins matching the peptide, as reported by DIA-NN), and then
-derives a per-protein-group label from the peptide LCAs. Per-rank
-abundance assays (\code{domain} ... \code{species}) are aggregated from the
-peptides assay so that intensity attributes to each rank only at the
-resolution the peptide evidence supports.
+Assigns a Lowest Common Ancestor (LCA) taxonomy to each peptide using the
+peptide's \code{Protein.Ids} (the full set of proteins matching the peptide as
+reported by DIA-NN), then derives a per-protein-group label from the
+peptide LCAs. Per-rank taxonomy columns are written to both the
+\code{peptides} and \code{protein_groups} rowData, and the eight ranks are
+registered as aggregation targets — call
+\code{\link[=aggregate_assay_by_annotation]{aggregate_assay_by_annotation()}} to materialise a per-rank assay on
+demand.
+}
+\details{
+Peptide-centric summation is the canonical aggregation path for taxonomy
+(intensity attributes to a rank only at the resolution the peptide
+evidence supports), so each rank is registered with \code{from = "peptides"}.
+}
+\seealso{
+\code{\link[=aggregate_assay_by_annotation]{aggregate_assay_by_annotation()}}, \code{\link[=aggregation_targets]{aggregation_targets()}}
 }

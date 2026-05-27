@@ -54,6 +54,47 @@ Tests use `test_path("fixtures/...")` to reference fixture files under `tests/te
 7. **Analysis**: `perform_limma_analysis()`, `perform_ora()`, `perform_gsea()`, `predict_classification()`, `predict_regression()`
 8. **Visualization**: `plot_volcano()`, `plot_heatmap()`, `plot_biplot()`, `plot_taxa_tree()`, `plot_sunburst()`, `plot_kegg_pathway()`, etc.
 
+### Aggregation & Quantification Workflow
+
+The core analysis pattern for downstream statistics and visualization:
+
+1. **Aggregate** features to a taxonomic or functional level:
+   ```r
+   qf <- aggregate_assay_by_annotation(qf, i = "peptides", fcol = "genus", include_na = "drop")
+   ```
+   - `i`: source assay — `"peptides"` for taxonomic aggregation, `"protein_groups"` for functional
+   - `fcol`: any column registered as an aggregation target (see below)
+   - `include_na`: `"drop"` excludes unannotated features, `"group"` collects them as `"Unassigned"`
+   - Creates a new assay named after `fcol` (e.g., `"genus"`)
+
+2. **Check available aggregation targets** with `aggregation_targets(qf)` — returns a named list with `kind` (`"taxonomic"` or `"functional"`) and `from` (source assay). Taxonomic targets: `domain`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`. Functional targets include: `go`, `eggnog`, `eggnog_code`, `kegg_orthology`, `kegg_map_pathway`, `cazy_class`, `cazy_family`, plus `uniprot_`-prefixed variants.
+
+3. **Relative abundance**: `add_relative_abundance_assay(qf, assay_name = "genus")` — creates `{assay}_rel_abundance` (values sum to 100 per sample).
+
+4. **Log-transform for statistics**: `add_log_imputed_norm_assay(qf, assay = "genus", base = 2, impute_method = "MinDet", norm_method = "none")` — creates `{assay}_log2_MinDet_none`. Zeros are replaced with NA, then log-transformed, then imputed.
+
+5. **Tidy format**: `tidy_conduit(qf, assay_name = "genus")` — returns a long-format tibble with columns: `file` (sample ID), `rowid` (feature ID), `value`, plus all `colData` and `rowData` columns.
+
+6. **Differential analysis**: `perform_limma_analysis(qf, assay_name, formula, contrast)` — runs limma on the specified assay. Uses QFeatures-level `colData`, so custom columns added after construction (e.g., factor conversions) are visible to the model formula.
+
+7. **Subsetting by taxonomy for organism-specific analysis**: filter the `protein_groups` assay by `rowData` columns (e.g., `phylum == "Chordata"` for host-only) before aggregating to functional terms:
+   ```r
+   se <- qf[["protein_groups"]]
+   qf[["protein_groups"]] <- se[which(rowData(se)$phylum == "Chordata"), ]
+   qf <- aggregate_assay_by_annotation(qf, i = "protein_groups", fcol = "go", include_na = "drop")
+   ```
+
+### Annotations Slot
+
+The `@annotations` slot is a long-format tibble with columns: `Protein.Group`, `annotation_type`, `term`, `description`. Key annotation types:
+- `uniprot_go` — GO terms from UniProt (has descriptions)
+- `go` — GO terms from eggNOG (descriptions are NA; use `uniprot_go` to look up descriptions for the same GO IDs)
+- `eggnog` — specific COG/NOG IDs (e.g., `COG1734`)
+- `eggnog_code` — single-letter COG functional categories (e.g., `J`, `K`, `M`)
+- `kegg_orthology`, `kegg_map_pathway` — KEGG annotations
+- `cazy_class`, `cazy_family` — CAZyme annotations
+- All of the above also exist with `uniprot_` prefix (from UniProt source vs eggNOG source)
+
 ### External API Dependencies
 
 Many functions call external APIs that require internet access:

@@ -43,17 +43,18 @@ perform_limma_analysis <- function(qf,
                                    assay_name,
                                    formula,
                                    contrast) {
-  # Extract assay and metadata
+  # Extract assay and metadata — use QFeatures-level colData so that
+  # columns added after construction (e.g. custom factors) are visible
   se <- qf[[assay_name]]
   exprs <- SummarizedExperiment::assay(se)
 
+  colData <- SummarizedExperiment::colData(qf)[colnames(se), , drop = FALSE]
+
   # Ensure all character/logical columns are factors
-  SummarizedExperiment::colData(se)[] <- lapply(
-    SummarizedExperiment::colData(se),
+  colData[] <- lapply(
+    colData,
     function(x) if (is.character(x) || is.logical(x)) as.factor(x) else x
   )
-
-  colData <- SummarizedExperiment::colData(se)
 
   # Extracting Row Data
   rowData <- SummarizedExperiment::rowData(se) |>

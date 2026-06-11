@@ -249,7 +249,7 @@ download_fasta_from_organism_ids <- function(organism_ids,
     dir.create(fasta_dir)
   }
   if (parallel) {
-    future::plan(future::multisession, workers = future::availableCores() - 1)
+    future::plan(future::multisession, workers = max(1L, future::availableCores() - 1L))
     furrr::future_map(proteome_ids_to_search,
       get_fasta_file,
       fasta_dir = fasta_dir,

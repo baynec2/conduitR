@@ -8,7 +8,8 @@ annotate_uniprot_ids(
   uniprot_ids,
   columns = NULL,
   batch_size = 150,
-  parallel = TRUE
+  parallel = TRUE,
+  workers = NULL
 )
 }
 \arguments{
@@ -38,8 +39,15 @@ For a complete list of available fields, see the UniProt REST API documentation.
 \item{batch_size}{Integer specifying the number of IDs to process in each batch
 (default: 150). This helps manage API rate limits and memory usage.}
 
-\item{parallel}{Logical indicating whether to use parallel processing (default: TRUE).
-When TRUE, uses all available CPU cores minus one for processing.}
+\item{parallel}{Logical indicating whether to use parallel processing (default: TRUE).}
+
+\item{workers}{Integer giving the number of parallel workers to use when
+\code{parallel = TRUE}. If NULL (default), the count is
+\code{future::availableCores() - 1}, which honours cgroup / Slurm
+(\code{SLURM_CPUS_PER_TASK}) allocations rather than the node's physical
+core count. The value is floored at 1 and capped at the number of batches.
+Callers running under a scheduler (e.g. Snakemake) should pass their
+allocated thread count explicitly.}
 }
 \value{
 A tibble containing the requested UniProt information for each valid

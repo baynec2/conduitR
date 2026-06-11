@@ -83,7 +83,7 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
   organism_ids = unique(organism_ids)
 
   if (parallel) {
-    future::plan(future::multisession, workers = future::availableCores() - 1)
+    future::plan(future::multisession, workers = max(1L, future::availableCores() - 1L))
     results <- furrr::future_map(organism_ids,
                                  get_proteome_id_from_organism_id,
       .progress = TRUE

@@ -2,74 +2,102 @@
 % Please edit documentation in R/calc_taxon_fdr.R
 \name{calc_taxon_fdr}
 \alias{calc_taxon_fdr}
-\title{Calculate taxonomic FDR using target-decoy competition}
+\title{Calculate taxonomic FDR using picked target-decoy competition}
 \usage{
-calc_taxon_fdr(pep, taxon, decoy, peptide = NULL, fdr_threshold = 0.01)
+calc_taxon_fdr(
+  pep,
+  taxon,
+  decoy,
+  peptide = NULL,
+  qvalue_threshold = 0.05,
+  min_peptides = 2
+)
 }
 \arguments{
 \item{pep}{numeric vector of PEP scores (0-1) for each PSM. Must come from
 \strong{unfiltered} DIA-NN output (\code{--qvalue 1}); pre-filtered output
 strips most decoys and produces an unrepresentative null distribution.}
 
-\item{taxon}{character vector of taxonomic family assignment for each PSM.}
+\item{taxon}{character vector of taxon assignment for each PSM.}
 
 \item{decoy}{logical vector indicating decoy status for each PSM. DIA-NN
 reports this as an integer (0/1); coerce with \code{as.logical()} before
 passing. Mixing of target and decoy PSMs within the same taxon is expected
-(DIA-NN decoys share the family label of their source peptide) and is
+(DIA-NN decoys share the taxon label of their source peptide) and is
 handled correctly: scores are aggregated separately per
-\code{(taxon, decoy)} combination.}
+\code{(taxon, decoy)} combination before the pick.}
 
 \item{peptide}{optional character vector of peptide sequences for collapsing
 to best PSM per unique \code{(peptide, taxon, decoy)} combination before
-aggregation. If NULL, PSMs are aggregated directly.}
+aggregation. Required for the \code{min_peptides} gate to apply (without it
+the per-taxon peptide count is unknown and the gate is skipped).}
 
-\item{fdr_threshold}{numeric FDR threshold for calling taxa as detected.
-Defaults to 0.01.}
+\item{qvalue_threshold}{numeric q-value cutoff for a presence call. Default
+0.05 — permissive on purpose, because a taxon dropped here is unrecoverable
+in downstream database-reduction stages.}
+
+\item{min_peptides}{numeric minimum distinct peptides
+(\code{n_unique_peptides_all}) for a presence call. Default 2 — a single
+chance peptide must not make a call. Only enforced when \code{peptide} is
+supplied.}
 }
 \value{
 a list with elements:
-\item{results}{tibble with one row per \code{(taxon, decoy)} combination,
-containing score, decoy status, running FDR, q-value, and the number of
-unique peptides supporting the taxon (\code{n_unique_peptides_all}; NA
-when \code{peptide} is not provided). \emph{All} contributing peptides
-are counted — including those with weak per-PSM evidence whose effect on
-score is already small via the \code{-log(PEP)} weighting. Callers that
-want a "confident peptides only" count should compute it separately from
-the source PSMs (e.g. filtering by precursor Q.Value) and join it on
-\code{taxon}. Sorted by descending score.}
-\item{detected}{tibble subset of results containing only target taxa
-passing fdr_threshold}
-\item{n_targets}{integer count of target taxa in results}
-\item{n_decoys}{integer count of decoy taxa in results}
-\item{fdr_threshold}{the FDR threshold used}
+  \item{results}{tibble with one row per \code{(taxon, decoy)} combination,
+    containing \code{score}, \code{n_unique_peptides_all} (NA when
+    \code{peptide} is not provided), \code{decoy}, \code{picked_winner}
+    (logical — this row won its taxon's pick), the picked \code{fdr} and
+    \code{qvalue} (NA for discarded losers), and \code{pass} (target winner
+    AND \code{qvalue <= qvalue_threshold} AND
+    \code{n_unique_peptides_all >= min_peptides}). Winners sorted by
+    descending score, then the discarded losers.}
+  \item{detected}{tibble subset of \code{results} with \code{pass == TRUE}.}
+  \item{n_targets}{count of target representatives (target winners).}
+  \item{n_decoys}{count of decoy representatives (decoy winners).}
+  \item{first_decoy_rank}{1-based rank of the first decoy winner in the
+    score-sorted representative list (\code{NA} if no decoy wins).}
+  \item{n_missing_pair}{count of taxa present on only one side (target-only
+    or decoy-only); these cannot be truly competed and are flagged for the
+    caller.}
+  \item{qvalue_threshold}{the q-value threshold used.}
+  \item{min_peptides}{the min-peptides floor used.}
 }
 \description{
-Applies a target-decoy competition strategy at the taxon level. Each taxon
-accumulates a score (sum of \code{-log(PEP)}) separately for its target PSMs
-and its decoy PSMs, producing one target row and one decoy row per taxon.
-All rows compete in the same descending-score ranking to compute a running
-FDR and q-value.
+Aggregates PSM scores to the taxon level and applies the \strong{picked}
+target-decoy strategy (Savitski et al. 2015) to call which taxa are present.
+Each taxon accumulates a score (sum of \code{-log(PEP)}) separately for its
+target PSMs and its decoy PSMs; the higher-scoring of the two is kept as that
+taxon's single representative and the loser is discarded, then all
+representatives compete in one descending-score ranking.
 }
 \details{
+\strong{Why picked.} A naive running FDR that ranks every taxon's target row
+\emph{and} its decoy row in one list and walks a running \code{decoys /
+targets} down it is biased when score scales with abundance: a high-abundance
+lineage's reversed decoy can outscore a genuinely present low-abundance
+lineage's forward target, inflating the running FDR before the low-abundance
+true taxon is reached and wrongly rejecting it. Picking removes this — a
+present lineage's target wins the pick, so its decoy is discarded and can no
+longer outrank smaller true lineages. The decoys that survive are genuine
+noise units that score near zero regardless of rank, so taxa resolved at
+mixed ranks (family / genus / species / strain) can compete in one list
+without per-rank stratification (picking sinks the null to the bottom).
+
 \strong{Pooling across runs:} This function is designed to operate on PSMs
 pooled from all runs in an experiment to produce experiment-level taxon
 detection calls. DIA-NN reports one row per (precursor, run), so a peptide
-detected in N runs contributes N scores; families consistently detected
-across many samples naturally accumulate higher scores than those seen in
-only one sample. For per-sample detection, filter the input vectors to a
-single run before calling.
-
-The \code{peptide} argument controls within-experiment redundancy: passing
-\code{Stripped.Sequence} collapses each unique peptide sequence to its best
-PEP across all runs (one contribution per peptide regardless of how many
-runs detected it). Omitting \code{peptide} (default) lets every
-(precursor, run) detection contribute independently.
+detected in N runs contributes N scores; taxa consistently detected across
+many samples naturally accumulate higher scores. For per-sample detection,
+filter the input vectors to a single run before calling.
 }
 \examples{
+# Two taxa, each with a target and a decoy PSM. Taxon A's target wins its
+# pick; taxon B's decoy outscores its target so B's decoy becomes the
+# representative and sinks to the bottom of the competition.
 calc_taxon_fdr(
-  pep   = c(0.01, 0.05, 0.10, 0.50),
-  taxon = c("A",  "A",  "B",  "B"),
-  decoy = c(FALSE, TRUE, FALSE, TRUE)
+  pep     = c(0.01, 0.80, 0.50, 0.02),
+  taxon   = c("A",  "A",  "B",  "B"),
+  decoy   = c(FALSE, TRUE, FALSE, TRUE),
+  peptide = c("PEPA1", "PEPA2", "PEPB1", "PEPB2")
 )
 }

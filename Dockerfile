@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libfribidi-dev \
     libtiff-dev \
     libgdal-dev \
+    lz4 \
     pandoc \
     && rm -rf /var/lib/apt/lists/*
 

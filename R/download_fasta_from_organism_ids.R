@@ -130,10 +130,13 @@ download_fasta_from_organism_ids <- function(organism_ids,
     dplyr::filter(child_rank == "strain")
 
   if(nrow(strain > 0)){
-  # Defining reference proteome classifications
+  # Defining adequate-strain-proteome classifications. UniProt's response-body
+  # `proteomeType` labels changed around mid-2026 to "Reference proteome",
+  # "Non Reference proteome", "Excluded"; a strain's own proteome is adequate
+  # unless it is Excluded.
   good_pt_filter <- c(
-    "Representative proteome",
-    "Reference and representative proteome"
+    "Reference proteome",
+    "Non Reference proteome"
   )
 
   # User supplied strains that are representative are good proteome ids

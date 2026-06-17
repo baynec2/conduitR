@@ -61,7 +61,16 @@
 #' }
 get_proteome_id_from_organism_id <- function(id) {
   base_url <- "https://rest.uniprot.org/proteomes/search"
-  proteome_types <- c(1, 2, 3, 4)  # 1 = reference, 2 = other, 3 = redundant, 4 = excluded
+  # UniProt's `proteome_type` query field is an enum, NOT a numeric code. It was
+  # changed from numeric (1=reference, 2=other, 3=redundant, 4=excluded) to these
+  # string values around mid-2026; the old numeric query (`proteome_type:1`)
+  # silently matches NOTHING for every organism — even ones with a reference
+  # proteome — so every taxon resolved to an all-NA row and downstream the whole
+  # database collapsed to just the directly-appended host. Values are tried in
+  # preference order. If this returns NA for an organism that clearly has a
+  # proteome (e.g. 9606 -> UP000005640), suspect another UniProt enum change and
+  # check https://rest.uniprot.org/configure/proteomes/search-fields.
+  proteome_types <- c("REFERENCE", "NON_REFERENCE", "EXCLUDED")
 
   for (ptype in proteome_types) {
     query <- paste0("organism_id:", id, " AND proteome_type:", ptype)

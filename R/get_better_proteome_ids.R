@@ -4,18 +4,18 @@
 #' are not available in UniProtKB. To maximize the information obtained from
 #' these identifiers, this function applies the following selection logic:
 #'
+#' UniProt's proteome types are "Reference proteome", "Non Reference proteome",
+#' and "Excluded" (the response-body `proteomeType` labels).
+#'
 #' 1. **Strain-level taxonomic IDs:**
-#'    - If a proteome exists that is classified as "Representative proteome",
-#'      "Reference and representative proteome", or "Other proteome", it will be
-#'      used.
-#'    - If no such proteome exists, the function moves up to the species level
-#'      and selects proteomes in the following order of preference:
-#'      "Representative proteome", "Reference and representative proteome",
-#'      "Other proteome", "Redundant proteome", and "Excluded proteome".
+#'    - If the strain has its own "Reference proteome" or "Non Reference
+#'      proteome", it will be used.
+#'    - If no such proteome exists (only Excluded, or none), the function moves
+#'      up to the species level and uses the species-level proteome instead.
 #'
 #' 2. **Species-level taxonomic IDs:**
-#'    - If a redundant proteome exists, it will be used as the selected
-#'      proteome.
+#'    - The selected proteome is `redundant_to` when present, otherwise the
+#'      proteome's own id.
 #'
 #' The first proteome meeting these criteria will be returned as `selected_proteome_id`.
 #'
@@ -35,7 +35,7 @@
 #'   organism_id = 1339341,
 #'   organism = "Parabacteroides distasonis str. 3776 Po2 i",
 #'   protein_count = 4580,
-#'   proteome_type = "Redundant proteome",
+#'   proteome_type = "Non Reference proteome",
 #'   redundant_to = "UP000027850",
 #'   genome_assembly_id = "GCA_000699745.1",
 #'   genome_assembly_level = "full",
@@ -72,9 +72,10 @@ get_better_proteome_ids <- function(proteome_id_df,
 
   if (nrow(strain_df) > 0) {
 
-    good_pt_filter <- c("Representative proteome",
-                        "Reference and representative proteome",
-                        "Other proteome")
+    # Response-body `proteomeType` labels (changed alongside the query enum
+    # around mid-2026): "Reference proteome", "Non Reference proteome",
+    # "Excluded". A strain's own proteome is adequate unless it is Excluded.
+    good_pt_filter <- c("Reference proteome", "Non Reference proteome")
 
     log_with_timestamp("Determining what strains have adequate proteomes")
 
@@ -128,7 +129,28 @@ get_better_proteome_ids <- function(proteome_id_df,
   resolved_df <- dplyr::bind_rows(strain_resolved, species_df) |>
     dplyr::distinct(selected_proteome_id, .keep_all = TRUE)
 
-  log_with_timestamp(sprintf("Returning %d selected proteome IDs", nrow(resolved_df)))
+  # Guard against silent collapse: if EVERY input organism resolved to a NA
+  # proteome the distinct() above leaves a single all-NA row, which downstream
+  # (get_fasta_from_proteome_ids drops NA proteome_ids) silently produces a
+  # host-only database. That is almost always an upstream API break (e.g. the
+  # proteome_type enum change), not a real "no proteomes exist" result, so make
+  # it loud rather than letting it pass as one usable row.
+  n_usable <- sum(!is.na(resolved_df$selected_proteome_id))
+  if (nrow(proteome_id_df) > 0 && n_usable == 0) {
+    warning(
+      "get_better_proteome_ids resolved 0 usable proteomes from ",
+      length(unique(organism_ids)), " organism ids (all selected_proteome_id are NA). ",
+      "This usually means the UniProt proteome lookup returned nothing for every ",
+      "organism -- suspect a UniProt API change in get_proteome_id_from_organism_id, ",
+      "not a genuine absence of proteomes.",
+      call. = FALSE
+    )
+  }
+
+  log_with_timestamp(sprintf(
+    "Returning %d selected proteome IDs (%d usable, %d NA)",
+    nrow(resolved_df), n_usable, nrow(resolved_df) - n_usable
+  ))
 
   return(resolved_df)
 }

@@ -22,21 +22,20 @@ are not available in UniProtKB. To maximize the information obtained from
 these identifiers, this function applies the following selection logic:
 }
 \details{
+UniProt's proteome types are "Reference proteome", "Non Reference proteome",
+and "Excluded" (the response-body \code{proteomeType} labels).
 \enumerate{
 \item \strong{Strain-level taxonomic IDs:}
 \itemize{
-\item If a proteome exists that is classified as "Representative proteome",
-"Reference and representative proteome", or "Other proteome", it will be
-used.
-\item If no such proteome exists, the function moves up to the species level
-and selects proteomes in the following order of preference:
-"Representative proteome", "Reference and representative proteome",
-"Other proteome", "Redundant proteome", and "Excluded proteome".
+\item If the strain has its own "Reference proteome" or "Non Reference
+proteome", it will be used.
+\item If no such proteome exists (only Excluded, or none), the function moves
+up to the species level and uses the species-level proteome instead.
 }
 \item \strong{Species-level taxonomic IDs:}
 \itemize{
-\item If a redundant proteome exists, it will be used as the selected
-proteome.
+\item The selected proteome is \code{redundant_to} when present, otherwise the
+proteome's own id.
 }
 }
 
@@ -49,7 +48,7 @@ proteome_id_df <- tibble::tibble(
   organism_id = 1339341,
   organism = "Parabacteroides distasonis str. 3776 Po2 i",
   protein_count = 4580,
-  proteome_type = "Redundant proteome",
+  proteome_type = "Non Reference proteome",
   redundant_to = "UP000027850",
   genome_assembly_id = "GCA_000699745.1",
   genome_assembly_level = "full",

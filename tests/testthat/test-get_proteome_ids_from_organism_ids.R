@@ -52,6 +52,22 @@ test_that("you get the same number out as you put in",{
 })
 
 # Test for duplicate ids
+# Regression for the UniProt proteome_type enum change: organisms that clearly
+# have proteomes must come back with non-NA proteome_id. The "same number out"
+# test above only checks organism_id presence, which NA rows still carry -- so
+# it could NOT catch the enum break that made every proteome_id NA and collapsed
+# the database to a host-only fasta. Assert usable proteomes here. Live test on
+# purpose (see test-get_proteome_id_from_organism_id.R).
+test_that("reference organisms resolve to usable (non-NA) proteome ids", {
+  skip_if_offline()
+  ids <- c(9606, 818, 272621)  # human + two microbes with proteomes
+  out <- get_proteome_ids_from_organism_ids(ids)
+  resolved <- out[!is.na(out$proteome_id), ]
+  expect_setequal(as.character(resolved$organism_id), as.character(ids))
+  expect_true(all(grepl("^UP[0-9]+$", resolved$proteome_id)))
+})
+
+# Test for duplicate ids
 test_that("it works with duplicate ids",{
   skip_if_offline()
   ids = c(77133,77133)

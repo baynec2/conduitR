@@ -137,7 +137,19 @@ annotate_uniprot_ids <- function(uniprot_ids,
   # Fix column names if provided
   if (!is.null(columns)) {
     col_names <- unlist(strsplit(columns, ","))
-    names(output) <- col_names
+    if (ncol(output) == 0L) {
+      # No valid IDs (e.g. an all-UniParc proteome strips every ID) or all
+      # batches empty -> bind_rows() yields a 0-column tibble. Since tibble
+      # 3.0.0, `names<-` on a 0-column frame is a no-op warning (not an error),
+      # which would silently drop the schema and make callers that reference a
+      # specific field (e.g. `go`) fail with "object 'go' not found". Return a
+      # well-formed 0-row tibble carrying the requested columns instead.
+      empty_cols <- rep(list(character(0)), length(col_names))
+      names(empty_cols) <- col_names
+      output <- tibble::as_tibble(empty_cols)
+    } else {
+      names(output) <- col_names
+    }
   }
 
   return(output)

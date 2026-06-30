@@ -17,7 +17,9 @@ create_provenance(
 
 \item{uniprotkb_release}{character(1). UniProtKB release identifier used
 as the reference database, e.g. \code{"2024_05"}. Defaults to the result
-of \code{\link[=get_uniprotkb_release]{get_uniprotkb_release()}}, which queries the UniProt REST API.}
+of \code{\link[=get_uniprotkb_release]{get_uniprotkb_release()}}, which queries the UniProt REST API and
+returns \code{NULL} if it is unreachable; \code{NULL} is recorded as
+\code{NA_character_} so a transient metadata blip never aborts the build.}
 
 \item{config}{Optional named \code{list} of \code{tbl_df} objects, where
 each element represents a distinct configuration source (e.g.

@@ -103,11 +103,16 @@ get_uniprot_data <- function(ids, columns = NULL, batch_size = 150) {
       size = batch_size
     ) |>
     # The UniProt REST API intermittently returns transient errors (HTTP 503
-    # Service Unavailable, 429 Too Many Requests) under load. Without this,
-    # req_perform() raises on the first such response and aborts the whole
-    # annotation rule. Retry with exponential backoff (honours Retry-After).
+    # Service Unavailable, 429 Too Many Requests) under load, and the
+    # connection itself can drop (SSL reset, timeout). Without this,
+    # req_perform() raises on the first such failure and aborts the whole
+    # annotation rule. Retry with exponential backoff (honours Retry-After);
+    # retry_on_failure also covers connection-level errors that have no HTTP
+    # response. req_timeout bounds a single hung attempt.
+    httr2::req_timeout(seconds = 60) |>
     httr2::req_retry(
-      max_tries = 5,
+      max_tries = 8,
+      retry_on_failure = TRUE,
       is_transient = function(resp) {
         httr2::resp_status(resp) %in% c(429, 500, 502, 503, 504)
       }

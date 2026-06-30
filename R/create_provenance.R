@@ -9,7 +9,9 @@
 #'   (the Snakemake workflow that generated the data), e.g. \code{"1.2.3"}.
 #' @param uniprotkb_release character(1). UniProtKB release identifier used
 #'   as the reference database, e.g. \code{"2024_05"}. Defaults to the result
-#'   of [get_uniprotkb_release()], which queries the UniProt REST API.
+#'   of [get_uniprotkb_release()], which queries the UniProt REST API and
+#'   returns \code{NULL} if it is unreachable; \code{NULL} is recorded as
+#'   \code{NA_character_} so a transient metadata blip never aborts the build.
 #' @param config Optional named \code{list} of \code{tbl_df} objects, where
 #'   each element represents a distinct configuration source (e.g.
 #'   \code{snakemake_yaml}, \code{diann_run_cfg}, \code{runtime}). Every
@@ -44,6 +46,12 @@ create_provenance <- function(workflow_version,
     is.character(workflow_version),
     length(workflow_version) == 1
   )
+  # get_uniprotkb_release() returns NULL when the UniProt API is unreachable.
+  # A provenance metadata string must never abort the build, so record NA
+  # rather than erroring; a malformed (non-character) value still errors below.
+  if (is.null(uniprotkb_release)) {
+    uniprotkb_release <- NA_character_
+  }
   stopifnot(
     is.character(uniprotkb_release),
     length(uniprotkb_release) == 1

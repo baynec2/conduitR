@@ -58,6 +58,14 @@ test_that("create_provenance() errors on bad uniprotkb_release", {
   )
 })
 
+test_that("create_provenance() tolerates a NULL release (records NA, not an error)", {
+  # get_uniprotkb_release() returns NULL when UniProt is unreachable; a
+  # provenance metadata blip must not abort the build.
+  prov <- create_provenance(workflow_version = "1.0.0", uniprotkb_release = NULL)
+  expect_true(is.na(prov$uniprotkb_release))
+  expect_type(prov$uniprotkb_release, "character")
+})
+
 test_that("create_provenance() errors when config is a plain data.frame, not a list", {
   bad_cfg <- tibble::tibble(parameter = "fdr", value = "0.01")
   expect_error(

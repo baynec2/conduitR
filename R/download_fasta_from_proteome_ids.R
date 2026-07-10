@@ -15,9 +15,16 @@
 #' @param proteome_ids Character vector of UniProt proteome IDs (e.g.
 #'   `"UP000005640"`). Duplicates are removed with a warning.
 #' @param parallel Logical. If `TRUE`, download proteomes in parallel across
-#'   proteomes using `future::multisession` with `availableCores() - 1` workers.
-#'   This is purely a speed knob: the completeness gate, concatenation, and
-#'   metadata output are identical to the sequential path. Default `FALSE`.
+#'   proteomes using `future::multisession`. This is purely a speed knob: the
+#'   completeness gate, concatenation, and metadata output are identical to the
+#'   sequential path. Default `FALSE`.
+#' @param workers Integer giving the number of parallel workers to use when
+#'   `parallel = TRUE`. If `NULL` (default), the count is
+#'   `future::availableCores() - 1`, which honours cgroup / Slurm
+#'   (`SLURM_CPUS_PER_TASK`) allocations rather than the node's physical core
+#'   count. Floored at 1 and capped at the number of proteome IDs. Callers
+#'   running under a scheduler (e.g. Snakemake) should pass their allocated
+#'   thread count explicitly.
 #' @param proteome_id_destination_fp Character. Path for the output file
 #'   containing proteome IDs and metadata (default: `getwd()` plus current
 #'   date and `.txt`).
@@ -50,6 +57,7 @@
 #' }
 download_fasta_from_proteome_ids <- function(proteome_ids,
                                             parallel = FALSE,
+                                            workers = NULL,
                                             proteome_id_destination_fp = paste0(
                                               getwd(), "/",
                                               Sys.Date(),
@@ -89,7 +97,11 @@ download_fasta_from_proteome_ids <- function(proteome_ids,
   # get_fasta_file regardless, since UniProt uses cursor pagination.)
   ##############################################################################
   if (parallel) {
-    future::plan(future::multisession, workers = max(1L, future::availableCores() - 1L))
+    # Size the worker pool from cgroup / Slurm-aware availableCores(); floor at 1
+    # and never spin up more workers than there are proteomes to download.
+    if (is.null(workers)) workers <- future::availableCores() - 1L
+    workers <- max(1L, min(as.integer(workers), length(proteome_ids_to_search)))
+    future::plan(future::multisession, workers = workers)
     on.exit(future::plan(future::sequential), add = TRUE) # reset even on error
     download_results <- furrr::future_map(
       proteome_ids_to_search,

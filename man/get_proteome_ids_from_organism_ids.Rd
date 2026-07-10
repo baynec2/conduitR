@@ -4,7 +4,11 @@
 \alias{get_proteome_ids_from_organism_ids}
 \title{Get Proteome IDs for Multiple Organisms}
 \usage{
-get_proteome_ids_from_organism_ids(organism_ids, parallel = TRUE)
+get_proteome_ids_from_organism_ids(
+  organism_ids,
+  parallel = TRUE,
+  workers = NULL
+)
 }
 \arguments{
 \item{organism_ids}{A numeric vector of NCBI taxonomy IDs (e.g., 9606 for human,
@@ -12,6 +16,14 @@ get_proteome_ids_from_organism_ids(organism_ids, parallel = TRUE)
 
 \item{parallel}{Logical indicating whether to use parallel processing (default: TRUE).
 When TRUE, uses all available CPU cores minus one for faster processing.}
+
+\item{workers}{Integer giving the number of parallel workers to use when
+\code{parallel = TRUE}. If NULL (default), the count is
+\code{future::availableCores() - 1}, which honours cgroup / Slurm
+(\code{SLURM_CPUS_PER_TASK}) allocations rather than the node's physical
+core count. Floored at 1 and capped at the number of organism IDs. Callers
+running under a scheduler (e.g. Snakemake) should pass their allocated
+thread count explicitly.}
 }
 \value{
 A tibble containing:

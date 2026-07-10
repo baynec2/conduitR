@@ -9,6 +9,13 @@
 #'   562 for E. coli). These IDs are used to identify organisms in UniProt.
 #' @param parallel Logical indicating whether to use parallel processing (default: TRUE).
 #'   When TRUE, uses all available CPU cores minus one for faster processing.
+#' @param workers Integer giving the number of parallel workers to use when
+#'   \code{parallel = TRUE}. If NULL (default), the count is
+#'   \code{future::availableCores() - 1}, which honours cgroup / Slurm
+#'   (\code{SLURM_CPUS_PER_TASK}) allocations rather than the node's physical
+#'   core count. Floored at 1 and capped at the number of organism IDs. Callers
+#'   running under a scheduler (e.g. Snakemake) should pass their allocated
+#'   thread count explicitly.
 #'
 #' @return A tibble containing:
 #'   \itemize{
@@ -71,7 +78,8 @@
 #'     individual FASTA files
 #' }
 get_proteome_ids_from_organism_ids <- function(organism_ids,
-                                               parallel = TRUE) {
+                                               parallel = TRUE,
+                                               workers = NULL) {
 
   # Let the user know if there are duplicate ids
   if(length(organism_ids) - length(unique(organism_ids)) > 0){
@@ -83,7 +91,14 @@ get_proteome_ids_from_organism_ids <- function(organism_ids,
   organism_ids = unique(organism_ids)
 
   if (parallel) {
-    future::plan(future::multisession, workers = max(1L, future::availableCores() - 1L))
+    # Size the worker pool. future::availableCores() honours cgroup / Slurm
+    # (SLURM_CPUS_PER_TASK) limits, unlike the node's physical core count. Floor
+    # at 1 and never spin up more workers than there are organism IDs.
+    if (is.null(workers)) {
+      workers <- future::availableCores() - 1L
+    }
+    workers <- max(1L, min(as.integer(workers), length(organism_ids)))
+    future::plan(future::multisession, workers = workers)
     results <- furrr::future_map(organism_ids,
                                  get_proteome_id_from_organism_id,
       .progress = TRUE

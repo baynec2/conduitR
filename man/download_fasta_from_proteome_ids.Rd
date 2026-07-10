@@ -7,6 +7,7 @@
 download_fasta_from_proteome_ids(
   proteome_ids,
   parallel = FALSE,
+  workers = NULL,
   proteome_id_destination_fp = paste0(getwd(), "/", Sys.Date(), ".txt"),
   fasta_destination_fp = paste0(getwd(), "/", Sys.Date(), ".fasta")
 )
@@ -16,9 +17,17 @@ download_fasta_from_proteome_ids(
 \code{"UP000005640"}). Duplicates are removed with a warning.}
 
 \item{parallel}{Logical. If \code{TRUE}, download proteomes in parallel across
-proteomes using \code{future::multisession} with \code{availableCores() - 1} workers.
-This is purely a speed knob: the completeness gate, concatenation, and
-metadata output are identical to the sequential path. Default \code{FALSE}.}
+proteomes using \code{future::multisession}. This is purely a speed knob: the
+completeness gate, concatenation, and metadata output are identical to the
+sequential path. Default \code{FALSE}.}
+
+\item{workers}{Integer giving the number of parallel workers to use when
+\code{parallel = TRUE}. If \code{NULL} (default), the count is
+\code{future::availableCores() - 1}, which honours cgroup / Slurm
+(\code{SLURM_CPUS_PER_TASK}) allocations rather than the node's physical core
+count. Floored at 1 and capped at the number of proteome IDs. Callers
+running under a scheduler (e.g. Snakemake) should pass their allocated
+thread count explicitly.}
 
 \item{proteome_id_destination_fp}{Character. Path for the output file
 containing proteome IDs and metadata (default: \code{getwd()} plus current

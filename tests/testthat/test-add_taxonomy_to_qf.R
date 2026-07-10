@@ -97,29 +97,54 @@ test_that("per-peptide LCA reflects Protein.Ids taxonomy", {
   }
 })
 
-test_that("per-protein-group LCA is derived from peptide LCAs (na.omit consensus)", {
+test_that("per-protein-group LCA is a strict LCA of peptide LCAs (ambiguous peptides block promotion)", {
   qf <- make_taxonomy_test_qf()
   ann <- make_taxonomy_test_annotation()
   qf <- add_taxonomy_to_qf(qf, ann)
 
   pg_rd <- SummarizedExperiment::rowData(qf[["protein_groups"]])
 
-  # PG_Ecoli: both peptides agree at species level
+  # PG_Ecoli: both peptides agree at species level, none ambiguous
   expect_equal(pg_rd["PG_Ecoli", "species"], "Escherichia coli")
   expect_equal(pg_rd["PG_Ecoli", "lca"],     "Escherichia coli")
 
   # PG_EnteroMix: pep_mix_specific is E. coli at species; pep_mix_family is NA at
-  # species/genus and Enterobacteriaceae at family. With na.omit consensus,
-  # the group inherits the most specific positive claim from its peptides:
-  # species = E. coli, genus = Escherichia.
-  expect_equal(pg_rd["PG_EnteroMix", "species"], "Escherichia coli")
-  expect_equal(pg_rd["PG_EnteroMix", "genus"],   "Escherichia")
-  expect_equal(pg_rd["PG_EnteroMix", "family"],  "Enterobacteriaceae")
-  expect_equal(pg_rd["PG_EnteroMix", "lca"],     "Escherichia coli")
+  # species/genus and Enterobacteriaceae at family. Under the STRICT LCA rule,
+  # the ambiguous peptide dissents at species and genus, so the group must NOT
+  # be over-promoted to E. coli — it falls back to the rank all its peptides
+  # share: family Enterobacteriaceae (issue #16).
+  expect_true(is.na(pg_rd["PG_EnteroMix", "species"]))
+  expect_true(is.na(pg_rd["PG_EnteroMix", "genus"]))
+  expect_equal(pg_rd["PG_EnteroMix", "family"], "Enterobacteriaceae")
+  expect_equal(pg_rd["PG_EnteroMix", "lca"],    "Enterobacteriaceae")
 
   # PG_CrossDomain: only peptide is all-NA; group label is all NA
   expect_true(is.na(pg_rd["PG_CrossDomain", "species"]))
   expect_true(is.na(pg_rd["PG_CrossDomain", "lca"]))
+})
+
+test_that("protein_groups rowData records resolution diagnostics (n_peptides / n_species_resolved / fraction)", {
+  qf <- make_taxonomy_test_qf()
+  ann <- make_taxonomy_test_annotation()
+  qf <- add_taxonomy_to_qf(qf, ann)
+
+  pg_rd <- SummarizedExperiment::rowData(qf[["protein_groups"]])
+
+  # PG_Ecoli: 2 peptides, both species-resolved
+  expect_equal(pg_rd["PG_Ecoli", "n_peptides"], 2L)
+  expect_equal(pg_rd["PG_Ecoli", "n_species_resolved"], 2L)
+  expect_equal(pg_rd["PG_Ecoli", "species_resolved_fraction"], 1)
+
+  # PG_EnteroMix: 2 peptides, only 1 resolves to species -> fraction 0.5,
+  # and the group is (correctly) NOT called at species despite that minority.
+  expect_equal(pg_rd["PG_EnteroMix", "n_peptides"], 2L)
+  expect_equal(pg_rd["PG_EnteroMix", "n_species_resolved"], 1L)
+  expect_equal(pg_rd["PG_EnteroMix", "species_resolved_fraction"], 0.5)
+
+  # PG_CrossDomain: 1 peptide, none species-resolved
+  expect_equal(pg_rd["PG_CrossDomain", "n_peptides"], 1L)
+  expect_equal(pg_rd["PG_CrossDomain", "n_species_resolved"], 0L)
+  expect_equal(pg_rd["PG_CrossDomain", "species_resolved_fraction"], 0)
 })
 
 test_that("per-protein-group LCA collapses to NA when peptides positively disagree", {

@@ -9,6 +9,16 @@
 #' [aggregate_assay_by_annotation()] to materialise a per-rank assay on
 #' demand.
 #'
+#' The protein-group label is a *strict* LCA of its constituent peptides: a
+#' group is resolved at a rank only if every peptide agrees there and none is
+#' ambiguous (`NA`) at that rank. An ambiguous peptide therefore pulls the
+#' group label up to the most specific rank the whole group shares, rather
+#' than abstaining — so a small resolved minority cannot promote a
+#' mostly-ambiguous group to a confident (e.g. species) call. The
+#' `protein_groups` rowData additionally records `n_peptides`,
+#' `n_species_resolved`, and `species_resolved_fraction` so downstream code
+#' can flag or filter low-confidence group calls.
+#'
 #' Peptide-centric summation is the canonical aggregation path for taxonomy
 #' (intensity attributes to a rank only at the resolution the peptide
 #' evidence supports), so each rank is registered with `from = "peptides"`.
@@ -23,8 +33,9 @@
 #' @return The input QFeatures object with:
 #'   \itemize{
 #'     \item Per-rank taxonomy and `lca` columns added to `peptides` rowData.
-#'     \item Per-rank taxonomy and `lca` columns added to `protein_groups`
-#'           rowData.
+#'     \item Per-rank taxonomy and `lca` columns (strict LCA) added to
+#'           `protein_groups` rowData, plus `n_peptides`,
+#'           `n_species_resolved`, and `species_resolved_fraction`.
 #'     \item Each rank registered as a taxonomic aggregation target sourced
 #'           from `peptides`.
 #'   }
@@ -90,10 +101,24 @@ add_taxonomy_to_qf <- function(qf,
     ) |>
     dplyr::group_by(Protein.Group) |>
     dplyr::summarise(
+      # Diagnostics (computed before the across() so they bind to the raw
+      # per-peptide columns): group size and how many peptides carry a
+      # resolved species-level LCA. species_resolved_fraction lets downstream
+      # code flag low-confidence group calls.
+      n_peptides = dplyr::n(),
+      n_species_resolved = sum(!is.na(species)),
+      # Strict LCA: a group is resolved at a rank only if *every* constituent
+      # peptide agrees there and none abstain. Ambiguous (NA) peptides count as
+      # dissent (unique() keeps NA -> length > 1 -> NA), so a small resolved
+      # minority can no longer promote a mostly-ambiguous group; the label
+      # falls back up to the most specific rank the whole group shares. This
+      # matches the peptide-level rule above. The previous na.omit() dropped
+      # abstainers and over-promoted the group (see issue #16).
       dplyr::across(dplyr::all_of(ranks),
-                    ~ if (length(unique(stats::na.omit(.))) == 1) unique(stats::na.omit(.)) else NA_character_),
+                    ~ if (length(unique(.)) == 1) unique(.) else NA_character_),
       .groups = "drop"
     ) |>
+    dplyr::mutate(species_resolved_fraction = n_species_resolved / n_peptides) |>
     dplyr::rowwise() |>
     dplyr::mutate(lca = dplyr::coalesce(species, genus, family, order, class, phylum, kingdom, domain)) |>
     dplyr::ungroup()

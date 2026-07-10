@@ -19,8 +19,9 @@ matching \code{Protein.Group}).}
 The input QFeatures object with:
 \itemize{
 \item Per-rank taxonomy and \code{lca} columns added to \code{peptides} rowData.
-\item Per-rank taxonomy and \code{lca} columns added to \code{protein_groups}
-rowData.
+\item Per-rank taxonomy and \code{lca} columns (strict LCA) added to
+\code{protein_groups} rowData, plus \code{n_peptides},
+\code{n_species_resolved}, and \code{species_resolved_fraction}.
 \item Each rank registered as a taxonomic aggregation target sourced
 from \code{peptides}.
 }
@@ -36,6 +37,16 @@ registered as aggregation targets — call
 demand.
 }
 \details{
+The protein-group label is a \emph{strict} LCA of its constituent peptides: a
+group is resolved at a rank only if every peptide agrees there and none is
+ambiguous (\code{NA}) at that rank. An ambiguous peptide therefore pulls the
+group label up to the most specific rank the whole group shares, rather
+than abstaining — so a small resolved minority cannot promote a
+mostly-ambiguous group to a confident (e.g. species) call. The
+\code{protein_groups} rowData additionally records \code{n_peptides},
+\code{n_species_resolved}, and \code{species_resolved_fraction} so downstream code
+can flag or filter low-confidence group calls.
+
 Peptide-centric summation is the canonical aggregation path for taxonomy
 (intensity attributes to a rank only at the resolution the peptide
 evidence supports), so each rank is registered with \code{from = "peptides"}.

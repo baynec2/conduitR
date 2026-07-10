@@ -15,9 +15,10 @@ download_fasta_from_proteome_ids(
 \item{proteome_ids}{Character vector of UniProt proteome IDs (e.g.
 \code{"UP000005640"}). Duplicates are removed with a warning.}
 
-\item{parallel}{Logical. If \code{TRUE}, download proteomes in parallel using
-\code{future::multisession} with \code{availableCores() - 1} workers. Default
-\code{FALSE}.}
+\item{parallel}{Logical. If \code{TRUE}, download proteomes in parallel across
+proteomes using \code{future::multisession} with \code{availableCores() - 1} workers.
+This is purely a speed knob: the completeness gate, concatenation, and
+metadata output are identical to the sequential path. Default \code{FALSE}.}
 
 \item{proteome_id_destination_fp}{Character. Path for the output file
 containing proteome IDs and metadata (default: \code{getwd()} plus current
@@ -27,18 +28,26 @@ date and \code{.txt}).}
 output (default: \code{getwd()} plus current date and \code{.fasta}).}
 }
 \value{
-When \code{parallel} is \code{FALSE}, returns the result of
-\code{concatenate_fasta_files} after writing the proteome info file; the temp
-directory is removed. When \code{parallel} is \code{TRUE}, returns the combined
-result of \code{get_fasta_file} across proteomes (no concatenation or
-proteome info file in that path). In both cases, FASTA and metadata files
-are written to the specified paths.
+Invisibly, the annotated proteome metadata tibble (proteome IDs with
+taxonomy/type and per-proteome download source). As side effects, writes
+the concatenated FASTA to \code{fasta_destination_fp} and the proteome metadata
+to \code{proteome_id_destination_fp}, and removes the temporary directory.
+Behaviour is identical whether \code{parallel} is \code{TRUE} or \code{FALSE}. Errors
+(without writing the FASTA) if the completeness gate fails.
 }
 \description{
 For each UniProt proteome ID, downloads the proteome FASTA from UniProt
 (UniProtKB or UniParc), saves per-proteome FASTA files in a temporary
 directory, then concatenates them into a single FASTA file. Also writes a
 delimited file with proteome IDs and associated taxonomy/type information.
+}
+\details{
+Before concatenating (non-parallel path), the per-proteome download manifest
+is checked for completeness: the function errors if the total delivered
+sequence count is zero or grossly short of the summed expected \code{proteinCount},
+and warns when some proteomes failed to download completely. This prevents an
+empty or truncated search database from silently flowing downstream into
+DIA-NN (see issue #20). No output FASTA is written when the gate errors.
 }
 \examples{
 \dontrun{
@@ -49,7 +58,7 @@ download_fasta_from_proteome_ids(
   proteome_id_destination_fp = "my_proteomes.txt"
 )
 
-# Parallel downloads (no concatenation; check temp dir for FASTA files)
+# Same result, downloaded in parallel across proteomes (faster)
 download_fasta_from_proteome_ids(
   c("UP000005640", "UP000000625"),
   parallel = TRUE

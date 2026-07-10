@@ -8,7 +8,8 @@ get_fasta_file(
   proteome_id,
   fasta_dir = getwd(),
   max_tries = 5,
-  wait_seconds = 30
+  wait_seconds = 30,
+  completeness_tol = 0.9
 )
 }
 \arguments{
@@ -18,6 +19,19 @@ UniProt proteomes database.}
 
 \item{fasta_dir}{Character string specifying the directory where the FASTA file
 should be saved. Defaults to the current working directory.}
+
+\item{max_tries}{Integer. Maximum attempts per HTTP request (each page is
+retried independently) before giving up. Default 5.}
+
+\item{wait_seconds}{Numeric. Base backoff between retries, scaled linearly by
+attempt number (attempt \code{i} waits \code{wait_seconds * i}). Default 30.}
+
+\item{completeness_tol}{Numeric in (0, 1]. A download is accepted only if the
+delivered sequence count is at least \code{completeness_tol} times the proteome's
+\code{proteinCount}. Guards against silent truncation while tolerating minor
+count drift (isoforms/redundancy). Default 0.9. Ignored when \code{proteinCount}
+is unavailable, in which case the endpoint's own \code{X-Total-Results} is the
+sole completeness signal.}
 }
 \value{
 A tibble containing download information with the following columns:
@@ -25,16 +39,31 @@ A tibble containing download information with the following columns:
 \item proteome_id: The input proteome identifier
 \item resp_status: HTTP response status code (200 for success)
 \item source: Either "uniprotkb", "uniparc", or "not_downloaded"
+\item n_sequences: Number of sequences delivered (0 if none)
+\item expected: Expected protein count from the UniProt proteomes record
+(\code{NA} if it could not be fetched)
 }
 The function also saves a FASTA file named \code{<proteome_id>.fasta} in the
-specified directory when sequences are found in UniProtKB or (if empty)
-in UniParc.
+specified directory when a complete proteome is found in UniProtKB or
+UniParc. A partial or empty download writes no file.
 }
 \description{
 Downloads a proteome FASTA file from UniProt using their REST API. This function
 retrieves protein sequences for a specified proteome ID and saves them to a local
 file. The downloaded file contains protein sequences with UniProt-style headers
 including protein IDs, organism information, and other metadata.
+}
+\details{
+Sequences are fetched from the paginated \verb{/search} endpoint (following the
+\code{Link: rel="next"} cursor) rather than \verb{/stream}. \verb{/search} reports an
+\code{X-Total-Results} count per page and lets a transient failure retry a single
+page instead of the whole proteome, so completeness can be validated inline:
+a download is accepted only if the delivered sequence count matches the
+endpoint's \code{X-Total-Results} and is not grossly short of the proteome's
+\code{proteinCount} (from \verb{/proteomes/\{id\}}). UniProtKB is tried first; if it is
+empty or short, the UniParc \verb{/search} endpoint is tried as a fallback. This
+replaces the previous \verb{/stream} implementation, whose empty/error 200
+responses could silently yield an empty or truncated database (see issue #20).
 }
 \note{
 This function:
@@ -56,8 +85,8 @@ result <- get_fasta_file("UP000005640")
 result <- get_fasta_file("UP000005640", fasta_dir = "data/proteomes")
 
 # Check download status
-if (result$resp_status == 200) {
-  message("Download successful")
+if (result$source != "not_downloaded") {
+  message("Download successful: ", result$n_sequences, " sequences")
 } else {
   message("Download failed")
 }

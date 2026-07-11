@@ -10,7 +10,9 @@ calc_taxon_fdr(
   decoy,
   peptide = NULL,
   qvalue_threshold = 0.05,
-  min_peptides = 2
+  min_peptides = 2,
+  method = c("qvalue", "enrichment"),
+  margin = 2
 )
 }
 \arguments{
@@ -40,27 +42,50 @@ in downstream database-reduction stages.}
 (\code{n_unique_peptides_all}) for a presence call. Default 2 — a single
 chance peptide must not make a call. Only enforced when \code{peptide} is
 supplied.}
+
+\item{method}{presence-call rule applied to the picked target winners.
+\code{"qvalue"} (default) uses the global ranked-list q-value gate
+(\code{qvalue <= qvalue_threshold}). \code{"enrichment"} instead uses a
+per-taxon evidence rule: a taxon passes when its per-peptide score
+(\code{score / n_unique_peptides_all}) is at least \code{margin} times the
+pooled decoy noise rate (the median per-peptide score across all decoy
+representatives). The enrichment rule is robust at taxon scale where the
+small-N q-value is quantized and an abundance-driven cumulative-score cutoff
+discards high-confidence taxa; it requires \code{peptide} (per-taxon peptide
+counts). \code{min_peptides} is enforced under both methods.}
+
+\item{margin}{numeric multiple of the pooled decoy noise rate a taxon's
+per-peptide score must exceed under \code{method = "enrichment"}. Default 2
+(a taxon's real peptides must score at least twice the decoy noise floor
+per peptide). Ignored when \code{method = "qvalue"}.}
 }
 \value{
 a list with elements:
-  \item{results}{tibble with one row per \code{(taxon, decoy)} combination,
-    containing \code{score}, \code{n_unique_peptides_all} (NA when
-    \code{peptide} is not provided), \code{decoy}, \code{picked_winner}
-    (logical — this row won its taxon's pick), the picked \code{fdr} and
-    \code{qvalue} (NA for discarded losers), and \code{pass} (target winner
-    AND \code{qvalue <= qvalue_threshold} AND
-    \code{n_unique_peptides_all >= min_peptides}). Winners sorted by
-    descending score, then the discarded losers.}
-  \item{detected}{tibble subset of \code{results} with \code{pass == TRUE}.}
-  \item{n_targets}{count of target representatives (target winners).}
-  \item{n_decoys}{count of decoy representatives (decoy winners).}
-  \item{first_decoy_rank}{1-based rank of the first decoy winner in the
-    score-sorted representative list (\code{NA} if no decoy wins).}
-  \item{n_missing_pair}{count of taxa present on only one side (target-only
-    or decoy-only); these cannot be truly competed and are flagged for the
-    caller.}
-  \item{qvalue_threshold}{the q-value threshold used.}
-  \item{min_peptides}{the min-peptides floor used.}
+\item{results}{tibble with one row per \code{(taxon, decoy)} combination,
+containing \code{score}, \code{n_unique_peptides_all} (NA when
+\code{peptide} is not provided), \code{decoy}, \code{picked_winner}
+(logical — this row won its taxon's pick), the picked \code{fdr} and
+\code{qvalue} (NA for discarded losers), and \code{pass} (target winner
+AND \code{qvalue <= qvalue_threshold} AND
+\code{n_unique_peptides_all >= min_peptides}). Winners sorted by
+descending score, then the discarded losers.}
+\item{detected}{tibble subset of \code{results} with \code{pass == TRUE}.}
+\item{n_targets}{count of target representatives (target winners).}
+\item{n_decoys}{count of decoy representatives (decoy winners).}
+\item{first_decoy_rank}{1-based rank of the first decoy winner in the
+score-sorted representative list (\code{NA} if no decoy wins).}
+\item{n_missing_pair}{count of taxa present on only one side (target-only
+or decoy-only); these cannot be truly competed and are flagged for the
+caller.}
+\item{qvalue_threshold}{the q-value threshold used.}
+\item{min_peptides}{the min-peptides floor used.}
+\item{method}{the presence-call rule used (\code{"qvalue"} or
+\code{"enrichment"}).}
+\item{margin}{the enrichment margin used (\code{NA} under
+\code{method = "qvalue"}).}
+\item{decoy_rate}{pooled decoy noise rate (median per-peptide score across
+decoy representatives) used by the enrichment rule (\code{NA} under
+\code{method = "qvalue"}).}
 }
 \description{
 Aggregates PSM scores to the taxon level and applies the \strong{picked}

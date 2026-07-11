@@ -118,6 +118,48 @@ test_that("compete flags taxa present on only one side", {
 })
 
 # =============================================================================
+# Enrichment presence rule (method = "enrichment")
+# =============================================================================
+test_that("calc_taxon_fdr enrichment requires peptide and a positive margin", {
+  expect_error(
+    calc_taxon_fdr(pep, taxon, decoy, method = "enrichment"),
+    "requires `peptide`"
+  )
+  expect_error(
+    calc_taxon_fdr(pep, taxon, decoy, peptide, method = "enrichment", margin = 0),
+    "`margin` must be a positive"
+  )
+})
+
+test_that("enrichment passes taxa whose per-peptide score beats margin x decoy rate", {
+  # Decoy reps set the noise rate; median per-peptide decoy score = median(2, 3) = 2.5.
+  #   HIGH: score 100 over 20 pep -> 5/pep = 2.0x rate  -> passes at margin 2
+  #   LOW : score 6   over 3  pep -> 2/pep = 0.8x rate  -> fails  at margin 2
+  tx <- c("HIGH","HIGH","LOW","LOW","dA","dB")
+  sc <- c(100,   4,     6,    5,    100, 150)   # dA/dB are decoy-only noise reps
+  dc <- c(FALSE, TRUE,  FALSE,TRUE, TRUE, TRUE)
+  np <- c(20,    2,     3,    2,    40,  50)
+  out <- conduitR:::pick_taxon_fdr_compete(tx, sc, dc, np,
+           method = "enrichment", margin = 2, min_peptides = 2)
+  reps <- out$results[out$results$picked_winner, ]
+  expect_equal(out$method, "enrichment")
+  expect_true(is.finite(out$decoy_rate))
+  expect_true(reps$pass[reps$taxon == "HIGH"])
+  expect_false(reps$pass[reps$taxon == "LOW"])
+})
+
+test_that("enrichment still enforces the min_peptides floor", {
+  # A taxon with a huge per-peptide score but too few peptides must not pass.
+  tx <- c("X","X","dA","dA")
+  sc <- c(50, 1, 2, 3)
+  dc <- c(FALSE, TRUE, TRUE, TRUE)
+  np <- c(3,  1, 10, 10)                    # X has 3 peptides
+  out <- conduitR:::pick_taxon_fdr_compete(tx, sc, dc, np,
+           method = "enrichment", margin = 2, min_peptides = 10)
+  expect_false(out$results$pass[out$results$taxon == "X" & out$results$picked_winner])
+})
+
+# =============================================================================
 # Regression test — acceptance criteria on the real first-pass table
 # =============================================================================
 # Fixture is the first_pass_fdr_results.tsv produced for the murine_abx_treatment

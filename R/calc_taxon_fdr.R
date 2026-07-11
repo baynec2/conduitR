@@ -48,6 +48,20 @@
 #'   (\code{n_unique_peptides_all}) for a presence call. Default 2 — a single
 #'   chance peptide must not make a call. Only enforced when \code{peptide} is
 #'   supplied.
+#' @param method presence-call rule applied to the picked target winners.
+#'   \code{"qvalue"} (default) uses the global ranked-list q-value gate
+#'   (\code{qvalue <= qvalue_threshold}). \code{"enrichment"} instead uses a
+#'   per-taxon evidence rule: a taxon passes when its per-peptide score
+#'   (\code{score / n_unique_peptides_all}) is at least \code{margin} times the
+#'   pooled decoy noise rate (the median per-peptide score across all decoy
+#'   representatives). The enrichment rule is robust at taxon scale where the
+#'   small-N q-value is quantized and an abundance-driven cumulative-score cutoff
+#'   discards high-confidence taxa; it requires \code{peptide} (per-taxon peptide
+#'   counts). \code{min_peptides} is enforced under both methods.
+#' @param margin numeric multiple of the pooled decoy noise rate a taxon's
+#'   per-peptide score must exceed under \code{method = "enrichment"}. Default 2
+#'   (a taxon's real peptides must score at least twice the decoy noise floor
+#'   per peptide). Ignored when \code{method = "qvalue"}.
 #'
 #' @returns a list with elements:
 #'   \item{results}{tibble with one row per \code{(taxon, decoy)} combination,
@@ -68,6 +82,13 @@
 #'     caller.}
 #'   \item{qvalue_threshold}{the q-value threshold used.}
 #'   \item{min_peptides}{the min-peptides floor used.}
+#'   \item{method}{the presence-call rule used (\code{"qvalue"} or
+#'     \code{"enrichment"}).}
+#'   \item{margin}{the enrichment margin used (\code{NA} under
+#'     \code{method = "qvalue"}).}
+#'   \item{decoy_rate}{pooled decoy noise rate (median per-peptide score across
+#'     decoy representatives) used by the enrichment rule (\code{NA} under
+#'     \code{method = "qvalue"}).}
 #' @export
 #'
 #' @examples
@@ -81,7 +102,10 @@
 #'   peptide = c("PEPA1", "PEPA2", "PEPB1", "PEPB2")
 #' )
 calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
-                           qvalue_threshold = 0.05, min_peptides = 2) {
+                           qvalue_threshold = 0.05, min_peptides = 2,
+                           method = c("qvalue", "enrichment"), margin = 2) {
+
+  method <- match.arg(method)
 
   # --- input validation ---
   if (!is.numeric(pep))     stop("`pep` must be a numeric vector")
@@ -93,6 +117,12 @@ calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
   }
   if (!is.numeric(min_peptides) || min_peptides < 0) {
     stop("`min_peptides` must be a non-negative numeric value")
+  }
+  if (!is.numeric(margin) || margin <= 0) {
+    stop("`margin` must be a positive numeric value")
+  }
+  if (method == "enrichment" && is.null(peptide)) {
+    stop("`method = \"enrichment\"` requires `peptide` (per-taxon peptide counts)")
   }
 
   lengths <- c(length(pep), length(taxon), length(decoy))
@@ -150,7 +180,9 @@ calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
     decoy             = agg$decoy,
     n_unique_peptides = agg$n_unique_peptides_all,
     qvalue_threshold  = qvalue_threshold,
-    min_peptides      = min_peptides
+    min_peptides      = min_peptides,
+    method            = method,
+    margin            = margin
   )
 }
 
@@ -162,7 +194,11 @@ calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
 # taxon/score/decoy/n_unique_peptides are parallel vectors, one per aggregated
 # (taxon, decoy) row. Returns the same list shape as calc_taxon_fdr.
 pick_taxon_fdr_compete <- function(taxon, score, decoy, n_unique_peptides,
-                                   qvalue_threshold = 0.05, min_peptides = 2) {
+                                   qvalue_threshold = 0.05, min_peptides = 2,
+                                   method = c("qvalue", "enrichment"),
+                                   margin = 2) {
+
+  method <- match.arg(method)
 
   df <- tibble::tibble(
     taxon                 = as.character(taxon),
@@ -170,6 +206,16 @@ pick_taxon_fdr_compete <- function(taxon, score, decoy, n_unique_peptides,
     decoy                 = as.logical(decoy),
     n_unique_peptides_all = n_unique_peptides
   )
+
+  # Pooled decoy noise rate = median per-peptide score across all decoy
+  # representatives. Median (not mean) so a few high-scoring decoy buckets do
+  # not inflate the null. Used only by the enrichment rule.
+  decoy_rate <- if (any(df$decoy)) {
+    stats::median(df$score[df$decoy] / df$n_unique_peptides_all[df$decoy],
+                  na.rm = TRUE)
+  } else {
+    NA_real_
+  }
 
   # --- pick one representative per taxon: the higher-scoring of its rows ---
   # Sort by descending score; tie-break toward the target (decoy = FALSE) so a
@@ -193,7 +239,19 @@ pick_taxon_fdr_compete <- function(taxon, score, decoy, n_unique_peptides,
   # min_peptides gate cannot be evaluated, so it is skipped (treated as passed).
   npep_ok <- is.na(rep$n_unique_peptides_all) |
     rep$n_unique_peptides_all >= min_peptides
-  pass <- (!is_decoy) & (qval <= qvalue_threshold) & npep_ok
+
+  # Presence call over the target winners. The q-value rule uses the global
+  # ranked-list q-value; the enrichment rule uses a per-taxon evidence test
+  # (per-peptide score >= margin x pooled decoy noise rate), which does not
+  # depend on rank position and so is not defeated by the small-N quantization
+  # of the taxon-scale q-value.
+  if (method == "enrichment") {
+    per_pep    <- rep$score / rep$n_unique_peptides_all
+    enrich_ok  <- !is.na(per_pep) & per_pep >= margin * decoy_rate
+    pass       <- (!is_decoy) & enrich_ok & npep_ok
+  } else {
+    pass       <- (!is_decoy) & (qval <= qvalue_threshold) & npep_ok
+  }
 
   rep$fdr    <- fdr
   rep$qvalue <- qval
@@ -219,6 +277,9 @@ pick_taxon_fdr_compete <- function(taxon, score, decoy, n_unique_peptides,
     first_decoy_rank = if (any(is_decoy)) which(is_decoy)[1] else NA_integer_,
     n_missing_pair   = as.integer(n_missing_pair),
     qvalue_threshold = qvalue_threshold,
-    min_peptides     = min_peptides
+    min_peptides     = min_peptides,
+    method           = method,
+    margin           = if (method == "enrichment") margin else NA_real_,
+    decoy_rate       = if (method == "enrichment") decoy_rate else NA_real_
   )
 }

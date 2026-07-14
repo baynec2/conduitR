@@ -1,5 +1,5 @@
 # =============================================================================
-# Input validation — calc_taxon_fdr (PSM-level entry point)
+# Input validation — call_taxon_presence (PSM-level entry point)
 # =============================================================================
 pep     <- c(0.01,  0.80,  0.50,  0.02)
 taxon   <- c("A",   "A",   "B",   "B")
@@ -7,43 +7,43 @@ decoy   <- c(FALSE, TRUE,  FALSE, TRUE)
 peptide <- c("PEPA1", "PEPA2", "PEPB1", "PEPB2")
 
 test_that("errors on wrong pep type", {
-  expect_error(calc_taxon_fdr("a", taxon, decoy), "`pep` must be a numeric vector")
+  expect_error(call_taxon_presence("a", taxon, decoy), "`pep` must be a numeric vector")
 })
 
 test_that("errors on wrong taxon type", {
-  expect_error(calc_taxon_fdr(pep, 1:4, decoy), "`taxon` must be a character vector")
+  expect_error(call_taxon_presence(pep, 1:4, decoy), "`taxon` must be a character vector")
 })
 
 test_that("errors on wrong decoy type", {
   expect_error(
-    calc_taxon_fdr(pep, taxon, c(1L, 0L, 1L, 0L)),
+    call_taxon_presence(pep, taxon, c(1L, 0L, 1L, 0L)),
     "`decoy` must be a logical vector"
   )
 })
 
 test_that("errors on qvalue_threshold / min_peptides out of range", {
-  expect_error(calc_taxon_fdr(pep, taxon, decoy, qvalue_threshold = 0),  "qvalue_threshold")
-  expect_error(calc_taxon_fdr(pep, taxon, decoy, qvalue_threshold = 1),  "qvalue_threshold")
-  expect_error(calc_taxon_fdr(pep, taxon, decoy, qvalue_threshold = "a"), "qvalue_threshold")
-  expect_error(calc_taxon_fdr(pep, taxon, decoy, min_peptides = -1),     "min_peptides")
+  expect_error(call_taxon_presence(pep, taxon, decoy, qvalue_threshold = 0),  "qvalue_threshold")
+  expect_error(call_taxon_presence(pep, taxon, decoy, qvalue_threshold = 1),  "qvalue_threshold")
+  expect_error(call_taxon_presence(pep, taxon, decoy, qvalue_threshold = "a"), "qvalue_threshold")
+  expect_error(call_taxon_presence(pep, taxon, decoy, min_peptides = -1),     "min_peptides")
 })
 
 test_that("errors on mismatched lengths and NA inputs", {
-  expect_error(calc_taxon_fdr(pep[-1], taxon, decoy), "same length")
-  expect_error(calc_taxon_fdr(c(NA, 0.1, 0.1, 0.1), taxon, decoy), "must not contain NA")
+  expect_error(call_taxon_presence(pep[-1], taxon, decoy), "same length")
+  expect_error(call_taxon_presence(c(NA, 0.1, 0.1, 0.1), taxon, decoy), "must not contain NA")
 })
 
 test_that("errors on out-of-range pep", {
-  expect_error(calc_taxon_fdr(c(1.5, 0.1, 0.1, 0.1), taxon, decoy), "between 0 and 1")
+  expect_error(call_taxon_presence(c(1.5, 0.1, 0.1, 0.1), taxon, decoy), "between 0 and 1")
 })
 
 # =============================================================================
-# calc_taxon_fdr — picked competition end to end (PSM level)
+# call_taxon_presence — picked competition end to end (PSM level)
 # =============================================================================
 # A: target PEP 0.01 (strong) vs decoy 0.80 (weak) -> target wins the pick
 # B: target PEP 0.50 (weak)   vs decoy 0.02 (strong) -> decoy wins the pick
 test_that("picks the higher-scoring side of each taxon and aggregates score", {
-  out  <- calc_taxon_fdr(pep, taxon, decoy, peptide)
+  out  <- call_taxon_presence(pep, taxon, decoy, peptide)
   reps <- out$results[out$results$picked_winner, ]
   expect_equal(nrow(reps), 2L)
   expect_false(reps$decoy[reps$taxon == "A"])  # A target won
@@ -53,7 +53,7 @@ test_that("picks the higher-scoring side of each taxon and aggregates score", {
 })
 
 test_that("discarded losers carry NA fdr/qvalue and pass = FALSE", {
-  out    <- calc_taxon_fdr(pep, taxon, decoy, peptide)
+  out    <- call_taxon_presence(pep, taxon, decoy, peptide)
   losers <- out$results[!out$results$picked_winner, ]
   expect_equal(nrow(losers), 2L)
   expect_true(all(is.na(losers$fdr)))
@@ -62,13 +62,13 @@ test_that("discarded losers carry NA fdr/qvalue and pass = FALSE", {
 })
 
 test_that("min_peptides gate is skipped when peptide is not supplied", {
-  out <- calc_taxon_fdr(pep, taxon, decoy)        # no peptide
+  out <- call_taxon_presence(pep, taxon, decoy)        # no peptide
   expect_true(all(is.na(out$results$n_unique_peptides_all)))
   expect_type(out$results$pass, "logical")
 })
 
 test_that("reports rep counts, first_decoy_rank and pairing", {
-  out <- calc_taxon_fdr(pep, taxon, decoy, peptide)
+  out <- call_taxon_presence(pep, taxon, decoy, peptide)
   expect_equal(out$n_targets, 1L)         # only A/target is a target rep
   expect_equal(out$n_decoys, 1L)          # only B/decoy is a decoy rep
   expect_equal(out$n_missing_pair, 0L)    # both taxa have target and decoy
@@ -76,7 +76,7 @@ test_that("reports rep counts, first_decoy_rank and pairing", {
 })
 
 # =============================================================================
-# Internal picked competition — pick_taxon_fdr_compete (aggregated table)
+# Internal picked competition — compete_taxon_presence (aggregated table)
 # =============================================================================
 # Hand-worked: two taxa already aggregated.
 #   A: target score 100 (40 pep), decoy 3   -> target wins
@@ -90,7 +90,7 @@ agg_decoy <- c(FALSE, TRUE, FALSE, TRUE)
 agg_npep  <- c(40,   2,   1,   3)
 
 test_that("compete uses the +1 guard and a monotone q-value", {
-  out  <- conduitR:::pick_taxon_fdr_compete(agg_taxon, agg_score, agg_decoy, agg_npep)
+  out  <- conduitR:::compete_taxon_presence(agg_taxon, agg_score, agg_decoy, agg_npep)
   reps <- out$results[out$results$picked_winner, ]
   reps <- reps[order(-reps$score), ]
   expect_equal(reps$fdr, c(1.0, 2.0))
@@ -103,14 +103,14 @@ test_that("compete pass requires target winner AND qvalue AND min_peptides", {
   sc <- c(100, 1, 0.5, 0.4)
   dc <- c(FALSE, TRUE, FALSE, TRUE)
   np <- c(40, 1, 1, 1)
-  a  <- conduitR:::pick_taxon_fdr_compete(tx, sc, dc, np, qvalue_threshold = 0.5, min_peptides = 2)
+  a  <- conduitR:::compete_taxon_presence(tx, sc, dc, np, qvalue_threshold = 0.5, min_peptides = 2)
   expect_true(a$results$pass[a$results$taxon == "A" & a$results$picked_winner])
-  a2 <- conduitR:::pick_taxon_fdr_compete(tx, sc, dc, np, qvalue_threshold = 0.5, min_peptides = 99)
+  a2 <- conduitR:::compete_taxon_presence(tx, sc, dc, np, qvalue_threshold = 0.5, min_peptides = 99)
   expect_false(a2$results$pass[a2$results$taxon == "A" & a2$results$picked_winner])
 })
 
 test_that("compete flags taxa present on only one side", {
-  out <- conduitR:::pick_taxon_fdr_compete(
+  out <- conduitR:::compete_taxon_presence(
     taxon = c("A", "A", "B"), score = c(10, 2, 5),
     decoy = c(FALSE, TRUE, FALSE), n_unique_peptides = c(3, 1, 2)
   )
@@ -120,13 +120,13 @@ test_that("compete flags taxa present on only one side", {
 # =============================================================================
 # Enrichment presence rule (method = "enrichment")
 # =============================================================================
-test_that("calc_taxon_fdr enrichment requires peptide and a positive margin", {
+test_that("call_taxon_presence enrichment requires peptide and a positive margin", {
   expect_error(
-    calc_taxon_fdr(pep, taxon, decoy, method = "enrichment"),
+    call_taxon_presence(pep, taxon, decoy, method = "enrichment"),
     "requires `peptide`"
   )
   expect_error(
-    calc_taxon_fdr(pep, taxon, decoy, peptide, method = "enrichment", margin = 0),
+    call_taxon_presence(pep, taxon, decoy, peptide, method = "enrichment", margin = 0),
     "`margin` must be a positive"
   )
 })
@@ -139,7 +139,7 @@ test_that("enrichment passes taxa whose per-peptide score beats margin x decoy r
   sc <- c(100,   4,     6,    5,    100, 150)   # dA/dB are decoy-only noise reps
   dc <- c(FALSE, TRUE,  FALSE,TRUE, TRUE, TRUE)
   np <- c(20,    2,     3,    2,    40,  50)
-  out <- conduitR:::pick_taxon_fdr_compete(tx, sc, dc, np,
+  out <- conduitR:::compete_taxon_presence(tx, sc, dc, np,
            method = "enrichment", margin = 2, min_peptides = 2)
   reps <- out$results[out$results$picked_winner, ]
   expect_equal(out$method, "enrichment")
@@ -154,7 +154,7 @@ test_that("enrichment still enforces the min_peptides floor", {
   sc <- c(50, 1, 2, 3)
   dc <- c(FALSE, TRUE, TRUE, TRUE)
   np <- c(3,  1, 10, 10)                    # X has 3 peptides
-  out <- conduitR:::pick_taxon_fdr_compete(tx, sc, dc, np,
+  out <- conduitR:::compete_taxon_presence(tx, sc, dc, np,
            method = "enrichment", margin = 2, min_peptides = 10)
   expect_false(out$results$pass[out$results$taxon == "X" & out$results$picked_winner])
 })
@@ -170,7 +170,7 @@ test_that("picked FDR reproduces the documented acceptance criteria", {
   skip_if_not(file.exists(fixture), "regression fixture not available")
 
   d <- readr::read_tsv(fixture, show_col_types = FALSE)
-  out <- conduitR:::pick_taxon_fdr_compete(
+  out <- conduitR:::compete_taxon_presence(
     taxon             = as.character(d$taxon),
     score             = d$score,
     decoy             = as.logical(d$decoy),
@@ -223,7 +223,7 @@ test_that("picked FDR reproduces the documented acceptance criteria", {
   expect_equal(as.integer(rank_counts[["strain"]]),  21L)
 
   # ~88 families pass at q<=0.01.
-  out01 <- conduitR:::pick_taxon_fdr_compete(
+  out01 <- conduitR:::compete_taxon_presence(
     taxon             = as.character(d$taxon),
     score             = d$score,
     decoy             = as.logical(d$decoy),
@@ -236,4 +236,16 @@ test_that("picked FDR reproduces the documented acceptance criteria", {
   )
   expect_equal(nrow(reps01), 133L)
   expect_equal(sum(reps01$taxon_name_rank == "family"), 88L)
+})
+
+# =============================================================================
+# Deprecated alias — calc_taxon_fdr forwards to call_taxon_presence
+# =============================================================================
+test_that("calc_taxon_fdr warns and forwards to call_taxon_presence", {
+  expect_warning(
+    out <- calc_taxon_fdr(pep, taxon, decoy, peptide),
+    "call_taxon_presence"
+  )
+  ref <- call_taxon_presence(pep, taxon, decoy, peptide)
+  expect_equal(out$results, ref$results)
 })

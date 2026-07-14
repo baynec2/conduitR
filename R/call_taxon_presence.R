@@ -1,11 +1,20 @@
-#' Calculate taxonomic FDR using picked target-decoy competition
+#' Call taxon presence from picked target-decoy peptide scores
 #'
 #' Aggregates PSM scores to the taxon level and applies the \strong{picked}
 #' target-decoy strategy (Savitski et al. 2015) to call which taxa are present.
 #' Each taxon accumulates a score (sum of \code{-log(PEP)}) separately for its
 #' target PSMs and its decoy PSMs; the higher-scoring of the two is kept as that
 #' taxon's single representative and the loser is discarded, then all
-#' representatives compete in one descending-score ranking.
+#' representatives compete in one descending-score ranking. The presence call
+#' itself is made by \code{method}: the \code{"qvalue"} rule (default; a global
+#' picked target-decoy q-value gate) or the \code{"enrichment"} rule (a
+#' per-taxon per-peptide signal-to-noise test against the decoy noise floor,
+#' recommended for taxon-scale presence calling). A picked q-value/FDR is always
+#' computed and returned regardless of \code{method}, but under
+#' \code{"enrichment"} it is informational rather than the gate.
+#'
+#' @description \code{calc_taxon_fdr()} is a deprecated alias retained for
+#' backward compatibility; use \code{call_taxon_presence()}.
 #'
 #' @details
 #' \strong{Why picked.} A naive running FDR that ranks every taxon's target row
@@ -95,13 +104,13 @@
 #' # Two taxa, each with a target and a decoy PSM. Taxon A's target wins its
 #' # pick; taxon B's decoy outscores its target so B's decoy becomes the
 #' # representative and sinks to the bottom of the competition.
-#' calc_taxon_fdr(
+#' call_taxon_presence(
 #'   pep     = c(0.01, 0.80, 0.50, 0.02),
 #'   taxon   = c("A",  "A",  "B",  "B"),
 #'   decoy   = c(FALSE, TRUE, FALSE, TRUE),
 #'   peptide = c("PEPA1", "PEPA2", "PEPB1", "PEPB2")
 #' )
-calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
+call_taxon_presence <- function(pep, taxon, decoy, peptide = NULL,
                            qvalue_threshold = 0.05, min_peptides = 2,
                            method = c("qvalue", "enrichment"), margin = 2) {
 
@@ -174,7 +183,7 @@ calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
   }
 
   # --- picked target-decoy competition over the per-taxon representatives ---
-  pick_taxon_fdr_compete(
+  compete_taxon_presence(
     taxon             = agg$taxon,
     score             = agg$score,
     decoy             = agg$decoy,
@@ -187,13 +196,14 @@ calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
 }
 
 # Picked target-decoy competition over an already-aggregated per-(taxon, decoy)
-# score table. Internal: callers reach it through calc_taxon_fdr (PSM-level).
-# Kept as a standalone function so the competition can be unit-tested directly
-# against an aggregated reference table (the picked-FDR correctness spec).
+# score table. Internal: callers reach it through call_taxon_presence
+# (PSM-level). Kept as a standalone function so the competition can be
+# unit-tested directly against an aggregated reference table (the picked-FDR
+# correctness spec).
 #
 # taxon/score/decoy/n_unique_peptides are parallel vectors, one per aggregated
-# (taxon, decoy) row. Returns the same list shape as calc_taxon_fdr.
-pick_taxon_fdr_compete <- function(taxon, score, decoy, n_unique_peptides,
+# (taxon, decoy) row. Returns the same list shape as call_taxon_presence.
+compete_taxon_presence <- function(taxon, score, decoy, n_unique_peptides,
                                    qvalue_threshold = 0.05, min_peptides = 2,
                                    method = c("qvalue", "enrichment"),
                                    margin = 2) {
@@ -282,4 +292,16 @@ pick_taxon_fdr_compete <- function(taxon, score, decoy, n_unique_peptides,
     margin           = if (method == "enrichment") margin else NA_real_,
     decoy_rate       = if (method == "enrichment") decoy_rate else NA_real_
   )
+}
+
+#' @rdname call_taxon_presence
+#' @export
+calc_taxon_fdr <- function(pep, taxon, decoy, peptide = NULL,
+                           qvalue_threshold = 0.05, min_peptides = 2,
+                           method = c("qvalue", "enrichment"), margin = 2) {
+  .Deprecated("call_taxon_presence")
+  call_taxon_presence(pep = pep, taxon = taxon, decoy = decoy, peptide = peptide,
+                      qvalue_threshold = qvalue_threshold,
+                      min_peptides = min_peptides,
+                      method = match.arg(method), margin = margin)
 }

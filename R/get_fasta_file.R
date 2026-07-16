@@ -16,6 +16,12 @@
 #' replaces the previous `/stream` implementation, whose empty/error 200
 #' responses could silently yield an empty or truncated database (see issue #20).
 #'
+#' UniParc `/search` deflines are bare (`>UPI... status=active`) with no organism
+#' annotation. Because that would leave every UniParc protein without a taxon
+#' downstream, each defline is stamped with `OS=`/`OX=` taken from the proteome's
+#' record, inserted after the leading `UPI` accession so the first-token
+#' `protein_id` (used by DIA-NN and `extract_fasta_info()`) is preserved.
+#'
 #' @param proteome_id Character string specifying the UniProt proteome identifier
 #'   (e.g., "UP000005640" for human proteome). These IDs can be found in the
 #'   UniProt proteomes database.
@@ -106,19 +112,46 @@ get_fasta_file <- function(proteome_id,
       )
   }
 
-  # Expected protein count from the proteomes record. Used to catch silent
-  # truncation (e.g. 5 of 6064). NA if unavailable -> degrade to the endpoint's
-  # own X-Total-Results as the completeness signal.
-  fetch_expected_count <- function() {
+  # Proteome record: protein count (to catch silent truncation, e.g. 5 of 6064)
+  # plus taxon id and organism name (to backfill OS=/OX= onto bare UniParc
+  # deflines below). All fields optional; missing values degrade to NA. Expected
+  # count NA -> the endpoint's own X-Total-Results is the sole completeness signal.
+  fetch_proteome_meta <- function() {
+    na <- list(expected = NA_integer_, taxon_id = NA_integer_,
+               organism_name = NA_character_)
     tryCatch({
       resp <- httr2::request(paste0("https://rest.uniprot.org/proteomes/", proteome_id)) |>
         add_resilience() |>
         httr2::req_error(is_error = function(r) FALSE) |>
         httr2::req_perform()
-      if (httr2::resp_status(resp) != 200) return(NA_integer_)
-      pc <- httr2::resp_body_json(resp)$proteinCount
-      if (is.null(pc)) NA_integer_ else as.integer(pc)
-    }, error = function(e) NA_integer_)
+      if (httr2::resp_status(resp) != 200) return(na)
+      j <- httr2::resp_body_json(resp)
+      pc <- j$proteinCount
+      tx <- j$taxonomy$taxonId
+      on <- j$taxonomy$scientificName
+      list(
+        expected      = if (is.null(pc)) NA_integer_ else as.integer(pc),
+        taxon_id      = if (is.null(tx)) NA_integer_ else as.integer(tx),
+        organism_name = if (is.null(on)) NA_character_ else as.character(on)
+      )
+    }, error = function(e) na)
+  }
+
+  # UniParc /search deflines are bare (">UPI... status=active") with no organism
+  # annotation, so extract_fasta_info() cannot map the protein to a taxon and all
+  # UniParc taxonomy is lost downstream. Restore OS=/OX= from the proteome record,
+  # inserting them AFTER the leading UPI accession so the first-token protein_id
+  # (what DIA-NN and extract_fasta_info key on) is unchanged. A proteome-scoped
+  # download shares one taxon, so a single taxon_id/organism_name applies to every
+  # defline. Organism scientific names contain no regex-replacement metacharacters.
+  stamp_uniparc_headers <- function(txt, taxon_id, organism_name) {
+    if (is.na(taxon_id)) return(txt)  # no taxon to stamp; leave body unchanged
+    ins <- if (!is.na(organism_name) && nzchar(organism_name)) {
+      sprintf(" OS=%s OX=%s", organism_name, taxon_id)
+    } else {
+      sprintf(" OX=%s", taxon_id)
+    }
+    gsub("(?m)^(>\\S+)", paste0("\\1", ins), txt, perl = TRUE)
   }
 
   # Paginated FASTA fetch from a /search endpoint, following the rel="next"
@@ -165,7 +198,8 @@ get_fasta_file <- function(proteome_id,
     )
   }
 
-  expected <- fetch_expected_count()
+  proteome_meta <- fetch_proteome_meta()
+  expected <- proteome_meta$expected
 
   result_row <- function(status, source, n) {
     tibble::tibble(
@@ -200,10 +234,13 @@ get_fasta_file <- function(proteome_id,
     )
   }
 
-  # 2) UniParc paginated search (fallback)
+  # 2) UniParc paginated search (fallback). Bare deflines are stamped with the
+  #    proteome's OS=/OX= so extract_fasta_info() can recover the taxon.
   up <- fetch_search_fasta("https://rest.uniprot.org/uniparc/search")
   if (is_complete(up)) {
-    writeLines(up$body, fasta_fp)
+    up_body <- stamp_uniparc_headers(up$body, proteome_meta$taxon_id,
+                                     proteome_meta$organism_name)
+    writeLines(up_body, fasta_fp)
     log_with_timestamp("Proteome %s: %d sequences downloaded (UniParc)", proteome_id, up$n)
     return(result_row(up$status, "uniparc", up$n))
   }

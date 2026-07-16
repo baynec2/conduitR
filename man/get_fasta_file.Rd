@@ -64,6 +64,12 @@ endpoint's \code{X-Total-Results} and is not grossly short of the proteome's
 empty or short, the UniParc \verb{/search} endpoint is tried as a fallback. This
 replaces the previous \verb{/stream} implementation, whose empty/error 200
 responses could silently yield an empty or truncated database (see issue #20).
+
+UniParc \verb{/search} deflines are bare (\verb{>UPI... status=active}) with no organism
+annotation. Because that would leave every UniParc protein without a taxon
+downstream, each defline is stamped with \verb{OS=}/\verb{OX=} taken from the proteome's
+record, inserted after the leading \code{UPI} accession so the first-token
+\code{protein_id} (used by DIA-NN and \code{extract_fasta_info()}) is preserved.
 }
 \note{
 This function:

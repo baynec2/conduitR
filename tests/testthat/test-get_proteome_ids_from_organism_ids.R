@@ -78,7 +78,9 @@ test_that("it works with duplicate ids",{
 test_that("it produces NAs for organism IDs with no ID", {
   skip_if_offline()
 
-  t = readr::read_delim(organism_ids_txt())
+  # Explicit delim: the fixture is a single column (organism_id), so it holds
+  # no delimiter character for read_delim() to guess from.
+  t = readr::read_tsv(organism_ids_txt(), col_types = "i")
 
   organism_ids <- t$organism_id
 

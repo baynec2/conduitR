@@ -107,3 +107,14 @@ Core dependencies include **QFeatures** (proteomics data structures), **limma** 
 ## License
 
 MIT License; see [LICENSE](LICENSE) for details.
+
+> **Copyright holder pending.** [`LICENSE`](LICENSE) currently names
+> "metaverseR authors", carried over from an earlier project. It is wrong and is being
+> corrected once the holder string is settled with UC San Diego. The MIT grant itself
+> stands; only the holder line changes.
+
+### Bundled data
+
+The package installs UniProt- and NCBI-derived files under `inst/extdata`. Both sources
+are freely redistributable, and UniProt asks for attribution in return — see
+[`inst/extdata/PROVENANCE.md`](inst/extdata/PROVENANCE.md), which ships with the package.

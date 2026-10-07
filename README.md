@@ -147,11 +147,6 @@ full list.
 
 MIT License; see [LICENSE](LICENSE) for details.
 
-> **Copyright holder pending.** [`LICENSE`](LICENSE) currently names
-> "metaverseR authors", carried over from an earlier project. It is wrong and is being
-> corrected once the holder string is settled with UC San Diego. The MIT grant itself
-> stands; only the holder line changes.
-
 ### Bundled data
 
 The package installs UniProt- and NCBI-derived files under `inst/extdata`. Both sources

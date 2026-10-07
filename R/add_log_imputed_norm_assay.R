@@ -11,7 +11,7 @@
 #'
 #' @param qf A QFeatures object.
 #' @param base Numeric log base (default: 2).
-#' @param impute_method Imputation method supported by \code{QFeatures::impute()} (default: "min").
+#' @param impute_method Imputation method supported by \code{QFeatures::impute()} (default: "MinDet").
 #' @param norm_method Normalization method supported by \code{QFeatures::normalize()}, or
 #'   "none" to skip (default: "none").
 #' @param min_n Minimum number of non-NA values required to keep a row (default: 1).
@@ -24,7 +24,7 @@
 #' # qf_transformed <- add_log_imputed_norm_assays(qfeatures_obj, base = 10)
 add_log_imputed_norm_assays <- function(qf,
                                         base = 2,
-                                        impute_method = "min",
+                                        impute_method = "MinDet",
                                         norm_method = "none",
                                         min_n = 1) {
   for (assay in names(qf)) {
@@ -46,7 +46,7 @@ add_log_imputed_norm_assays <- function(qf,
 #' @param qf A QFeatures object.
 #' @param assay Name of the assay to transform (default: "protein_groups").
 #' @param base Numeric log base (default: 2).
-#' @param impute_method Imputation method supported by \code{QFeatures::impute()} (default: "min").
+#' @param impute_method Imputation method supported by \code{QFeatures::impute()} (default: "MinDet").
 #' @param norm_method Normalization method or "none" (default: "none").
 #' @param min_n Minimum number of non-NA values required to keep a row (default: 1).
 #'
@@ -56,7 +56,7 @@ add_log_imputed_norm_assays <- function(qf,
 add_log_imputed_norm_assay <- function(qf,
                                        assay = "protein_groups",
                                        base = 2,
-                                       impute_method = "min",
+                                       impute_method = "MinDet",
                                        norm_method = "none",
                                        min_n = 1) {
 
@@ -66,10 +66,10 @@ add_log_imputed_norm_assay <- function(qf,
     stop("Supplied impute method not allowed.")
   }
 
-  # Names of resulting assays
-  log_name <- paste0(assay, "_log", base)
-  impute_name <- paste0(log_name, "_imputed")
-  norm_name <- paste0(impute_name, "_norm")
+  # Names of resulting assays — encode method in name so provenance is self-documenting
+  log_name    <- paste0(assay, "_log", base)
+  impute_name <- paste0(log_name, "_", impute_method)
+  norm_name   <- paste0(impute_name, "_", norm_method)
 
   # Step 1: Replace zeros with NA
   qf <- replace_zero_with_na(qf)

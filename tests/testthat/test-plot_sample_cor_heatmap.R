@@ -3,7 +3,7 @@ test_that("plot_sample_cor_heatmap() works", {
 
   expect_no_error(
     plot_sample_cor_heatmap(qf,
-                            assay_name = "protein_group_log2_imputed_norm",
+                            assay_name = "protein_group_log2_MinDet_none",
                             sample_annotation_variables = character(0))
   )
 })

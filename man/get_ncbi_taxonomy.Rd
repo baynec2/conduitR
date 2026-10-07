@@ -13,7 +13,9 @@ get_ncbi_taxonomy(ncbi_ids)
 A data frame containing:
 \itemize{
 \item organism_id: NCBI taxonomy ID
-\item species: Scientific name of the organism
+\item species: Scientific name at \emph{species} rank
+\item strain: Infraspecific designation, or NA when the queried taxon is
+itself at species rank
 \item rank: Taxonomic rank (e.g., domain, kingdom, phylum)
 \item name: Scientific name at each taxonomic level
 }
@@ -24,6 +26,33 @@ with missing ranks filled as NA.
 Retrieves comprehensive taxonomic information for a list of NCBI taxonomy IDs
 using the NCBI Entrez API. This function is useful for obtaining complete
 taxonomic lineages and scientific names for organisms.
+}
+\details{
+\code{species} always holds the name at species rank, never a strain designation.
+Many UniProt reference proteomes are registered under strain taxids (e.g.
+349741, \verb{Akkermansia muciniphila ATCC BAA-835}, rank \code{strain}), whose own
+scientific name carries the strain. Writing that name into \code{species} splits
+one species into several, so a peptide shared between two strains has no
+common species and its LCA falls to genus — dropping it from every
+species-level aggregation.
+
+The species-rank ancestor is therefore resolved from the record's own \code{Rank}
+plus its \code{LineageEx}, both already present in the fetched XML:
+\itemize{
+\item queried taxon is rank \code{species} → \code{species} is its own name,
+\code{strain} is NA;
+\item queried taxon is below species and its lineage carries a species-rank
+ancestor → \code{species} is that ancestor, \code{strain} is the infraspecific
+remainder;
+\item otherwise → the record's own name is kept in \code{species} unchanged,
+since no better information is available.
+}
+
+Because the rule keys on rank rather than on names, informal designations are
+unaffected: \verb{Lachnospiraceae bacterium A2} (taxid 397290) is itself rank
+\code{species} with no species-rank ancestor, so it is never folded into
+\verb{Lachnospiraceae bacterium} (taxid 1898203). Both are left exactly as NCBI
+reports them.
 }
 \examples{
 \dontrun{

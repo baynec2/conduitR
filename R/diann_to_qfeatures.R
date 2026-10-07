@@ -65,7 +65,10 @@ diann_to_qfeatures = function(diann_parquet_fp){
   # Create a QFeatures object containing the precursor
   qf <- QFeatures::QFeatures(list(precursors = se_prec))
 
-  # Aggregate precursors to peptides
+  # Aggregate precursors to peptides. aggregateFeatures preserves rowData
+  # columns whose values are consistent within each grouping (Stripped.Sequence),
+  # so Protein.Ids and Protein.Group survive — they're used by
+  # add_taxonomy_to_qf() and the peptides->protein_groups assay link.
   qf <- QFeatures::aggregateFeatures(
     qf,
     i = "precursors",

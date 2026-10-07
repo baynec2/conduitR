@@ -39,6 +39,20 @@ extensible as new metrics are added.
 \item protein_coverage_by_taxa: Number of proteins detected per taxon
 relative to the total number of proteins in the database for that taxon.
 The percentage represents coverage of the taxon's proteome.
+\item peptidotyping_first_pass: Family-level taxon-detection FDR
+table from the first pass of a peptidotyping search-space method
+(\code{unipept_peptidotyping} or \code{genome_peptidotyping}). Columns:
+\code{taxon}, \code{taxon_name}, \code{score}, \code{fdr}, \code{qvalue}, \code{decoy},
+\code{n_unique_peptides_all}, \code{n_unique_peptides_q01}, \code{score_fraction},
+\code{cumulative_score_fraction}, \code{carried_forward}, \code{filter_reason}.
+Absent for non-peptidotyping methods.
+\item peptidotyping_second_pass: Species/strain-level FDR table from
+the second pass of a peptidotyping search-space method (same schema
+as the first pass). Absent for non-peptidotyping methods.
+\item hapid_greedy_selection: Greedy set-cover genome ranking from a
+HAPID search-space method (\code{hapid} or \code{unipept_hapid}). Columns:
+\code{genome}, \code{taxon_name}, \code{nSpectraCovered}, \code{cumulative_pct}. Absent
+for non-hapid methods.
 }}
 
 \item{\code{database}}{A tibble containing taxonomic information for all proteins in
@@ -80,8 +94,9 @@ When populated (e.g. via \code{\link[=create_provenance]{create_provenance()}}),
 \item \code{workflow_version}: character string of the conduit-ascent version
 \item \code{generated_date}: \code{Date} the object was created
 \item \code{uniprotkb_release}: character string of the UniProtKB release used (e.g. \code{"2024_05"})
-\item \code{config}: optional \code{tbl_df} with columns \code{parameter} and \code{value}
-containing key-value pairs from the Snakemake configuration
+\item \code{config}: optional named list of \code{tbl_df} objects, each with columns
+\code{parameter} and \code{value}, representing a distinct configuration source
+(e.g. \code{snakemake_yaml}, \code{diann_run_cfg}, \code{runtime})
 }
 Defaults to \code{NULL} for backwards compatibility with existing objects.}
 }}

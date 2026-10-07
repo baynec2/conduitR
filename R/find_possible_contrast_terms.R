@@ -24,17 +24,17 @@
 find_possible_contrast_terms <- function(qf,
                                          assay_name,
                                          formula) {
-  # Extract assay and metadata
+  # Extract assay — use QFeatures-level colData so that
+  # columns added after construction are visible
   se <- qf[[assay_name]]
-  exprs <- SummarizedExperiment::assay(se)
+
+  colData <- SummarizedExperiment::colData(qf)[colnames(se), , drop = FALSE]
 
   # Ensure all character/logical columns are factors
-  SummarizedExperiment::colData(se)[] <- lapply(
-    SummarizedExperiment::colData(se),
+  colData[] <- lapply(
+    colData,
     function(x) if (is.character(x) || is.logical(x)) as.factor(x) else x
   )
-
-  colData <- SummarizedExperiment::colData(se)
 
   # Build design matrix from the provided formula
   design <- model.matrix(formula, data = colData)

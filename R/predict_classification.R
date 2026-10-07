@@ -85,19 +85,19 @@ predict_classification <- function(qf,
   # Model specification
   if (tune) {
     model_spec <- switch(model_type,
-                         "lasso_regression" = parsnip::logistic_reg(penalty = tune(), mixture = 1) |>
+                         "lasso_regression" = parsnip::logistic_reg(penalty = tune::tune(), mixture = 1) |>
                            parsnip::set_engine("glmnet") |>
                            parsnip::set_mode("classification"),
-                         "random_forest" = parsnip::rand_forest(mtry = tune(), min_n = tune(), trees = 500) |>
+                         "random_forest" = parsnip::rand_forest(mtry = tune::tune(), min_n = tune::tune(), trees = 500) |>
                            parsnip::set_engine("ranger", importance = "impurity") |>
                            parsnip::set_mode("classification"),
                          "xgboost" = parsnip::boost_tree(
                            trees = 1000,
-                           tree_depth = tune(),
-                           learn_rate = tune(),
-                           mtry = tune(),
-                           loss_reduction = tune(),
-                           sample_size = tune()
+                           tree_depth = tune::tune(),
+                           learn_rate = tune::tune(),
+                           mtry = tune::tune(),
+                           loss_reduction = tune::tune(),
+                           sample_size = tune::tune()
                          ) |>
                            parsnip::set_engine("xgboost") |>
                            parsnip::set_mode("classification")

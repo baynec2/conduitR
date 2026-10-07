@@ -7,7 +7,8 @@
 get_annotations_from_uniprot(
   uniprot_ids,
   columns =
-    "accession,protein_name,go,xref_kegg,xref_eggnog,cc_subcellular_location,cc_tissue_specificity,xref_cazy,xref_pfam,xref_interpro"
+    "accession,protein_name,go,xref_kegg,xref_eggnog,cc_subcellular_location,cc_tissue_specificity,xref_cazy,xref_pfam,xref_interpro",
+  workers = NULL
 )
 }
 \arguments{
@@ -17,6 +18,10 @@ get_annotations_from_uniprot(
 (default includes accession, protein_name, go, xref_kegg, xref_eggnog,
 cc_subcellular_location, cc_tissue_specificity, xref_cazy, xref_pfam,
 xref_interpro).}
+
+\item{workers}{Integer giving the number of parallel workers, forwarded to
+\code{\link{annotate_uniprot_ids}}. If NULL (default), sized from
+\code{future::availableCores() - 1} (cgroup / Slurm aware).}
 }
 \value{
 A tibble with one row per protein and columns corresponding to the

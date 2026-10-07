@@ -23,11 +23,16 @@
 #' protein_info <- extract_fasta_info("combined.fasta")
 #' }
 concatenate_fasta_files <- function(fasta_dir, destination_fp) {
-  files <- list.files(fasta_dir, full.names = TRUE) # Get all file paths.
-  # Read all lines from each file
-  all_fasta <- purrr::map(files, readLines) |>
-    unlist() |> # Flatten the list of character vectors
-    paste(collapse = "\n") # Concatenate all lines into a single string
-  # Write the concatenated content to the output file
-  writeLines(all_fasta, destination_fp)
+  files <- list.files(fasta_dir, full.names = TRUE)
+  con <- file(destination_fp, open = "wb")
+  on.exit(close(con))
+  for (f in files) {
+    bytes <- readBin(f, what = "raw", n = file.size(f))
+    writeBin(bytes, con)
+    # Ensure each file ends with a newline before the next
+    if (length(bytes) > 0 && bytes[length(bytes)] != as.raw(0x0a)) {
+      writeBin(as.raw(0x0a), con)
+    }
+  }
+  invisible(NULL)
 }

@@ -146,3 +146,9 @@ full list.
 ## License
 
 MIT License; see [LICENSE](LICENSE) for details.
+
+### Bundled data
+
+The package installs UniProt- and NCBI-derived files under `inst/extdata`. Both sources
+are freely redistributable, and UniProt asks for attribution in return — see
+[`inst/extdata/PROVENANCE.md`](inst/extdata/PROVENANCE.md), which ships with the package.

@@ -7,6 +7,7 @@
 download_fasta_from_organism_ids(
   organism_ids,
   parallel = FALSE,
+  workers = NULL,
   proteome_id_destination_fp = paste0(getwd(), "/", Sys.Date(), ".txt"),
   fasta_destination_fp = paste0(getwd(), "/", Sys.Date(), ".fasta")
 )
@@ -17,6 +18,14 @@ download_fasta_from_organism_ids(
 
 \item{parallel}{Logical indicating whether to use parallel processing (default: FALSE).
 When TRUE, uses all available CPU cores minus one for downloading FASTA files.}
+
+\item{workers}{Integer giving the number of parallel workers to use when
+\code{parallel = TRUE}. If NULL (default), the count is
+\code{future::availableCores() - 1}, which honours cgroup / Slurm
+(\code{SLURM_CPUS_PER_TASK}) allocations rather than the node's physical
+core count. Floored at 1 and capped at the number of proteomes to download.
+Callers running under a scheduler (e.g. Snakemake) should pass their
+allocated thread count explicitly.}
 
 \item{proteome_id_destination_fp}{Character string specifying the path where the
 proteome IDs text file should be saved (default: creates a file named with the

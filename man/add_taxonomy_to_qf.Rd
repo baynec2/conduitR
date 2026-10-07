@@ -7,33 +7,50 @@
 add_taxonomy_to_qf(qf, uniprot_annotation)
 }
 \arguments{
-\item{qf}{A QFeatures object containing a protein assay named "protein_groups".}
+\item{qf}{A QFeatures object containing assays named \code{peptides} (with a
+\code{Protein.Ids} column in rowData) and \code{protein_groups} (with rownames
+matching \code{Protein.Group}).}
 
-\item{uniprot_annotation}{A data frame or tibble containing taxonomy information.
-Must include columns: \code{domain}, \code{kingdom}, \code{phylum}, \code{class},
-\code{order}, \code{family}, \code{genus}, and \code{species}.}
+\item{uniprot_annotation}{A data frame with columns \code{protein_id},
+\code{domain}, \code{kingdom}, \code{phylum}, \code{class}, \code{order}, \code{family}, \code{genus},
+\code{species}.}
 }
 \value{
-A QFeatures object with:
+The input QFeatures object with:
 \itemize{
-\item Taxonomy columns added to the protein assay rowData.
-\item A new \code{lca} column representing the lowest common ancestor for each protein group.
+\item Per-rank taxonomy and \code{lca} columns added to \code{peptides} rowData.
+\item Per-rank taxonomy and \code{lca} columns (strict LCA) added to
+\code{protein_groups} rowData, plus \code{n_peptides},
+\code{n_species_resolved}, and \code{species_resolved_fraction}.
+\item Each rank registered as a taxonomic aggregation target sourced
+from \code{peptides}.
 }
 }
 \description{
-This function assigns a Lowest Common Ancestor (LCA) taxonomy to each
-protein group in a QFeatures object. It uses the taxonomy of each protein
-within a group and collapses them to the most specific shared taxonomic level
-(domain → species). The full taxonomy columns and the computed LCA are added
-to the protein assay's rowData.
+Assigns a Lowest Common Ancestor (LCA) taxonomy to each peptide using the
+peptide's \code{Protein.Ids} (the full set of proteins matching the peptide as
+reported by DIA-NN), then derives a per-protein-group label from the
+peptide LCAs. Per-rank taxonomy columns are written to both the
+\code{peptides} and \code{protein_groups} rowData, and the eight ranks are
+registered as aggregation targets — call
+\code{\link[=aggregate_assay_by_annotation]{aggregate_assay_by_annotation()}} to materialise a per-rank assay on
+demand.
 }
-\examples{
-\dontrun{
-qf <- add_lca_to_qf(
-  qf,
-  uniprot_annotation = uniprot_taxonomy_df
-)
-# Access LCA column
-rowData(qf[["protein_groups"]])$lca
+\details{
+The protein-group label is a \emph{strict} LCA of its constituent peptides: a
+group is resolved at a rank only if every peptide agrees there and none is
+ambiguous (\code{NA}) at that rank. An ambiguous peptide therefore pulls the
+group label up to the most specific rank the whole group shares, rather
+than abstaining — so a small resolved minority cannot promote a
+mostly-ambiguous group to a confident (e.g. species) call. The
+\code{protein_groups} rowData additionally records \code{n_peptides},
+\code{n_species_resolved}, and \code{species_resolved_fraction} so downstream code
+can flag or filter low-confidence group calls.
+
+Peptide-centric summation is the canonical aggregation path for taxonomy
+(intensity attributes to a rank only at the resolution the peptide
+evidence supports), so each rank is registered with \code{from = "peptides"}.
 }
+\seealso{
+\code{\link[=aggregate_assay_by_annotation]{aggregate_assay_by_annotation()}}, \code{\link[=aggregation_targets]{aggregation_targets()}}
 }

@@ -17,12 +17,15 @@ create_provenance(
 
 \item{uniprotkb_release}{character(1). UniProtKB release identifier used
 as the reference database, e.g. \code{"2024_05"}. Defaults to the result
-of \code{\link[=get_uniprotkb_release]{get_uniprotkb_release()}}, which queries the UniProt REST API.}
+of \code{\link[=get_uniprotkb_release]{get_uniprotkb_release()}}, which queries the UniProt REST API and
+returns \code{NULL} if it is unreachable; \code{NULL} is recorded as
+\code{NA_character_} so a transient metadata blip never aborts the build.}
 
-\item{config}{Optional \code{tbl_df} (or \code{data.frame}) with columns
-\code{parameter} (character) and \code{value} (character) containing
-key-value pairs from the Snakemake configuration. Pass \code{NULL} (the
-default) to omit configuration details.}
+\item{config}{Optional named \code{list} of \code{tbl_df} objects, where
+each element represents a distinct configuration source (e.g.
+\code{snakemake_yaml}, \code{diann_run_cfg}, \code{runtime}). Every
+tibble must have columns \code{parameter} (character) and \code{value}
+(character). Pass \code{NULL} (the default) to omit configuration details.}
 
 \item{generated_date}{Date. The date the conduit object was generated.
 Defaults to today via \code{\link[=Sys.Date]{Sys.Date()}}.}
@@ -33,7 +36,7 @@ A named list with four elements:
 \item{workflow_version}{character(1)}
 \item{generated_date}{Date}
 \item{uniprotkb_release}{character(1)}
-\item{config}{tbl_df or NULL}
+\item{config}{named list of tbl_df, or NULL}
 }
 }
 \description{
@@ -46,6 +49,9 @@ assigning to the \code{@provenance} slot directly.
 prov <- create_provenance(
   workflow_version  = "1.2.3",
   uniprotkb_release = "2024_05",
-  config = tibble::tibble(parameter = "fdr", value = "0.01")
+  config = list(
+    snakemake_yaml = tibble::tibble(parameter = "fdr", value = "0.01"),
+    runtime        = tibble::tibble(parameter = "snakemake_version", value = "8.4.6")
+  )
 )
 }

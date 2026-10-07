@@ -4,26 +4,22 @@
 \alias{plot_density}
 \title{Plot Density Distributions of Transformed Data}
 \usage{
-plot_density(qf_norm, assay_name, log_base = 2, color)
+plot_density(qf_norm, log_assay, imputed_assay, color)
 }
 \arguments{
-\item{qf_norm}{A QFeatures object containing normalized and transformed data}
+\item{qf_norm}{A QFeatures object containing the transformed data.}
 
-\item{assay_name}{Character string specifying the base assay name (without transformation suffixes)}
+\item{log_assay}{Character string specifying the name of the log-transformed assay
+(e.g. "protein_groups_log2").}
 
-\item{log_base}{Numeric value specifying the base for log transformation (default: 2)}
+\item{imputed_assay}{Character string specifying the name of the imputed assay
+(e.g. "protein_groups_log2_MinDet").}
 
-\item{color}{Character string specifying which column to use for coloring the density curves
-(typically a sample or group identifier)}
+\item{color}{Character string specifying which colData column to use for coloring
+the density curves.}
 }
 \value{
-A ggplot object containing:
-\itemize{
-\item Density curves for each sample/group
-\item Separate facets for log-transformed and imputed data
-\item X-axis showing log-transformed intensity values
-\item Y-axis showing density
-}
+A ggplot object with density curves faceted by transformation stage.
 }
 \description{
 Creates density plots showing the distribution of log-transformed and imputed data
@@ -31,13 +27,9 @@ across samples or groups. This is useful for assessing the effect of data
 transformation and imputation on the distribution of values.
 }
 \examples{
-# Basic density plot colored by sample:
-# plot_density(qfeatures_obj, "protein", color = "sample")
-
-# Using log10 transformation:
-# plot_density(qfeatures_obj, "protein", log_base = 10, color = "group")
-
-# The function will automatically look for assays named:
-# - {assay_name}_log{log_base}
-# - {assay_name}_log{log_base}_imputed
+# qf <- add_log_imputed_norm_assay(qf, "protein_groups")
+# plot_density(qf,
+#   log_assay     = "protein_groups_log2",
+#   imputed_assay = "protein_groups_log2_MinDet",
+#   color         = "group")
 }

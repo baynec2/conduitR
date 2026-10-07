@@ -40,17 +40,21 @@ test_that("We get same ids out as we put in", {
 })
 
 
-test_that("Does this work with a large, realistic set?", {
+test_that("batching works across multiple requests", {
   skip_if_offline()
-  skip_if_not(file.exists(uniprot_ids_5000_rds()), "uniprot_ids_5000.rds fixture missing")
-  # 5000 ids
-  uniprot_ids_5000 <- readRDS(uniprot_ids_5000_rds())
-  annotated <- annotate_uniprot_ids(uniprot_ids_5000,
-    batch_size = 100,
+  # 20 ids split into 2 batches of 10 — tests multi-batch stitching without
+  # hammering the API with 50+ calls like the old 5000-id / batch_size=100 test
+  ids_20 <- c(
+    "A9KHN2", "A9KI94", "A9KLG0", "A9KM56", "A9KM95",
+    "A9KMA2", "A9KMQ4", "A9KQ65", "A9KSH6", "A9KSR8",
+    "A9KHD0", "A9KHD3", "A9KHD9", "A9KHE4", "A9KHI3",
+    "A9KHL4", "A9KHL6", "A9KHN1", "A9KHN3", "A9KHN4"
+  )
+  annotated <- annotate_uniprot_ids(ids_20,
+    batch_size = 10,
     columns = "accession"
   )
-
-  expect_equal(sort(annotated$accession), sort(uniprot_ids_5000))
+  expect_equal(sort(annotated$accession), sort(ids_20))
 })
 
 

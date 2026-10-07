@@ -12,7 +12,6 @@ License: MIT + file LICENSE
 Imports:
     methods,
     future,
-    parallel,
     furrr,
     purrr,
     tibble,

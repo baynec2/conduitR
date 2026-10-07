@@ -9,6 +9,9 @@
 #'   (default includes accession, protein_name, go, xref_kegg, xref_eggnog,
 #'   cc_subcellular_location, cc_tissue_specificity, xref_cazy, xref_pfam,
 #'   xref_interpro).
+#' @param workers Integer giving the number of parallel workers, forwarded to
+#'   \code{\link{annotate_uniprot_ids}}. If NULL (default), sized from
+#'   \code{future::availableCores() - 1} (cgroup / Slurm aware).
 #'
 #' @return A tibble with one row per protein and columns corresponding to the
 #'   requested UniProt fields.
@@ -21,12 +24,14 @@
 #' get_annotations_from_uniprot("P01308", columns = "accession,protein_name,go")
 #' }
 get_annotations_from_uniprot <- function(uniprot_ids,
-                                         columns = "accession,protein_name,go,xref_kegg,xref_eggnog,cc_subcellular_location,cc_tissue_specificity,xref_cazy,xref_pfam,xref_interpro"
+                                         columns = "accession,protein_name,go,xref_kegg,xref_eggnog,cc_subcellular_location,cc_tissue_specificity,xref_cazy,xref_pfam,xref_interpro",
+                                         workers = NULL
  ) {
 
   annotated_data <- annotate_uniprot_ids(uniprot_ids,
     columns = columns,
-    batch_size = 100
+    batch_size = 100,
+    workers = workers
   ) |>
     # Cleaning up go and Kegg and eggnog data.
     dplyr::mutate(

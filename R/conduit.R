@@ -25,6 +25,20 @@
 #'     \item protein_coverage_by_taxa: Number of proteins detected per taxon
 #'     relative to the total number of proteins in the database for that taxon.
 #'     The percentage represents coverage of the taxon's proteome.
+#'     \item peptidotyping_first_pass: Family-level taxon-detection FDR
+#'     table from the first pass of a peptidotyping search-space method
+#'     (`unipept_peptidotyping` or `genome_peptidotyping`). Columns:
+#'     `taxon`, `taxon_name`, `score`, `fdr`, `qvalue`, `decoy`,
+#'     `n_unique_peptides_all`, `n_unique_peptides_q01`, `score_fraction`,
+#'     `cumulative_score_fraction`, `carried_forward`, `filter_reason`.
+#'     Absent for non-peptidotyping methods.
+#'     \item peptidotyping_second_pass: Species/strain-level FDR table from
+#'     the second pass of a peptidotyping search-space method (same schema
+#'     as the first pass). Absent for non-peptidotyping methods.
+#'     \item hapid_greedy_selection: Greedy set-cover genome ranking from a
+#'     HAPID search-space method (`hapid` or `unipept_hapid`). Columns:
+#'     `genome`, `taxon_name`, `nSpectraCovered`, `cumulative_pct`. Absent
+#'     for non-hapid methods.
 #'   }
 #' @slot database A tibble containing taxonomic information for all proteins in
 #'   the reference database, including:
@@ -62,8 +76,9 @@
 #'     \item \code{workflow_version}: character string of the conduit-ascent version
 #'     \item \code{generated_date}: \code{Date} the object was created
 #'     \item \code{uniprotkb_release}: character string of the UniProtKB release used (e.g. \code{"2024_05"})
-#'     \item \code{config}: optional \code{tbl_df} with columns \code{parameter} and \code{value}
-#'       containing key-value pairs from the Snakemake configuration
+#'     \item \code{config}: optional named list of \code{tbl_df} objects, each with columns
+#'       \code{parameter} and \code{value}, representing a distinct configuration source
+#'       (e.g. \code{snakemake_yaml}, \code{diann_run_cfg}, \code{runtime})
 #'   }
 #'   Defaults to \code{NULL} for backwards compatibility with existing objects.
 #'
@@ -197,7 +212,13 @@ setMethod("show", "conduit",
               cat("  Generated date   :", format(prov$generated_date), "\n")
               cat("  UniProtKB release:",
                   if (!is.null(prov$uniprotkb_release)) prov$uniprotkb_release else "Not Available", "\n")
-              cat("  Config entries   :",
-                  if (is.null(prov$config)) 0L else nrow(prov$config), "\n")
+              if (is.null(prov$config)) {
+                cat("  Config           : Not Available\n")
+              } else {
+                cat("  Config sections  :\n")
+                for (nm in names(prov$config)) {
+                  cat("    ", nm, ": ", nrow(prov$config[[nm]]), " entries\n", sep = "")
+                }
+              }
             }
           })

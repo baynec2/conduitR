@@ -1,7 +1,10 @@
 .Rproj.user
 tests/data/
 .DS_Store
+**/.DS_Store
 .Rhistory
+*.Rcheck/
+*.tar.gz
 conduit.rds
 conduitR.Rproj
 

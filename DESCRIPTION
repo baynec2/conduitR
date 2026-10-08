@@ -1,6 +1,6 @@
 Package: conduitR
 Title: R Tools for Metaproteomics Analysis in the Conduit Ecosystem
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R:
     person(given ="Charlie", family ="Bayne", email = "baynec2@gmail.com",
     role = c("aut", "cre"))

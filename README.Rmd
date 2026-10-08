@@ -62,7 +62,14 @@ The package powers [Conduit](https://github.com/baynec2/conduit) (a Snakemake wo
 
 ## Installation
 
-Install the development version from GitHub:
+Install the latest release from GitHub:
+
+```{r eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("baynec2/conduitR@v0.1.0")
+```
+
+Or the development version:
 
 ```{r eval=FALSE}
 # install.packages("devtools")

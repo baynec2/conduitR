@@ -93,7 +93,14 @@ own for custom pipelines and analyses.
 
 ## Installation
 
-Install the development version from GitHub:
+Install the latest release from GitHub:
+
+```r
+# install.packages("remotes")
+remotes::install_github("baynec2/conduitR@v0.1.0")
+```
+
+Or the development version:
 
 ``` r
 # install.packages("devtools")
